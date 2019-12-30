@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.ico">
+    
+
+    <title>
+        
+          使用 bind、call、apply 改變 this 指向的對象 - 一顆藍莓
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <!-- Noto Sans SC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
+    <!-- Noto Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
+    <!-- theme css & js -->
+    <link rel="stylesheet" href="/css/book.css">
+    <script src="/js/book.js"></script>
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('img')
+})
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="book-container">
+    <div class="columns">
+      <div class="column col-2 hide-lg">
+        <div class="book-sidebar">
+  <h4 class="site-meta">
+    <a href="/">一顆藍莓</a>
+  </h4>
+  <div class="sidebar-content">
+    <h5 id="前端、後端、UI-設計筆記">前端、後端、UI 設計筆記</h5>
+<hr>
+<ul>
+<li><a href="/home">首頁</a></li>
+<li><a href="/about">關於</a></li>
+<li>文章
+<ul>
+<li>Javascript
+<ul>
+<li><a href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a></li>
+<li><a href="/post/ES6variable/">var, let, const 的區別</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script src="/js/book-sidebar.js"></script>
+
+<script>
+collapse_sidebar(2)
+highlight_tab()
+show_sidebar()
+</script>
+      </div>
+
+      <div class="column col-8 col-lg-12">
+        <div class="book-content">
+          <div class="book-navbar">
+  <header class="navbar">
+  <section class="navbar-section">
+    <img class="navbar-icon" src="/favicon.ico">
+  </section>
+  <section class="navbar-center">
+    一顆藍莓
+  </section>
+  <section class="navbar-section">
+    <label class="accordion-header c-hand" for="accordion-sidebar">
+      <i class="icon icon-menu"></i>
+    </label>
+  </section>
+</header>
+
+<div class="accordion">
+  <input type="checkbox" id="accordion-sidebar" name="accordion-checkbox" hidden>
+  <div class="accordion-body">
+    <h5 id="前端、後端、UI-設計筆記">前端、後端、UI 設計筆記</h5>
+<hr>
+<ul>
+<li><a href="/home">首頁</a></li>
+<li><a href="/about">關於</a></li>
+<li>文章
+<ul>
+<li>Javascript
+<ul>
+<li><a href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a></li>
+<li><a href="/post/ES6variable/">var, let, const 的區別</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+</div>
+
+<div class="book-post">
+  <h1>使用 bind、call、apply 改變 this 指向的對象</h1>
+<p>如果想要改變 this 指向的對象，可以透過 bind、call、apply 這三個 method 辦到。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    userName: <span class="string">'Blueberry'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接著 create 一個函式來呼叫 obj 的 userName：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.userName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>呼叫 callName：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">callName();</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello undefined */</span></span><br></pre></td></tr></table></figure>
+<p>因為 callName() 函式中的 this 指向的是 global object（也就是 Window 物件），<br>
+所以這時候我們希望把 callName() 的 this 指向 obj 這個對象，使用以下方法：</p>
+<h2 id="1-bind">1. bind</h2>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank" rel="noopener">MDN</a><br>
+<em>function.bind(thisArg[, arg1[, arg2[, …]]])</em></p>
+<p>第一種寫法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">callName.bind(obj)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 意即</span></span><br><span class="line"><span class="comment">// var callFunction = callName.bind(obj);</span></span><br><span class="line"><span class="comment">// callFunction();</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry */</span></span><br></pre></td></tr></table></figure>
+<p>第二種寫法，直接寫在函式表示式後面也可以：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.userName);</span><br><span class="line">&#125;.bind(obj);</span><br><span class="line"></span><br><span class="line">callName();</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry */</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-call">2. call</h2>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener">MDN</a><br>
+<em>function.call(this, arg1, arg2…, argn)</em></p>
+<p>call 除了可以綁定對象給 this 之外，後面還可以直接放入參數。<br>
+我們先來改寫一下 callName()：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.userName);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'your age is '</span> + age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>多了 age 這個參數可代入，接著來示範 call 怎麼寫：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">callName.call(obj, <span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry</span></span><br><span class="line"><span class="comment">   your age is 20 */</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-apply">3. apply</h2>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="noopener">MDN</a><br>
+<em>function.apply(this, [arg1, arg2…, argn])</em></p>
+<p>apply 的寫法跟 call 很相近，與 call 不同的是，<br>
+後面的參數需要使用陣列傳遞，適合搭配 arguments 運用在算數的函式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">callName.apply(obj, [<span class="number">20</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry</span></span><br><span class="line"><span class="comment">   your age is 20 */</span></span><br></pre></td></tr></table></figure>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+<script src="/js/book-post.js"></script>
+        </div>
+      </div>
+
+      <div class="column col-2 hide-lg">
+        <div class="book-toc">
+  <div class="book-tocbot">
+  </div>
+  <!-- <div class="book-tocbot-menu">
+    <a class="book-toc-expand" onclick="expand_toc()">展開</a>
+    <a onclick="go_top()">回到頂端</a>
+    <a onclick="go_bottom()">到文章最後</a>
+  </div> -->
+</div>
+
+<script>
+tocbot.init({
+  tocSelector: '.book-tocbot',
+  contentSelector: '.book-post',
+  headingSelector: 'h1, h2, h3, h4, h5',
+  collapseDepth: 2,
+  orderedList: false,
+  scrollSmooth: false,
+});
+
+function expand_toc(){
+  var b = document.querySelector(".book-toc-expand");
+  tocbot.init({
+    tocSelector: '.book-tocbot',
+    contentSelector: '.book-post',
+    headingSelector: 'h1, h2, h3, h4, h5',
+    collapseDepth: 6,
+    orderedList: false,
+    scrollSmooth: false,
+  });
+  b.setAttribute("onclick", "collapse_toc()");
+  b.innerHTML = "收合"
+}
+
+function collapse_toc(){
+  var b = document.querySelector(".book-toc-expand");
+  tocbot.init({
+    tocSelector: '.book-tocbot',
+    contentSelector: '.book-post',
+    headingSelector: 'h1, h2, h3, h4, h5',
+    collapseDepth: 2,
+    orderedList: false,
+    scrollSmooth: false,
+  });
+  b.setAttribute("onclick", "expand_toc()");
+  b.innerHTML = "展開"
+}
+
+function go_top() {
+  window.scrollTo(0, 0);
+}
+
+function go_bottom() {
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+</script>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

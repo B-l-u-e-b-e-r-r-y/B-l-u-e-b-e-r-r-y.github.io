@@ -61,7 +61,23 @@ document.addEventListener('DOMContentLoaded', function () {
     <a href="/">一顆藍莓</a>
   </h4>
   <div class="sidebar-content">
-    
+    <h5 id="前端、後端、UI-設計筆記">前端、後端、UI 設計筆記</h5>
+<hr>
+<ul>
+<li><a href="/home">首頁</a></li>
+<li><a href="/about">關於</a></li>
+<li>文章
+<ul>
+<li>Javascript
+<ul>
+<li><a href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a></li>
+<li><a href="/post/ES6variable/">var, let, const 的區別</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   </div>
 </div>
 
@@ -94,13 +110,30 @@ show_sidebar()
 <div class="accordion">
   <input type="checkbox" id="accordion-sidebar" name="accordion-checkbox" hidden>
   <div class="accordion-body">
-    
+    <h5 id="前端、後端、UI-設計筆記">前端、後端、UI 設計筆記</h5>
+<hr>
+<ul>
+<li><a href="/home">首頁</a></li>
+<li><a href="/about">關於</a></li>
+<li>文章
+<ul>
+<li>Javascript
+<ul>
+<li><a href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a></li>
+<li><a href="/post/ES6variable/">var, let, const 的區別</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   </div>
 </div>
 </div>
 
 <div class="book-post">
-  
+  <p>首頁空空如也。</p>
+
 </div>
 
 
@@ -121,11 +154,11 @@ show_sidebar()
         <div class="book-toc">
   <div class="book-tocbot">
   </div>
-  <div class="book-tocbot-menu">
-    <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
-    <a onclick="go_top()">Back to top</a>
-    <a onclick="go_bottom()">Go to bottom</a>
-  </div>
+  <!-- <div class="book-tocbot-menu">
+    <a class="book-toc-expand" onclick="expand_toc()">展開</a>
+    <a onclick="go_top()">回到頂端</a>
+    <a onclick="go_bottom()">到文章最後</a>
+  </div> -->
 </div>
 
 <script>
@@ -149,7 +182,7 @@ function expand_toc(){
     scrollSmooth: false,
   });
   b.setAttribute("onclick", "collapse_toc()");
-  b.innerHTML = "Collapse all"
+  b.innerHTML = "收合"
 }
 
 function collapse_toc(){
@@ -163,7 +196,7 @@ function collapse_toc(){
     scrollSmooth: false,
   });
   b.setAttribute("onclick", "expand_toc()");
-  b.innerHTML = "Expand all"
+  b.innerHTML = "展開"
 }
 
 function go_top() {
