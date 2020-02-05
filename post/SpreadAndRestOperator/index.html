@@ -17,7 +17,7 @@
     <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
 
 
-<title>var、let、const 的區別 | 一顆藍莓</title>
+<title>展開運算子(Spread Operator)與其餘運算子(Rest Operator) | 一顆藍莓</title>
 
 
 
@@ -179,7 +179,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">var、let、const 的區別</h1>
+            <h1 class="post-title">展開運算子(Spread Operator)與其餘運算子(Rest Operator)</h1>
             
                 <div class="post-meta">
                     
@@ -188,7 +188,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">November 27, 2019&nbsp;&nbsp;16:03:21</a>
+                        Date: <a href="#">January 11, 2020&nbsp;&nbsp;18:03:21</a>
                         </span>
                     
                     
@@ -204,47 +204,18 @@
         </header>
 
         <div class="post-content">
-            <h2 id="var-變數">var 變數</h2>
-<p>宣告時可以不給資料，資料可更動，範圍是函式作用域(function scope)</p>
-<h2 id="let-變數">let 變數</h2>
-<p>宣告時可以不給資料，資料可更動，範圍是區塊作用域(block scope)</p>
-<h2 id="const-常數">const 常數</h2>
-<p>宣告時一定要給資料，資料不可變動，範圍是區塊作用域(block scope)</p>
-<table>
-<thead>
-<tr>
-<th>名稱</th>
-<th>類型</th>
-<th>宣告時不給資料</th>
-<th>資料變動</th>
-<th>範圍</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>var</td>
-<td>變數</td>
-<td>O</td>
-<td>O</td>
-<td>函式作用域</td>
-</tr>
-<tr>
-<td>let</td>
-<td>變數</td>
-<td>O</td>
-<td>O</td>
-<td>區塊作用域</td>
-</tr>
-<tr>
-<td>const</td>
-<td>常數</td>
-<td>X</td>
-<td>X</td>
-<td>區塊作用域</td>
-</tr>
-</tbody>
-</table>
-
+            <p>這兩種運算子的寫法都是 …，對，你沒看錯，就是三個點！<br>
+接下來來實際說明使用情境：</p>
+<h1>1. 展開運算子 (Spread Operator)</h1>
+<p>用來將舊的陣列或物件複製到新的陣列或物件中，算是淺拷貝(Shallow Copy)的一種</p>
+<p>陣列範例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> newNumbers = [...number, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newNumbers);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   [1, 2, 3, 4] */</span></span><br></pre></td></tr></table></figure>
+<p>物件範例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    name: <span class="string">'Blueberry'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newPerson = &#123;</span><br><span class="line">    ...person,</span><br><span class="line">    age: <span class="number">24</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newPerson);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   &#123;</span></span><br><span class="line"><span class="comment">       age: 24,</span></span><br><span class="line"><span class="comment">       name: 'Blueberry'</span></span><br><span class="line"><span class="comment">   &#125; */</span></span><br></pre></td></tr></table></figure>
+<h1>2. 其餘運算子 (Rest Operator)</h1>
+<p>將不確定數量的參數，視為一個陣列<br>
+範例示範將多個數字傳入函式，並用 filter 找出 args 陣列中等於 1 的數字</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> equalOne = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> args.filter(<span class="function"><span class="params">el</span> =&gt;</span> el === <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(equalOne(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   [1] */</span></span><br></pre></td></tr></table></figure>
         </div>
 
         
@@ -269,8 +240,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a>
+                <a class="prev" rel="prev" href="/post/ReactChildren/">React Children 屬性</a>
             
+            
+            <a class="next" rel="next" href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a>
             
         </section>
 

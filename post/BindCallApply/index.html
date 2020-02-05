@@ -1,139 +1,210 @@
 <!DOCTYPE html>
 <html lang="zh">
-
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Blueberry">
+
+
+    <meta name="subtitle" content="前端、後端、UI 設計筆記">
+
+
+    <meta name="description" content="前端、後端、UI 設計筆記">
+
+
+    <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
+
+
+<title>使用 bind、call、apply 改變 this 指向的對象 | 一顆藍莓</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
 
     
-      <link rel="icon" href="/favicon.ico">
     
-
-    <title>
         
-          使用 bind、call、apply 改變 this 指向的對象 - 一顆藍莓
-        
-    </title>
-
-    <!-- Spectre.css framework -->
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
-
-    <!-- Noto Sans TC -->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
-    <!-- Noto Sans SC -->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
-    <!-- Noto Sans -->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-
-    <!-- theme css & js -->
-    <link rel="stylesheet" href="/css/book.css">
-    <script src="/js/book.js"></script>
-
-    <!-- tocbot -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
     
-    <!-- katex -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const zooming = new Zooming()
-    zooming.listen('img')
-})
-</script>
 
 </head>
-
 <body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Blueberry｜一顆藍莓</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
 
-<div class="container">
-  <div class="book-container">
-    <div class="columns">
-      <div class="column col-2 hide-lg">
-        <div class="book-sidebar">
-  <h4 class="site-meta">
-    <a href="/">一顆藍莓</a>
-  </h4>
-  <div class="sidebar-content">
-    <h5 id="前端、後端、UI-設計筆記">前端、後端、UI 設計筆記</h5>
-<hr>
-<ul>
-<li><a href="/home">首頁</a></li>
-<li><a href="/about">關於</a></li>
-<li>文章
-<ul>
-<li>Javascript
-<ul>
-<li><a href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a></li>
-<li><a href="/post/ES6variable/">var、let、const 的區別</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+        </div>
+    </nav>
 
-  </div>
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Blueberry｜一顆藍莓</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
 </div>
-
-<script src="/js/book-sidebar.js"></script>
 
 <script>
-collapse_sidebar(2)
-highlight_tab()
-show_sidebar()
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
 </script>
-      </div>
+    
 
-      <div class="column col-8 col-lg-12">
-        <div class="book-content">
-          <div class="book-navbar">
-  <header class="navbar">
-  <section class="navbar-section">
-    <img class="navbar-icon" src="/favicon.ico">
-  </section>
-  <section class="navbar-center">
-    一顆藍莓
-  </section>
-  <section class="navbar-section">
-    <label class="accordion-header c-hand" for="accordion-sidebar">
-      <i class="icon icon-menu"></i>
-    </label>
-  </section>
-</header>
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">使用 bind、call、apply 改變 this 指向的對象</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Blueberry</a>
+                    
 
-<div class="accordion">
-  <input type="checkbox" id="accordion-sidebar" name="accordion-checkbox" hidden>
-  <div class="accordion-body">
-    <h5 id="前端、後端、UI-設計筆記">前端、後端、UI 設計筆記</h5>
-<hr>
-<ul>
-<li><a href="/home">首頁</a></li>
-<li><a href="/about">關於</a></li>
-<li>文章
-<ul>
-<li>Javascript
-<ul>
-<li><a href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a></li>
-<li><a href="/post/ES6variable/">var、let、const 的區別</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 30, 2019&nbsp;&nbsp;0:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Javascript/">Javascript</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
 
-  </div>
-</div>
-</div>
-
-<div class="book-post">
-  <h1>使用 bind、call、apply 改變 this 指向的對象</h1>
-<p>如果想要改變 this 指向的對象，可以透過 bind、call、apply 這三個 method 辦到。</p>
+        <div class="post-content">
+            <p>如果想要改變 this 指向的對象，可以透過 bind、call、apply 這三個 method 辦到。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    userName: <span class="string">'Blueberry'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>接著 create 一個函式來呼叫 obj 的 userName：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.userName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -162,84 +233,46 @@ show_sidebar()
 <p>apply 的寫法跟 call 很相近，與 call 不同的是，<br>
 後面的參數需要使用陣列傳遞，適合搭配 arguments 運用在算數的函式。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">callName.apply(obj, [<span class="number">20</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry</span></span><br><span class="line"><span class="comment">   your age is 20 */</span></span><br></pre></td></tr></table></figure>
-</div>
-
-
-  <div class="book-comments">
-    
-
-
-
-
-  </div>
-
-
-<script src="/js/book-post.js"></script>
         </div>
-      </div>
 
-      <div class="column col-2 hide-lg">
-        <div class="book-toc">
-  <div class="book-tocbot">
-  </div>
-  <!-- <div class="book-tocbot-menu">
-    <a class="book-toc-expand" onclick="expand_toc()">展開</a>
-    <a onclick="go_top()">回到頂端</a>
-    <a onclick="go_bottom()">到文章最後</a>
-  </div> -->
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Javascript/"># Javascript</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/post/SpreadAndRestOperator/">展開運算子(Spread Operator)與其餘運算子(Rest Operator)</a>
+            
+            
+            <a class="next" rel="next" href="/post/ES6variable/">var、let、const 的區別</a>
+            
+        </section>
+
+
+    </article>
 </div>
 
-<script>
-tocbot.init({
-  tocSelector: '.book-tocbot',
-  contentSelector: '.book-post',
-  headingSelector: 'h1, h2, h3, h4, h5',
-  collapseDepth: 2,
-  orderedList: false,
-  scrollSmooth: false,
-});
-
-function expand_toc(){
-  var b = document.querySelector(".book-toc-expand");
-  tocbot.init({
-    tocSelector: '.book-tocbot',
-    contentSelector: '.book-post',
-    headingSelector: 'h1, h2, h3, h4, h5',
-    collapseDepth: 6,
-    orderedList: false,
-    scrollSmooth: false,
-  });
-  b.setAttribute("onclick", "collapse_toc()");
-  b.innerHTML = "收合"
-}
-
-function collapse_toc(){
-  var b = document.querySelector(".book-toc-expand");
-  tocbot.init({
-    tocSelector: '.book-tocbot',
-    contentSelector: '.book-post',
-    headingSelector: 'h1, h2, h3, h4, h5',
-    collapseDepth: 2,
-    orderedList: false,
-    scrollSmooth: false,
-  });
-  b.setAttribute("onclick", "expand_toc()");
-  b.innerHTML = "展開"
-}
-
-function go_top() {
-  window.scrollTo(0, 0);
-}
-
-function go_bottom() {
-  window.scrollTo(0, document.body.scrollHeight);
-}
-
-</script>
-      </div>
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Blueberry | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
     </div>
-  </div>
-</div>
+</footer>
 
+    </div>
 </body>
 </html>
