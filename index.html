@@ -1,161 +1,498 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="Blueberry">
-
-
-    <meta name="subtitle" content="前端、後端、UI 設計筆記">
-
-
-    <meta name="description" content="前端、後端、UI 設計筆記">
-
-
-    <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
-
-
-<title>一顆藍莓</title>
-
-
-
-    <link rel="icon" href="/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
+  <meta charset="utf-8">
+  
+  
+  <title>一顆藍莓</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前端、後端、UI 設計筆記">
+<meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
+<meta property="og:type" content="website">
+<meta property="og:title" content="一顆藍莓">
+<meta property="og:url" content="https://pclin2018.github.io/index.html">
+<meta property="og:site_name" content="一顆藍莓">
+<meta property="og:description" content="前端、後端、UI 設計筆記">
+<meta property="og:locale" content="zh">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一顆藍莓">
+<meta name="twitter:description" content="前端、後端、UI 設計筆記">
+  
+    <link rel="alternate" href="/atom.xml" title="一顆藍莓" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
 </head>
+
 <body>
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Blueberry｜一顆藍莓</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Blueberry｜一顆藍莓</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">一顆藍莓</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">前端、後端、UI 設計筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://pclin2018.github.io"></form>
+      </div>
+    </div>
+  </div>
 </header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-        <div class="main">
-            
-    <div class="container">
-    <div class="intro">
-        <!-- <div class="avatar">
-            <a href="/archives"><img src="/image/avatar.jpg"></a>
-        </div> -->
-        <div class="nickname">Blueberry</div>
-        <div class="description"><p>前端工程師，一年半開發經驗 :D</p>
-</div>
-        <div class="links">
-            
-                
-                    <a class="link-item" title="Blog" href="/archives">
-                        
-                        
-                            <i class="iconfont icon-blog"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="CodePen" href="https://codepen.io/Priscilla_Lin">
-                        
-                        
-                            <i class="iconfont icon-codepen"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Github" href="https://github.com/B-l-u-e-b-e-r-r-y">
-                        
-                        
-                            <i class="iconfont icon-github"></i>
-                        
-                    </a>
-                
-            
-        </div>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-post/ReactChildren" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/post/ReactChildren/" class="article-date">
+  <time class="dt-published" datetime="2020-02-05T12:24:00.000Z" itemprop="datePublished">2020-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/React/">React</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/post/ReactChildren/">React Children 屬性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1>介紹</h1>
+<p>使用組件時，大多數都是這樣寫：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Component /&gt;</span><br></pre></td></tr></table></figure>
+<p>但我們其實可以在組件中寫入其他內容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Component&gt;</span><br><span class="line">    &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">&lt;<span class="regexp">/Component&gt;</span></span><br></pre></td></tr></table></figure>
+<p>除了在組件中寫入內容以外，組件本身也要加入 props.children 的屬性才會出現內容，<br>
+如果沒有寫入任何內容，則 props.children 返回 null。<br>
+請看範例程式碼：</p>
+<p>App.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> Card <span class="keyword">from</span> <span class="string">'./Card'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Card&gt;</span><br><span class="line">                    &lt;h1&gt;Hello World!&lt;/h1&gt;</span><br><span class="line">                &lt;<span class="regexp">/Card&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+<p>Card.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./Card.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Card = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"card"</span>&gt;</span><br><span class="line">            &#123;props.children&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default Card;</span></span><br></pre></td></tr></table></figure>
+<p>網頁呈現：<br>
+<img src="/images/react-children/1.png" alt></p>
+<hr>
+<h1>陣列處理</h1>
+<h2 id="React-Children-map">React.Children.map</h2>
+<p>除了文字以外，children 也可以傳遞陣列，這邊我們使用 React 提供的方法 React.Children.map 來處理資料。</p>
+<p>App.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Card&gt;</span><br><span class="line">                    &#123;<span class="function"><span class="keyword">function</span> <span class="title">printData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                        <span class="keyword">const</span> data = [<span class="string">'Apple'</span>, <span class="string">'Orange'</span>, <span class="string">'Banana'</span>];</span><br><span class="line">                        <span class="keyword">return</span> data;</span><br><span class="line">                    &#125;()&#125;</span><br><span class="line">                &lt;<span class="regexp">/Card&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Card.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Card = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"card"</span>&gt;</span><br><span class="line">            &#123;React.Children.map(props.children, (child, i) =&gt; &#123;</span><br><span class="line">                <span class="keyword">return</span> &lt;h1&gt;&#123;child&#125;&lt;/h1&gt;</span><br><span class="line">            &#125;)&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>網頁呈現：<br>
+<img src="/images/react-children/2.png" alt></p>
+<h2 id="React-Children-forEach">React.Children.forEach</h2>
+<p>與 React.Children.map 的使用方式相同，但是不會回傳陣列。</p>
+<hr>
+<h1>Child 數量計算</h1>
+<h2 id="React-Children-count">React.Children.count</h2>
+<p>這個方法用來計算 child 的數量，舉例來說：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Component&gt;</span><br><span class="line">    &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">&lt;<span class="regexp">/Component&gt;</span></span><br></pre></td></tr></table></figure>
+<p>裡面包含了三個 <code>&lt;p&gt;Hello World!&lt;/p&gt;</code>，所以數量 = 3。</p>
+<p>App.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Card&gt;</span><br><span class="line">                    &lt;h1&gt;我是第一個child&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;h1&gt;我是第二個child&lt;/</span>h1&gt;</span><br><span class="line">                    &lt;h1&gt;我是第三個child&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>Card&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Card.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Card = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"card"</span>&gt;</span><br><span class="line">            child 數量：&#123;React.Children.count(props.children)&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>網頁呈現：<br>
+<img src="/images/react-children/3.png" alt></p>
+<hr>
+<h1>只呈現一個 Child</h1>
+<h2 id="React-Children-only">React.Children.only</h2>
+<p>這個方法是讓組件只呈現一個 child，如果 children 不只一個 child 將會報錯：<br>
+<img src="/images/react-children/4.png" alt></p>
+<p>App.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Card&gt;</span><br><span class="line">                    &lt;h1&gt;我是唯一的child&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>Card&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Card.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Card = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"card"</span>&gt;</span><br><span class="line">            &#123;React.Children.only(props.children)&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>網頁呈現：<br>
+<img src="/images/react-children/5.png" alt></p>
+<hr>
+<h1>將 Child 轉成陣列</h1>
+<h2 id="React-Children-toArray">React.Children.toArray</h2>
+<p>React.Children.toArray 方法會將 child 轉成一個扁平的陣列，並對每個 child 指定一個 key，<br>
+下面示範用這個方法將每個 child 數字以小到大排序：</p>
+<p>App.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Card&gt;</span><br><span class="line">                    &lt;h1&gt;<span class="number">196</span>&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;h1&gt;165&lt;/</span>h1&gt;</span><br><span class="line">                    &lt;h1&gt;<span class="number">178</span>&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>Card&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Card.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Card = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> child = React.Children.toArray(props.children);</span><br><span class="line">    child = child.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> a.props.children &gt; b.props.children ? <span class="number">1</span> : <span class="number">-1</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"card"</span>&gt;</span><br><span class="line">            &#123;child&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>網頁呈現：<br>
+<img src="/images/react-children/6.png" alt></p>
+
+      
     </div>
-</div>
+    <footer class="article-footer">
+      <a data-url="https://pclin2018.github.io/post/ReactChildren/" data-id="ck69fglxg0000kk7kp2fr3cvf" data-title="React Children 屬性" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
-        </div>
-        <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© Blueberry | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+
+  
+    <article id="post-post/SpreadAndRestOperator" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/post/SpreadAndRestOperator/" class="article-date">
+  <time class="dt-published" datetime="2020-01-11T10:03:21.000Z" itemprop="datePublished">2020-01-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/post/SpreadAndRestOperator/">展開運算子(Spread Operator)與其餘運算子(Rest Operator)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>這兩種運算子的寫法都是 …，對，你沒看錯，就是三個點！<br>
+接下來來實際說明使用情境：</p>
+<h1>1. 展開運算子 (Spread Operator)</h1>
+<p>用來將舊的陣列或物件複製到新的陣列或物件中，算是淺拷貝(Shallow Copy)的一種</p>
+<p>陣列範例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> newNumbers = [...number, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newNumbers);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   [1, 2, 3, 4] */</span></span><br></pre></td></tr></table></figure>
+<p>物件範例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    name: <span class="string">'Blueberry'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newPerson = &#123;</span><br><span class="line">    ...person,</span><br><span class="line">    age: <span class="number">24</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newPerson);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   &#123;</span></span><br><span class="line"><span class="comment">       age: 24,</span></span><br><span class="line"><span class="comment">       name: 'Blueberry'</span></span><br><span class="line"><span class="comment">   &#125; */</span></span><br></pre></td></tr></table></figure>
+<h1>2. 其餘運算子 (Rest Operator)</h1>
+<p>將不確定數量的參數，視為一個陣列<br>
+範例示範將多個數字傳入函式，並用 filter 找出 args 陣列中等於 1 的數字</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> equalOne = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> args.filter(<span class="function"><span class="params">el</span> =&gt;</span> el === <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(equalOne(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   [1] */</span></span><br></pre></td></tr></table></figure>
+      
     </div>
+    <footer class="article-footer">
+      <a data-url="https://pclin2018.github.io/post/SpreadAndRestOperator/" data-id="ck69a3qka0002b07k0dyciqsb" data-title="展開運算子(Spread Operator)與其餘運算子(Rest Operator)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post/BindCallApply" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/post/BindCallApply/" class="article-date">
+  <time class="dt-published" datetime="2019-12-29T16:00:00.000Z" itemprop="datePublished">2019-12-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>如果想要改變 this 指向的對象，可以透過 bind、call、apply 這三個 method 辦到。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    userName: <span class="string">'Blueberry'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接著 create 一個函式來呼叫 obj 的 userName：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.userName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>呼叫 callName：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">callName();</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello undefined */</span></span><br></pre></td></tr></table></figure>
+<p>因為 callName() 函式中的 this 指向的是 global object（也就是 Window 物件），<br>
+所以這時候我們希望把 callName() 的 this 指向 obj 這個對象，使用以下方法：</p>
+<h2 id="1-bind">1. bind</h2>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank" rel="noopener">MDN</a><br>
+<em>function.bind(thisArg[, arg1[, arg2[, …]]])</em></p>
+<p>第一種寫法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">callName.bind(obj)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 意即</span></span><br><span class="line"><span class="comment">// var callFunction = callName.bind(obj);</span></span><br><span class="line"><span class="comment">// callFunction();</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry */</span></span><br></pre></td></tr></table></figure>
+<p>第二種寫法，直接寫在函式表示式後面也可以：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.userName);</span><br><span class="line">&#125;.bind(obj);</span><br><span class="line"></span><br><span class="line">callName();</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry */</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-call">2. call</h2>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener">MDN</a><br>
+<em>function.call(this, arg1, arg2…, argn)</em></p>
+<p>call 除了可以綁定對象給 this 之外，後面還可以直接放入參數。<br>
+我們先來改寫一下 callName()：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.userName);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'your age is '</span> + age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>多了 age 這個參數可代入，接著來示範 call 怎麼寫：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">callName.call(obj, <span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry</span></span><br><span class="line"><span class="comment">   your age is 20 */</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-apply">3. apply</h2>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="noopener">MDN</a><br>
+<em>function.apply(this, [arg1, arg2…, argn])</em></p>
+<p>apply 的寫法跟 call 很相近，與 call 不同的是，<br>
+後面的參數需要使用陣列傳遞，適合搭配 arguments 運用在算數的函式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">callName.apply(obj, [<span class="number">20</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry</span></span><br><span class="line"><span class="comment">   your age is 20 */</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pclin2018.github.io/post/BindCallApply/" data-id="ck4sjze8z0000o07k25f30a1g" data-title="使用 bind、call、apply 改變 this 指向的對象" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post/ES6variable" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/post/ES6variable/" class="article-date">
+  <time class="dt-published" datetime="2019-11-27T08:03:21.000Z" itemprop="datePublished">2019-11-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/post/ES6variable/">var、let、const 的區別</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="var-變數">var 變數</h2>
+<p>宣告時可以不給資料，資料可更動，範圍是函式作用域(function scope)</p>
+<h2 id="let-變數">let 變數</h2>
+<p>宣告時可以不給資料，資料可更動，範圍是區塊作用域(block scope)</p>
+<h2 id="const-常數">const 常數</h2>
+<p>宣告時一定要給資料，資料不可變動，範圍是區塊作用域(block scope)</p>
+<table>
+<thead>
+<tr>
+<th>名稱</th>
+<th>類型</th>
+<th>宣告時不給資料</th>
+<th>資料變動</th>
+<th>範圍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>var</td>
+<td>變數</td>
+<td>O</td>
+<td>O</td>
+<td>函式作用域</td>
+</tr>
+<tr>
+<td>let</td>
+<td>變數</td>
+<td>O</td>
+<td>O</td>
+<td>區塊作用域</td>
+</tr>
+<tr>
+<td>const</td>
+<td>常數</td>
+<td>X</td>
+<td>X</td>
+<td>區塊作用域</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pclin2018.github.io/post/ES6variable/" data-id="ck4sjze960001o07kgud1v4pm" data-title="var、let、const 的區別" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/w3HexSchool/" style="font-size: 10px;">w3HexSchool</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/post/ReactChildren/">React Children 屬性</a>
+          </li>
+        
+          <li>
+            <a href="/post/SpreadAndRestOperator/">展開運算子(Spread Operator)與其餘運算子(Rest Operator)</a>
+          </li>
+        
+          <li>
+            <a href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a>
+          </li>
+        
+          <li>
+            <a href="/post/ES6variable/">var、let、const 的區別</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Blueberry<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
 </footer>
 
     </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
 </body>
 </html>

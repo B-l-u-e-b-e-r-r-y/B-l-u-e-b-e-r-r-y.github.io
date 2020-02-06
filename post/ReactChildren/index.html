@@ -1,210 +1,110 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="Blueberry">
-
-
-    <meta name="subtitle" content="前端、後端、UI 設計筆記">
-
-
-    <meta name="description" content="前端、後端、UI 設計筆記">
-
-
-    <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
-
-
-<title>React Children 屬性 | 一顆藍莓</title>
-
-
-
-    <link rel="icon" href="/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
+  <meta charset="utf-8">
+  
+  
+  <title>React Children 屬性 | 一顆藍莓</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="介紹 使用組件時，大多數都是這樣寫： 1&amp;lt;Component /&amp;gt; 但我們其實可以在組件中寫入其他內容： 123&amp;lt;Component&amp;gt;    &amp;lt;p&amp;gt;Hello World!&amp;lt;/p&amp;gt;&amp;lt;/Component&amp;gt; 除了在組件中寫入內容以外，組件本身也要加入 props.children 的屬性才會出現內容， 如果沒有寫入任何內容，則 props.">
+<meta name="keywords" content="Javascript,w3HexSchool,React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Children 屬性">
+<meta property="og:url" content="https://pclin2018.github.io/post/ReactChildren/index.html">
+<meta property="og:site_name" content="一顆藍莓">
+<meta property="og:description" content="介紹 使用組件時，大多數都是這樣寫： 1&amp;lt;Component /&amp;gt; 但我們其實可以在組件中寫入其他內容： 123&amp;lt;Component&amp;gt;    &amp;lt;p&amp;gt;Hello World!&amp;lt;/p&amp;gt;&amp;lt;/Component&amp;gt; 除了在組件中寫入內容以外，組件本身也要加入 props.children 的屬性才會出現內容， 如果沒有寫入任何內容，則 props.">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://pclin2018.github.io/images/react-children/1.png">
+<meta property="og:image" content="https://pclin2018.github.io/images/react-children/2.png">
+<meta property="og:image" content="https://pclin2018.github.io/images/react-children/3.png">
+<meta property="og:image" content="https://pclin2018.github.io/images/react-children/4.png">
+<meta property="og:image" content="https://pclin2018.github.io/images/react-children/5.png">
+<meta property="og:image" content="https://pclin2018.github.io/images/react-children/6.png">
+<meta property="og:updated_time" content="2020-02-05T14:48:09.453Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Children 屬性">
+<meta name="twitter:description" content="介紹 使用組件時，大多數都是這樣寫： 1&amp;lt;Component /&amp;gt; 但我們其實可以在組件中寫入其他內容： 123&amp;lt;Component&amp;gt;    &amp;lt;p&amp;gt;Hello World!&amp;lt;/p&amp;gt;&amp;lt;/Component&amp;gt; 除了在組件中寫入內容以外，組件本身也要加入 props.children 的屬性才會出現內容， 如果沒有寫入任何內容，則 props.">
+<meta name="twitter:image" content="https://pclin2018.github.io/images/react-children/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="一顆藍莓" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
 </head>
+
 <body>
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Blueberry｜一顆藍莓</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Blueberry｜一顆藍莓</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">一顆藍莓</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">前端、後端、UI 設計筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://pclin2018.github.io"></form>
+      </div>
+    </div>
+  </div>
 </header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-        <div class="main">
-            <div class="container">
+      <div class="outer">
+        <section id="main"><article id="post-post/ReactChildren" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/post/ReactChildren/" class="article-date">
+  <time class="dt-published" datetime="2020-02-05T12:24:00.000Z" itemprop="datePublished">2020-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/React/">React</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
     
     
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      React Children 屬性
+    </h1>
+  
 
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
+      </header>
     
-
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">React Children 屬性</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">Blueberry</a>
-                    
-
-                    
-                        <span class="post-time">
-                        Date: <a href="#">February 5, 2020&nbsp;&nbsp;20:24:00</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/React/">React</a>
-                            
-                        </span>
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <h1>介紹</h1>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1>介紹</h1>
 <p>使用組件時，大多數都是這樣寫：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Component /&gt;</span><br></pre></td></tr></table></figure>
 <p>但我們其實可以在組件中寫入其他內容：</p>
@@ -265,48 +165,137 @@
 <p>網頁呈現：<br>
 <img src="/images/react-children/6.png" alt></p>
 
-        </div>
-
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/Javascript/"># Javascript</a>
-                    
-                        <a href="/tags/w3HexSchool/"># w3HexSchool</a>
-                    
-                        <a href="/tags/React/"># React</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-            
-            <a class="next" rel="next" href="/post/SpreadAndRestOperator/">展開運算子(Spread Operator)與其餘運算子(Rest Operator)</a>
-            
-        </section>
-
-
-    </article>
-</div>
-
-        </div>
-        <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© Blueberry | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+      
     </div>
+    <footer class="article-footer">
+      <a data-url="https://pclin2018.github.io/post/ReactChildren/" data-id="ck69fglxg0000kk7kp2fr3cvf" data-title="React Children 屬性" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/post/SpreadAndRestOperator/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">展開運算子(Spread Operator)與其餘運算子(Rest Operator)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/w3HexSchool/" style="font-size: 10px;">w3HexSchool</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/post/ReactChildren/">React Children 屬性</a>
+          </li>
+        
+          <li>
+            <a href="/post/SpreadAndRestOperator/">展開運算子(Spread Operator)與其餘運算子(Rest Operator)</a>
+          </li>
+        
+          <li>
+            <a href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a>
+          </li>
+        
+          <li>
+            <a href="/post/ES6variable/">var、let、const 的區別</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Blueberry<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
 </footer>
 
     </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
 </body>
 </html>
