@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://pclin2018.github.io/images/react-children/4.png">
 <meta property="og:image" content="https://pclin2018.github.io/images/react-children/5.png">
 <meta property="og:image" content="https://pclin2018.github.io/images/react-children/6.png">
-<meta property="og:updated_time" content="2020-02-05T14:48:09.453Z">
+<meta property="og:updated_time" content="2020-02-14T11:55:01.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Children 屬性">
 <meta name="twitter:description" content="介紹 使用組件時，大多數都是這樣寫： 1&amp;lt;Component /&amp;gt; 但我們其實可以在組件中寫入其他內容： 123&amp;lt;Component&amp;gt;    &amp;lt;p&amp;gt;Hello World!&amp;lt;/p&amp;gt;&amp;lt;/Component&amp;gt; 除了在組件中寫入內容以外，組件本身也要加入 props.children 的屬性才會出現內容， 如果沒有寫入任何內容，則 props.">
@@ -110,8 +110,7 @@
 <p>但我們其實可以在組件中寫入其他內容：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Component&gt;</span><br><span class="line">    &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">&lt;<span class="regexp">/Component&gt;</span></span><br></pre></td></tr></table></figure>
 <p>除了在組件中寫入內容以外，組件本身也要加入 props.children 的屬性才會出現內容，<br>
-如果沒有寫入任何內容，則 props.children 返回 null。<br>
-請看範例程式碼：</p>
+如果沒有寫入任何內容，則 props.children 返回 null。</p>
 <p>App.js</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> Card <span class="keyword">from</span> <span class="string">'./Card'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Card&gt;</span><br><span class="line">                    &lt;h1&gt;Hello World!&lt;/h1&gt;</span><br><span class="line">                &lt;<span class="regexp">/Card&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
 <p>Card.js</p>
@@ -180,6 +179,15 @@
     
 <nav id="article-nav">
   
+    <a href="/post/JS1F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
   
     <a href="/post/SpreadAndRestOperator/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
@@ -200,7 +208,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li></ul>
     </div>
   </div>
 
@@ -210,7 +218,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flexbox/">Flexbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RWD/">RWD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
     </div>
   </div>
 
@@ -220,7 +228,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/w3HexSchool/" style="font-size: 10px;">w3HexSchool</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/Flexbox/" style="font-size: 10px;">Flexbox</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/w3HexSchool/" style="font-size: 10px;">w3HexSchool</a>
     </div>
   </div>
 
@@ -242,6 +250,14 @@
       <ul>
         
           <li>
+            <a href="/post/Flexbox/">CSS 排版神器 Flexbox</a>
+          </li>
+        
+          <li>
+            <a href="/post/JS1F/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/post/ReactChildren/">React Children 屬性</a>
           </li>
         
@@ -251,10 +267,6 @@
         
           <li>
             <a href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a>
-          </li>
-        
-          <li>
-            <a href="/post/ES6variable/">var、let、const 的區別</a>
           </li>
         
       </ul>

@@ -72,6 +72,292 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-post/Flexbox" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/post/Flexbox/" class="article-date">
+  <time class="dt-published" datetime="2020-02-15T15:10:00.000Z" itemprop="datePublished">2020-02-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/post/Flexbox/">CSS 排版神器 Flexbox</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在 Flexbox 中，部分屬性只能用於父元素，部分只能用於子元素。<br>
+<img src="/images/flexbox/fathernchildren.jpg" alt></p>
+<ul>
+<li>
+<h4 id="父元素屬性">父元素屬性</h4>
+<ul>
+<li>display</li>
+<li>flex-direction</li>
+<li>flex-wrap</li>
+<li>justify-content</li>
+<li>align-items</li>
+<li>align-content</li>
+</ul>
+</li>
+<li>
+<h4 id="子元素屬性">子元素屬性</h4>
+<ul>
+<li>align-self</li>
+<li>order</li>
+<li>flex
+<ul>
+<li>flex-grow</li>
+<li>flex-shrink</li>
+<li>flex-basis</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1>父元素屬性</h1>
+<h2 id="display">display</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display: flex | inline-flex;</span><br></pre></td></tr></table></figure>
+<p>要使用 Flexbox 必須先定義一個父元素容器，並於父元素定義 <code>display</code> 屬性為 <code>flex</code> 或 <code>inline-flex</code>。</p>
+<ul>
+<li><code>flex</code>：Flexbox 的常用屬性，後方的元素會換行</li>
+<li><code>inline-flex</code>：類似於 <code>inline-block</code> 加 <code>flex</code>，在後方的元素不會換行</li>
+</ul>
+<p>範例程式碼：</p>
+<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="LYVpaLd" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex vs inline-flex">
+  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/LYVpaLd" target="_blank" rel="noopener">
+  flex vs inline-flex</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
+  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<hr>
+<h2 id="flex-direction">flex-direction</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-direction: row&lt;default&gt; | row-reverse | column | column-reverese;</span><br></pre></td></tr></table></figure>
+<p><code>flex-direction</code> 可以指定元素的排列方式。</p>
+<ul>
+<li><code>row</code>：預設值，橫向排列</li>
+<li><code>column</code>：直向排列</li>
+<li><code>row-reverse</code>：橫向反向排列</li>
+<li><code>column-reverse</code>：直向反向排列</li>
+</ul>
+<p>範例程式碼：</p>
+<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="JjdYgWx" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-direction">
+  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/JjdYgWx" target="_blank" rel="noopener">
+  flex-direction</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
+  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<hr>
+<h2 id="flex-wrap">flex-wrap</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-wrap: nowrap&lt;default&gt; | wrap | wrap-reverse;</span><br></pre></td></tr></table></figure>
+<p>當多個子元素超過父元素的寬度時，<code>flex-wrap</code> 可以決定是否將子元素換行。</p>
+<ul>
+<li><code>nowrap</code>：預設值，不換行，子元素會縮短以符合父元素的寬度</li>
+<li><code>wrap</code>：換行，超出父元素寬度的子元素會換到下一行</li>
+<li><code>wrap-reverse</code>：反向換行，也就是各行的順序會顛倒</li>
+</ul>
+<p>範例程式碼：</p>
+<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="zYGvgEm" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-wrap">
+  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/zYGvgEm" target="_blank" rel="noopener">
+  flex-wrap</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
+  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<hr>
+<h2 id="justify-content">justify-content</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-content: flex-start&lt;default&gt; | flex-end | center | space-between | space-around;</span><br></pre></td></tr></table></figure>
+<p><code>justify-content</code> 決定水平對齊的位置。</p>
+<ul>
+<li><code>flex-start</code>：預設值，靠左對齊</li>
+<li><code>flex-end</code>：靠右對齊</li>
+<li><code>center</code>：置中對齊</li>
+<li><code>space-between</code>：平均分配，左右貼齊父元素</li>
+<li><code>space-around</code>：平均分配，類似 margin 的概念<br>
+<img src="/images/flexbox/jc-space-around.jpg" alt></li>
+<li><code>space-evenly</code>：平均分配，每個間距都是相同寬度<br>
+<img src="/images/flexbox/jc-space-evenly.jpg" alt></li>
+</ul>
+<p>範例程式碼：</p>
+<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="dyoGPwP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="justify-content">
+  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/dyoGPwP" target="_blank" rel="noopener">
+  justify-content</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
+  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<hr>
+<h2 id="align-items">align-items</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-items: flex-start | flex-end | center | stretch&lt;default&gt; | baseline;</span><br></pre></td></tr></table></figure>
+<p><code>align-items</code> 決定垂直對齊的位置。</p>
+<ul>
+<li><code>flex-start</code>：靠上方對齊</li>
+<li><code>flex-end</code>：靠下方對齊</li>
+<li><code>center</code>：置中對齊</li>
+<li><code>stretch</code>：預設值，所有元素撐開與父元素同高</li>
+<li><code>baseline</code>：依元素的基準線對齊<br>
+<img src="/images/flexbox/ac-baseline.jpg" alt></li>
+</ul>
+<p>範例程式碼：</p>
+<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="abOdKwb" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="align-items">
+  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/abOdKwb" target="_blank" rel="noopener">
+  align-items</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
+  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<hr>
+<h2 id="align-content">align-content</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-content: flex-start | flex-end | center | stretch&lt;default&gt; | space-between | space-around;</span><br></pre></td></tr></table></figure>
+<p><code>align-content</code> 針對多行的元素進行排序。</p>
+<ul>
+<li><code>flex-start</code>：靠上方對齊</li>
+<li><code>flex-end</code>：靠下方對齊</li>
+<li><code>center</code>：置中對齊</li>
+<li><code>stretch</code>：預設值，所有元素撐開與父元素同高</li>
+<li><code>space-between</code>：平均分配，上下貼齊父元素</li>
+<li><code>space-around</code>：平均分配，類似 margin 概念</li>
+</ul>
+<p>範例程式碼：</p>
+<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="MWwKXvx" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="align-content">
+  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/MWwKXvx" target="_blank" rel="noopener">
+  align-content</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
+  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<hr>
+<h1>子元素屬性</h1>
+<h2 id="align-self">align-self</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-self: flex-start | flex-end | center | stretch | baseline;</span><br></pre></td></tr></table></figure>
+<p><code>align-self</code> 針對各別子元素進行排序，不受其他影響。</p>
+<ul>
+<li><code>flex-start</code>：靠上方對齊</li>
+<li><code>flex-end</code>：靠下方對齊</li>
+<li><code>center</code>：置中對齊</li>
+<li><code>stretch</code>：子元素撐開與父元素同高</li>
+<li><code>baseline</code>：依元素的基準線對齊</li>
+</ul>
+<p>這邊我直接拿上面的 <code>align-items</code> 的範例來改，<br>
+可以看到 2 號橘色方塊被我設定為 <code>align-center: center</code>，所以不管怎麼排序，橘色方塊都會垂直置中。<br>
+範例程式碼：</p>
+<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="ExjPjYB" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="align-self">
+  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/ExjPjYB" target="_blank" rel="noopener">
+  align-self</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
+  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<hr>
+<h2 id="order">order</h2>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">order</span>: &lt;<span class="selector-tag">number</span>&gt;;</span><br></pre></td></tr></table></figure>
+<p><code>order</code> 可以決定子元素的排序順序，只能給定數字。</p>
+<p>範例程式碼：</p>
+<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="NWqxOby" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="order">
+  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/NWqxOby" target="_blank" rel="noopener">
+  order</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
+  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<hr>
+<h2 id="flex">flex</h2>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex</span>: &lt;<span class="selector-tag">flex-grow</span>&gt; &lt;<span class="selector-tag">flex-shrink</span>&gt; &lt;<span class="selector-tag">flex-basis</span>&gt;;</span><br></pre></td></tr></table></figure>
+<p><code>flex</code> 是由三個值組成，如果只給定一個值，則是給定 <code>flex-grow</code>。</p>
+<h3 id="flex-grow">flex-grow</h3>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex-grow</span>: &lt;<span class="selector-tag">number</span>&gt;;</span><br></pre></td></tr></table></figure>
+<p>當子元素的總寬度<strong>不超過</strong>父元素時，<code>flex-grow</code> 會分配剩餘的空間給特定子元素。<br>
+<code>flex-grow</code> 的預設值為 0，設定 1 以上的值會進行彈性變化。<br>
+範例程式碼：</p>
+<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="poJgMoN" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-grow">
+  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/poJgMoN" target="_blank" rel="noopener">
+  flex-grow</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
+  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<hr>
+<h3 id="flex-shrink">flex-shrink</h3>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex-shrink</span>: &lt;<span class="selector-tag">number</span>&gt;;</span><br></pre></td></tr></table></figure>
+<p>當子元素的總寬度<strong>超過</strong>父元素時，<code>flex-shrink</code> 會將特定子元素的寬度依比例縮減。<br>
+<code>flex-shrink</code> 的預設值為 1，設為 0 的話不會進行彈性變化。<br>
+範例程式碼：</p>
+<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="zYGqOvb" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-shrink">
+  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/zYGqOvb" target="_blank" rel="noopener">
+  flex-shrink</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
+  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<hr>
+<h3 id="flex-basis">flex-basis</h3>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex-basis</span>: &lt;<span class="selector-tag">number</span>&gt;;</span><br></pre></td></tr></table></figure>
+<p><code>flex-basis</code> 會指定子元素在 main axis (主軸)上的初始大小。<br>
+如果 <code>flex-direction: row</code> 則更改子元素寬度，反之，<br>
+如果 <code>flex-direction: column</code> 則更改子元素高度。<br>
+<code>flex-basis</code> 的預設值為 0，也可以設定為 auto，表示以子元素自己的大小為基準。<br>
+範例程式碼：</p>
+<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="BaNKBjZ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-basis">
+  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/BaNKBjZ" target="_blank" rel="noopener">
+  flex-basis</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
+  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pclin2018.github.io/post/Flexbox/" data-id="ck6n8n5rw0000mc7kl38j5xm1" data-title="CSS 排版神器 Flexbox" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flexbox/">Flexbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RWD/">RWD</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post/JS1F" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/post/JS1F/" class="article-date">
+  <time class="dt-published" datetime="2020-02-10T16:18:14.888Z" itemprop="datePublished">2020-02-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>第一次使用 create-react-app</li>
+<li>::after ::before 偽元素</li>
+<li>flex 排版心得</li>
+<li>瀏覽器差異之 Chrome vs Edge</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pclin2018.github.io/post/JS1F/" data-id="ck6n8n5sl0009mc7koy3wdogl" data-title class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-post/ReactChildren" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/post/ReactChildren/" class="article-date">
@@ -104,8 +390,7 @@
 <p>但我們其實可以在組件中寫入其他內容：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Component&gt;</span><br><span class="line">    &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">&lt;<span class="regexp">/Component&gt;</span></span><br></pre></td></tr></table></figure>
 <p>除了在組件中寫入內容以外，組件本身也要加入 props.children 的屬性才會出現內容，<br>
-如果沒有寫入任何內容，則 props.children 返回 null。<br>
-請看範例程式碼：</p>
+如果沒有寫入任何內容，則 props.children 返回 null。</p>
 <p>App.js</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> Card <span class="keyword">from</span> <span class="string">'./Card'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Card&gt;</span><br><span class="line">                    &lt;h1&gt;Hello World!&lt;/h1&gt;</span><br><span class="line">                &lt;<span class="regexp">/Card&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
 <p>Card.js</p>
@@ -397,7 +682,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li></ul>
     </div>
   </div>
 
@@ -407,7 +692,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flexbox/">Flexbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RWD/">RWD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
     </div>
   </div>
 
@@ -417,7 +702,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/w3HexSchool/" style="font-size: 10px;">w3HexSchool</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/Flexbox/" style="font-size: 10px;">Flexbox</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/w3HexSchool/" style="font-size: 10px;">w3HexSchool</a>
     </div>
   </div>
 
@@ -439,6 +724,14 @@
       <ul>
         
           <li>
+            <a href="/post/Flexbox/">CSS 排版神器 Flexbox</a>
+          </li>
+        
+          <li>
+            <a href="/post/JS1F/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/post/ReactChildren/">React Children 屬性</a>
           </li>
         
@@ -448,10 +741,6 @@
         
           <li>
             <a href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a>
-          </li>
-        
-          <li>
-            <a href="/post/ES6variable/">var、let、const 的區別</a>
           </li>
         
       </ul>
