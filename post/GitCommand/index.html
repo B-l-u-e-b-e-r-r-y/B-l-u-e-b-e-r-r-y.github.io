@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <title>簡單整理 Git 常用指令 | 一顆藍莓</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="新增檔案( . 是全部新增的意思，也可以只新增部分檔案) 1$ git add .  提交檔案 1$ git commit -m &amp;quot;內容&amp;quot;  推送檔案 1$ git push  拉取檔案 1$ git pull  克隆遠端數據庫 1$ git clone git位置  查看目前分支 1$ git branch  新增分支 1$ git branch 分支名稱  切換到該分支 1">
+<meta name="keywords" content="w3HexSchool,Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="簡單整理 Git 常用指令">
+<meta property="og:url" content="https://pclin2018.github.io/post/GitCommand/index.html">
+<meta property="og:site_name" content="一顆藍莓">
+<meta property="og:description" content="新增檔案( . 是全部新增的意思，也可以只新增部分檔案) 1$ git add .  提交檔案 1$ git commit -m &amp;quot;內容&amp;quot;  推送檔案 1$ git push  拉取檔案 1$ git pull  克隆遠端數據庫 1$ git clone git位置  查看目前分支 1$ git branch  新增分支 1$ git branch 分支名稱  切換到該分支 1">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2020-03-14T08:38:48.023Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="簡單整理 Git 常用指令">
+<meta name="twitter:description" content="新增檔案( . 是全部新增的意思，也可以只新增部分檔案) 1$ git add .  提交檔案 1$ git commit -m &amp;quot;內容&amp;quot;  推送檔案 1$ git push  拉取檔案 1$ git pull  克隆遠端數據庫 1$ git clone git位置  查看目前分支 1$ git branch  新增分支 1$ git branch 分支名稱  切換到該分支 1">
+  
+    <link rel="alternate" href="/atom.xml" title="一顆藍莓" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">一顆藍莓</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">前端、後端、UI 設計筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://pclin2018.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-post/GitCommand" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/post/GitCommand/" class="article-date">
+  <time class="dt-published" datetime="2020-03-07T12:44:00.000Z" itemprop="datePublished">2020-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      簡單整理 Git 常用指令
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="新增檔案-是全部新增的意思，也可以只新增部分檔案">新增檔案( . 是全部新增的意思，也可以只新增部分檔案)</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="提交檔案">提交檔案</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;內容&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="推送檔案">推送檔案</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="拉取檔案">拉取檔案</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="克隆遠端數據庫">克隆遠端數據庫</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git位置</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="查看目前分支">查看目前分支</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="新增分支">新增分支</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch 分支名稱</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="切換到該分支">切換到該分支</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout 分支名稱</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="強制回到和保存端一模一樣的檔案（慎用，檔案有異常時再使用）">強制回到和保存端一模一樣的檔案（慎用，檔案有異常時再使用）</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch --all</span><br><span class="line">$ git reset --hard origin/master</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="查詢所有做過的-git-動作，可查詢到每一個動作的編號">查詢所有做過的 git 動作，可查詢到每一個動作的編號</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="回覆之前的某一個操作">回覆之前的某一個操作</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset 編號 --hard</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="使用-rebase-進行合併">使用 rebase 進行合併</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rebase 分支名稱</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="rebase-後回復">rebase 後回復</h3>
+<p>有兩種方式，第一種方式必須先用 $ git reflog 查詢，dd1f0f8 是 rebase 前的一個動作編號：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset dd1f0f8 --hard</span><br></pre></td></tr></table></figure>
+<p>第二種方式是使用 ORIG_HEAD：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset ORIG_HEAD --hard</span><br></pre></td></tr></table></figure>
+<hr>
+<p>參考資料：<br>
+<a href="https://www.youtube.com/watch?v=HeF7dwVyzow&amp;feature=emb_err_watch_on_yt" target="_blank" rel="noopener">另一種合併方式（使用 rebase）｜高見龍</a><br>
+<a href="https://w3c.hexschool.com/git/cfdbd310?fbclid=IwAR0cO3-A9voMoOPIA-qnZWbm2o7TNICwsJc4J0rnbZxCcNy8sBVs7NU9OmQ" target="_blank" rel="noopener">Git &amp; GitHub 教學手冊｜六角學院</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pclin2018.github.io/post/GitCommand/" data-id="ck7rfksxk00072g7kcftvd4p4" data-title="簡單整理 Git 常用指令" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/post/Promise/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Javascript ES6 Promise
+        
+      </div>
+    </a>
+  
+  
+    <a href="/post/ComparisonOperators/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">比較運算子</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flexbox/">Flexbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RWD/">RWD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Flexbox/" style="font-size: 10px;">Flexbox</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/w3HexSchool/" style="font-size: 16.67px;">w3HexSchool</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/post/Promise/">Javascript ES6 Promise</a>
+          </li>
+        
+          <li>
+            <a href="/post/GitCommand/">簡單整理 Git 常用指令</a>
+          </li>
+        
+          <li>
+            <a href="/post/ComparisonOperators/">比較運算子</a>
+          </li>
+        
+          <li>
+            <a href="/post/Destructuring/">Destructuring 解構賦值</a>
+          </li>
+        
+          <li>
+            <a href="/post/Flexbox/">CSS 排版神器 Flexbox</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Blueberry<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

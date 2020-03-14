@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <title>Javascript ES6 Promise | 一顆藍莓</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Promise 是很適合用來處理非同步的方法，大多數情況是用來處理非同步事件或 Callback hell (回調地獄)。 非同步調用 例如 getData() 在 api() 還沒回傳值就想取得結果，就會出現 undefined。可以看看下面的例子： 12345678910111213const api = () =&amp;gt; &amp;#123;    // 模擬等待 api 回傳的時間    setT">
+<meta name="keywords" content="Javascript,w3HexSchool,ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript ES6 Promise">
+<meta property="og:url" content="https://pclin2018.github.io/post/Promise/index.html">
+<meta property="og:site_name" content="一顆藍莓">
+<meta property="og:description" content="Promise 是很適合用來處理非同步的方法，大多數情況是用來處理非同步事件或 Callback hell (回調地獄)。 非同步調用 例如 getData() 在 api() 還沒回傳值就想取得結果，就會出現 undefined。可以看看下面的例子： 12345678910111213const api = () =&amp;gt; &amp;#123;    // 模擬等待 api 回傳的時間    setT">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://pclin2018.github.io/images/promise/04.jpg">
+<meta property="og:updated_time" content="2020-03-14T16:11:38.333Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript ES6 Promise">
+<meta name="twitter:description" content="Promise 是很適合用來處理非同步的方法，大多數情況是用來處理非同步事件或 Callback hell (回調地獄)。 非同步調用 例如 getData() 在 api() 還沒回傳值就想取得結果，就會出現 undefined。可以看看下面的例子： 12345678910111213const api = () =&amp;gt; &amp;#123;    // 模擬等待 api 回傳的時間    setT">
+<meta name="twitter:image" content="https://pclin2018.github.io/images/promise/04.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="一顆藍莓" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">一顆藍莓</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">前端、後端、UI 設計筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://pclin2018.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-post/Promise" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/post/Promise/" class="article-date">
+  <time class="dt-published" datetime="2020-03-13T16:00:00.000Z" itemprop="datePublished">2020-03-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Javascript ES6 Promise
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Promise 是很適合用來處理非同步的方法，大多數情況是用來處理非同步事件或 Callback hell (回調地獄)。</p>
+<h2 id="非同步調用">非同步調用</h2>
+<p>例如 <code>getData()</code> 在 <code>api()</code> 還沒回傳值就想取得結果，就會出現 <code>undefined</code>。可以看看下面的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 模擬等待 api 回傳的時間</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">value</span>: <span class="number">1</span> &#125;;</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> data = api();</span><br><span class="line">    <span class="built_in">console</span>.log(data);  <span class="comment">// undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getData();</span><br></pre></td></tr></table></figure>
+<p><code>setTimeout</code> 是 Javascript 中一種非同步的方法，它會等到指定時間過後才會執行裡面的程式碼，但與此同時，其他的程式碼一樣會繼續進行，<strong>不會等到 <code>setTimeout</code> 執行結束才繼續往下</strong>。</p>
+<h2 id="使用-Promise-解決非同步調用">使用 Promise 解決非同步調用</h2>
+<p>那麼該如何解決呢？這時候就可以使用 Promise。<br>
+建立 Promise 必須回傳 resolve(解決) 及 reject(拒絕)，當然只回傳 resolve 或 reject 也是可以的，它們類似於 <code>return</code> 的概念，寫在它們後面的程式碼不會被執行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="comment">/* 任何條件 */</span>) &#123;</span><br><span class="line">        resolve(<span class="string">'Success'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        reject(<span class="string">'Fail'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>定義 Promise 之後就可以呼叫它：<code>promise.then(fulfilledCallback, rejectedCallback)</code><br>
+如果剛剛回傳的結果是 resolve(解決)，則執行 <code>fulfilledCallback</code>，<br>
+反之如果是回傳 reject(拒絕)，則執行 <code>rejectedCallback</code>。<br>
+<strong>※ 這邊特別提一下，<code>rejectedCallback</code> 是可選的，不一定要使用它來處理錯誤，使用 <code>catch(rejectedCallback)</code> 也有一樣的效果，但這兩種寫法在其他情境下會產生差異，後面錯誤處理的部分會提到。</strong></p>
+<p>下面這段程式碼會在 Promise 回傳 resolve 或 reject 之後才被執行，因此可以達到同步延遲的效果：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">promise.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);  <span class="comment">// Success</span></span><br><span class="line">&#125;, (err) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);  <span class="comment">// Fail</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line">promise.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);  <span class="comment">// Success</span></span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);  <span class="comment">// Fail</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>學會 Promise 的基本用法後，就可以回到最上面的問題，如何等到 <code>api()</code> 回傳結果再取值呢？<br>
+改寫一下程式，在 <code>api()</code> 加入 Promise，並於 <code>getData()</code> 調用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 模擬等待 api 回傳的時間</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123; <span class="attr">value</span>: <span class="number">1</span> &#125;);</span><br><span class="line">        &#125;, <span class="number">2000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> data;</span><br><span class="line">    api().then(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">        data = result;</span><br><span class="line">        <span class="built_in">console</span>.log(data);  <span class="comment">// Object &#123; value: 1 &#125;</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getData();</span><br></pre></td></tr></table></figure>
+<p>這樣就可以解決非同步調用的問題了。</p>
+<h2 id="Callback-hell">Callback hell</h2>
+<p>接下來看看 Callback hell 的問題，下面的例子是模擬取用 user、country、item 這三個不同的 api，而且必須取完 userApi 再取 countryApi，然後再取 itemApi：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userApi = <span class="function">(<span class="params">callback</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        callback(&#123; <span class="attr">user</span>: [] &#125;);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> countryApi = <span class="function">(<span class="params">callback</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        callback(&#123; <span class="attr">country</span>: [] &#125;);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> itemApi = <span class="function">(<span class="params">callback</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        callback(&#123; <span class="attr">item</span>: [] &#125;);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    userApi(<span class="function">(<span class="params">userData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(userData);  <span class="comment">// Object &#123; user: [] &#125;</span></span><br><span class="line">        countryApi(<span class="function">(<span class="params">countryData</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(countryData);  <span class="comment">// Object &#123; country: [] &#125;</span></span><br><span class="line">            itemApi(<span class="function">(<span class="params">itemData</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(itemData);  <span class="comment">// Object &#123; item: [] &#125;</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getData();</span><br></pre></td></tr></table></figure>
+<p>這樣的寫法非常難讀和維護，如果再加入其他動作或錯誤處理，那真的是一坨超級難讀的程式碼了。</p>
+<h2 id="使用-Promise-解決-Callback-hell">使用 Promise 解決 Callback hell</h2>
+<p>將程式碼改寫如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userApi = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123; <span class="attr">user</span>: [] &#125;);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> countryApi = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123; <span class="attr">country</span>: [] &#125;);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> itemApi = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123; <span class="attr">item</span>: [] &#125;);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    userApi().then(<span class="function">(<span class="params">userData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(userData); <span class="comment">// Object &#123; user: [] &#125;</span></span><br><span class="line">        <span class="keyword">return</span> countryApi();   <span class="comment">// 執行 countryApi()，因為函式回傳的是 Promise 物件，所以可以繼續用 then 串接</span></span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">countryData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(countryData);  <span class="comment">// Object &#123; country: [] &#125;</span></span><br><span class="line">        <span class="keyword">return</span> itemApi();</span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">itemData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(itemData);  <span class="comment">// Object &#123; item: [] &#125;</span></span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;  <span class="comment">// 錯誤處理</span></span><br><span class="line">        <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getData();</span><br></pre></td></tr></table></figure>
+<p>Promise 可以使用串連的寫法，讓程式碼又更具可讀性，錯誤處理的寫法直觀又有規範，好 Promise 不用嗎。</p>
+<h2 id="錯誤處理">錯誤處理</h2>
+<p>錯誤處理主要有兩種寫法，分別為：</p>
+<ul>
+<li><code>new Promise.then(fulfilledCallback, rejectedCallback)</code></li>
+<li><code>new Promise.then(fulfilledCallback).catch(rejectedCallback)</code></li>
+</ul>
+<p>那它們之間究竟有什麼不同呢？<br>
+我把中間的 countryApi 改成回傳 reject，看看不同的錯誤處理方式如何運行。</p>
+<h3 id="new-Promise-then-fulfilledCallback-rejectedCallback">new Promise.then(fulfilledCallback, rejectedCallback)</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userApi = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123; <span class="attr">user</span>: [] &#125;);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> countryApi = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 把這個 api 的回傳改成 reject</span></span><br><span class="line">            reject(<span class="string">'Error!'</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> itemApi = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123; <span class="attr">item</span>: [] &#125;);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 因為每一個 Promise 都有錯誤處理了，所以不寫 catch</span></span><br><span class="line"><span class="comment"> * 要寫 catch 也是可以的，這樣的話這個 catch 主要會抓到這邊 callback 的錯誤，而不是 reject 回傳的內容</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    userApi()</span><br><span class="line">    .then(<span class="function">(<span class="params">userData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(userData);</span><br><span class="line">        <span class="keyword">return</span> countryApi();</span><br><span class="line">    &#125;, (err) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function">(<span class="params">countryData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(countryData);</span><br><span class="line">        <span class="keyword">return</span> itemApi();</span><br><span class="line">    &#125;, (err) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function">(<span class="params">itemData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(itemData);</span><br><span class="line">    &#125;, (err) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getData();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 結果：</span></span><br><span class="line"><span class="comment">// Object &#123;</span></span><br><span class="line"><span class="comment">//    user: []</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// "Error!"</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>這個範例成功取得第一個 userApi，之後在取得 countryApi 時出現錯誤，因此回傳 <code>&quot;Error!&quot;</code>。<br>
+那最後一行的 <code>undefined</code> 是怎麼回事？<br>
+是因為這種寫法的錯誤處理執行完後，還會繼續執行接下來的程式 <code>.then()</code> 的緣故。<br>
+也因為執行的是 rejectedCallback，rejectedCallback 的程式除了 <code>console.log(err)</code> 以外並沒有做任何事情，故而下一個 then 的 <code>console.log(itemData)</code> 就會出現 <code>undefined</code>。<br>
+這個寫法可以避免中間有一個 api 出錯，後面就不會繼續執行的問題。</p>
+<h3 id="new-Promise-then-fulfilledCallback-catch-rejectedCallback">new Promise.then(fulfilledCallback).catch(rejectedCallback)</h3>
+<p>這個寫法是將錯誤統一交給 catch 處理：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    userApi().then(<span class="function">(<span class="params">userData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(userData);</span><br><span class="line">        <span class="keyword">return</span> countryApi();</span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">countryData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(countryData);</span><br><span class="line">        <span class="keyword">return</span> itemApi();</span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">itemData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(itemData);</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 結果：</span></span><br><span class="line"><span class="comment">// Object &#123;</span></span><br><span class="line"><span class="comment">//    user: []</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// "Error!"</span></span><br></pre></td></tr></table></figure>
+<p>疑？為什麼只到 <code>&quot;Error!&quot;</code> 就沒了？<code>itemApi</code> 的部分沒有執行？<br>
+<strong>這是因為只要某部分回傳了 reject，就會進到 catch 的部分，中間的過程會直接跳過。</strong><br>
+但是如果在 catch 後面寫串連，還是可以繼續執行，只是一般很少人這樣使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    userApi().then(<span class="function">(<span class="params">userData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(userData);</span><br><span class="line">        <span class="keyword">return</span> countryApi();</span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">countryData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(countryData);</span><br><span class="line">        <span class="keyword">return</span> itemApi();</span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">itemData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(itemData);</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Keep going.'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 結果：</span></span><br><span class="line"><span class="comment">// Object &#123;</span></span><br><span class="line"><span class="comment">//    user: []</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// "Error!"</span></span><br><span class="line"><span class="comment">// "Keep going."</span></span><br></pre></td></tr></table></figure>
+<h2 id="finally">finally</h2>
+<p>還有一個方法是 <code>finally()</code>，它會在執行完 <code>then()</code> 和 <code>catch()</code> 後執行，確保無論是 fulfilled 或 rejected 都會執行某些程式碼的一種方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">1</span>).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;).finally(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'finally'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// finally</span></span><br></pre></td></tr></table></figure>
+<h2 id="其他寫法">其他寫法</h2>
+<p>將 Promise 展開後可以看見下面的結構：<br>
+<img src="/images/promise/04.jpg" alt><br>
+從這張圖中可以看見幾種 Promise 可用的函式，分別為：</p>
+<ul>
+<li>Promise.resolve</li>
+<li>Promise.reject</li>
+<li>Promise.all</li>
+<li>Promise.race</li>
+<li>Promise.allSettled</li>
+</ul>
+<h3 id="Promise-resolve">Promise.resolve</h3>
+<p><code>Promise.resolve(value)</code><br>
+可以直接回傳一個 resolve 的 Promise。</p>
+<h3 id="Promise-reject">Promise.reject</h3>
+<p><code>Promise.reject(value)</code><br>
+可以直接回傳一個 reject 的 Promise。</p>
+<h3 id="Promise-all">Promise.all</h3>
+<p><code>Promise.all(array).then(fulfilledCallback, rejectedCallback)</code><br>
+<code>Promise.all</code> 函式需要放入陣列，陣列內容必須是 Promise。<br>
+完成全部的 Promise 後才會執行。<br>
+如果 Promise 全部回傳 resolve，會執行 fulfilledCallback，回傳全部 resolve 值，並組成一個陣列。<br>
+反之，如果有任何一個回傳 reject 則執行 rejectedCallback，回傳第一個 reject 值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.all([</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(<span class="number">1</span>),</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(<span class="number">2</span>),</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(<span class="number">3</span>)</span><br><span class="line">]).then(<span class="function">(<span class="params">array</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(array);</span><br><span class="line">&#125;, (err) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+<h3 id="Promise-race">Promise.race</h3>
+<p><code>Promise.race(array).then(fulfilledCallback, rejectedCallback)</code><br>
+與 <code>Promise.all</code> 的寫法相同，但是它只接收第一個回傳的 Promise（不論 resolve 或 reject），有點類似賽跑，比賽誰先到終點。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.all([</span><br><span class="line">    <span class="built_in">Promise</span>.reject(<span class="number">1</span>),</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(<span class="number">2</span>),</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(<span class="number">3</span>)</span><br><span class="line">]).then(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'resolve: '</span>, resolve);</span><br><span class="line">&#125;, (reject) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'reject: '</span>, reject);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// reject: 1</span></span><br></pre></td></tr></table></figure>
+<h3 id="Promise-allSettled">Promise.allSettled</h3>
+<p><code>Promise.allSettled(array).then(callback))</code><br>
+<code>Promise.allSettled</code> 只有在全部的 Promise 都完成後才會執行。<br>
+它會回傳一個陣列，裡面包含：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// resolve 時回傳</span></span><br><span class="line">&#123;</span><br><span class="line">    status: <span class="string">"fulfilled"</span>,</span><br><span class="line">    value: <span class="string">"resolve value"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// reject 時回傳</span></span><br><span class="line">&#123;</span><br><span class="line">    status: <span class="string">"rejected"</span>,</span><br><span class="line">    reason: <span class="string">"reject value"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>寫法與 <code>Promise.all</code> 及 <code>Promise.race</code> 大致雷同，只是它不需要第二個 callback：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.allSettled([</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(<span class="number">1</span>),</span><br><span class="line">    <span class="built_in">Promise</span>.reject(<span class="number">2</span>)</span><br><span class="line">])</span><br><span class="line">.then(<span class="function">(<span class="params">array</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(array);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; status: "fulfilled", value: 1 &#125;</span></span><br><span class="line"><span class="comment">// &#123; status: "rejected", reason: 2 &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Promise-的當前狀態與值">Promise 的當前狀態與值</h2>
+<p>當前狀態與值分別指的是 <code>[[PromiseStatus]]</code> 與 <code>[[PromiseValue]]</code><br>
+<code>[[PromiseValue]]</code> 指的是 resolve 或 reject 回傳的值。<br>
+<code>[[PromiseStatus]]</code> 分為以下幾種狀態：</p>
+<ul>
+<li>resolved：表示成功</li>
+<li>rejected：表示失敗</li>
+<li>pending：表示尚未回傳 resolve 或 reject，<code>[[PromiseValue]]</code> 會被指定為 <code>undefined</code></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pclin2018.github.io/post/Promise/" data-id="ck7rfksxl00082g7k126ogdaz" data-title="Javascript ES6 Promise" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/post/GitCommand/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">簡單整理 Git 常用指令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flexbox/">Flexbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RWD/">RWD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Flexbox/" style="font-size: 10px;">Flexbox</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/w3HexSchool/" style="font-size: 16.67px;">w3HexSchool</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/post/Promise/">Javascript ES6 Promise</a>
+          </li>
+        
+          <li>
+            <a href="/post/GitCommand/">簡單整理 Git 常用指令</a>
+          </li>
+        
+          <li>
+            <a href="/post/ComparisonOperators/">比較運算子</a>
+          </li>
+        
+          <li>
+            <a href="/post/Destructuring/">Destructuring 解構賦值</a>
+          </li>
+        
+          <li>
+            <a href="/post/Flexbox/">CSS 排版神器 Flexbox</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Blueberry<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <title>比較運算子 | 一顆藍莓</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="請先參閱：運算子優先序 先來看一段程式碼： 1console.log(3 &amp;lt; 2 &amp;lt; 1);   // 結果是 true 以人類的邏輯來說，這絕對是錯的，但為什麼 JavaScript 會判定為 true 呢？ 小於運算子的相依性是由左至右，程式會優先進行 3 &amp;lt; 2 這部分的判定。 於是會變成： 1console.log(false &amp;lt; 1); 但是 false 和 1">
+<meta name="keywords" content="Javascript,w3HexSchool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="比較運算子">
+<meta property="og:url" content="https://pclin2018.github.io/post/ComparisonOperators/index.html">
+<meta property="og:site_name" content="一顆藍莓">
+<meta property="og:description" content="請先參閱：運算子優先序 先來看一段程式碼： 1console.log(3 &amp;lt; 2 &amp;lt; 1);   // 結果是 true 以人類的邏輯來說，這絕對是錯的，但為什麼 JavaScript 會判定為 true 呢？ 小於運算子的相依性是由左至右，程式會優先進行 3 &amp;lt; 2 這部分的判定。 於是會變成： 1console.log(false &amp;lt; 1); 但是 false 和 1">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2020-03-14T08:38:48.022Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="比較運算子">
+<meta name="twitter:description" content="請先參閱：運算子優先序 先來看一段程式碼： 1console.log(3 &amp;lt; 2 &amp;lt; 1);   // 結果是 true 以人類的邏輯來說，這絕對是錯的，但為什麼 JavaScript 會判定為 true 呢？ 小於運算子的相依性是由左至右，程式會優先進行 3 &amp;lt; 2 這部分的判定。 於是會變成： 1console.log(false &amp;lt; 1); 但是 false 和 1">
+  
+    <link rel="alternate" href="/atom.xml" title="一顆藍莓" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">一顆藍莓</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">前端、後端、UI 設計筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://pclin2018.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-post/ComparisonOperators" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/post/ComparisonOperators/" class="article-date">
+  <time class="dt-published" datetime="2020-02-29T15:01:00.000Z" itemprop="datePublished">2020-02-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      比較運算子
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="請先參閱：運算子優先序">請先參閱：<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="noopener">運算子優先序</a></h2>
+<p>先來看一段程式碼：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> &lt; <span class="number">2</span> &lt; <span class="number">1</span>);   <span class="comment">// 結果是 true</span></span><br></pre></td></tr></table></figure>
+<p>以人類的邏輯來說，這絕對是錯的，但為什麼 JavaScript 會判定為 true 呢？<br>
+小於運算子的相依性是<strong>由左至右</strong>，程式會優先進行 <code>3 &lt; 2</code> 這部分的判定。<br>
+於是會變成：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> &lt; <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>但是 false 和 1 並不是同一個型別，所以 JavaScript 會進行<strong>強制型轉</strong>。<br>
+如果你輸入下面這行程式碼，可以知道 false 轉成數字後的值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>(<span class="literal">false</span>);   <span class="comment">// 結果是 0</span></span><br></pre></td></tr></table></figure>
+<p>如此一來就變成了：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> &lt; <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>0 &lt; 1，無庸置疑的是 <code>true</code>。</p>
+<p>其他例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>);  <span class="comment">// 結果是 NaN（Not a Number），無法型轉成數字</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">null</span>);  <span class="comment">// 結果是 0</span></span><br><span class="line"><span class="built_in">Number</span>(!<span class="literal">null</span>);  <span class="comment">// 結果是 1</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="請先參閱：等號的比較">請先參閱：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness" target="_blank" rel="noopener">等號的比較</a></h2>
+<p>再來是 <code>==</code> 和 <code>===</code> 的區別。<br>
+為減少錯誤，建議大家從現在開始大部分時間都使用 <code>===</code>，除非故意要進行強制型轉。<br>
+以下例子使用 <code>==</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">false</span> == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(Equal.);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(Not equal.);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>結果會是 Equal，因為 JavaScript 強制把 false 型轉成數字，故 <code>0 == 0</code> 結果是 true。<br>
+以下例子使用 <code>===</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">false</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(Equal.);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(Not equal.);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>結果會是 Not equal，<strong>使用 === JavaScript 就不會進行強制型轉</strong>，在兩個值是不同型態的情況下，結果會是 false。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pclin2018.github.io/post/ComparisonOperators/" data-id="ck7rfksxg00032g7kwz77pdfm" data-title="比較運算子" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/post/GitCommand/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          簡單整理 Git 常用指令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/post/Destructuring/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Destructuring 解構賦值</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flexbox/">Flexbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RWD/">RWD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Flexbox/" style="font-size: 10px;">Flexbox</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/w3HexSchool/" style="font-size: 16.67px;">w3HexSchool</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/post/Promise/">Javascript ES6 Promise</a>
+          </li>
+        
+          <li>
+            <a href="/post/GitCommand/">簡單整理 Git 常用指令</a>
+          </li>
+        
+          <li>
+            <a href="/post/ComparisonOperators/">比較運算子</a>
+          </li>
+        
+          <li>
+            <a href="/post/Destructuring/">Destructuring 解構賦值</a>
+          </li>
+        
+          <li>
+            <a href="/post/Flexbox/">CSS 排版神器 Flexbox</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Blueberry<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
