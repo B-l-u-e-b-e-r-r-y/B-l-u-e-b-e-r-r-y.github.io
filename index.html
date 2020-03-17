@@ -105,7 +105,7 @@
 <p><code>setTimeout</code> 是 Javascript 中一種非同步的方法，它會等到指定時間過後才會執行裡面的程式碼，但與此同時，其他的程式碼一樣會繼續進行，<strong>不會等到 <code>setTimeout</code> 執行結束才繼續往下</strong>。</p>
 <h2 id="使用-Promise-解決非同步調用">使用 Promise 解決非同步調用</h2>
 <p>那麼該如何解決呢？這時候就可以使用 Promise。<br>
-建立 Promise 必須回傳 resolve(解決) 及 reject(拒絕)，當然只回傳 resolve 或 reject 也是可以的，它們類似於 <code>return</code> 的概念，寫在它們後面的程式碼不會被執行。</p>
+建立 Promise 必須回傳 resolve(解決) 及 reject(拒絕)，當然只回傳 resolve 或 reject 也是可以的。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="comment">/* 任何條件 */</span>) &#123;</span><br><span class="line">        resolve(<span class="string">'Success'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        reject(<span class="string">'Fail'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>定義 Promise 之後就可以呼叫它：<code>promise.then(fulfilledCallback, rejectedCallback)</code><br>
 如果剛剛回傳的結果是 resolve(解決)，則執行 <code>fulfilledCallback</code>，<br>
