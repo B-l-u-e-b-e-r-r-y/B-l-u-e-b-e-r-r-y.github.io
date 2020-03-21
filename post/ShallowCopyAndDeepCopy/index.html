@@ -16,7 +16,7 @@
   <meta name="description" content="前端、後端、UI 設計筆記">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
-  <title>比較運算子 - 一顆藍莓</title>
+  <title>Javascript 的淺拷貝與深拷貝 - 一顆藍莓</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -117,7 +117,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期六, 二月 29日 2020, 11:01 晚上
+                  星期六, 三月 21日 2020, 6:00 晚上
                 </p>
               
 
@@ -126,7 +126,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    345 字
+                    1k 字
                   </span>
                 
 
@@ -134,7 +134,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      1 分鐘
+                      4 分鐘
                   </span>
                 
 
@@ -162,48 +162,170 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <h2 id="請先參閱：運算子優先序">請先參閱：<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="noopener">運算子優先序</a></h2>
-<p>先來看一段程式碼：</p>
-<pre><code class="language-js">console.log(3 &lt; 2 &lt; 1);   // 結果是 true
+              <h1>前言</h1>
+<p>在寫 JS 的過程中，常常會遇到需要拷貝物件或陣列的情況。<br>
+然而之後修改拷貝的內容時，就會發現原本的物件或陣列怎麼也一起改了？<br>
+好比以下的程式碼：</p>
+<pre><code class="language-js">const person = {
+    name: 'Blueberry',
+    age: '24',
+    interest: '閱讀'
+};
+
+const copy = person;
+copy.interest = '泡咖啡';
+console.log('copy: ', copy);
+console.log('person: ', person);
+
+/**
+ * [Output]
+ *
+ * copy: Object {
+ *     name: 'Blueberry',
+ *     age: '24',
+ *     interest: '泡咖啡'
+ * }
+ * person: Object {
+ *     name: 'Blueberry',
+ *     age: '24',
+ *     interest: '泡咖啡'  // 疑等等？怎麼不是'閱讀'了？
+ * }
+ */
 </code></pre>
-<p>以人類的邏輯來說，這絕對是錯的，但為什麼 JavaScript 會判定為 true 呢？<br>
-小於運算子的相依性是<strong>由左至右</strong>，程式會優先進行 <code>3 &lt; 2</code> 這部分的判定。<br>
-於是會變成：</p>
-<pre><code class="language-js">console.log(false &lt; 1);
+<p>為什麼我修改的是 <code>copy</code> 的 interest，卻連 <code>person</code> 的值也一起改了？<br>
+這就跟 <strong>by value</strong> 與 <strong>by reference</strong> 有關了。</p>
+<h1>by value VS by reference</h1>
+<p>兩者的不同在於<strong>記憶體的位置</strong>，如果是 by value，複製時記憶體位置會是<strong>不同</strong>的，<br>
+但如果是 by reference，複製時記憶體位置會是<strong>相同</strong>的，下面就來詳細介紹與舉例。</p>
+<h2 id="by-value">by value</h2>
+<pre><code class="language-js">const a = 1;
+const b = a;
+
+a = 2;
+console.log(a, b);  // 1, 2
 </code></pre>
-<p>但是 false 和 1 並不是同一個型別，所以 JavaScript 會進行<strong>強制型轉</strong>。<br>
-如果你輸入下面這行程式碼，可以知道 false 轉成數字後的值：</p>
-<pre><code class="language-js">Number(false);   // 結果是 0
+<p>根據上面的範例，<code>a</code> 在記憶體中位於 <code>0x001</code> 位置，複製 a 的 <code>b</code> 在記憶體中位於 <code>0x002</code> 位置。<br>
+<strong>兩者位於不同的記憶體位置，所以在後續修改時，不會影響到對方。</strong><br>
+只要是<strong>純值（數字、布林或字串）</strong>，就是 by value。</p>
+<h2 id="by-reference">by reference</h2>
+<pre><code class="language-js">const a = { name: 'Blueberry' };
+const b = a;
+
+a.name = 'Strawberry';
+console.log('a: ', a);
+console.log('b: ', b);
+
+/**
+ * [Output]
+ *
+ * a: Object {
+ *     name: &quot;Strawberry&quot;
+ * }
+ * b: Object {
+ *     name: &quot;Strawberry&quot;
+ * }
+ */ 
 </code></pre>
-<p>如此一來就變成了：</p>
-<pre><code class="language-js">console.log(0 &lt; 1);
+<p>根據上面的範例，a 在記憶體中位於 <code>0x001</code> 位置，複製 a 的 b 在記憶體中也位於 <code>0x001</code> 位置。沒有新的物件產生，也沒有物件的拷貝被創造。<br>
+<strong>兩者位於相同的記憶體位置，可以說 a 其實就是 b，只是換個名字而已，所以在後續修改時，會影響到對方。</strong><br>
+只要是<strong>物件（陣列、物件或函式）</strong>，就是 by reference。<br>
+如果不希望修改時會影響到對方，就必須得使用<strong>淺拷貝</strong>或<strong>深拷貝</strong>去複製。</p>
+<h1>淺拷貝 VS 深拷貝</h1>
+<p>兩者的差異在於，<strong>淺拷貝</strong>只能複製第一層，無法深層複製第二層、第三層…等等，如果更改了第二層以後的內容，一樣會影響到原本的物件，因為第二層以後的記憶體位置與原本物件的記憶體位置還是相同的。<strong>但如果需要拷貝的物件只有一層，用淺拷貝還是可以的。</strong><br>
+而<strong>深拷貝</strong>就不只了，它能深層複製第一層乃至最內層。<strong>不論修改的是哪一層，都不會被影響，因為它的每一層與原物件都是不同的記憶體位置。</strong></p>
+<p>下面就來介紹淺拷貝與深拷貝的用法。</p>
+<h2 id="淺拷貝">淺拷貝</h2>
+<h3 id="Object-assign">Object.assign()</h3>
+<pre><code class="language-js">const person = {
+    name: 'Blueberry',
+    interest: ['閱讀', '玩遊戲']
+};
+
+const copy = Object.assign({}, person);
+
+copy.name = 'Strawberry';
+copy.interest[0] = '泡咖啡';
+console.log('copy: ', copy);
+console.log('person: ', person);
+
+/**
+ * [Output]
+ *
+ * copy: Object {
+ *     name: 'Strawberry',
+ *     interest: ['泡咖啡', '玩遊戲']
+ * }
+ * person: Object {
+ *     name: 'Blueberry',
+ *     interest: ['泡咖啡', '玩遊戲']
+ * }
+ */
 </code></pre>
-<p>0 &lt; 1，無庸置疑的是 <code>true</code>。</p>
-<p>其他例子：</p>
-<pre><code class="language-js">Number(undefined);  // 結果是 NaN（Not a Number），無法型轉成數字
-Number(null);  // 結果是 0
-Number(!null);  // 結果是 1
-</code></pre>
-<hr>
-<h2 id="請先參閱：等號的比較">請先參閱：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness" target="_blank" rel="noopener">等號的比較</a></h2>
-<p>再來是 <code>==</code> 和 <code>===</code> 的區別。<br>
-為減少錯誤，建議大家從現在開始大部分時間都使用 <code>===</code>，除非故意要進行強制型轉。<br>
-以下例子使用 <code>==</code>。</p>
-<pre><code class="language-js">if (false == 0) {
-    console.log(Equal.);
-} else {
-    console.log(Not equal.);
+<p>這裡可以看到 <code>copy</code> 的第二層（<code>interest: ['閱讀', '玩遊戲']</code>）被修改了，結果連原本的 <code>person</code> 也一起變成 <code>泡咖啡</code>，因為 <code>copy</code> 的第二層仍是指向與原物件相同的記憶體位置。<br>
+但是 <code>name</code> 這個值就不同了，<code>copy</code> 的第一層是有被淺層拷貝成功的。</p>
+<h3 id="for-迴圈">for 迴圈</h3>
+<p>for 迴圈是最土法煉鋼的方法，它也能達到淺拷貝的效果。</p>
+<pre><code class="language-js">const a = [1, 2, 3];
+const b = [];
+for (let i = 0; i &lt; a.length; i++) {
+  b.push(a[i]);
 }
+b.push(4);
+console.log(a);
+console.log(b);
+
+/**
+ * [Output]
+ *
+ * [1, 2, 3]
+ * [1, 2, 3, 4]
+ * }
+ */
 </code></pre>
-<p>結果會是 Equal，因為 JavaScript 強制把 false 型轉成數字，故 <code>0 == 0</code> 結果是 true。<br>
-以下例子使用 <code>===</code>。</p>
-<pre><code class="language-js">if (false === 0) {
-    console.log(Equal.);
-} else {
-    console.log(Not equal.);
-}
+<h3 id="展開運算子">展開運算子</h3>
+<p><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/SpreadAndRestOperator/" target="_blank" rel="noopener">展開運算子</a>是 ES6 新出的方法，應該是最方便的寫法了。</p>
+<pre><code class="language-js">const a = [1, 2, 3];
+const b = [ ...a ];
+b.push(4);
+console.log(a);
+console.log(b);
+
+/**
+ * [Output]
+ *
+ * [1, 2, 3]
+ * [1, 2, 3, 4]
+ * }
+ */
 </code></pre>
-<p>結果會是 Not equal，<strong>使用 === JavaScript 就不會進行強制型轉</strong>，在兩個值是不同型態的情況下，結果會是 false。</p>
+<h2 id="深拷貝">深拷貝</h2>
+<p>在不使用其他套件的情況下，目前 Javascript 的深拷貝只有 <code>JSON.parse()</code> + <code>JSON.stringify()</code> 的寫法。</p>
+<h3 id="JSON-parse-JSON-stringify">JSON.parse(JSON.stringify())</h3>
+<pre><code class="language-js">const person = {
+    name: 'Blueberry',
+    interest: ['閱讀', '玩遊戲']
+};
+
+const copy = JSON.parse(JSON.stringify(person)));
+
+copy.name = 'Strawberry';
+copy.interest[0] = '泡咖啡';
+console.log('copy: ', copy);
+console.log('person: ', person);
+
+/**
+ * [Output]
+ *
+ * copy: Object {
+ *     name: 'Strawberry',
+ *     interest: ['泡咖啡', '玩遊戲']
+ * }
+ * person: Object {
+ *     name: 'Blueberry',
+ *     interest: ['閱讀', '玩遊戲']
+ * }
+ */
+</code></pre>
 
             </div>
             <hr>
@@ -234,16 +356,11 @@ Number(!null);  // 結果是 1
                 <div class="post-prevnext row">
                   <div class="post-prev col-12 col-md-6">
                     
-                      <a href="/post/GitCommand/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>簡單整理 Git 常用指令</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-12 col-md-6">
                     
-                      <a href="/post/Destructuring/">
-                        <span>Destructuring 解構賦值</span>
+                      <a href="/post/Promise/">
+                        <span>Javascript ES6 Promise</span>
                         <i class="fa fa-chevron-right"></i>
                       </a>
                     
@@ -423,7 +540,7 @@ Number(!null);  // 結果是 1
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "比較運算子&nbsp;",
+        "Javascript 的淺拷貝與深拷貝&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

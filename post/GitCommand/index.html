@@ -1,292 +1,512 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+
+
+
+
+
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  
-  <title>簡單整理 Git 常用指令 | 一顆藍莓</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="新增檔案( . 是全部新增的意思，也可以只新增部分檔案) 1$ git add .  提交檔案 1$ git commit -m &amp;quot;內容&amp;quot;  推送檔案 1$ git push  拉取檔案 1$ git pull  克隆遠端數據庫 1$ git clone git位置  查看目前分支 1$ git branch  新增分支 1$ git branch 分支名稱  切換到該分支 1">
-<meta name="keywords" content="w3HexSchool,Git">
-<meta property="og:type" content="article">
-<meta property="og:title" content="簡單整理 Git 常用指令">
-<meta property="og:url" content="https://pclin2018.github.io/post/GitCommand/index.html">
-<meta property="og:site_name" content="一顆藍莓">
-<meta property="og:description" content="新增檔案( . 是全部新增的意思，也可以只新增部分檔案) 1$ git add .  提交檔案 1$ git commit -m &amp;quot;內容&amp;quot;  推送檔案 1$ git push  拉取檔案 1$ git pull  克隆遠端數據庫 1$ git clone git位置  查看目前分支 1$ git branch  新增分支 1$ git branch 分支名稱  切換到該分支 1">
-<meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2020-03-14T08:38:48.023Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="簡單整理 Git 常用指令">
-<meta name="twitter:description" content="新增檔案( . 是全部新增的意思，也可以只新增部分檔案) 1$ git add .  提交檔案 1$ git commit -m &amp;quot;內容&amp;quot;  推送檔案 1$ git push  拉取檔案 1$ git pull  克隆遠端數據庫 1$ git clone git位置  查看目前分支 1$ git branch  新增分支 1$ git branch 分支名稱  切換到該分支 1">
-  
-    <link rel="alternate" href="/atom.xml" title="一顆藍莓" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="前端、後端、UI 設計筆記">
+  <meta name="author" content="Blueberry">
+  <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
+  <title>簡單整理 Git 常用指令 - 一顆藍莓</title>
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css">
+
+
+<!-- 自定义样式保持在最底部 -->
+
+
 </head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">一顆藍莓</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">前端、後端、UI 設計筆記</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://pclin2018.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-post/GitCommand" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/post/GitCommand/" class="article-date">
-  <time class="dt-published" datetime="2020-03-07T12:44:00.000Z" itemprop="datePublished">2020-03-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Git/">Git</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      簡單整理 Git 常用指令
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="新增檔案-是全部新增的意思，也可以只新增部分檔案">新增檔案( . 是全部新增的意思，也可以只新增部分檔案)</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="提交檔案">提交檔案</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;內容&quot;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="推送檔案">推送檔案</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="拉取檔案">拉取檔案</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="克隆遠端數據庫">克隆遠端數據庫</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git位置</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="查看目前分支">查看目前分支</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="新增分支">新增分支</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch 分支名稱</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="切換到該分支">切換到該分支</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout 分支名稱</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="強制回到和保存端一模一樣的檔案（慎用，檔案有異常時再使用）">強制回到和保存端一模一樣的檔案（慎用，檔案有異常時再使用）</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch --all</span><br><span class="line">$ git reset --hard origin/master</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="查詢所有做過的-git-動作，可查詢到每一個動作的編號">查詢所有做過的 git 動作，可查詢到每一個動作的編號</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="回覆之前的某一個操作">回覆之前的某一個操作</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset 編號 --hard</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="使用-rebase-進行合併">使用 rebase 進行合併</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rebase 分支名稱</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="rebase-後回復">rebase 後回復</h3>
-<p>有兩種方式，第一種方式必須先用 $ git reflog 查詢，dd1f0f8 是 rebase 前的一個動作編號：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset dd1f0f8 --hard</span><br></pre></td></tr></table></figure>
-<p>第二種方式是使用 ORIG_HEAD：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset ORIG_HEAD --hard</span><br></pre></td></tr></table></figure>
-<hr>
-<p>參考資料：<br>
-<a href="https://www.youtube.com/watch?v=HeF7dwVyzow&amp;feature=emb_err_watch_on_yt" target="_blank" rel="noopener">另一種合併方式（使用 rebase）｜高見龍</a><br>
-<a href="https://w3c.hexschool.com/git/cfdbd310?fbclid=IwAR0cO3-A9voMoOPIA-qnZWbm2o7TNICwsJc4J0rnbZxCcNy8sBVs7NU9OmQ" target="_blank" rel="noopener">Git &amp; GitHub 教學手冊｜六角學院</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pclin2018.github.io/post/GitCommand/" data-id="ck7rfksxk00072g7kcftvd4p4" data-title="簡單整理 Git 常用指令" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/post/Promise/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Javascript ES6 Promise
-        
-      </div>
-    </a>
-  
-  
-    <a href="/post/ComparisonOperators/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">比較運算子</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flexbox/">Flexbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RWD/">RWD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Flexbox/" style="font-size: 10px;">Flexbox</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/w3HexSchool/" style="font-size: 16.67px;">w3HexSchool</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/post/Promise/">Javascript ES6 Promise</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首頁</a>
           </li>
         
-          <li>
-            <a href="/post/GitCommand/">簡單整理 Git 常用指令</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">歸檔</a>
           </li>
         
-          <li>
-            <a href="/post/ComparisonOperators/">比較運算子</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分類</a>
           </li>
         
-          <li>
-            <a href="/post/Destructuring/">Destructuring 解構賦值</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">標籤</a>
           </li>
         
-          <li>
-            <a href="/post/Flexbox/">CSS 排版神器 Flexbox</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">關於</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/images/git/banner.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  星期六, 三月 7日 2020, 8:44 晚上
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    253 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      1 分鐘
+                  </span>
+                
+
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <h3 id="新增檔案-是全部新增的意思，也可以只新增部分檔案">新增檔案( . 是全部新增的意思，也可以只新增部分檔案)</h3>
+<pre><code class="language-s">$ git add .
+</code></pre>
+<hr>
+<h3 id="提交檔案">提交檔案</h3>
+<pre><code class="language-s">$ git commit -m &quot;內容&quot;
+</code></pre>
+<hr>
+<h3 id="推送檔案">推送檔案</h3>
+<pre><code class="language-s">$ git push
+</code></pre>
+<hr>
+<h3 id="拉取檔案">拉取檔案</h3>
+<pre><code class="language-s">$ git pull
+</code></pre>
+<hr>
+<h3 id="克隆遠端數據庫">克隆遠端數據庫</h3>
+<pre><code class="language-s">$ git clone git位置
+</code></pre>
+<hr>
+<h3 id="查看目前分支">查看目前分支</h3>
+<pre><code class="language-s">$ git branch
+</code></pre>
+<hr>
+<h3 id="新增分支">新增分支</h3>
+<pre><code class="language-s">$ git branch 分支名稱
+</code></pre>
+<hr>
+<h3 id="切換到該分支">切換到該分支</h3>
+<pre><code class="language-s">$ git checkout 分支名稱
+</code></pre>
+<hr>
+<h3 id="強制回到和保存端一模一樣的檔案（慎用，檔案有異常時再使用）">強制回到和保存端一模一樣的檔案（慎用，檔案有異常時再使用）</h3>
+<pre><code class="language-s">$ git fetch --all
+$ git reset --hard origin/master
+</code></pre>
+<hr>
+<h3 id="查詢所有做過的-git-動作，可查詢到每一個動作的編號">查詢所有做過的 git 動作，可查詢到每一個動作的編號</h3>
+<pre><code class="language-s">$ git reflog
+</code></pre>
+<hr>
+<h3 id="回覆之前的某一個操作">回覆之前的某一個操作</h3>
+<pre><code class="language-s">$ git reset 編號 --hard
+</code></pre>
+<hr>
+<h3 id="使用-rebase-進行合併">使用 rebase 進行合併</h3>
+<pre><code class="language-s">$ git rebase 分支名稱
+</code></pre>
+<hr>
+<h3 id="rebase-後回復">rebase 後回復</h3>
+<p>有兩種方式，第一種方式必須先用 $ git reflog 查詢，dd1f0f8 是 rebase 前的一個動作編號：</p>
+<pre><code class="language-s">$ git reset dd1f0f8 --hard
+</code></pre>
+<p>第二種方式是使用 ORIG_HEAD：</p>
+<pre><code class="language-s">$ git reset ORIG_HEAD --hard 
+</code></pre>
+<hr>
+<p>參考資料：<br>
+<a href="https://www.youtube.com/watch?v=HeF7dwVyzow&amp;feature=emb_err_watch_on_yt" target="_blank" rel="noopener">另一種合併方式（使用 rebase）｜高見龍</a><br>
+<a href="https://w3c.hexschool.com/git/cfdbd310?fbclid=IwAR0cO3-A9voMoOPIA-qnZWbm2o7TNICwsJc4J0rnbZxCcNy8sBVs7NU9OmQ" target="_blank" rel="noopener">Git &amp; GitHub 教學手冊｜六角學院</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <p>
+                
+                  <span>
+                <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
+                
+                
+                  <span>
+                <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/w3HexSchool/">w3HexSchool</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                    
+                  </span>
+                
+              </p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-12 col-md-6">
+                    
+                      <a href="/post/Promise/">
+                        <i class="fa fa-chevron-left"></i>
+                        <span>Javascript ES6 Promise</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-12 col-md-6">
+                    
+                      <a href="/post/ComparisonOperators/">
+                        <span>比較運算子</span>
+                        <i class="fa fa-chevron-right"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+              
+                <!-- Comments -->
+                <!-- <div class="comments" id="comments">
+                  
+                  
+
+                </div> -->
+                <script src="https://utteranc.es/client.js" repo="B-l-u-e-b-e-r-r-y/blog-utterances" issue-term="title" theme="github-light" crossorigin="anonymous" async>
+                </script>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目錄</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
 
   
-</aside>
-        
-      </div>
-      <footer id="footer">
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 Blueberry<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵詞</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    </div>
+    
+
+    
+
+    
   </div>
 </footer>
 
-    </div>
-    <nav id="mobile-nav">
+<!-- SCRIPTS -->
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="/js/lazyload.js"></script>
+
+
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
+  <script src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var toc = $('#toc');
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+      var tocLimMax = 2 * boardTop + boardCtn.height();
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = boardCtn.css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
 
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-<script src="/js/script.js"></script>
 
 
 
 
-  </div>
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "簡單整理 Git 常用指令&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js"></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

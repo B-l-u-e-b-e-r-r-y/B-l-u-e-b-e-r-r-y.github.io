@@ -1,1105 +1,996 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+
+
+
+
+
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  
-  <title>一顆藍莓</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#2f4154">
   <meta name="description" content="前端、後端、UI 設計筆記">
-<meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一顆藍莓">
-<meta property="og:url" content="https://pclin2018.github.io/index.html">
-<meta property="og:site_name" content="一顆藍莓">
-<meta property="og:description" content="前端、後端、UI 設計筆記">
-<meta property="og:locale" content="zh">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一顆藍莓">
-<meta name="twitter:description" content="前端、後端、UI 設計筆記">
-  
-    <link rel="alternate" href="/atom.xml" title="一顆藍莓" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
+  <meta name="author" content="Blueberry">
+  <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
+  <title>一顆藍莓</title>
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css">
+
+
+<!-- 自定义样式保持在最底部 -->
+
+
 </head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">一顆藍莓</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">前端、後端、UI 設計筆記</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://pclin2018.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-post/Promise" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/post/Promise/" class="article-date">
-  <time class="dt-published" datetime="2020-03-13T16:00:00.000Z" itemprop="datePublished">2020-03-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/post/Promise/">Javascript ES6 Promise</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Promise 是很適合用來處理非同步的方法，大多數情況是用來處理非同步事件或 Callback hell (回調地獄)。</p>
-<h2 id="非同步調用">非同步調用</h2>
-<p>例如 <code>getData()</code> 在 <code>api()</code> 還沒回傳值就想取得結果，就會出現 <code>undefined</code>。可以看看下面的例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 模擬等待 api 回傳的時間</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">value</span>: <span class="number">1</span> &#125;;</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> data = api();</span><br><span class="line">    <span class="built_in">console</span>.log(data);  <span class="comment">// undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getData();</span><br></pre></td></tr></table></figure>
-<p><code>setTimeout</code> 是 Javascript 中一種非同步的方法，它會等到指定時間過後才會執行裡面的程式碼，但與此同時，其他的程式碼一樣會繼續進行，<strong>不會等到 <code>setTimeout</code> 執行結束才繼續往下</strong>。</p>
-<h2 id="使用-Promise-解決非同步調用">使用 Promise 解決非同步調用</h2>
-<p>那麼該如何解決呢？這時候就可以使用 Promise。<br>
-建立 Promise 必須回傳 resolve(解決) 及 reject(拒絕)，當然只回傳 resolve 或 reject 也是可以的。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="comment">/* 任何條件 */</span>) &#123;</span><br><span class="line">        resolve(<span class="string">'Success'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        reject(<span class="string">'Fail'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>定義 Promise 之後就可以呼叫它：<code>promise.then(fulfilledCallback, rejectedCallback)</code><br>
-如果剛剛回傳的結果是 resolve(解決)，則執行 <code>fulfilledCallback</code>，<br>
-反之如果是回傳 reject(拒絕)，則執行 <code>rejectedCallback</code>。<br>
-<strong>※ 這邊特別提一下，<code>rejectedCallback</code> 是可選的，不一定要使用它來處理錯誤，使用 <code>catch(rejectedCallback)</code> 也有一樣的效果，但這兩種寫法在其他情境下會產生差異，後面錯誤處理的部分會提到。</strong></p>
-<p>下面這段程式碼會在 Promise 回傳 resolve 或 reject 之後才被執行，因此可以達到同步延遲的效果：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">promise.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);  <span class="comment">// Success</span></span><br><span class="line">&#125;, (err) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);  <span class="comment">// Fail</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line">promise.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);  <span class="comment">// Success</span></span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);  <span class="comment">// Fail</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>學會 Promise 的基本用法後，就可以回到最上面的問題，如何等到 <code>api()</code> 回傳結果再取值呢？<br>
-改寫一下程式，在 <code>api()</code> 加入 Promise，並於 <code>getData()</code> 調用：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 模擬等待 api 回傳的時間</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123; <span class="attr">value</span>: <span class="number">1</span> &#125;);</span><br><span class="line">        &#125;, <span class="number">2000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> data;</span><br><span class="line">    api().then(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">        data = result;</span><br><span class="line">        <span class="built_in">console</span>.log(data);  <span class="comment">// Object &#123; value: 1 &#125;</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getData();</span><br></pre></td></tr></table></figure>
-<p>這樣就可以解決非同步調用的問題了。</p>
-<h2 id="Callback-hell">Callback hell</h2>
-<p>接下來看看 Callback hell 的問題，下面的例子是模擬取用 user、country、item 這三個不同的 api，而且必須取完 userApi 再取 countryApi，然後再取 itemApi：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userApi = <span class="function">(<span class="params">callback</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        callback(&#123; <span class="attr">user</span>: [] &#125;);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> countryApi = <span class="function">(<span class="params">callback</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        callback(&#123; <span class="attr">country</span>: [] &#125;);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> itemApi = <span class="function">(<span class="params">callback</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        callback(&#123; <span class="attr">item</span>: [] &#125;);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    userApi(<span class="function">(<span class="params">userData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(userData);  <span class="comment">// Object &#123; user: [] &#125;</span></span><br><span class="line">        countryApi(<span class="function">(<span class="params">countryData</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(countryData);  <span class="comment">// Object &#123; country: [] &#125;</span></span><br><span class="line">            itemApi(<span class="function">(<span class="params">itemData</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(itemData);  <span class="comment">// Object &#123; item: [] &#125;</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getData();</span><br></pre></td></tr></table></figure>
-<p>這樣的寫法非常難讀和維護，如果再加入其他動作或錯誤處理，那真的是一坨超級難讀的程式碼了。</p>
-<h2 id="使用-Promise-解決-Callback-hell">使用 Promise 解決 Callback hell</h2>
-<p>將程式碼改寫如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userApi = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123; <span class="attr">user</span>: [] &#125;);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> countryApi = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123; <span class="attr">country</span>: [] &#125;);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> itemApi = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123; <span class="attr">item</span>: [] &#125;);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    userApi().then(<span class="function">(<span class="params">userData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(userData); <span class="comment">// Object &#123; user: [] &#125;</span></span><br><span class="line">        <span class="keyword">return</span> countryApi();   <span class="comment">// 執行 countryApi()，因為函式回傳的是 Promise 物件，所以可以繼續用 then 串接</span></span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">countryData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(countryData);  <span class="comment">// Object &#123; country: [] &#125;</span></span><br><span class="line">        <span class="keyword">return</span> itemApi();</span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">itemData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(itemData);  <span class="comment">// Object &#123; item: [] &#125;</span></span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;  <span class="comment">// 錯誤處理</span></span><br><span class="line">        <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getData();</span><br></pre></td></tr></table></figure>
-<p>Promise 可以使用串連的寫法，讓程式碼又更具可讀性，錯誤處理的寫法直觀又有規範，好 Promise 不用嗎。</p>
-<h2 id="錯誤處理">錯誤處理</h2>
-<p>錯誤處理主要有兩種寫法，分別為：</p>
-<ul>
-<li><code>new Promise.then(fulfilledCallback, rejectedCallback)</code></li>
-<li><code>new Promise.then(fulfilledCallback).catch(rejectedCallback)</code></li>
-</ul>
-<p>那它們之間究竟有什麼不同呢？<br>
-我把中間的 countryApi 改成回傳 reject，看看不同的錯誤處理方式如何運行。</p>
-<h3 id="new-Promise-then-fulfilledCallback-rejectedCallback">new Promise.then(fulfilledCallback, rejectedCallback)</h3>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userApi = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123; <span class="attr">user</span>: [] &#125;);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> countryApi = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 把這個 api 的回傳改成 reject</span></span><br><span class="line">            reject(<span class="string">'Error!'</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> itemApi = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123; <span class="attr">item</span>: [] &#125;);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 因為每一個 Promise 都有錯誤處理了，所以不寫 catch</span></span><br><span class="line"><span class="comment"> * 要寫 catch 也是可以的，這樣的話這個 catch 主要會抓到這邊 callback 的錯誤，而不是 reject 回傳的內容</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    userApi()</span><br><span class="line">    .then(<span class="function">(<span class="params">userData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(userData);</span><br><span class="line">        <span class="keyword">return</span> countryApi();</span><br><span class="line">    &#125;, (err) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function">(<span class="params">countryData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(countryData);</span><br><span class="line">        <span class="keyword">return</span> itemApi();</span><br><span class="line">    &#125;, (err) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function">(<span class="params">itemData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(itemData);</span><br><span class="line">    &#125;, (err) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getData();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 結果：</span></span><br><span class="line"><span class="comment">// Object &#123;</span></span><br><span class="line"><span class="comment">//    user: []</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// "Error!"</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-<p>這個範例成功取得第一個 userApi，之後在取得 countryApi 時出現錯誤，因此回傳 <code>&quot;Error!&quot;</code>。<br>
-那最後一行的 <code>undefined</code> 是怎麼回事？<br>
-是因為這種寫法的錯誤處理執行完後，還會繼續執行接下來的程式 <code>.then()</code> 的緣故。<br>
-也因為執行的是 rejectedCallback，rejectedCallback 的程式除了 <code>console.log(err)</code> 以外並沒有做任何事情，故而下一個 then 的 <code>console.log(itemData)</code> 就會出現 <code>undefined</code>。<br>
-這個寫法可以避免中間有一個 api 出錯，後面就不會繼續執行的問題。</p>
-<h3 id="new-Promise-then-fulfilledCallback-catch-rejectedCallback">new Promise.then(fulfilledCallback).catch(rejectedCallback)</h3>
-<p>這個寫法是將錯誤統一交給 catch 處理：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    userApi().then(<span class="function">(<span class="params">userData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(userData);</span><br><span class="line">        <span class="keyword">return</span> countryApi();</span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">countryData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(countryData);</span><br><span class="line">        <span class="keyword">return</span> itemApi();</span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">itemData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(itemData);</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 結果：</span></span><br><span class="line"><span class="comment">// Object &#123;</span></span><br><span class="line"><span class="comment">//    user: []</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// "Error!"</span></span><br></pre></td></tr></table></figure>
-<p>疑？為什麼只到 <code>&quot;Error!&quot;</code> 就沒了？<code>itemApi</code> 的部分沒有執行？<br>
-<strong>這是因為只要某部分回傳了 reject，就會進到 catch 的部分，中間的過程會直接跳過。</strong><br>
-但是如果在 catch 後面寫串連，還是可以繼續執行，只是一般很少人這樣使用：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    userApi().then(<span class="function">(<span class="params">userData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(userData);</span><br><span class="line">        <span class="keyword">return</span> countryApi();</span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">countryData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(countryData);</span><br><span class="line">        <span class="keyword">return</span> itemApi();</span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">itemData</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(itemData);</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Keep going.'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 結果：</span></span><br><span class="line"><span class="comment">// Object &#123;</span></span><br><span class="line"><span class="comment">//    user: []</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// "Error!"</span></span><br><span class="line"><span class="comment">// "Keep going."</span></span><br></pre></td></tr></table></figure>
-<h2 id="finally">finally</h2>
-<p>還有一個方法是 <code>finally()</code>，它會在執行完 <code>then()</code> 和 <code>catch()</code> 後執行，確保無論是 fulfilled 或 rejected 都會執行某些程式碼的一種方法。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">1</span>).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;).finally(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'finally'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// finally</span></span><br></pre></td></tr></table></figure>
-<h2 id="其他寫法">其他寫法</h2>
-<p>將 Promise 展開後可以看見下面的結構：<br>
-<img src="/images/promise/04.jpg" alt><br>
-從這張圖中可以看見幾種 Promise 可用的函式，分別為：</p>
-<ul>
-<li>Promise.resolve</li>
-<li>Promise.reject</li>
-<li>Promise.all</li>
-<li>Promise.race</li>
-<li>Promise.allSettled</li>
-</ul>
-<h3 id="Promise-resolve">Promise.resolve</h3>
-<p><code>Promise.resolve(value)</code><br>
-可以直接回傳一個 resolve 的 Promise。</p>
-<h3 id="Promise-reject">Promise.reject</h3>
-<p><code>Promise.reject(value)</code><br>
-可以直接回傳一個 reject 的 Promise。</p>
-<h3 id="Promise-all">Promise.all</h3>
-<p><code>Promise.all(array).then(fulfilledCallback, rejectedCallback)</code><br>
-<code>Promise.all</code> 函式需要放入陣列，陣列內容必須是 Promise。<br>
-完成全部的 Promise 後才會執行。<br>
-如果 Promise 全部回傳 resolve，會執行 fulfilledCallback，回傳全部 resolve 值，並組成一個陣列。<br>
-反之，如果有任何一個回傳 reject 則執行 rejectedCallback，回傳第一個 reject 值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.all([</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(<span class="number">1</span>),</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(<span class="number">2</span>),</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(<span class="number">3</span>)</span><br><span class="line">]).then(<span class="function">(<span class="params">array</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(array);</span><br><span class="line">&#125;, (err) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
-<h3 id="Promise-race">Promise.race</h3>
-<p><code>Promise.race(array).then(fulfilledCallback, rejectedCallback)</code><br>
-與 <code>Promise.all</code> 的寫法相同，但是它只接收第一個回傳的 Promise（不論 resolve 或 reject），有點類似賽跑，比賽誰先到終點。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.all([</span><br><span class="line">    <span class="built_in">Promise</span>.reject(<span class="number">1</span>),</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(<span class="number">2</span>),</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(<span class="number">3</span>)</span><br><span class="line">]).then(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'resolve: '</span>, resolve);</span><br><span class="line">&#125;, (reject) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'reject: '</span>, reject);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// reject: 1</span></span><br></pre></td></tr></table></figure>
-<h3 id="Promise-allSettled">Promise.allSettled</h3>
-<p><code>Promise.allSettled(array).then(callback))</code><br>
-<code>Promise.allSettled</code> 只有在全部的 Promise 都完成後才會執行。<br>
-它會回傳一個陣列，裡面包含：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// resolve 時回傳</span></span><br><span class="line">&#123;</span><br><span class="line">    status: <span class="string">"fulfilled"</span>,</span><br><span class="line">    value: <span class="string">"resolve value"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// reject 時回傳</span></span><br><span class="line">&#123;</span><br><span class="line">    status: <span class="string">"rejected"</span>,</span><br><span class="line">    reason: <span class="string">"reject value"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>寫法與 <code>Promise.all</code> 及 <code>Promise.race</code> 大致雷同，只是它不需要第二個 callback：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.allSettled([</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(<span class="number">1</span>),</span><br><span class="line">    <span class="built_in">Promise</span>.reject(<span class="number">2</span>)</span><br><span class="line">])</span><br><span class="line">.then(<span class="function">(<span class="params">array</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(array);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; status: "fulfilled", value: 1 &#125;</span></span><br><span class="line"><span class="comment">// &#123; status: "rejected", reason: 2 &#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="Promise-的當前狀態與值">Promise 的當前狀態與值</h2>
-<p>當前狀態與值分別指的是 <code>[[PromiseStatus]]</code> 與 <code>[[PromiseValue]]</code><br>
-<code>[[PromiseValue]]</code> 指的是 resolve 或 reject 回傳的值。<br>
-<code>[[PromiseStatus]]</code> 分為以下幾種狀態：</p>
-<ul>
-<li>resolved：表示成功</li>
-<li>rejected：表示失敗</li>
-<li>pending：表示尚未回傳 resolve 或 reject，<code>[[PromiseValue]]</code> 會被指定為 <code>undefined</code></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pclin2018.github.io/post/Promise/" data-id="ck7rfksxl00082g7k126ogdaz" data-title="Javascript ES6 Promise" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post/GitCommand" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/post/GitCommand/" class="article-date">
-  <time class="dt-published" datetime="2020-03-07T12:44:00.000Z" itemprop="datePublished">2020-03-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Git/">Git</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/post/GitCommand/">簡單整理 Git 常用指令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="新增檔案-是全部新增的意思，也可以只新增部分檔案">新增檔案( . 是全部新增的意思，也可以只新增部分檔案)</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="提交檔案">提交檔案</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;內容&quot;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="推送檔案">推送檔案</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="拉取檔案">拉取檔案</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="克隆遠端數據庫">克隆遠端數據庫</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git位置</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="查看目前分支">查看目前分支</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="新增分支">新增分支</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch 分支名稱</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="切換到該分支">切換到該分支</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout 分支名稱</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="強制回到和保存端一模一樣的檔案（慎用，檔案有異常時再使用）">強制回到和保存端一模一樣的檔案（慎用，檔案有異常時再使用）</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch --all</span><br><span class="line">$ git reset --hard origin/master</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="查詢所有做過的-git-動作，可查詢到每一個動作的編號">查詢所有做過的 git 動作，可查詢到每一個動作的編號</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="回覆之前的某一個操作">回覆之前的某一個操作</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset 編號 --hard</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="使用-rebase-進行合併">使用 rebase 進行合併</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rebase 分支名稱</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="rebase-後回復">rebase 後回復</h3>
-<p>有兩種方式，第一種方式必須先用 $ git reflog 查詢，dd1f0f8 是 rebase 前的一個動作編號：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset dd1f0f8 --hard</span><br></pre></td></tr></table></figure>
-<p>第二種方式是使用 ORIG_HEAD：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset ORIG_HEAD --hard</span><br></pre></td></tr></table></figure>
-<hr>
-<p>參考資料：<br>
-<a href="https://www.youtube.com/watch?v=HeF7dwVyzow&amp;feature=emb_err_watch_on_yt" target="_blank" rel="noopener">另一種合併方式（使用 rebase）｜高見龍</a><br>
-<a href="https://w3c.hexschool.com/git/cfdbd310?fbclid=IwAR0cO3-A9voMoOPIA-qnZWbm2o7TNICwsJc4J0rnbZxCcNy8sBVs7NU9OmQ" target="_blank" rel="noopener">Git &amp; GitHub 教學手冊｜六角學院</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pclin2018.github.io/post/GitCommand/" data-id="ck7rfksxk00072g7kcftvd4p4" data-title="簡單整理 Git 常用指令" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post/ComparisonOperators" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/post/ComparisonOperators/" class="article-date">
-  <time class="dt-published" datetime="2020-02-29T15:01:00.000Z" itemprop="datePublished">2020-02-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/post/ComparisonOperators/">比較運算子</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="請先參閱：運算子優先序">請先參閱：<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="noopener">運算子優先序</a></h2>
-<p>先來看一段程式碼：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> &lt; <span class="number">2</span> &lt; <span class="number">1</span>);   <span class="comment">// 結果是 true</span></span><br></pre></td></tr></table></figure>
-<p>以人類的邏輯來說，這絕對是錯的，但為什麼 JavaScript 會判定為 true 呢？<br>
-小於運算子的相依性是<strong>由左至右</strong>，程式會優先進行 <code>3 &lt; 2</code> 這部分的判定。<br>
-於是會變成：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> &lt; <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-<p>但是 false 和 1 並不是同一個型別，所以 JavaScript 會進行<strong>強制型轉</strong>。<br>
-如果你輸入下面這行程式碼，可以知道 false 轉成數字後的值：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>(<span class="literal">false</span>);   <span class="comment">// 結果是 0</span></span><br></pre></td></tr></table></figure>
-<p>如此一來就變成了：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> &lt; <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-<p>0 &lt; 1，無庸置疑的是 <code>true</code>。</p>
-<p>其他例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>);  <span class="comment">// 結果是 NaN（Not a Number），無法型轉成數字</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">null</span>);  <span class="comment">// 結果是 0</span></span><br><span class="line"><span class="built_in">Number</span>(!<span class="literal">null</span>);  <span class="comment">// 結果是 1</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="請先參閱：等號的比較">請先參閱：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness" target="_blank" rel="noopener">等號的比較</a></h2>
-<p>再來是 <code>==</code> 和 <code>===</code> 的區別。<br>
-為減少錯誤，建議大家從現在開始大部分時間都使用 <code>===</code>，除非故意要進行強制型轉。<br>
-以下例子使用 <code>==</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">false</span> == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(Equal.);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(Not equal.);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>結果會是 Equal，因為 JavaScript 強制把 false 型轉成數字，故 <code>0 == 0</code> 結果是 true。<br>
-以下例子使用 <code>===</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">false</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(Equal.);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(Not equal.);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>結果會是 Not equal，<strong>使用 === JavaScript 就不會進行強制型轉</strong>，在兩個值是不同型態的情況下，結果會是 false。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pclin2018.github.io/post/ComparisonOperators/" data-id="ck7rfksxg00032g7kwz77pdfm" data-title="比較運算子" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post/Destructuring" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/post/Destructuring/" class="article-date">
-  <time class="dt-published" datetime="2020-02-22T11:43:00.000Z" itemprop="datePublished">2020-02-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/post/Destructuring/">Destructuring 解構賦值</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>解構賦值可以用在陣列或物件，可以提取特定的值成獨立變數。</p>
-<h1>1. Array Destructuring</h1>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">[num1, num2] = numbers;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(num1, num2);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    Output:</span></span><br><span class="line"><span class="comment">    1</span></span><br><span class="line"><span class="comment">    2</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p>如果只想要提取 1 和 3 的值，只要在左邊陣列的中間部分空一格即可：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> [num1, , num3] = numbers;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(num1, num3);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    Output:</span></span><br><span class="line"><span class="comment">    1</span></span><br><span class="line"><span class="comment">    3</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p>也可以使用其餘運算子接下剩下的變數：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> [num, ...nums] = numbers;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(num, nums);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    Output:</span></span><br><span class="line"><span class="comment">    1</span></span><br><span class="line"><span class="comment">    [2, 3]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h1>2. Object Destructuring</h1>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; <span class="attr">name</span>: n, <span class="attr">age</span>: a &#125; = &#123;</span><br><span class="line">    name: <span class="string">'Blueberry'</span>,</span><br><span class="line">    age: <span class="number">24</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(n);  <span class="comment">// Blueberry</span></span><br><span class="line"><span class="built_in">console</span>.log(a);  <span class="comment">// 24</span></span><br></pre></td></tr></table></figure>
-<p>物件解構賦值也同樣可以使用展開運算子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; name, ...others &#125; = &#123;</span><br><span class="line">    name: <span class="string">'Blueberry'</span>,</span><br><span class="line">    age: <span class="number">24</span>,</span><br><span class="line">    color: blue</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(name, others);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    Output: Blueberry</span></span><br><span class="line"><span class="comment">    Object &#123;</span></span><br><span class="line"><span class="comment">        age: 24,</span></span><br><span class="line"><span class="comment">        color: "blue"</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pclin2018.github.io/post/Destructuring/" data-id="ck7rfksxj00062g7kxu6zpzih" data-title="Destructuring 解構賦值" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post/Flexbox" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/post/Flexbox/" class="article-date">
-  <time class="dt-published" datetime="2020-02-15T15:10:00.000Z" itemprop="datePublished">2020-02-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/post/Flexbox/">CSS 排版神器 Flexbox</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>在 Flexbox 中，部分屬性只能用於父元素，部分只能用於子元素。<br>
-<img src="/images/flexbox/fathernchildren.jpg" alt></p>
-<ul>
-<li>
-<h4 id="父元素屬性">父元素屬性</h4>
-<ul>
-<li>display</li>
-<li>flex-direction</li>
-<li>flex-wrap</li>
-<li>justify-content</li>
-<li>align-items</li>
-<li>align-content</li>
-</ul>
-</li>
-<li>
-<h4 id="子元素屬性">子元素屬性</h4>
-<ul>
-<li>align-self</li>
-<li>order</li>
-<li>flex
-<ul>
-<li>flex-grow</li>
-<li>flex-shrink</li>
-<li>flex-basis</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1>父元素屬性</h1>
-<h2 id="display">display</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display: flex | inline-flex;</span><br></pre></td></tr></table></figure>
-<p>要使用 Flexbox 必須先定義一個父元素容器，並於父元素定義 <code>display</code> 屬性為 <code>flex</code> 或 <code>inline-flex</code>。</p>
-<ul>
-<li><code>flex</code>：Flexbox 的常用屬性，後方的元素會換行</li>
-<li><code>inline-flex</code>：類似於 <code>inline-block</code> 加 <code>flex</code>，在後方的元素不會換行</li>
-</ul>
-<p>範例程式碼：</p>
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="LYVpaLd" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex vs inline-flex">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/LYVpaLd" target="_blank" rel="noopener">
-  flex vs inline-flex</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-<hr>
-<h2 id="flex-direction">flex-direction</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-direction: row&lt;default&gt; | row-reverse | column | column-reverese;</span><br></pre></td></tr></table></figure>
-<p><code>flex-direction</code> 可以指定元素的排列方式。</p>
-<ul>
-<li><code>row</code>：預設值，橫向排列</li>
-<li><code>column</code>：直向排列</li>
-<li><code>row-reverse</code>：橫向反向排列</li>
-<li><code>column-reverse</code>：直向反向排列</li>
-</ul>
-<p>範例程式碼：</p>
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="JjdYgWx" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-direction">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/JjdYgWx" target="_blank" rel="noopener">
-  flex-direction</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-<hr>
-<h2 id="flex-wrap">flex-wrap</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-wrap: nowrap&lt;default&gt; | wrap | wrap-reverse;</span><br></pre></td></tr></table></figure>
-<p>當多個子元素超過父元素的寬度時，<code>flex-wrap</code> 可以決定是否將子元素換行。</p>
-<ul>
-<li><code>nowrap</code>：預設值，不換行，子元素會縮短以符合父元素的寬度</li>
-<li><code>wrap</code>：換行，超出父元素寬度的子元素會換到下一行</li>
-<li><code>wrap-reverse</code>：反向換行，也就是各行的順序會顛倒</li>
-</ul>
-<p>範例程式碼：</p>
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="zYGvgEm" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-wrap">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/zYGvgEm" target="_blank" rel="noopener">
-  flex-wrap</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-<hr>
-<h2 id="justify-content">justify-content</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-content: flex-start&lt;default&gt; | flex-end | center | space-between | space-around;</span><br></pre></td></tr></table></figure>
-<p><code>justify-content</code> 決定水平對齊的位置。</p>
-<ul>
-<li><code>flex-start</code>：預設值，靠左對齊</li>
-<li><code>flex-end</code>：靠右對齊</li>
-<li><code>center</code>：置中對齊</li>
-<li><code>space-between</code>：平均分配，左右貼齊父元素</li>
-<li><code>space-around</code>：平均分配，類似 margin 的概念<br>
-<img src="/images/flexbox/jc-space-around.jpg" alt></li>
-<li><code>space-evenly</code>：平均分配，每個間距都是相同寬度<br>
-<img src="/images/flexbox/jc-space-evenly.jpg" alt></li>
-</ul>
-<p>範例程式碼：</p>
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="dyoGPwP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="justify-content">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/dyoGPwP" target="_blank" rel="noopener">
-  justify-content</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-<hr>
-<h2 id="align-items">align-items</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-items: flex-start | flex-end | center | stretch&lt;default&gt; | baseline;</span><br></pre></td></tr></table></figure>
-<p><code>align-items</code> 決定垂直對齊的位置。</p>
-<ul>
-<li><code>flex-start</code>：靠上方對齊</li>
-<li><code>flex-end</code>：靠下方對齊</li>
-<li><code>center</code>：置中對齊</li>
-<li><code>stretch</code>：預設值，所有元素撐開與父元素同高</li>
-<li><code>baseline</code>：依元素的基準線對齊<br>
-<img src="/images/flexbox/ac-baseline.jpg" alt></li>
-</ul>
-<p>範例程式碼：</p>
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="abOdKwb" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="align-items">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/abOdKwb" target="_blank" rel="noopener">
-  align-items</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-<hr>
-<h2 id="align-content">align-content</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-content: flex-start | flex-end | center | stretch&lt;default&gt; | space-between | space-around;</span><br></pre></td></tr></table></figure>
-<p><code>align-content</code> 針對多行的元素進行排序。</p>
-<ul>
-<li><code>flex-start</code>：靠上方對齊</li>
-<li><code>flex-end</code>：靠下方對齊</li>
-<li><code>center</code>：置中對齊</li>
-<li><code>stretch</code>：預設值，所有元素撐開與父元素同高</li>
-<li><code>space-between</code>：平均分配，上下貼齊父元素</li>
-<li><code>space-around</code>：平均分配，類似 margin 概念</li>
-</ul>
-<p>範例程式碼：</p>
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="MWwKXvx" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="align-content">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/MWwKXvx" target="_blank" rel="noopener">
-  align-content</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-<hr>
-<h1>子元素屬性</h1>
-<h2 id="align-self">align-self</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-self: flex-start | flex-end | center | stretch | baseline;</span><br></pre></td></tr></table></figure>
-<p><code>align-self</code> 針對各別子元素進行排序，不受其他影響。</p>
-<ul>
-<li><code>flex-start</code>：靠上方對齊</li>
-<li><code>flex-end</code>：靠下方對齊</li>
-<li><code>center</code>：置中對齊</li>
-<li><code>stretch</code>：子元素撐開與父元素同高</li>
-<li><code>baseline</code>：依元素的基準線對齊</li>
-</ul>
-<p>這邊我直接拿上面的 <code>align-items</code> 的範例來改，<br>
-可以看到 2 號橘色方塊被我設定為 <code>align-center: center</code>，所以不管怎麼排序，橘色方塊都會垂直置中。<br>
-範例程式碼：</p>
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="ExjPjYB" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="align-self">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/ExjPjYB" target="_blank" rel="noopener">
-  align-self</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-<hr>
-<h2 id="order">order</h2>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">order</span>: &lt;<span class="selector-tag">number</span>&gt;;</span><br></pre></td></tr></table></figure>
-<p><code>order</code> 可以決定子元素的排序順序，只能給定數字。</p>
-<p>範例程式碼：</p>
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="NWqxOby" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="order">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/NWqxOby" target="_blank" rel="noopener">
-  order</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-<hr>
-<h2 id="flex">flex</h2>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex</span>: &lt;<span class="selector-tag">flex-grow</span>&gt; &lt;<span class="selector-tag">flex-shrink</span>&gt; &lt;<span class="selector-tag">flex-basis</span>&gt;;</span><br></pre></td></tr></table></figure>
-<p><code>flex</code> 是由三個值組成，如果只給定一個值，則是給定 <code>flex-grow</code>。</p>
-<h3 id="flex-grow">flex-grow</h3>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex-grow</span>: &lt;<span class="selector-tag">number</span>&gt;;</span><br></pre></td></tr></table></figure>
-<p>當子元素的總寬度<strong>不超過</strong>父元素時，<code>flex-grow</code> 會分配剩餘的空間給特定子元素。<br>
-<code>flex-grow</code> 的預設值為 0，設定 1 以上的值會進行彈性變化。<br>
-範例程式碼：</p>
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="poJgMoN" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-grow">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/poJgMoN" target="_blank" rel="noopener">
-  flex-grow</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-<hr>
-<h3 id="flex-shrink">flex-shrink</h3>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex-shrink</span>: &lt;<span class="selector-tag">number</span>&gt;;</span><br></pre></td></tr></table></figure>
-<p>當子元素的總寬度<strong>超過</strong>父元素時，<code>flex-shrink</code> 會將特定子元素的寬度依比例縮減。<br>
-<code>flex-shrink</code> 的預設值為 1，設為 0 的話不會進行彈性變化。<br>
-範例程式碼：</p>
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="zYGqOvb" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-shrink">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/zYGqOvb" target="_blank" rel="noopener">
-  flex-shrink</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-<hr>
-<h3 id="flex-basis">flex-basis</h3>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex-basis</span>: &lt;<span class="selector-tag">number</span>&gt;;</span><br></pre></td></tr></table></figure>
-<p><code>flex-basis</code> 會指定子元素在 main axis (主軸)上的初始大小。<br>
-如果 <code>flex-direction: row</code> 則更改子元素寬度，反之，<br>
-如果 <code>flex-direction: column</code> 則更改子元素高度。<br>
-<code>flex-basis</code> 的預設值為 0，也可以設定為 auto，表示以子元素自己的大小為基準。<br>
-範例程式碼：</p>
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="BaNKBjZ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-basis">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/BaNKBjZ" target="_blank" rel="noopener">
-  flex-basis</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pclin2018.github.io/post/Flexbox/" data-id="ck7rfksy5001i2g7k6di152gp" data-title="CSS 排版神器 Flexbox" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flexbox/">Flexbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RWD/">RWD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post/ReactChildren" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/post/ReactChildren/" class="article-date">
-  <time class="dt-published" datetime="2020-02-05T12:24:00.000Z" itemprop="datePublished">2020-02-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/React/">React</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/post/ReactChildren/">React Children 屬性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1>介紹</h1>
-<p>使用組件時，大多數都是這樣寫：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Component /&gt;</span><br></pre></td></tr></table></figure>
-<p>但我們其實可以在組件中寫入其他內容：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Component&gt;</span><br><span class="line">    &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">&lt;<span class="regexp">/Component&gt;</span></span><br></pre></td></tr></table></figure>
-<p>除了在組件中寫入內容以外，組件本身也要加入 props.children 的屬性才會出現內容，<br>
-如果沒有寫入任何內容，則 props.children 返回 null。</p>
-<p>App.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> Card <span class="keyword">from</span> <span class="string">'./Card'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Card&gt;</span><br><span class="line">                    &lt;h1&gt;Hello World!&lt;/h1&gt;</span><br><span class="line">                &lt;<span class="regexp">/Card&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
-<p>Card.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./Card.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Card = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"card"</span>&gt;</span><br><span class="line">            &#123;props.children&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default Card;</span></span><br></pre></td></tr></table></figure>
-<p>網頁呈現：<br>
-<img src="/images/react-children/1.png" alt></p>
-<hr>
-<h1>陣列處理</h1>
-<h2 id="React-Children-map">React.Children.map</h2>
-<p>除了文字以外，children 也可以傳遞陣列，這邊我們使用 React 提供的方法 React.Children.map 來處理資料。</p>
-<p>App.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Card&gt;</span><br><span class="line">                    &#123;<span class="function"><span class="keyword">function</span> <span class="title">printData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                        <span class="keyword">const</span> data = [<span class="string">'Apple'</span>, <span class="string">'Orange'</span>, <span class="string">'Banana'</span>];</span><br><span class="line">                        <span class="keyword">return</span> data;</span><br><span class="line">                    &#125;()&#125;</span><br><span class="line">                &lt;<span class="regexp">/Card&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Card.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Card = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"card"</span>&gt;</span><br><span class="line">            &#123;React.Children.map(props.children, (child, i) =&gt; &#123;</span><br><span class="line">                <span class="keyword">return</span> &lt;h1&gt;&#123;child&#125;&lt;/h1&gt;</span><br><span class="line">            &#125;)&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>網頁呈現：<br>
-<img src="/images/react-children/2.png" alt></p>
-<h2 id="React-Children-forEach">React.Children.forEach</h2>
-<p>與 React.Children.map 的使用方式相同，但是不會回傳陣列。</p>
-<hr>
-<h1>Child 數量計算</h1>
-<h2 id="React-Children-count">React.Children.count</h2>
-<p>這個方法用來計算 child 的數量，舉例來說：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Component&gt;</span><br><span class="line">    &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">&lt;<span class="regexp">/Component&gt;</span></span><br></pre></td></tr></table></figure>
-<p>裡面包含了三個 <code>&lt;p&gt;Hello World!&lt;/p&gt;</code>，所以數量 = 3。</p>
-<p>App.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Card&gt;</span><br><span class="line">                    &lt;h1&gt;我是第一個child&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;h1&gt;我是第二個child&lt;/</span>h1&gt;</span><br><span class="line">                    &lt;h1&gt;我是第三個child&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>Card&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>Card.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Card = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"card"</span>&gt;</span><br><span class="line">            child 數量：&#123;React.Children.count(props.children)&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>網頁呈現：<br>
-<img src="/images/react-children/3.png" alt></p>
-<hr>
-<h1>只呈現一個 Child</h1>
-<h2 id="React-Children-only">React.Children.only</h2>
-<p>這個方法是讓組件只呈現一個 child，如果 children 不只一個 child 將會報錯：<br>
-<img src="/images/react-children/4.png" alt></p>
-<p>App.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Card&gt;</span><br><span class="line">                    &lt;h1&gt;我是唯一的child&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>Card&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>Card.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Card = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"card"</span>&gt;</span><br><span class="line">            &#123;React.Children.only(props.children)&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>網頁呈現：<br>
-<img src="/images/react-children/5.png" alt></p>
-<hr>
-<h1>將 Child 轉成陣列</h1>
-<h2 id="React-Children-toArray">React.Children.toArray</h2>
-<p>React.Children.toArray 方法會將 child 轉成一個扁平的陣列，並對每個 child 指定一個 key，<br>
-下面示範用這個方法將每個 child 數字以小到大排序：</p>
-<p>App.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Card&gt;</span><br><span class="line">                    &lt;h1&gt;<span class="number">196</span>&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;h1&gt;165&lt;/</span>h1&gt;</span><br><span class="line">                    &lt;h1&gt;<span class="number">178</span>&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>Card&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>Card.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Card = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> child = React.Children.toArray(props.children);</span><br><span class="line">    child = child.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> a.props.children &gt; b.props.children ? <span class="number">1</span> : <span class="number">-1</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"card"</span>&gt;</span><br><span class="line">            &#123;child&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>網頁呈現：<br>
-<img src="/images/react-children/6.png" alt></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pclin2018.github.io/post/ReactChildren/" data-id="ck7rfksxr000h2g7k0bz7ktnm" data-title="React Children 屬性" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post/SpreadAndRestOperator" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/post/SpreadAndRestOperator/" class="article-date">
-  <time class="dt-published" datetime="2020-01-11T10:03:21.000Z" itemprop="datePublished">2020-01-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/post/SpreadAndRestOperator/">展開運算子(Spread Operator)與其餘運算子(Rest Operator)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>這兩種運算子的寫法都是 …，對，你沒看錯，就是三個點！<br>
-接下來來實際說明使用情境：</p>
-<h1>1. 展開運算子 (Spread Operator)</h1>
-<p>用來將舊的陣列或物件複製到新的陣列或物件中，算是淺拷貝(Shallow Copy)的一種</p>
-<p>陣列範例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> newNumbers = [...number, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newNumbers);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   [1, 2, 3, 4] */</span></span><br></pre></td></tr></table></figure>
-<p>物件範例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    name: <span class="string">'Blueberry'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newPerson = &#123;</span><br><span class="line">    ...person,</span><br><span class="line">    age: <span class="number">24</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newPerson);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   &#123;</span></span><br><span class="line"><span class="comment">       age: 24,</span></span><br><span class="line"><span class="comment">       name: 'Blueberry'</span></span><br><span class="line"><span class="comment">   &#125; */</span></span><br></pre></td></tr></table></figure>
-<h1>2. 其餘運算子 (Rest Operator)</h1>
-<p>將不確定數量的參數，視為一個陣列<br>
-範例示範將多個數字傳入函式，並用 filter 找出 args 陣列中等於 1 的數字</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> equalOne = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> args.filter(<span class="function"><span class="params">el</span> =&gt;</span> el === <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(equalOne(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   [1] */</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pclin2018.github.io/post/SpreadAndRestOperator/" data-id="ck7rfksxp000d2g7kuexdoxfu" data-title="展開運算子(Spread Operator)與其餘運算子(Rest Operator)" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post/BindCallApply" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/post/BindCallApply/" class="article-date">
-  <time class="dt-published" datetime="2019-12-29T16:00:00.000Z" itemprop="datePublished">2019-12-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/post/BindCallApply/">使用 bind、call、apply 改變 this 指向的對象</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>如果想要改變 this 指向的對象，可以透過 bind、call、apply 這三個 method 辦到。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    userName: <span class="string">'Blueberry'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接著 create 一個函式來呼叫 obj 的 userName：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.userName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>呼叫 callName：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">callName();</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello undefined */</span></span><br></pre></td></tr></table></figure>
-<p>因為 callName() 函式中的 this 指向的是 global object（也就是 Window 物件），<br>
-所以這時候我們希望把 callName() 的 this 指向 obj 這個對象，使用以下方法：</p>
-<h2 id="1-bind">1. bind</h2>
-<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank" rel="noopener">MDN</a><br>
-<em>function.bind(thisArg[, arg1[, arg2[, …]]])</em></p>
-<p>第一種寫法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">callName.bind(obj)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 意即</span></span><br><span class="line"><span class="comment">// var callFunction = callName.bind(obj);</span></span><br><span class="line"><span class="comment">// callFunction();</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry */</span></span><br></pre></td></tr></table></figure>
-<p>第二種寫法，直接寫在函式表示式後面也可以：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.userName);</span><br><span class="line">&#125;.bind(obj);</span><br><span class="line"></span><br><span class="line">callName();</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry */</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-call">2. call</h2>
-<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener">MDN</a><br>
-<em>function.call(this, arg1, arg2…, argn)</em></p>
-<p>call 除了可以綁定對象給 this 之外，後面還可以直接放入參數。<br>
-我們先來改寫一下 callName()：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.userName);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'your age is '</span> + age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>多了 age 這個參數可代入，接著來示範 call 怎麼寫：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">callName.call(obj, <span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry</span></span><br><span class="line"><span class="comment">   your age is 20 */</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-apply">3. apply</h2>
-<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="noopener">MDN</a><br>
-<em>function.apply(this, [arg1, arg2…, argn])</em></p>
-<p>apply 的寫法跟 call 很相近，與 call 不同的是，<br>
-後面的參數需要使用陣列傳遞，適合搭配 arguments 運用在算數的函式。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">callName.apply(obj, [<span class="number">20</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">   hello Blueberry</span></span><br><span class="line"><span class="comment">   your age is 20 */</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pclin2018.github.io/post/BindCallApply/" data-id="ck7rfksxc00022g7kr6ds5gja" data-title="使用 bind、call、apply 改變 this 指向的對象" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post/ES6variable" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/post/ES6variable/" class="article-date">
-  <time class="dt-published" datetime="2019-11-27T08:03:21.000Z" itemprop="datePublished">2019-11-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/post/ES6variable/">var、let、const 的區別</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="var-變數">var 變數</h2>
-<p>宣告時可以不給資料，資料可更動，範圍是函式作用域(function scope)</p>
-<h2 id="let-變數">let 變數</h2>
-<p>宣告時可以不給資料，資料可更動，範圍是區塊作用域(block scope)</p>
-<h2 id="const-常數">const 常數</h2>
-<p>宣告時一定要給資料，資料不可變動，範圍是區塊作用域(block scope)</p>
-<table>
-<thead>
-<tr>
-<th>名稱</th>
-<th>類型</th>
-<th>宣告時不給資料</th>
-<th>資料變動</th>
-<th>範圍</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>var</td>
-<td>變數</td>
-<td>O</td>
-<td>O</td>
-<td>函式作用域</td>
-</tr>
-<tr>
-<td>let</td>
-<td>變數</td>
-<td>O</td>
-<td>O</td>
-<td>區塊作用域</td>
-</tr>
-<tr>
-<td>const</td>
-<td>常數</td>
-<td>X</td>
-<td>X</td>
-<td>區塊作用域</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pclin2018.github.io/post/ES6variable/" data-id="ck7rfksxo000c2g7kv3mhapu4" data-title="var、let、const 的區別" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flexbox/">Flexbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RWD/">RWD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Flexbox/" style="font-size: 10px;">Flexbox</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/w3HexSchool/" style="font-size: 16.67px;">w3HexSchool</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/post/Promise/">Javascript ES6 Promise</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首頁</a>
           </li>
         
-          <li>
-            <a href="/post/GitCommand/">簡單整理 Git 常用指令</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">歸檔</a>
           </li>
         
-          <li>
-            <a href="/post/ComparisonOperators/">比較運算子</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分類</a>
           </li>
         
-          <li>
-            <a href="/post/Destructuring/">Destructuring 解構賦值</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">標籤</a>
           </li>
         
-          <li>
-            <a href="/post/Flexbox/">CSS 排版神器 Flexbox</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">關於</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
-  
-</aside>
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/images/index.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/ShallowCopyAndDeepCopy/" target="_self">
+          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="Javascript 的淺拷貝與深拷貝" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/ShallowCopyAndDeepCopy/">
+        <p class="h4 index-header">Javascript 的淺拷貝與深拷貝</p>
+      </a>
+
+      <a href="/post/ShallowCopyAndDeepCopy/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">前言
+在寫 JS 的過程中，常常會遇到需要拷貝物件或陣列的情況。
+然而之後修改拷貝的內容時，就會發現原本的物件或陣列怎麼也一起改了？
+好比以下的程式碼：
+const person = {
+    name: 'Blueberry',
+    age: '24',
+    interest: '閱讀'
+};
+
+const copy = person;
+copy.interest = '泡咖啡';
+console.log('copy: ', copy);
+console.log('person: ', person);
+
+/**
+ * [Output]
+ *
+ * copy: Object {
+ </div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-21&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Javascript/">Javascript</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Javascript/">Javascript</a>&nbsp;
+          
+            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
+          
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 Blueberry<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/Promise/" target="_self">
+          <img src="/images/promise/banner.jpeg" srcset="/img/loading.gif" alt="Javascript ES6 Promise" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/Promise/">
+        <p class="h4 index-header">Javascript ES6 Promise</p>
+      </a>
+
+      <a href="/post/Promise/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">Promise 是很適合用來處理非同步的方法，大多數情況是用來處理非同步事件或 Callback hell (回調地獄)。
+非同步調用
+例如 getData() 在 api() 還沒回傳值就想取得結果，就會出現 undefined。可以看看下面的例子：
+const api = () =&gt; {
+    // 模擬等待 api 回傳的時間
+    setTimeout(() =&gt; {
+        return { value: 1 };
+    }, 2000);
+}
+
+const getData = () =&gt; {
+    const data = api();
+    c</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-14&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Javascript/">Javascript</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Javascript/">Javascript</a>&nbsp;
+          
+            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
+          
+            <a href="/tags/ES6/">ES6</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/GitCommand/" target="_self">
+          <img src="/images/git/banner.jpeg" srcset="/img/loading.gif" alt="簡單整理 Git 常用指令" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/GitCommand/">
+        <p class="h4 index-header">簡單整理 Git 常用指令</p>
+      </a>
+
+      <a href="/post/GitCommand/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">新增檔案( . 是全部新增的意思，也可以只新增部分檔案)
+$ git add .
+
+
+提交檔案
+$ git commit -m &quot;內容&quot;
+
+
+推送檔案
+$ git push
+
+
+拉取檔案
+$ git pull
+
+
+克隆遠端數據庫
+$ git clone git位置
+
+
+查看目前分支
+$ git branch
+
+
+新增分支
+$ git branch 分支名稱
+
+
+切換到該分支
+$ git checkout 分支名稱
+
+
+強制回到和保存端一模一樣的檔案（慎用，檔案有異常時再使用）
+$ git fetch --all
+$ git reset --hard origin/maste</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Git/">Git</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
+          
+            <a href="/tags/Git/">Git</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/ComparisonOperators/" target="_self">
+          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="比較運算子" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/ComparisonOperators/">
+        <p class="h4 index-header">比較運算子</p>
+      </a>
+
+      <a href="/post/ComparisonOperators/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">請先參閱：運算子優先序
+先來看一段程式碼：
+console.log(3 &lt; 2 &lt; 1);   // 結果是 true
+
+以人類的邏輯來說，這絕對是錯的，但為什麼 JavaScript 會判定為 true 呢？
+小於運算子的相依性是由左至右，程式會優先進行 3 &lt; 2 這部分的判定。
+於是會變成：
+console.log(false &lt; 1);
+
+但是 false 和 1 並不是同一個型別，所以 JavaScript 會進行強制型轉。
+如果你輸入下面這行程式碼，可以知道 false 轉成數字後的值：
+Number(false);   // 結果是 0
+
+如此一來就變成了</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-29&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Javascript/">Javascript</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Javascript/">Javascript</a>&nbsp;
+          
+            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/Destructuring/" target="_self">
+          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="Destructuring 解構賦值" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/Destructuring/">
+        <p class="h4 index-header">Destructuring 解構賦值</p>
+      </a>
+
+      <a href="/post/Destructuring/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">解構賦值可以用在陣列或物件，可以提取特定的值成獨立變數。
+1. Array Destructuring
+const numbers = [1, 2, 3];
+[num1, num2] = numbers;
+
+console.log(num1, num2);
+
+/*
+    Output:
+    1
+    2
+*/
+
+如果只想要提取 1 和 3 的值，只要在左邊陣列的中間部分空一格即可：
+const numbers = [1, 2, 3];
+const [num1, , num3] = numbers;
+
+console.log(num1, num3);
+
+/*
+    Output:
+  </div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-22&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Javascript/">Javascript</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Javascript/">Javascript</a>&nbsp;
+          
+            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
+          
+            <a href="/tags/ES6/">ES6</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/Flexbox/" target="_self">
+          <img src="/images/code_banner.jpg" srcset="/img/loading.gif" alt="CSS 排版神器 Flexbox" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/Flexbox/">
+        <p class="h4 index-header">CSS 排版神器 Flexbox</p>
+      </a>
+
+      <a href="/post/Flexbox/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">在 Flexbox 中，部分屬性只能用於父元素，部分只能用於子元素。
+
+
+
+父元素屬性
+
+display
+flex-direction
+flex-wrap
+justify-content
+align-items
+align-content
+
+
+
+子元素屬性
+
+align-self
+order
+flex
+
+flex-grow
+flex-shrink
+flex-basis
+
+
+
+
+
+父元素屬性
+display
+display: flex | inline-flex;
+
+要使用 Flexbox 必須先定義一個父元素容器，並於父元素定義 display 屬性為 flex 或 inline-flex。
+</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-15&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CSS/">CSS</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
+          
+            <a href="/tags/CSS/">CSS</a>&nbsp;
+          
+            <a href="/tags/Flexbox/">Flexbox</a>&nbsp;
+          
+            <a href="/tags/RWD/">RWD</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/ReactChildren/" target="_self">
+          <img src="/images/react_banner.png" srcset="/img/loading.gif" alt="React Children 屬性" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/ReactChildren/">
+        <p class="h4 index-header">React Children 屬性</p>
+      </a>
+
+      <a href="/post/ReactChildren/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">介紹
+使用組件時，大多數都是這樣寫：
+&lt;Component /&gt;
+
+但我們其實可以在組件中寫入其他內容：
+&lt;Component&gt;
+    &lt;p&gt;Hello World!&lt;/p&gt;
+&lt;/Component&gt;
+
+除了在組件中寫入內容以外，組件本身也要加入 props.children 的屬性才會出現內容，
+如果沒有寫入任何內容，則 props.children 返回 null。
+App.js
+import React, { Component } from 'react';
+import Card from './Card';
+
+class</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-05&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/React/">React</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Javascript/">Javascript</a>&nbsp;
+          
+            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
+          
+            <a href="/tags/React/">React</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/SpreadAndRestOperator/" target="_self">
+          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="展開運算子(Spread Operator)與其餘運算子(Rest Operator)" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/SpreadAndRestOperator/">
+        <p class="h4 index-header">展開運算子(Spread Operator)與其餘運算子(Rest Operator)</p>
+      </a>
+
+      <a href="/post/SpreadAndRestOperator/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">這兩種運算子的寫法都是 …，對，你沒看錯，就是三個點！
+接下來來實際說明使用情境：
+1. 展開運算子 (Spread Operator)
+用來將舊的陣列或物件複製到新的陣列或物件中，算是淺拷貝(Shallow Copy)的一種
+陣列範例：
+const numbers = [1, 2, 3];
+const newNumbers = [...number, 4];
+
+console.log(newNumbers);
+
+/* Output:
+   [1, 2, 3, 4] */
+
+物件範例：
+const person = {
+    name: 'Blueberry'
+};
+
+const newPe</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-11&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Javascript/">Javascript</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Javascript/">Javascript</a>&nbsp;
+          
+            <a href="/tags/ES6/">ES6</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/BindCallApply/" target="_self">
+          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="使用 bind、call、apply 改變 this 指向的對象" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/BindCallApply/">
+        <p class="h4 index-header">使用 bind、call、apply 改變 this 指向的對象</p>
+      </a>
+
+      <a href="/post/BindCallApply/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">如果想要改變 this 指向的對象，可以透過 bind、call、apply 這三個 method 辦到。
+const obj = {
+    userName: 'Blueberry'
+}
+
+接著 create 一個函式來呼叫 obj 的 userName：
+function callName() {
+    console.log('hello ' + this.userName);
+}
+
+呼叫 callName：
+callName();
+
+/* Output:
+   hello undefined */
+
+因為 callName() 函式中的 this 指向的是 global objec</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Javascript/">Javascript</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Javascript/">Javascript</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/ES6variable/" target="_self">
+          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="var、let、const 的區別" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/ES6variable/">
+        <p class="h4 index-header">var、let、const 的區別</p>
+      </a>
+
+      <a href="/post/ES6variable/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">var 變數
+宣告時可以不給資料，資料可更動，範圍是函式作用域(function scope)
+let 變數
+宣告時可以不給資料，資料可更動，範圍是區塊作用域(block scope)
+const 常數
+宣告時一定要給資料，資料不可變動，範圍是區塊作用域(block scope)
+
+
+
+名稱
+類型
+宣告時不給資料
+資料變動
+範圍
+
+
+
+
+var
+變數
+O
+O
+函式作用域
+
+
+let
+變數
+O
+O
+區塊作用域
+
+
+const
+常數
+X
+X
+區塊作用域
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Javascript/">Javascript</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Javascript/">Javascript</a>&nbsp;
+          
+            <a href="/tags/ES6/">ES6</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵詞</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    </div>
+    
+
+    
+
+    
   </div>
 </footer>
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="/js/jquery-3.4.1.min.js"></script>
+<!-- SCRIPTS -->
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js"></script>
+<script src="/js/main.js"></script>
 
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-<script src="/js/script.js"></script>
+  <script src="/js/lazyload.js"></script>
 
 
 
 
-  </div>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "前端、後端、UI 設計筆記&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js"></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
