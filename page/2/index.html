@@ -16,7 +16,7 @@
   <meta name="description" content="前端、後端、UI 設計筆記">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
-  <title>標籤 - Javascript - 一顆藍莓</title>
+  <title>一顆藍莓</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -40,7 +40,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
@@ -117,6 +117,10 @@
           </div>
 
           
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
         </div>
       </div>
     </div>
@@ -126,78 +130,113 @@
     
       <div class="container nopadding-md">
         <div class="py-5 z-depth-3" id="board"
-          >
+          style=margin-top:0>
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-<!--  <p class="h4">共計 9 篇文章</p>-->
-  <hr>
-  
+
+  <div class="row mx-auto index-card">
     
-      
-      <p class="h5">2020</p>
     
-    <a href="/post/PTTCrawler/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">使用 Node.js 來爬蟲吧！[PTT 股票板]</span>
-      <span style="float: right;">03-28</span>
-    </a>
-  
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/ES6variable/" target="_self">
+          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="var、let、const 的區別" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
     
-    <a href="/post/ShallowCopyAndDeepCopy/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Javascript 的淺拷貝與深拷貝</span>
-      <span style="float: right;">03-21</span>
-    </a>
-  
-    
-    <a href="/post/Promise/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Javascript ES6 Promise</span>
-      <span style="float: right;">03-14</span>
-    </a>
-  
-    
-    <a href="/post/ComparisonOperators/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">比較運算子</span>
-      <span style="float: right;">02-29</span>
-    </a>
-  
-    
-    <a href="/post/Destructuring/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Destructuring 解構賦值</span>
-      <span style="float: right;">02-22</span>
-    </a>
-  
-    
-    <a href="/post/ReactChildren/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">React Children 屬性</span>
-      <span style="float: right;">02-05</span>
-    </a>
-  
-    
-    <a href="/post/SpreadAndRestOperator/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">展開運算子(Spread Operator)與其餘運算子(Rest Operator)</span>
-      <span style="float: right;">01-11</span>
-    </a>
-  
-    
-      
-      <p class="h5">2019</p>
-    
-    <a href="/post/BindCallApply/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">使用 bind、call、apply 改變 this 指向的對象</span>
-      <span style="float: right;">12-30</span>
-    </a>
-  
-    
-    <a href="/post/ES6variable/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">var、let、const 的區別</span>
-      <span style="float: right;">11-27</span>
-    </a>
-  
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/ES6variable/">
+        <p class="h4 index-header">var、let、const 的區別</p>
+      </a>
+
+      <a href="/post/ES6variable/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">var 變數
+宣告時可以不給資料，資料可更動，範圍是函式作用域(function scope)
+let 變數
+宣告時可以不給資料，資料可更動，範圍是區塊作用域(block scope)
+const 常數
+宣告時一定要給資料，資料不可變動，範圍是區塊作用域(block scope)
+
+
+
+名稱
+類型
+宣告時不給資料
+資料變動
+範圍
+
+
+
+
+var
+變數
+O
+O
+函式作用域
+
+
+let
+變數
+O
+O
+區塊作用域
+
+
+const
+常數
+X
+X
+區塊作用域
+
+
+
 </div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Javascript/">Javascript</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Javascript/">Javascript</a>&nbsp;
+          
+            <a href="/tags/ES6/">ES6</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
@@ -294,7 +333,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "標籤 - Javascript&nbsp;",
+        "前端、後端、UI 設計筆記&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

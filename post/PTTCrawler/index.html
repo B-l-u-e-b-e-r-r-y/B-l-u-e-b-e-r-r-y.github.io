@@ -16,7 +16,7 @@
   <meta name="description" content="前端、後端、UI 設計筆記">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
-  <title>Javascript 的淺拷貝與深拷貝 - 一顆藍莓</title>
+  <title>使用 Node.js 來爬蟲吧！[PTT 股票板] - 一顆藍莓</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -104,7 +104,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/images/js_banner.jpeg') no-repeat center center;
+         style="background: url('/images/node_banner.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -117,7 +117,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期六, 三月 21日 2020, 6:00 晚上
+                  星期六, 三月 28日 2020, 6:00 晚上
                 </p>
               
 
@@ -126,7 +126,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    1k 字
+                    687 字
                   </span>
                 
 
@@ -134,7 +134,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      4 分鐘
+                      3 分鐘
                   </span>
                 
 
@@ -163,166 +163,107 @@
             
             <div class="markdown-body">
               <h1>前言</h1>
-<p>在寫 JS 的過程中，常常會遇到需要拷貝物件或陣列的情況。<br>
-然而之後修改拷貝的內容時，發現原本的物件或陣列的屬性也跟著一起改變。<br>
-好比下面的例子：</p>
-<pre><code class="language-js">const person = {
-    name: 'Blueberry',
-    age: '24',
-    interest: '閱讀'
+<p>一般大家爬蟲都是使用 python，其實 node.js 也是可以爬蟲的，作為前端，能用自己習慣的語言來寫當然很方便。但是 python 和 node.js 除了寫法不同，兩者特性也是不同的，例如 node.js 是異步的、單執行緒，python 則是多執行緒等等，關於這些差異本文就不多加討論。</p>
+<h1>模組</h1>
+<p>node.js 爬蟲需要用到兩個模組：<a href="https://github.com/request/request" target="_blank" rel="noopener">request</a> 和 <a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="noopener">cheerio</a>。</p>
+<h2 id="介紹">介紹</h2>
+<p><strong>request</strong> 是用來訪問網站用的，它能模擬 Client 訪問網站，設定訪問時帶的 Header。<br>
+<strong>cheerio</strong> 則算是 node.js 界的 jQuery，它是以 jQuery 為核心去設計的，<br>
+好比要抓取一個 html，class 名稱為 title 的文字 <code>&lt;div class='title'&gt;標題&lt;/div&gt;</code>，cheerio 的寫法是這樣：<code>$('.title').text()</code>。</p>
+<h2 id="安裝">安裝</h2>
+<pre><code>$ npm i --save request
+$ npm i --save cheerio
+</code></pre>
+<h2 id="載入">載入</h2>
+<p>安裝好後就可以看到專案的 package.json 已經出現這兩個模組，這時候就可以把模組引入程式中。</p>
+<pre><code class="language-js">const request = require(&quot;request&quot;);
+const cheerio = require(&quot;cheerio&quot;);
+</code></pre>
+<h1>實作</h1>
+<h2 id="request-訪問">request 訪問</h2>
+<p>本文以 <a href="https://www.ptt.cc/bbs/Stock/index.html" target="_blank" rel="noopener">PTT 股票板</a> 為範例。<br>
+先發送 request，訪問股票板。</p>
+<pre><code class="language-js">const pttCrawler = () =&gt; {
+    request({
+        url: &quot;https://www.ptt.cc/bbs/Stock/index.html&quot;,
+        method: &quot;GET&quot;
+    }, (error, res, body) =&gt; {
+        // 如果有錯誤訊息，或沒有 body(內容)，就 return
+        if (error || !body) {
+            return;
+        }
+    });
 };
 
-const copy = person;
-copy.interest = '泡咖啡';
-console.log('copy: ', copy);
-console.log('person: ', person);
-
-/**
- * [Output]
- *
- * copy: Object {
- *     name: 'Blueberry',
- *     age: '24',
- *     interest: '泡咖啡'
- * }
- * person: Object {
- *     name: 'Blueberry',
- *     age: '24',
- *     interest: '泡咖啡'  // 疑等等？怎麼不是'閱讀'了？
- * }
- */
+pttCrawler();
 </code></pre>
-<p>為什麼我修改的是 <code>copy</code> 的 interest，卻連 <code>person</code> 的值也一起改了？<br>
-這就跟 <strong>by value</strong> 與 <strong>by reference</strong> 有關了。</p>
-<h1>by value VS by reference</h1>
-<p>兩者的不同在於<strong>記憶體的位置</strong>，如果是 by value，複製時記憶體位置會是<strong>不同</strong>的，<br>
-但如果是 by reference，複製時記憶體位置會是<strong>相同</strong>的，下面就來詳細介紹與舉例。</p>
-<h2 id="by-value">by value</h2>
-<pre><code class="language-js">const a = 1;
-const b = a;
+<h2 id="cheerio-抓取-Element">cheerio 抓取 Element</h2>
+<p>request 之後就可以取得內容(body)，接著使用 cheerio 抓取 Element。<br>
+寫程式碼之前，可以先到股票板，按右鍵 &gt; 檢查，看看 Element 的名稱是什麼。<br>
+如下圖，紅框就是要抓的部分：<br>
+<img src="/images/ptt-crawler/ptt1.jpg" srcset="/img/loading.gif" alt></p>
+<p>因為它是父元素(<code>.r-list-container</code>)裡包著許多子元素(<code>.r-ent</code>)的結構，所以這邊要使用到迴圈。</p>
+<pre><code class="language-js">const pttCrawler = () =&gt; {
+    request({
+        url: &quot;https://www.ptt.cc/bbs/Stock/index.html&quot;,
+        method: &quot;GET&quot;
+    }, (error, res, body) =&gt; {
+        // 如果有錯誤訊息，或沒有 body(內容)，就 return
+        if (error || !body) {
+            return;
+        }
 
-a = 2;
-console.log(a, b);  // 1, 2
-</code></pre>
-<p>根據上面的範例，<code>a</code> 在記憶體中位於 <code>0x001</code> 位置，複製 a 的 <code>b</code> 在記憶體中位於 <code>0x002</code> 位置。<br>
-<strong>兩者位於不同的記憶體位置，所以在後續修改時，不會影響到對方。</strong><br>
-只要是<strong>純值（數字、布林或字串）</strong>，就是 by value。</p>
-<h2 id="by-reference">by reference</h2>
-<pre><code class="language-js">const a = { name: 'Blueberry' };
-const b = a;
+        const data = [];
+        const $ = cheerio.load(body); // 載入 body
+        const list = $(&quot;.r-list-container .r-ent&quot;);
+        for (let i = 0; i &lt; list.length; i++) {
+            const title = list.eq(i).find('.title a').text();
+            const author = list.eq(i).find('.meta .author').text();
+            const date = list.eq(i).find('.meta .date').text();
+            const link = list.eq(i).find('.title a').attr('href');
 
-a.name = 'Strawberry';
-console.log('a: ', a);
-console.log('b: ', b);
+            data.push({ title, author, date, link });
+        }
 
-/**
- * [Output]
- *
- * a: Object {
- *     name: &quot;Strawberry&quot;
- * }
- * b: Object {
- *     name: &quot;Strawberry&quot;
- * }
- */ 
-</code></pre>
-<p>根據上面的範例，a 在記憶體中位於 <code>0x001</code> 位置，複製 a 的 b 在記憶體中也位於 <code>0x001</code> 位置。沒有新的物件產生，也沒有物件的拷貝被創造。<br>
-<strong>兩者位於相同的記憶體位置，可以說 a 其實就是 b，只是換個名字而已，所以在後續修改時，會影響到對方。</strong><br>
-只要是<strong>物件（陣列、物件或函式）</strong>，就是 by reference。<br>
-如果不希望修改時會影響到對方，就必須得使用<strong>淺拷貝</strong>或<strong>深拷貝</strong>去複製。</p>
-<h1>淺拷貝 VS 深拷貝</h1>
-<p>兩者的差異在於，<strong>淺拷貝</strong>只能複製第一層，無法深層複製第二層、第三層…等等，如果更改了第二層以後的內容，一樣會影響到原本的物件，因為第二層以後的記憶體位置與原本物件的記憶體位置還是相同的。<strong>但如果需要拷貝的物件只有一層，用淺拷貝還是可以的。</strong><br>
-而<strong>深拷貝</strong>就不只了，它能深層複製第一層乃至最內層。<strong>不論修改的是哪一層，都不會被影響，因為它的每一層與原物件都是不同的記憶體位置。</strong></p>
-<p>下面就來介紹淺拷貝與深拷貝的用法。</p>
-<h2 id="淺拷貝">淺拷貝</h2>
-<h3 id="Object-assign">Object.assign()</h3>
-<pre><code class="language-js">const person = {
-    name: 'Blueberry',
-    interest: ['閱讀', '玩遊戲']
+        console.log(data);
+    });
 };
 
-const copy = Object.assign({}, person);
-
-copy.name = 'Strawberry';
-copy.interest[0] = '泡咖啡';
-console.log('copy: ', copy);
-console.log('person: ', person);
-
-/**
- * [Output]
- *
- * copy: Object {
- *     name: 'Strawberry',
- *     interest: ['泡咖啡', '玩遊戲']
- * }
- * person: Object {
- *     name: 'Blueberry',
- *     interest: ['泡咖啡', '玩遊戲']
- * }
- */
+pttCrawler();
 </code></pre>
-<p>這裡可以看到 <code>copy</code> 的第二層（<code>interest: ['閱讀', '玩遊戲']</code>）被修改了，結果連原本的 <code>person</code> 也一起變成 <code>泡咖啡</code>，因為 <code>copy</code> 的第二層仍是指向與原物件相同的記憶體位置。<br>
-但是 <code>name</code> 這個值就不同了，<code>copy</code> 的第一層是有被淺層拷貝成功的。</p>
-<h3 id="for-迴圈">for 迴圈</h3>
-<p>for 迴圈是最土法煉鋼的方法，它也能達到淺拷貝的效果。</p>
-<pre><code class="language-js">const a = [1, 2, 3];
-const b = [];
-for (let i = 0; i &lt; a.length; i++) {
-  b.push(a[i]);
-}
-b.push(4);
-console.log(a);
-console.log(b);
+<p>執行程式後就可以看到結果囉！<br>
+<img src="/images/ptt-crawler/ptt2.jpg" srcset="/img/loading.gif" alt></p>
+<h2 id="完整程式碼">完整程式碼</h2>
+<pre><code class="language-js">const request = require(&quot;request&quot;);
+const cheerio = require(&quot;cheerio&quot;);
 
-/**
- * [Output]
- *
- * [1, 2, 3]
- * [1, 2, 3, 4]
- */
-</code></pre>
-<h3 id="展開運算子">展開運算子</h3>
-<p><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/SpreadAndRestOperator/" target="_blank" rel="noopener">展開運算子</a>是 ES6 新出的方法，應該是最方便的寫法了。</p>
-<pre><code class="language-js">const a = [1, 2, 3];
-const b = [ ...a ];
-b.push(4);
-console.log(a);
-console.log(b);
+const pttCrawler = () =&gt; {
+    request({
+        url: &quot;https://www.ptt.cc/bbs/Stock/index.html&quot;,
+        method: &quot;GET&quot;
+    }, (error, res, body) =&gt; {
+        // 如果有錯誤訊息，或沒有 body(內容)，就 return
+        if (error || !body) {
+            return;
+        }
 
-/**
- * [Output]
- *
- * [1, 2, 3]
- * [1, 2, 3, 4]
- */
-</code></pre>
-<h2 id="深拷貝">深拷貝</h2>
-<p>在不使用其他套件的情況下，目前 Javascript 的深拷貝只有 <code>JSON.parse()</code> + <code>JSON.stringify()</code> 的寫法。</p>
-<h3 id="JSON-parse-JSON-stringify">JSON.parse(JSON.stringify())</h3>
-<pre><code class="language-js">const person = {
-    name: 'Blueberry',
-    interest: ['閱讀', '玩遊戲']
+        const data = [];
+        const $ = cheerio.load(body); // 載入 body
+        const list = $(&quot;.r-list-container .r-ent&quot;);
+        for (let i = 0; i &lt; list.length; i++) {
+            const title = list.eq(i).find('.title a').text();
+            const author = list.eq(i).find('.meta .author').text();
+            const date = list.eq(i).find('.meta .date').text();
+            const link = list.eq(i).find('.title a').attr('href');
+
+            data.push({ title, author, date, link });
+        }
+
+        console.log(data);
+    });
 };
 
-const copy = JSON.parse(JSON.stringify(person)));
-
-copy.name = 'Strawberry';
-copy.interest[0] = '泡咖啡';
-console.log('copy: ', copy);
-console.log('person: ', person);
-
-/**
- * [Output]
- *
- * copy: Object {
- *     name: 'Strawberry',
- *     interest: ['泡咖啡', '玩遊戲']
- * }
- * person: Object {
- *     name: 'Blueberry',
- *     interest: ['閱讀', '玩遊戲']
- * }
- */
+pttCrawler();
 </code></pre>
 
             </div>
@@ -333,7 +274,7 @@ console.log('person: ', person);
                   <span>
                 <i class="iconfont icon-inbox"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Javascript/">Javascript</a>
+                      <a class="hover-with-bg" href="/categories/node-js/">node.js</a>
                       &nbsp;
                     
                   </span>&nbsp;&nbsp;
@@ -346,6 +287,8 @@ console.log('person: ', person);
                     
                       <a class="hover-with-bg" href="/tags/w3HexSchool/">w3HexSchool</a>
                     
+                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
+                    
                   </span>
                 
               </p>
@@ -354,16 +297,11 @@ console.log('person: ', person);
                 <div class="post-prevnext row">
                   <div class="post-prev col-12 col-md-6">
                     
-                      <a href="/post/PTTCrawler/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>使用 Node.js 來爬蟲吧！[PTT 股票板]</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-12 col-md-6">
                     
-                      <a href="/post/Promise/">
-                        <span>Javascript ES6 Promise</span>
+                      <a href="/post/ShallowCopyAndDeepCopy/">
+                        <span>Javascript 的淺拷貝與深拷貝</span>
                         <i class="fa fa-chevron-right"></i>
                       </a>
                     
@@ -543,7 +481,7 @@ console.log('person: ', person);
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Javascript 的淺拷貝與深拷貝&nbsp;",
+        "使用 Node.js 來爬蟲吧！[PTT 股票板]&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
