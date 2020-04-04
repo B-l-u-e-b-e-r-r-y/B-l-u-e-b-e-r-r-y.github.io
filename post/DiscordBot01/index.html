@@ -17,7 +17,7 @@
   <meta name="description" content="前端、後端、UI 設計筆記">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
-  <title>Destructuring 解構賦值 - 一顆藍莓</title>
+  <title>【用 JS 寫一個 Discord Bot！】01 建立機器人 - 一顆藍莓</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -105,7 +105,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/images/js_banner.jpeg') no-repeat center center;
+         style="background: url('/images/dc_banner.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -118,7 +118,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期六, 二月 22日 2020, 7:43 晚上
+                  星期六, 四月 4日 2020, 6:00 晚上
                 </p>
               
 
@@ -127,7 +127,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    183 字
+                    553 字
                   </span>
                 
 
@@ -135,7 +135,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      1 分鐘
+                      2 分鐘
                   </span>
                 
 
@@ -163,69 +163,82 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <p>解構賦值可以用在陣列或物件，可以提取特定的值成獨立變數。</p>
-<h1>1. Array Destructuring</h1>
-<pre><code class="language-js">const numbers = [1, 2, 3];
-[num1, num2] = numbers;
-
-console.log(num1, num2);
-
-/*
-    Output:
-    1
-    2
-*/
+              <h2 id="創建機器人">創建機器人</h2>
+<p>首先到 <a href="https://discordapp.com/developers/applications/" target="_blank" rel="noopener">Discord Developer</a> 建立機器人。（需登入）</p>
+<h3 id="1-新增-APP">1. 新增 APP</h3>
+<p>進入網頁後，點擊按鈕 New Application。<br>
+<img src="/images/dc-bot/01/01.jpg" srcset="/img/loading.gif" alt></p>
+<h3 id="2-設定-APP-名稱">2. 設定 APP 名稱</h3>
+<p><img src="/images/dc-bot/01/02.jpg" srcset="/img/loading.gif" alt></p>
+<p>提醒一下，APP名稱會出現在這邊：<br>
+<img src="/images/dc-bot/01/02-1.jpg" srcset="/img/loading.gif" alt></p>
+<h3 id="3-點選左邊的-Bot">3. 點選左邊的 Bot</h3>
+<p><img src="/images/dc-bot/01/03.jpg" srcset="/img/loading.gif" alt></p>
+<h3 id="4-新增-Bot">4. 新增 Bot</h3>
+<p>點擊 Add Bot。<br>
+<img src="/images/dc-bot/01/04.jpg" srcset="/img/loading.gif" alt></p>
+<p>Bot 新增後可以更改它的 USERNAME、ICON（頭貼），修改完畢後記得儲存。<br>
+<img src="/images/dc-bot/01/05.jpg" srcset="/img/loading.gif" alt></p>
+<p>這裡的 Token 指的是機器人的秘鑰，編寫程式時需要加入這串 token。<br>
+<strong>切忌不要將 token 洩漏出去</strong>，因為擁有 token 的人可以操控這隻 bot。<br>
+<code>我曾經不小心把 token 上傳到 Github 上面過（當時還沒有開放私有庫），結果不到短短的一小時就被盜用，那時候整個 DC 群組的人都收到了廣告訊息 ... XD</code><br>
+如果 token 不小心洩漏，可以點擊 <strong>Regenerate</strong> 重新產生 token。<br>
+<img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" alt></p>
+<h3 id="5-設定機器人權限">5. 設定機器人權限</h3>
+<p>拉到最下面可以看到 <strong>Bot Permissions</strong>，這裡可以設定機器人的權限。<br>
+勾選完後記得將 PERMISSIONS INTEGER 記錄下來。<br>
+<img src="/images/dc-bot/01/09.jpg" srcset="/img/loading.gif" alt></p>
+<h3 id="6-邀請機器人至伺服器">6. 邀請機器人至伺服器</h3>
+<p>回到 General Information，複製 APP 的 CLIENT ID。<br>
+<img src="/images/dc-bot/01/07.jpg" srcset="/img/loading.gif" alt></p>
+<p>邀請 url 的格式如下，將剛才複製的 CLIENT ID 與 PERMISSIONS INTEGER 替換即可：<br>
+<code>https://discordapp.com/oauth2/authorize?&amp;client_id=CLIENT_ID&amp;scope=bot&amp;permissions=PERMISSIONS_INTEGER</code><br>
+範例如下：<br>
+<a href="https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8" target="_blank" rel="noopener">https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8</a><br>
+<img src="/images/dc-bot/01/08.jpg" srcset="/img/loading.gif" alt></p>
+<p>機器人進入伺服器後會是離線狀態，這完全是正常的，接下來我們就要用 Node.js 編寫機器人的功能。</p>
+<h2 id="建立基礎環境">建立基礎環境</h2>
+<p>必備：Node.js、編譯器</p>
+<h3 id="1-安裝-Discord-js">1. 安裝 <a href="https://github.com/discordjs/discord.js/" target="_blank" rel="noopener">Discord.js</a></h3>
+<pre><code>$ npm install discord.js
 </code></pre>
-<p>如果只想要提取 1 和 3 的值，只要在左邊陣列的中間部分空一格即可：</p>
-<pre><code class="language-js">const numbers = [1, 2, 3];
-const [num1, , num3] = numbers;
-
-console.log(num1, num3);
-
-/*
-    Output:
-    1
-    3
-*/
-</code></pre>
-<p>也可以使用其餘運算子接下剩下的變數：</p>
-<pre><code class="language-js">const numbers = [1, 2, 3];
-const [num, ...nums] = numbers;
-
-console.log(num, nums);
-
-/* 
-    Output:
-    1
-    [2, 3]
-*/ 
-</code></pre>
-<h1>2. Object Destructuring</h1>
-<pre><code class="language-js">let { name: n, age: a } = {
-    name: 'Blueberry',
-    age: 24
+<h3 id="2-新增-token-json">2. 新增 token.json</h3>
+<pre><code class="language-json">{
+    &quot;token&quot;: &quot;Token&quot;
 }
-
-console.log(n);  // Blueberry
-console.log(a);  // 24
 </code></pre>
-<p>物件解構賦值也同樣可以使用展開運算子：</p>
-<pre><code class="language-js">let { name, ...others } = {
-    name: 'Blueberry',
-    age: 24,
-    color: blue
-}
+<p>Token 在 Bot 頁面複製：<br>
+<img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" alt></p>
+<p><code>※ 如果專案要上傳至 Github，切記將 token.json 加入 .gitignore。</code></p>
+<h3 id="3-新增-discord-js">3. 新增 discord.js</h3>
+<p>於專案中新增 discord.js，這邊我們使用 <a href="https://github.com/discordjs/discord.js/" target="_blank" rel="noopener">Discord.js</a> 的官方範例。</p>
+<pre><code class="language-js">const Discord = require('discord.js');
+const config = require('./token.json');
+const client = new Discord.Client();
 
-console.log(name, others);
+// 連上線時的事件
+client.on('ready', () =&gt; {
+    console.log(`Logged in as ${client.user.tag}!`);
+});
 
-/* 
-    Output: Blueberry
-    Object {
-        age: 24,
-        color: &quot;blue&quot;
+// 當 Bot 接收到訊息時的事件
+client.on('message', msg =&gt; {
+    // 如果訊息的內容是 'ping'
+    if (msg.content === 'ping') {
+        // 則 Bot 回應 'Pong'
+        msg.reply('pong');
     }
-*/
+});
+
+client.login(config.token);
 </code></pre>
+<h3 id="4-運行程式">4. 運行程式</h3>
+<p>讓機器人上線吧！</p>
+<pre><code>$ node discord.js
+</code></pre>
+<p><img src="/images/dc-bot/01/11.jpg" srcset="/img/loading.gif" alt></p>
+<p>測試一下效果：<br>
+<img src="/images/dc-bot/01/10.jpg" srcset="/img/loading.gif" alt></p>
 
             </div>
             <hr>
@@ -235,7 +248,10 @@ console.log(name, others);
                   <span>
                 <i class="iconfont icon-inbox"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Javascript/">Javascript</a>
+                      <a class="hover-with-bg" href="/categories/node-js/">node.js</a>
+                      &nbsp;
+                    
+                      <a class="hover-with-bg" href="/categories/node-js/Discord-Bot/">Discord Bot</a>
                       &nbsp;
                     
                   </span>&nbsp;&nbsp;
@@ -246,9 +262,13 @@ console.log(name, others);
                     
                       <a class="hover-with-bg" href="/tags/Javascript/">Javascript</a>
                     
-                      <a class="hover-with-bg" href="/tags/ES6/">ES6</a>
-                    
                       <a class="hover-with-bg" href="/tags/w3HexSchool/">w3HexSchool</a>
+                    
+                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Discord-js/">Discord.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/DC機器人/">DC機器人</a>
                     
                   </span>
                 
@@ -258,16 +278,11 @@ console.log(name, others);
                 <div class="post-prevnext row">
                   <div class="post-prev col-12 col-md-6">
                     
-                      <a href="/post/ComparisonOperators/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>比較運算子</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-12 col-md-6">
                     
-                      <a href="/post/Flexbox/">
-                        <span>CSS 排版神器 Flexbox</span>
+                      <a href="/post/PTTCrawler/">
+                        <span>使用 Node.js 來爬蟲吧！[PTT 股票板]</span>
                         <i class="fa fa-chevron-right"></i>
                       </a>
                     
@@ -476,7 +491,7 @@ console.log(name, others);
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Destructuring 解構賦值&nbsp;",
+        "【用 JS 寫一個 Discord Bot！】01 建立機器人&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

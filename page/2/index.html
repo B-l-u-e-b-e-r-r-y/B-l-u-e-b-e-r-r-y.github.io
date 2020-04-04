@@ -143,6 +143,66 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/post/BindCallApply/" target="_self">
+          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="使用 bind、call、apply 改變 this 指向的對象" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/BindCallApply/">
+        <p class="h4 index-header">使用 bind、call、apply 改變 this 指向的對象</p>
+      </a>
+
+      <a href="/post/BindCallApply/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">如果想要改變 this 指向的對象，可以透過 bind、call、apply 這三個 method 辦到。
+const obj = {
+    userName: 'Blueberry'
+}
+
+接著 create 一個函式來呼叫 obj 的 userName：
+function callName() {
+    console.log('hello ' + this.userName);
+}
+
+呼叫 callName：
+callName();
+
+/* Output:
+   hello undefined */
+
+因為 callName() 函式中的 this 指向的是 global objec</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Javascript/">Javascript</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Javascript/">Javascript</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/post/ES6variable/" target="_self">
           <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="var、let、const 的區別" class="index-img img-fluid rounded index-thumbnails">
         </a>

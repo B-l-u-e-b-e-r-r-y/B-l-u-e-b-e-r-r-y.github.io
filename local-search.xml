@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>【用 JS 寫一個 Discord Bot！】01 建立機器人</title>
+    <link href="/post/DiscordBot01/"/>
+    <url>/post/DiscordBot01/</url>
+    
+    <content type="html"><![CDATA[<h2 id="創建機器人">創建機器人</h2><p>首先到 <a href="https://discordapp.com/developers/applications/" target="_blank" rel="noopener">Discord Developer</a> 建立機器人。（需登入）</p><h3 id="1-新增-APP">1. 新增 APP</h3><p>進入網頁後，點擊按鈕 New Application。<br><img src="/images/dc-bot/01/01.jpg" srcset="/img/loading.gif" alt></p><h3 id="2-設定-APP-名稱">2. 設定 APP 名稱</h3><p><img src="/images/dc-bot/01/02.jpg" srcset="/img/loading.gif" alt></p><p>提醒一下，APP名稱會出現在這邊：<br><img src="/images/dc-bot/01/02-1.jpg" srcset="/img/loading.gif" alt></p><h3 id="3-點選左邊的-Bot">3. 點選左邊的 Bot</h3><p><img src="/images/dc-bot/01/03.jpg" srcset="/img/loading.gif" alt></p><h3 id="4-新增-Bot">4. 新增 Bot</h3><p>點擊 Add Bot。<br><img src="/images/dc-bot/01/04.jpg" srcset="/img/loading.gif" alt></p><p>Bot 新增後可以更改它的 USERNAME、ICON（頭貼），修改完畢後記得儲存。<br><img src="/images/dc-bot/01/05.jpg" srcset="/img/loading.gif" alt></p><p>這裡的 Token 指的是機器人的秘鑰，編寫程式時需要加入這串 token。<br><strong>切忌不要將 token 洩漏出去</strong>，因為擁有 token 的人可以操控這隻 bot。<br><code>我曾經不小心把 token 上傳到 Github 上面過（當時還沒有開放私有庫），結果不到短短的一小時就被盜用，那時候整個 DC 群組的人都收到了廣告訊息 ... XD</code><br>如果 token 不小心洩漏，可以點擊 <strong>Regenerate</strong> 重新產生 token。<br><img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" alt></p><h3 id="5-設定機器人權限">5. 設定機器人權限</h3><p>拉到最下面可以看到 <strong>Bot Permissions</strong>，這裡可以設定機器人的權限。<br>勾選完後記得將 PERMISSIONS INTEGER 記錄下來。<br><img src="/images/dc-bot/01/09.jpg" srcset="/img/loading.gif" alt></p><h3 id="6-邀請機器人至伺服器">6. 邀請機器人至伺服器</h3><p>回到 General Information，複製 APP 的 CLIENT ID。<br><img src="/images/dc-bot/01/07.jpg" srcset="/img/loading.gif" alt></p><p>邀請 url 的格式如下，將剛才複製的 CLIENT ID 與 PERMISSIONS INTEGER 替換即可：<br><code>https://discordapp.com/oauth2/authorize?&amp;client_id=CLIENT_ID&amp;scope=bot&amp;permissions=PERMISSIONS_INTEGER</code><br>範例如下：<br><a href="https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8" target="_blank" rel="noopener">https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8</a><br><img src="/images/dc-bot/01/08.jpg" srcset="/img/loading.gif" alt></p><p>機器人進入伺服器後會是離線狀態，這完全是正常的，接下來我們就要用 Node.js 編寫機器人的功能。</p><h2 id="建立基礎環境">建立基礎環境</h2><p>必備：Node.js、編譯器</p><h3 id="1-安裝-Discord-js">1. 安裝 <a href="https://github.com/discordjs/discord.js/" target="_blank" rel="noopener">Discord.js</a></h3><pre><code>$ npm install discord.js</code></pre><h3 id="2-新增-token-json">2. 新增 token.json</h3><pre><code class="language-json">{    &quot;token&quot;: &quot;Token&quot;}</code></pre><p>Token 在 Bot 頁面複製：<br><img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" alt></p><p><code>※ 如果專案要上傳至 Github，切記將 token.json 加入 .gitignore。</code></p><h3 id="3-新增-discord-js">3. 新增 discord.js</h3><p>於專案中新增 discord.js，這邊我們使用 <a href="https://github.com/discordjs/discord.js/" target="_blank" rel="noopener">Discord.js</a> 的官方範例。</p><pre><code class="language-js">const Discord = require('discord.js');const config = require('./token.json');const client = new Discord.Client();// 連上線時的事件client.on('ready', () =&gt; {    console.log(`Logged in as ${client.user.tag}!`);});// 當 Bot 接收到訊息時的事件client.on('message', msg =&gt; {    // 如果訊息的內容是 'ping'    if (msg.content === 'ping') {        // 則 Bot 回應 'Pong'        msg.reply('pong');    }});client.login(config.token);</code></pre><h3 id="4-運行程式">4. 運行程式</h3><p>讓機器人上線吧！</p><pre><code>$ node discord.js</code></pre><p><img src="/images/dc-bot/01/11.jpg" srcset="/img/loading.gif" alt></p><p>測試一下效果：<br><img src="/images/dc-bot/01/10.jpg" srcset="/img/loading.gif" alt></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>node.js</category>
+      
+      <category>Discord Bot</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Javascript</tag>
+      
+      <tag>w3HexSchool</tag>
+      
+      <tag>node.js</tag>
+      
+      <tag>Discord.js</tag>
+      
+      <tag>DC機器人</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用 Node.js 來爬蟲吧！[PTT 股票板]</title>
     <link href="/post/PTTCrawler/"/>
     <url>/post/PTTCrawler/</url>
@@ -37,7 +72,7 @@
     <link href="/post/ShallowCopyAndDeepCopy/"/>
     <url>/post/ShallowCopyAndDeepCopy/</url>
     
-    <content type="html"><![CDATA[<h1>前言</h1><p>在寫 JS 的過程中，常常會遇到需要拷貝物件或陣列的情況。<br>然而之後修改拷貝的內容時，發現原本的物件或陣列的屬性也跟著一起改變。<br>好比下面的例子：</p><pre><code class="language-js">const person = {    name: 'Blueberry',    age: '24',    interest: '閱讀'};const copy = person;copy.interest = '泡咖啡';console.log('copy: ', copy);console.log('person: ', person);/** * [Output] * * copy: Object { *     name: 'Blueberry', *     age: '24', *     interest: '泡咖啡' * } * person: Object { *     name: 'Blueberry', *     age: '24', *     interest: '泡咖啡'  // 疑等等？怎麼不是'閱讀'了？ * } */</code></pre><p>為什麼我修改的是 <code>copy</code> 的 interest，卻連 <code>person</code> 的值也一起改了？<br>這就跟 <strong>by value</strong> 與 <strong>by reference</strong> 有關了。</p><h1>by value VS by reference</h1><p>兩者的不同在於<strong>記憶體的位置</strong>，如果是 by value，複製時記憶體位置會是<strong>不同</strong>的，<br>但如果是 by reference，複製時記憶體位置會是<strong>相同</strong>的，下面就來詳細介紹與舉例。</p><h2 id="by-value">by value</h2><pre><code class="language-js">const a = 1;const b = a;a = 2;console.log(a, b);  // 1, 2</code></pre><p>根據上面的範例，<code>a</code> 在記憶體中位於 <code>0x001</code> 位置，複製 a 的 <code>b</code> 在記憶體中位於 <code>0x002</code> 位置。<br><strong>兩者位於不同的記憶體位置，所以在後續修改時，不會影響到對方。</strong><br>只要是<strong>純值（數字、布林或字串）</strong>，就是 by value。</p><h2 id="by-reference">by reference</h2><pre><code class="language-js">const a = { name: 'Blueberry' };const b = a;a.name = 'Strawberry';console.log('a: ', a);console.log('b: ', b);/** * [Output] * * a: Object { *     name: &quot;Strawberry&quot; * } * b: Object { *     name: &quot;Strawberry&quot; * } */ </code></pre><p>根據上面的範例，a 在記憶體中位於 <code>0x001</code> 位置，複製 a 的 b 在記憶體中也位於 <code>0x001</code> 位置。沒有新的物件產生，也沒有物件的拷貝被創造。<br><strong>兩者位於相同的記憶體位置，可以說 a 其實就是 b，只是換個名字而已，所以在後續修改時，會影響到對方。</strong><br>只要是<strong>物件（陣列、物件或函式）</strong>，就是 by reference。<br>如果不希望修改時會影響到對方，就必須得使用<strong>淺拷貝</strong>或<strong>深拷貝</strong>去複製。</p><h1>淺拷貝 VS 深拷貝</h1><p>兩者的差異在於，<strong>淺拷貝</strong>只能複製第一層，無法深層複製第二層、第三層…等等，如果更改了第二層以後的內容，一樣會影響到原本的物件，因為第二層以後的記憶體位置與原本物件的記憶體位置還是相同的。<strong>但如果需要拷貝的物件只有一層，用淺拷貝還是可以的。</strong><br>而<strong>深拷貝</strong>就不只了，它能深層複製第一層乃至最內層。<strong>不論修改的是哪一層，都不會被影響，因為它的每一層與原物件都是不同的記憶體位置。</strong></p><p>下面就來介紹淺拷貝與深拷貝的用法。</p><h2 id="淺拷貝">淺拷貝</h2><h3 id="Object-assign">Object.assign()</h3><pre><code class="language-js">const person = {    name: 'Blueberry',    interest: ['閱讀', '玩遊戲']};const copy = Object.assign({}, person);copy.name = 'Strawberry';copy.interest[0] = '泡咖啡';console.log('copy: ', copy);console.log('person: ', person);/** * [Output] * * copy: Object { *     name: 'Strawberry', *     interest: ['泡咖啡', '玩遊戲'] * } * person: Object { *     name: 'Blueberry', *     interest: ['泡咖啡', '玩遊戲'] * } */</code></pre><p>這裡可以看到 <code>copy</code> 的第二層（<code>interest: ['閱讀', '玩遊戲']</code>）被修改了，結果連原本的 <code>person</code> 也一起變成 <code>泡咖啡</code>，因為 <code>copy</code> 的第二層仍是指向與原物件相同的記憶體位置。<br>但是 <code>name</code> 這個值就不同了，<code>copy</code> 的第一層是有被淺層拷貝成功的。</p><h3 id="for-迴圈">for 迴圈</h3><p>for 迴圈是最土法煉鋼的方法，它也能達到淺拷貝的效果。</p><pre><code class="language-js">const a = [1, 2, 3];const b = [];for (let i = 0; i &lt; a.length; i++) {  b.push(a[i]);}b.push(4);console.log(a);console.log(b);/** * [Output] * * [1, 2, 3] * [1, 2, 3, 4] */</code></pre><h3 id="展開運算子">展開運算子</h3><p><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/SpreadAndRestOperator/" target="_blank" rel="noopener">展開運算子</a>是 ES6 新出的方法，應該是最方便的寫法了。</p><pre><code class="language-js">const a = [1, 2, 3];const b = [ ...a ];b.push(4);console.log(a);console.log(b);/** * [Output] * * [1, 2, 3] * [1, 2, 3, 4] */</code></pre><h2 id="深拷貝">深拷貝</h2><p>在不使用其他套件的情況下，目前 Javascript 的深拷貝只有 <code>JSON.parse()</code> + <code>JSON.stringify()</code> 的寫法。</p><h3 id="JSON-parse-JSON-stringify">JSON.parse(JSON.stringify())</h3><pre><code class="language-js">const person = {    name: 'Blueberry',    interest: ['閱讀', '玩遊戲']};const copy = JSON.parse(JSON.stringify(person)));copy.name = 'Strawberry';copy.interest[0] = '泡咖啡';console.log('copy: ', copy);console.log('person: ', person);/** * [Output] * * copy: Object { *     name: 'Strawberry', *     interest: ['泡咖啡', '玩遊戲'] * } * person: Object { *     name: 'Blueberry', *     interest: ['閱讀', '玩遊戲'] * } */</code></pre>]]></content>
+    <content type="html"><![CDATA[<h1>前言</h1><p>在寫 JS 的過程中，常常會遇到需要拷貝物件或陣列的情況。<br>然而之後修改拷貝的內容時，發現原本的物件或陣列的屬性也跟著一起改變。<br>好比下面的例子：</p><pre><code class="language-js">const person = {    name: 'Blueberry',    age: '24',    interest: '閱讀'};const copy = person;copy.interest = '泡咖啡';console.log('copy: ', copy);console.log('person: ', person);/** * [Output] * * copy: Object { *     name: 'Blueberry', *     age: '24', *     interest: '泡咖啡' * } * person: Object { *     name: 'Blueberry', *     age: '24', *     interest: '泡咖啡'  // 疑等等？怎麼不是'閱讀'了？ * } */</code></pre><p>為什麼我修改的是 <code>copy</code> 的 interest，卻連 <code>person</code> 的值也一起改了？<br>這就跟 <strong>by value</strong> 與 <strong>by reference</strong> 有關了。</p><h1>by value VS by reference</h1><p>兩者的不同在於<strong>記憶體的位置</strong>，如果是 by value，複製時記憶體位置會是<strong>不同</strong>的，<br>但如果是 by reference，複製時記憶體位置會是<strong>相同</strong>的，下面就來詳細介紹與舉例。</p><h2 id="by-value">by value</h2><pre><code class="language-js">const a = 1;const b = a;a = 2;console.log(a, b);  // 1, 2</code></pre><p>根據上面的範例，<code>a</code> 在記憶體中位於 <code>0x001</code> 位置，複製 a 的 <code>b</code> 在記憶體中位於 <code>0x002</code> 位置。<br><strong>兩者位於不同的記憶體位置，所以在後續修改時，不會影響到對方。</strong><br>只要是<strong>純值（數字、布林或字串）</strong>，就是 by value。</p><h2 id="by-reference">by reference</h2><pre><code class="language-js">const a = { name: 'Blueberry' };const b = a;a.name = 'Strawberry';console.log('a: ', a);console.log('b: ', b);/** * [Output] * * a: Object { *     name: &quot;Strawberry&quot; * } * b: Object { *     name: &quot;Strawberry&quot; * } */ </code></pre><p>根據上面的範例，a 在記憶體中位於 <code>0x001</code> 位置，複製 a 的 b 在記憶體中也位於 <code>0x001</code> 位置。沒有新的物件產生，也沒有物件的拷貝被創造。<br><strong>兩者位於相同的記憶體位置，可以說 a 其實就是 b，只是換個名字而已，所以在後續修改時，會影響到對方。</strong><br>只要是<strong>物件（陣列、物件或函式）</strong>，就是 by reference。<br>如果不希望修改時會影響到對方，就必須得使用<strong>淺拷貝</strong>或<strong>深拷貝</strong>去複製。</p><h1>淺拷貝 VS 深拷貝</h1><p>兩者的差異在於，<strong>淺拷貝</strong>只能複製第一層，無法深層複製第二層、第三層…等等，如果更改了第二層以後的內容，一樣會影響到原本的物件，因為第二層以後的記憶體位置與原本物件的記憶體位置還是相同的。<strong>但如果需要拷貝的物件只有一層，用淺拷貝還是可以的。</strong><br>而<strong>深拷貝</strong>就不只了，它能深層複製第一層乃至最內層。<strong>不論修改的是哪一層，都不會被影響，因為它的每一層與原物件都是不同的記憶體位置。</strong></p><p>下面就來介紹淺拷貝與深拷貝的用法。</p><h2 id="淺拷貝">淺拷貝</h2><h3 id="Object-assign">Object.assign()</h3><pre><code class="language-js">const person = {    name: 'Blueberry',    interest: ['閱讀', '玩遊戲']};const copy = Object.assign({}, person);copy.name = 'Strawberry';copy.interest[0] = '泡咖啡';console.log('copy: ', copy);console.log('person: ', person);/** * [Output] * * copy: Object { *     name: 'Strawberry', *     interest: ['泡咖啡', '玩遊戲'] * } * person: Object { *     name: 'Blueberry', *     interest: ['泡咖啡', '玩遊戲'] * } */</code></pre><p>這裡可以看到 <code>copy</code> 的第二層（<code>interest: ['閱讀', '玩遊戲']</code>）被修改了，結果連原本的 <code>person</code> 也一起變成 <code>泡咖啡</code>，因為 <code>copy</code> 的第二層仍是指向與原物件相同的記憶體位置。<br>但是 <code>name</code> 這個值就不同了，<code>copy</code> 的第一層是有被淺層拷貝成功的。</p><h3 id="for-迴圈">for 迴圈</h3><p>for 迴圈是最土法煉鋼的方法，它也能達到淺拷貝的效果。</p><pre><code class="language-js">const a = [1, 2, 3];const b = [];for (let i = 0; i &lt; a.length; i++) {  b.push(a[i]);}b.push(4);console.log(a);console.log(b);/** * [Output] * * [1, 2, 3] * [1, 2, 3, 4] */</code></pre><h3 id="展開運算子">展開運算子</h3><p><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/SpreadAndRestOperator/">展開運算子</a>是 ES6 新出的方法，應該是最方便的寫法了。</p><pre><code class="language-js">const a = [1, 2, 3];const b = [ ...a ];b.push(4);console.log(a);console.log(b);/** * [Output] * * [1, 2, 3] * [1, 2, 3, 4] */</code></pre><h2 id="深拷貝">深拷貝</h2><p>在不使用其他套件的情況下，目前 Javascript 的深拷貝只有 <code>JSON.parse()</code> + <code>JSON.stringify()</code> 的寫法。</p><h3 id="JSON-parse-JSON-stringify">JSON.parse(JSON.stringify())</h3><pre><code class="language-js">const person = {    name: 'Blueberry',    interest: ['閱讀', '玩遊戲']};const copy = JSON.parse(JSON.stringify(person)));copy.name = 'Strawberry';copy.interest[0] = '泡咖啡';console.log('copy: ', copy);console.log('person: ', person);/** * [Output] * * copy: Object { *     name: 'Strawberry', *     interest: ['泡咖啡', '玩遊戲'] * } * person: Object { *     name: 'Blueberry', *     interest: ['閱讀', '玩遊戲'] * } */</code></pre>]]></content>
     
     
     <categories>
@@ -78,9 +113,9 @@
       
       <tag>Javascript</tag>
       
-      <tag>w3HexSchool</tag>
-      
       <tag>ES6</tag>
+      
+      <tag>w3HexSchool</tag>
       
     </tags>
     
@@ -161,9 +196,9 @@
       
       <tag>Javascript</tag>
       
-      <tag>w3HexSchool</tag>
-      
       <tag>ES6</tag>
+      
+      <tag>w3HexSchool</tag>
       
     </tags>
     
