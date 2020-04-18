@@ -17,7 +17,7 @@
   <meta name="description" content="前端、後端、UI 設計筆記">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
-  <title>標籤 - 被討厭的勇氣 - 一顆藍莓</title>
+  <title>標籤 - Javascript - 一顆藍莓</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -140,14 +140,26 @@
   
     
       
-      <p class="h5">2020</p>
+      <p class="h5">2019</p>
     
-    <a href="/post/Book01/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">《被討厭的勇氣》重點摘錄</span>
-      <span style="float: right;">04-11</span>
+    <a href="/post/ES6variable/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">var、let、const 的區別</span>
+      <span style="float: right;">11-27</span>
     </a>
   
 </div>
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/tags/Javascript/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/tags/Javascript/">1</a><span class="page-number current">2</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
@@ -273,7 +285,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "標籤 - 被討厭的勇氣&nbsp;",
+        "標籤 - Javascript&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

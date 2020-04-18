@@ -17,7 +17,7 @@
   <meta name="description" content="前端、後端、UI 設計筆記">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
-  <title>【用 JS 寫一個 Discord Bot！】01 建立機器人 - 一顆藍莓</title>
+  <title>Javascript 設計模式 - 單例模式 - 一顆藍莓</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -105,7 +105,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/images/dc_banner.jpg') no-repeat center center;
+         style="background: url('/images/js_banner.jpeg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -118,7 +118,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期六, 四月 4日 2020, 6:00 晚上
+                  星期六, 四月 18日 2020, 8:53 晚上
                 </p>
               
 
@@ -127,7 +127,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    553 字
+                    1.7k 字
                   </span>
                 
 
@@ -135,7 +135,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      2 分鐘
+                      7 分鐘
                   </span>
                 
 
@@ -163,82 +163,315 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <h2 id="創建機器人">創建機器人</h2>
-<p>首先到 <a href="https://discordapp.com/developers/applications/" target="_blank" rel="noopener">Discord Developer</a> 建立機器人。（需登入）</p>
-<h3 id="1-新增-APP">1. 新增 APP</h3>
-<p>進入網頁後，點擊按鈕 New Application。<br>
-<img src="/images/dc-bot/01/01.jpg" srcset="/img/loading.gif" alt></p>
-<h3 id="2-設定-APP-名稱">2. 設定 APP 名稱</h3>
-<p><img src="/images/dc-bot/01/02.jpg" srcset="/img/loading.gif" alt></p>
-<p>提醒一下，APP名稱會出現在這邊：<br>
-<img src="/images/dc-bot/01/02-1.jpg" srcset="/img/loading.gif" alt></p>
-<h3 id="3-點選左邊的-Bot">3. 點選左邊的 Bot</h3>
-<p><img src="/images/dc-bot/01/03.jpg" srcset="/img/loading.gif" alt></p>
-<h3 id="4-新增-Bot">4. 新增 Bot</h3>
-<p>點擊 Add Bot。<br>
-<img src="/images/dc-bot/01/04.jpg" srcset="/img/loading.gif" alt></p>
-<p>Bot 新增後可以更改它的 USERNAME、ICON（頭貼），修改完畢後記得儲存。<br>
-<img src="/images/dc-bot/01/05.jpg" srcset="/img/loading.gif" alt></p>
-<p>這裡的 Token 指的是機器人的秘鑰，編寫程式時需要加入這串 token。<br>
-<strong>切忌不要將 token 洩漏出去</strong>，因為擁有 token 的人可以操控這隻 bot。<br>
-<code>我曾經不小心把 token 上傳到 Github 上面過（當時還沒有開放私有庫），結果不到短短的一小時就被盜用，那時候整個 DC 群組的人都收到了廣告訊息 ... XD</code><br>
-如果 token 不小心洩漏，可以點擊 <strong>Regenerate</strong> 重新產生 token。<br>
-<img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" alt></p>
-<h3 id="5-設定機器人權限">5. 設定機器人權限</h3>
-<p>拉到最下面可以看到 <strong>Bot Permissions</strong>，這裡可以設定機器人的權限。<br>
-勾選完後記得將 PERMISSIONS INTEGER 記錄下來。<br>
-<img src="/images/dc-bot/01/09.jpg" srcset="/img/loading.gif" alt></p>
-<h3 id="6-邀請機器人至伺服器">6. 邀請機器人至伺服器</h3>
-<p>回到 General Information，複製 APP 的 CLIENT ID。<br>
-<img src="/images/dc-bot/01/07.jpg" srcset="/img/loading.gif" alt></p>
-<p>邀請 url 的格式如下，將剛才複製的 CLIENT ID 與 PERMISSIONS INTEGER 替換即可：<br>
-<code>https://discordapp.com/oauth2/authorize?&amp;client_id=CLIENT_ID&amp;scope=bot&amp;permissions=PERMISSIONS_INTEGER</code><br>
-範例如下：<br>
-<a href="https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8" target="_blank" rel="noopener">https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8</a><br>
-<img src="/images/dc-bot/01/08.jpg" srcset="/img/loading.gif" alt></p>
-<p>機器人進入伺服器後會是離線狀態，這完全是正常的，接下來我們就要用 Node.js 編寫機器人的功能。</p>
-<h2 id="建立基礎環境">建立基礎環境</h2>
-<p>必備：Node.js、編譯器</p>
-<h3 id="1-安裝-Discord-js">1. 安裝 <a href="https://github.com/discordjs/discord.js/" target="_blank" rel="noopener">Discord.js</a></h3>
-<pre><code>$ npm install discord.js
-</code></pre>
-<h3 id="2-新增-token-json">2. 新增 token.json</h3>
-<pre><code class="language-json">{
-    &quot;token&quot;: &quot;Token&quot;
+              <h1>前言</h1>
+<p>本篇內容是我閱讀《<a href="https://www.books.com.tw/products/0010687594" target="_blank" rel="noopener">JavaScript設計模式與開發實踐</a>》的筆記，這些程式碼會牽涉到一些觀念，如閉包、物件導向、原型鍊等，如果有不懂的地方可以詢問 Google 大神，這邊會比較著重在講解與實作設計模式的部分。</p>
+<h1>單例模式</h1>
+<p>單例模式是確保物件只建立一次的設計模式，好處是能減少不必要的內存，它的原則是<strong>保證一個類別僅有一個實例，並提供一個存取它的全域存取點</strong>，透過一個變數來記錄類別有沒有建立過物件，如果沒有被建立過，則建立物件並且返回；如果已建立過，則返回已建立的物件。<br>
+以前端開發者的角度來看，它適合用來實作按鈕點擊後的彈出式視窗，不論點擊多少次按鈕，這個彈出式視窗永遠只會被建立一次。</p>
+<h2 id="不透明的單例模式">不透明的單例模式</h2>
+<h3 id="ES5">ES5</h3>
+<pre><code class="language-js">const Singleton = function(name) {
+    this.name = name;
+    this.instance = null;
+}
+
+Singleton.getInstance = function(name) {
+    if (!this.instance) {
+        this.instance = new Singleton(name);
+    }
+    return this.instance;
 }
 </code></pre>
-<p>Token 在 Bot 頁面複製：<br>
-<img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" alt></p>
-<p><code>※ 如果專案要上傳至 Github，切記將 token.json 加入 .gitignore。</code></p>
-<h3 id="3-新增-discord-js">3. 新增 discord.js</h3>
-<p>於專案中新增 discord.js，這邊我們使用 <a href="https://github.com/discordjs/discord.js/" target="_blank" rel="noopener">Discord.js</a> 的官方範例。</p>
-<pre><code class="language-js">const Discord = require('discord.js');
-const config = require('./token.json');
-const client = new Discord.Client();
-
-// 連上線時的事件
-client.on('ready', () =&gt; {
-    console.log(`Logged in as ${client.user.tag}!`);
-});
-
-// 當 Bot 接收到訊息時的事件
-client.on('message', msg =&gt; {
-    // 如果訊息的內容是 'ping'
-    if (msg.content === 'ping') {
-        // 則 Bot 回應 'Pong'
-        msg.reply('pong');
+<h3 id="ES6">ES6</h3>
+<pre><code class="language-js">class Singleton {
+    constructor(name) {
+        this.name = name;
     }
-});
+        
+    static getInstance(name) {
+        if (!this.instance) {
+            this.instance = new Singleton(name);
+        }
+        return this.instance;
+    }
+}
+</code></pre>
+<p>如果要驗證這個單例有沒有成功，可以這樣寫：</p>
+<pre><code class="language-js">const a = Singleton.getInstance('a');
+const b = Singleton.getInstance('b');
+console.log(a === b);  // true
+</code></pre>
+<p>不同於以往的 <code>new XXX()</code> 方式，上面的例子透過 <code>Singleton.getInstance</code> 來獲得 Singleton 類別的唯一物件，但這樣的寫法增加了這個類別的「不透明性」，使用者必須知道這是一個單例類別才行。</p>
+<h2 id="透明的單例模式">透明的單例模式</h2>
+<p>一個透明的單例，使用者可以像使用其他任何普通類別一樣，能透過 <code>new XXX()</code> 來獲得物件。下面的例子使用 CreateDiv 的單例類別來建立唯一的 div 節點，這個例子使用閉包來保存 <code>instance</code> 變數。</p>
+<h3 id="ES5-2">ES5</h3>
+<pre><code class="language-js">const CreateDiv = (function() {
+    let instance;
+    const createDiv = function(html) {
+        if (instance) {
+            return instance;
+        }
+        
+        this.html = html;
+        this.init();
+        return instance = this;
+    }
+        
+    createDiv.prototype.init = function() {
+        const div = document.createElement('div');
+        div.innerHTML = this.html;
+        document.body.appendChild(div);
+    }
+        
+    return createDiv;
+})();
 
-client.login(config.token);
+const a = new CreateDiv('a');
+const b = new CreateDiv('b');
+console.log(a === b);  // true
 </code></pre>
-<h3 id="4-運行程式">4. 運行程式</h3>
-<p>讓機器人上線吧！</p>
-<pre><code>$ node discord.js
+<h3 id="ES6-2">ES6</h3>
+<pre><code class="language-js">class CreateDiv {
+    constructor(html) {
+        if (!CreateDiv.instance) {
+            this.html = html;
+            this.init();
+            CreateDiv.instance = this;
+        }
+
+        return CreateDiv.instance;
+    }
+        
+    init() {
+        const div = document.createElement('div');
+        div.innerHTML = this.html;
+        document.body.appendChild(div);
+    }
+}
+
+const a = new CreateDiv('a');
+const b = new CreateDiv('b');
+console.log(a === b);  // true
 </code></pre>
-<p><img src="/images/dc-bot/01/11.jpg" srcset="/img/loading.gif" alt></p>
-<p>測試一下效果：<br>
-<img src="/images/dc-bot/01/10.jpg" srcset="/img/loading.gif" alt></p>
+<p>這段程式碼其實沒有什麼問題，但在 createDiv 這個匿名函數裡同時做了兩件事：管理單例及建立 div，根據<a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E4%B8%80%E5%8A%9F%E8%83%BD%E5%8E%9F%E5%88%99" target="_blank" rel="noopener">單一職責原則</a>這樣的代碼應該盡量避免。所以後面會使用<a href="https://zh.wikipedia.org/wiki/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">代理模式</a>來改善這段代碼。</p>
+<h2 id="用代理模式實作單例">用代理模式實作單例</h2>
+<p>這裡把管理單例的邏輯移到代理類別 proxySingleCreateDiv，和建立 div 的邏輯分開，這樣的代碼符合了單一職責原則，也更具可讀性。</p>
+<h3 id="ES5-3">ES5</h3>
+<pre><code class="language-js">const CreateDiv = function(html) {
+    this.html = html;
+    this.init();
+}
+
+CreateDiv.prototype.init = function() {
+    const div = document.createElement('div');
+    div.innerHTML = this.html;
+    document.body.appendChild(div);
+}
+
+const proxySingleCreateDiv = (function() {
+    let instance;
+    return function(html) {
+        if (!instance) {
+            instance = new CreateDiv(html);
+        }
+        return instance;
+    }
+})();
+
+const a = new proxySingleCreateDiv('a');
+const b = new proxySingleCreateDiv('b');
+console.log(a === b);  // true
+</code></pre>
+<h3 id="ES6-3">ES6</h3>
+<pre><code class="language-js">class CreateDiv {
+    constructor(html) {
+        this.html = html;
+        this.init();
+    }
+        
+    init() {
+        const div = document.createElement('div');
+        div.innerHTML = this.html;
+        document.body.appendChild(div);
+    }
+}
+
+class proxySingleCreateDiv {
+    constructor(html) {
+        if (!proxySingleCreateDiv.instance) {
+            proxySingleCreateDiv.instance = new CreateDiv(html);
+        }
+        return proxySingleCreateDiv.instance;
+    }
+}
+
+const a = new proxySingleCreateDiv('a');
+const b = new proxySingleCreateDiv('b');
+console.log(a === b);  // true
+</code></pre>
+<h2 id="惰性單例">惰性單例</h2>
+<p>惰性單例是指在需要時才建立物件，<a href="#%E4%B8%8D%E9%80%8F%E6%98%8E%E7%9A%84%E5%96%AE%E4%BE%8B%E6%A8%A1%E5%BC%8F">這個例子</a>其實就是使用惰性單例，當我們呼叫 <code>Singleton.getInstance()</code> 才建立單例，而非頁面載入時就建立好單例。<br>
+接著我們會使用全域變數結合惰性單例，實作彈出式視窗。</p>
+<h1>JavaScript 的單例模式</h1>
+<p>其實在 Javascript 中，基於「類別」的傳統單例模式並不適用，Javascript 其實是一門無類別的語言，所以開發者常會將全域變數作為單例使用，例如：</p>
+<pre><code class="language-js">const a = {};
+</code></pre>
+<p>它能滿足單例的兩個條件：確保只有一個實例，又能提供全域存取。但使用全域變數容易造成命名空間汙染，也可能在開發的過程中不小心被覆蓋。要解決這個問題，可以使用命名空間或閉包封裝私有變數。</p>
+<h3 id="命名空間">命名空間</h3>
+<p>使用命名空間的好處是能降低全域變數的需求量，將變數都宣告在命名空間裡，避免命名衝突。要建立命名空間，可以直接使用物件字面常數建立，或動態建立命名空間。</p>
+<h4 id="物件字面常數">物件字面常數</h4>
+<pre><code class="language-js">const namespace = {
+    a: function() {
+        // do something
+    },
+    b: function() {
+        // do something
+    }
+}
+</code></pre>
+<h4 id="動態建立命名空間">動態建立命名空間</h4>
+<pre><code class="language-js">const app = {};
+app.namespace = function(name) {
+    const key = name.split('.');
+    let _app = app;
+    for (let i in key) {
+        if ( !_app[key[i]] ) {
+            _app[key[i]] = {};
+        }
+        
+        _app = _app[key[i]];
+    }
+}
+
+app.namespace('event');
+app.namespace('dom.style');
+
+console.log(app);
+/**
+ *  const app = {
+ *      event: {},
+ *      dom: {
+ *          style: {}
+ *      }
+ *  }
+ */
+</code></pre>
+<h3 id="閉包封裝私有變數">閉包封裝私有變數</h3>
+<pre><code class="language-js">const user = (function() {
+    const _name = 'Blueberry';
+    const _age = 24;
+    return {
+        getUserInfo: function() {
+            return _name + '-' + _age;
+        }
+    }
+})();
+
+console.log(user.getUserInfo());  // Blueberry 24
+</code></pre>
+<h2 id="實作彈出式視窗">實作彈出式視窗</h2>
+<p>下面我們會實作一個彈出式視窗的惰性單例，按下「登入」按鈕時，彈出式視窗才會被建立。</p>
+<h3 id="html">html</h3>
+<pre><code class="language-html">&lt;button id=&quot;loginBtn&quot;&gt;登入&lt;/button&gt;
+</code></pre>
+<h3 id="css">css</h3>
+<pre><code class="language-css">.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 30px;
+    border: solid 1px black;
+}
+</code></pre>
+<h3 id="Javascript">Javascript</h3>
+<pre><code class="language-js">const createLoginLayer = (function() {
+    let div;
+    return function() {
+        if (!div) {
+            div = document.createElement('div');
+            div.innerHTML = '我是彈出式視窗';
+            div.className = 'login';
+            div.style.display = 'none';
+            document.body.appendChild(div);
+        }
+
+        return div;
+    }
+})();
+
+document.getElementById('loginBtn').onclick = function() {
+    const loginLayer = createLoginLayer();
+    loginLayer.style.display = 'block';
+};
+</code></pre>
+<p>但是這個惰性單例還不夠好，<code>createLoginLayer</code> 物件違反了單一職責原則，它同時做了管理單例和建立彈出式視窗兩個動作。如果下次要建立的不是 div，而是一個 button，這段程式碼又要再重新抄一遍：</p>
+<pre><code class="language-js">const createButton = (function() {
+    let button;
+    return function() {
+        if (!button) {
+            button = document.createElement('button');
+            button.innerHTML = '我是按鈕';
+            button.style.display = 'none';
+            document.body.appendChild(button);
+        }
+        return button;
+    }
+})();
+</code></pre>
+<p>所以我們將管理單例和建立彈出式視窗的邏輯分開，將管理單例的邏輯移到 <code>getSingle</code>，<code>createLoginLayer</code> 單純放建立視窗的邏輯就好。</p>
+<pre><code class="language-js">const createLoginLayer = function() {
+    const div = document.createElement('div');
+    div.innerHTML = '我是彈出式視窗';
+    div.className = 'login';
+    div.style.display = 'none';
+    document.body.appendChild(div);
+    return div;
+};
+
+const getSingle = function(fn) {
+    let result;
+    return function() {
+        if (!result) {
+            result = fn.apply(this);
+        }
+        return result;
+    }
+}
+
+const createSingleLoginLayer = getSingle(createLoginLayer);
+
+document.getElementById('loginBtn').onclick = function() {
+    const loginLayer = createSingleLoginLayer();
+    loginLayer.style.display = 'block';
+};
+</code></pre>
+<p>如此一來，要把建立彈出式視窗換成建立按鈕就簡單多了，不必動到管理單例的部分。</p>
+<pre><code class="language-js">const createButton = function() {
+    const button = document.createElement('button');
+    button.innerHTML = '我是按鈕';
+    button.style.display = 'none';
+    document.body.appendChild(button);
+    return button;
+};
+
+const getSingle = function(fn) {
+    let result;
+    return function() {
+        if (!result) {
+            result = fn.apply(this);
+        }
+        return result;
+    }
+}
+
+const createSingleButton = getSingle(createButton);
+
+document.getElementById('loginBtn').onclick = function() {
+    const buttonLayer = createSingleButton();
+    buttonLayer.style.display = 'block';
+};
+</code></pre>
 
             </div>
             <hr>
@@ -248,10 +481,10 @@ client.login(config.token);
                   <span>
                 <i class="iconfont icon-inbox"></i>
                     
-                      <a class="hover-with-bg" href="/categories/node-js/">node.js</a>
+                      <a class="hover-with-bg" href="/categories/Javascript/">Javascript</a>
                       &nbsp;
                     
-                      <a class="hover-with-bg" href="/categories/node-js/Discord-Bot/">Discord Bot</a>
+                      <a class="hover-with-bg" href="/categories/Javascript/Design-Pattern/">Design Pattern</a>
                       &nbsp;
                     
                   </span>&nbsp;&nbsp;
@@ -264,11 +497,7 @@ client.login(config.token);
                     
                       <a class="hover-with-bg" href="/tags/w3HexSchool/">w3HexSchool</a>
                     
-                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Discord-js/">Discord.js</a>
-                    
-                      <a class="hover-with-bg" href="/tags/DC機器人/">DC機器人</a>
+                      <a class="hover-with-bg" href="/tags/Design-Pattern/">Design Pattern</a>
                     
                   </span>
                 
@@ -278,16 +507,11 @@ client.login(config.token);
                 <div class="post-prevnext row">
                   <div class="post-prev col-12 col-md-6">
                     
-                      <a href="/post/Book01/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>《被討厭的勇氣》重點摘錄</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-12 col-md-6">
                     
-                      <a href="/post/PTTCrawler/">
-                        <span>使用 Node.js 來爬蟲吧！[PTT 股票板]</span>
+                      <a href="/post/Book01/">
+                        <span>《被討厭的勇氣》重點摘錄</span>
                         <i class="fa fa-chevron-right"></i>
                       </a>
                     
@@ -496,7 +720,7 @@ client.login(config.token);
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "【用 JS 寫一個 Discord Bot！】01 建立機器人&nbsp;",
+        "Javascript 設計模式 - 單例模式&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
