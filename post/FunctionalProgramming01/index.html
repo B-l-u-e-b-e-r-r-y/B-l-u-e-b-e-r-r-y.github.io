@@ -17,7 +17,7 @@
   <meta name="description" content="前端、後端、UI 設計筆記">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
-  <title>Javascript 原型鍊（Prototype Chain） - 一顆藍莓</title>
+  <title>Functional Programming 初級入門 - 一顆藍莓</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -118,7 +118,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期六, 四月 25日 2020, 11:08 晚上
+                  星期六, 五月 2日 2020, 12:00 凌晨
                 </p>
               
 
@@ -127,7 +127,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    721 字
+                    729 字
                   </span>
                 
 
@@ -135,7 +135,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      2 分鐘
+                      3 分鐘
                   </span>
                 
 
@@ -163,49 +163,100 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <h1>原型繼承</h1>
-<p>不同於 Java 或 C++ 這些基於類別的語言，Javascript 是基於原型（prototype-based）的，ES6 雖然有 <code>class</code> 可以使用，但那只是語法糖而已。</p>
-<p>廣義來說，繼承就是一個物件取用另一個物件的屬性或方法。而 Javascript 的繼承是<strong>原型繼承</strong>，繼承的物件並不會一併將所有屬性及方法複製過來，而是透過<strong>原型鍊</strong>來連結其物件繼承的屬性及方法。</p>
-<p>假設有兩個物件：animal 和 elephant，讓 elephant 繼承 animal，那麼 elephant 就可以使用 animal 的屬性及方法，而 animal 就是 elephant 的原型物件。</p>
-<p>當我們將物件打印出來並且展開，就可以看到 <code>__proto__</code>，它就是原型物件。<br>
-<img src="/images/prototype/04.jpg" srcset="/img/loading.gif" alt></p>
-<h1>原型鍊</h1>
-<p>在原型繼承中有提到<strong>原型鍊</strong>，那它是什麼呢？</p>
-<img src="/images/prototype/01.jpg" srcset="/img/loading.gif" width="60%" height="60%">
-<p>有一個物件名字叫 obj，它的原型是 proto，而 proto 有一個屬性是 Prop2，那我們如果想取用 Prop2，該怎麼寫？</p>
-<p><code>obj.proto.Prop2</code> 嗎？不，不用這麼麻煩。</p>
-<p>直接寫 <code>obj.Prop2</code> 就好。</p>
-<p><strong>當我們想要取用 Prop2 時，Javascript 引擎就會下去找 Prop2 這個屬性，先找 obj 物件內部有沒有這個屬性，如果找不到這個屬性時，它就會往原型物件找（proto），這就是原型鍊。</strong></p>
-<p><strong>看起來 Prop2 和 Prop3 是在主物件 obj 裡，但它們其實是在原型物件中，只是因為原型鍊（Prototype Chain）的關係才能被找到。</strong></p>
-<blockquote>
-<p>記住，別把它和範圍鍊（Scope Chain）搞混了。範圍鍊是用來尋找取用的變數。原型鍊則跟取用物件的屬性或方法有關。</p>
-</blockquote>
-<hr>
-<p>那如果多了一個 obj2 繼承 proto 呢？<br>
-<img src="/images/prototype/02.jpg" srcset="/img/loading.gif" width="60%" height="60%"></p>
-<p>obj 和 obj2 兩個主物件本身並不衝突，但它們繼承的 proto 卻是同一個，在記憶體中的位置也是相同的，因此如果想要取 Prop3 這個屬性，也一樣可以取得到。</p>
-<h1>實作原型鍊（不建議）</h1>
-<p>這裡會寫不建議，是因為 <code>obj.__proto__ = prototype</code> 這個寫法會造成效能問題，這邊會使用到只是為了 Demo，實際 Coding 的時候千萬不要這樣寫。</p>
-<pre><code class="language-js">const person = {
-    firstname: 'Default',
-    lastname: 'Default',
-    getFullName: function() {
-        return this.firstname + ' ' + this.lastname;
-    }
+              <h1>前言</h1>
+<p>最近打算把 Udemy 的這堂<a href="https://www.udemy.com/course/javascriptjs/" target="_blank" rel="noopener">《JavaScript 全攻略：克服 JS 的奇怪部分》</a>補完，才發現裡面有提到 Functional Programming 的觀念，之前就一直想學這塊，今天剛好有這個機會可以入門。</p>
+<p>在堅持鐵人賽的這幾週，漸漸也養成了在週六學習新知的習慣，但也發現一天的時間要包含學習和寫文章有點不太夠，之後希望能把時間管理慢慢做好，多騰出一些平日的時間來學習，邁向一週寫兩篇文的目標前進。</p>
+<h1>什麼是 Functional Programming</h1>
+<p>Functional Programming（以下簡稱 FP）是一種編程範例（Programming paradigm），可以理解為是一種程式設計風格，只有在擁有一級函式（First-class Function）的程式語言中才能實作。</p>
+<h1>實作</h1>
+<p>現在我們有 <code>arr1</code> 和 <code>arr2</code> 兩個陣列。我希望 <code>arr2</code> 陣列內的每個數字是 <code>arr1</code> 的數字 * 2。</p>
+<p>一般我們可能會這樣做：</p>
+<pre><code class="language-js">const arr1 = [1, 2, 3];
+const arr2 = [];
+
+for (let i = 0; i &lt; arr1.length; i++) {
+    arr2.push(arr1[i] * 2);
 }
 
-const blueberry = {
-    firstname: 'Blueberry',
-    lastname: 'Lin'
-}
-
-// 不要這樣寫！只是為了 DEMO
-blueberry.__proto__ = person;
-console.log(blueberry.getFullName());  // Blueberry Lin
-console.log(blueberry.firstname);      // Blueberry
+console.log(arr2);  // [2, 4, 6]
 </code></pre>
-<p>假設我有兩個物件，blueberry 繼承了 person，所以當我想呼叫 <code>blueberry.getFullName()</code> 時，也理所當然可以使用這個方法，因為繼承就是讓一個物件可以使用原型物件的所有屬性和方法。</p>
-<p>但是為什麼 <code>blueberry.firstname</code> 的結果會是 ‘Blueberry’ 而不是原型物件的 ‘Default’？這是因為 Javascript 引擎先在 blueberry 這個主物件中找到了 firstname 屬性，所以就不會繼續往原型鍊尋找。</p>
+<p>為了符合 FP 思維，接下來會將程式碼拆分成可複用的函式。</p>
+<pre><code class="language-js">const mapForEach = (arr, fn) =&gt; {
+    const output = [];
+    for (let i = 0; i &lt; arr.length; i++) {
+        output.push(fn(arr[i]));
+    }
+    return output;
+}
+
+const arr1 = [1, 2, 3];
+const arr2 = mapForEach(arr1, item =&gt; item * 2);
+
+console.log(arr2);  // [2, 4, 6]
+</code></pre>
+<p>但是這樣還不夠，我希望 <code>mapForEach(arr1, item =&gt; item * 2)</code> 的部分可以更彈性。</p>
+<p>下面將 <code>item * 2</code> 的部分，拆分成可以自訂數字的 <code>pastNumber()</code> 函式：</p>
+<pre><code class="language-js">const mapForEach = (arr, fn) =&gt; {
+    const output = [];
+    for (let i = 0; i &lt; arr.length; i++) {
+        output.push(fn(arr[i]));
+    }
+    return output;
+}
+
+const pastNumber = (number, item) =&gt; {
+    return item * number;
+}
+
+const arr1 = [1, 2, 3];
+const arr2 = mapForEach(arr1, pastNumber.bind(this, 2));
+
+console.log(arr2);  // [2, 4, 6]
+</code></pre>
+<p>這一段程式碼我自己看了蠻長一段時間才懂，一直不懂這邊明明只給了 <code>number</code> 的值，<code>item</code> 的值是怎麼取到的。後來想到之前寫的<a href="https://b-l-u-e-b-e-r-r-y.github.io/post/BindCallApply/#function-currying">拆解 bind 程式碼</a>，也用同樣的方式拆解，才理解這段的意思。</p>
+<pre><code class="language-js">const pastNumber = (number, item) =&gt; {
+    return item * number;
+}
+
+const arr2 = mapForEach(arr1, pastNumber.bind(this, 2));
+
+// 等於
+const pastNumber = (item) =&gt; {
+    const number = 2;
+    return item * number;
+}
+
+const arr2 = mapForEach(arr1, pastNumber);
+</code></pre>
+<p>但是每次都要寫 bind 實在很麻煩，有沒有更簡潔的寫法？</p>
+<p>於是把這段 bind 也裝成一個函式，寫法簡潔多了。</p>
+<pre><code class="language-js">const mapForEach = (arr, fn) =&gt; {
+    const output = [];
+    for (let i = 0; i &lt; arr.length; i++) {
+        output.push(fn(arr[i]));
+    }
+    return output;
+}
+
+const pastNumberSimplify = (number) =&gt; {
+    return function (_number, item) {
+        return item * _number;
+    }.bind(this, number);
+}
+
+// 其實就等於
+// const pastNumber = (number, item) =&gt; {
+//     return item * number;
+// }
+// const pastNumberSimplify = (number) =&gt; {
+//     return pastNumber.bind(this, number);
+// }
+
+const arr4 = mapForEach(arr1, pastNumberSimplify(2));  // [2, 4, 6]
+</code></pre>
+<blockquote>
+<p>這篇文變成好像是單純在解讀程式碼 XD，第一次接觸 FP，還寫不出什麼很深入的東西。內容都是跟著課程實作的，可以跟著寫看看，一起來感受 FP 的美好。</p>
+</blockquote>
 <hr>
 <p>參考資料：<br>
 <a href="https://www.udemy.com/course/javascriptjs/" target="_blank" rel="noopener">《JavaScript 全攻略：克服 JS 的奇怪部分》</a></p>
@@ -231,7 +282,7 @@ console.log(blueberry.firstname);      // Blueberry
                     
                       <a class="hover-with-bg" href="/tags/w3HexSchool/">w3HexSchool</a>
                     
-                      <a class="hover-with-bg" href="/tags/Prototype/">Prototype</a>
+                      <a class="hover-with-bg" href="/tags/Functional-Programming/">Functional Programming</a>
                     
                   </span>
                 
@@ -241,16 +292,11 @@ console.log(blueberry.firstname);      // Blueberry
                 <div class="post-prevnext row">
                   <div class="post-prev col-12 col-md-6">
                     
-                      <a href="/post/FunctionalProgramming01/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>Functional Programming 初級入門</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-12 col-md-6">
                     
-                      <a href="/post/JSDesignPattern01/">
-                        <span>Javascript 設計模式 - 單例模式</span>
+                      <a href="/post/Prototype/">
+                        <span>Javascript 原型鍊（Prototype Chain）</span>
                         <i class="fa fa-chevron-right"></i>
                       </a>
                     
@@ -459,7 +505,7 @@ console.log(blueberry.firstname);      // Blueberry
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Javascript 原型鍊（Prototype Chain）&nbsp;",
+        "Functional Programming 初級入門&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

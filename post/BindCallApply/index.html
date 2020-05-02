@@ -127,7 +127,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    309 字
+                    938 字
                   </span>
                 
 
@@ -135,7 +135,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      1 分鐘
+                      4 分鐘
                   </span>
                 
 
@@ -163,75 +163,153 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <p>如果想要改變 this 指向的對象，可以透過 bind、call、apply 這三個 method 辦到。</p>
-<pre><code class="language-js">const obj = {
-    userName: 'Blueberry'
+              <h1>介紹</h1>
+<p>如果想要改變 this 指向的對象，可以透過 bind、call、apply 這三個 method 辦到。</p>
+<pre><code class="language-js">const person = {
+   userName: 'Blueberry'
 }
 </code></pre>
-<p>接著 create 一個函式來呼叫 obj 的 userName：</p>
+<p>接著 create 一個函式來呼叫 person 的 userName：</p>
 <pre><code class="language-js">function callName() {
-    console.log('hello ' + this.userName);
+   console.log('Hello ' + this.userName);
 }
 </code></pre>
 <p>呼叫 callName：</p>
 <pre><code class="language-js">callName();
 
 /* Output:
-   hello undefined */
+   Hello undefined */
 </code></pre>
 <p>因為 callName() 函式中的 this 指向的是 global object（也就是 Window 物件），<br>
-所以這時候我們希望把 callName() 的 this 指向 obj 這個對象，使用以下方法：</p>
-<h2 id="1-bind">1. bind</h2>
+所以這時候我們希望把 callName() 的 this 指向 person 這個對象，可以使用以下方法：</p>
+<h2 id="bind">bind</h2>
 <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank" rel="noopener">MDN</a><br>
 <em>function.bind(thisArg[, arg1[, arg2[, …]]])</em></p>
+<p>bind 和其他兩個方法（call、apply）的不同有兩點：</p>
+<ol>
+<li>bind 是創造一個函式物件的拷貝，不會執行函式，因此 bind 之後還要再另外寫執行函式的動作；<br>
+call、apply 是直接執行函式。</li>
+<li>bind 後面傳入的參數值<strong>會設定為拷貝函式的永久參數值</strong>，之後執行拷貝函式時，無論怎麼給予參數都沒有用；<br>
+call、apply 則是單純給予參數，像一般呼叫函式那樣。</li>
+</ol>
+<p>我們先單純就第一點來說明，示範最基本的 bind 怎麼寫。</p>
 <p>第一種寫法：</p>
-<pre><code class="language-js">callName.bind(obj)();
+<pre><code class="language-js">callName.bind(person)();
 
-// 意即
-// var callFunction = callName.bind(obj);
-// callFunction();
+// 也等於
+// const callFunction = callName.bind(person);  // 創造函式物件的拷貝
+// callFunction();  // 執行函式
 
 /* Output:
-   hello Blueberry */
+   Hello Blueberry */
 </code></pre>
 <p>第二種寫法，直接寫在函式表示式後面也可以：</p>
-<pre><code class="language-js">var callName = function() {
-    console.log('hello ' + this.userName);
-}.bind(obj);
+<pre><code class="language-js">const callName = function() {
+   console.log('Hello ' + this.userName);
+}.bind(person);
 
 callName();
 
 /* Output:
-   hello Blueberry */
+   Hello Blueberry */
 </code></pre>
-<h2 id="2-call">2. call</h2>
-<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener">MDN</a><br>
-<em>function.call(this, arg1, arg2…, argn)</em></p>
-<p>call 除了可以綁定對象給 this 之外，後面還可以直接放入參數。<br>
-我們先來改寫一下 callName()：</p>
-<pre><code class="language-js">function callName(age) {
-    console.log('hello ' + this.userName);
-    console.log('your age is ' + age);
+<p>接下來針對第二點來說明。先來改寫一下 callName 函式，加入兩個 arguments。</p>
+<pre><code class="language-js">function callName(age, interest) {
+   console.log('Hello ' + this.userName);
+   console.log('Your age is ' + age);
+   console.log('Your interest is ' + interest);
 }
 </code></pre>
-<p>多了 age 這個參數可代入，接著來示範 call 怎麼寫：</p>
-<pre><code class="language-js">callName.call(obj, 20);
+<p>接著我們除了要用 bind 將 this 指向 person 之外，還要給予 age 和 interest 這兩個參數。</p>
+<p>這邊有兩種做法：單純給定參數，或綁定永久參數值。</p>
+<h3 id="單純給定參數">單純給定參數</h3>
+<p>要單純給定參數的話，像一般執行函式那樣，在執行函式時再給予參數就可以了。</p>
+<pre><code class="language-js">const callFunction = callName.bind(person);
+callFunction(24, 'Reading books');
 
 /* Output:
-   hello Blueberry
-   your age is 20 */
+   Hello Blueberry
+   Your age is 24
+   Your interest is Reading books */
 </code></pre>
-<h2 id="3-apply">3. apply</h2>
+<h3 id="綁定永久參數值">綁定永久參數值</h3>
+<p>如果將參數放在 bind 中，這個函式拷貝物件的參數值就會永遠被固定住。</p>
+<pre><code class="language-js">const callFunction = callName.bind(person, 24, 'Reading books');
+callFunction(30, 'Playing games');  // 這邊無論再怎麼給參數都沒用
+
+/* Output:
+   Hello Blueberry
+   Your age is 24
+   Your interest is Reading books */
+</code></pre>
+<h2 id="call">call</h2>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener">MDN</a><br>
+<em>function.call(this, arg1, arg2…, argn)</em></p>
+<p>call 和 bind 不同，它會直接執行函式，後面給的參數也不會被固定住。</p>
+<pre><code class="language-js">callName.call(person, 24, 'Reading books');
+
+/* Output:
+   Hello Blueberry
+   Your age is 24
+   Your interest is Reading books */
+</code></pre>
+<h2 id="apply">apply</h2>
 <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="noopener">MDN</a><br>
 <em>function.apply(this, [arg1, arg2…, argn])</em></p>
 <p>apply 的寫法跟 call 很相近，與 call 不同的是，<br>
 後面的參數需要使用陣列傳遞，適合搭配 arguments 運用在算數的函式。</p>
-<pre><code class="language-js">callName.apply(obj, [20]);
+<pre><code class="language-js">callName.apply(person, [24, 'Reading books']);
 
 /* Output:
-   hello Blueberry
-   your age is 20 */
+   Hello Blueberry
+   Your age is 24
+   Your interest is Reading books */
 </code></pre>
+<h1>使用情境</h1>
+<h2 id="function-borrowing">function borrowing</h2>
+<p>function borrowing 就是借別人函式中的方法來用的意思，下面示範 somebody 借用 person 的 getUserName 方法。</p>
+<pre><code class="language-js">const person = {
+   userName: 'Blueberry',
+   getUserName: function() {
+      console.log(this.userName);
+   }
+}
+
+const somebody = {
+   userName: 'Fan'
+}
+
+person.getUserName.call(somebody);  // Fan
+
+// or
+// person.getUserName.apply(somebody);
+// or
+// const newUser = person.getUserName.bind(somebody);
+// newUser();
+</code></pre>
+<h2 id="function-currying">function currying</h2>
+<p>function currying 的定義為<strong>建立一個函式的拷貝，並設定預設的參數</strong>，這在數學運算下很有用。下面我們就利用 bind 的特性來完成 function currying。</p>
+<pre><code class="language-js">const mutiply = function (a, b) {
+   return a * b;
+}
+
+const mutiplyByTwo = mutiply.bind(this, 2);
+console.log(mutiplyByTwo(4));  // 8
+</code></pre>
+<p>上面我們建立了一個函式 <code>mutiply(a, b)</code>，並用 bind 建立函式物件拷貝 <code>mutiplyByTwo()</code>。</p>
+<p><code>mutiply.bind(this, 2)</code> 這邊的 this 並不重要，因為函式裡沒有使用到 this。而後面的 2 則是永久綁定了參數 a。</p>
+<p>為了讓程式碼比較好理解，這邊將上面那段程式碼拆解，它也等於：</p>
+<pre><code class="language-js">const mutiply = function (b) {
+   const a = 2;
+   return a * b;
+}
+
+const mutiplyByTwo = mutiply.bind(this);
+console.log(mutiplyByTwo(4));  // 8
+</code></pre>
+<hr>
+<p>參考資料：<br>
+<a href="https://www.udemy.com/course/javascriptjs/" target="_blank" rel="noopener">《JavaScript 全攻略：克服 JS 的奇怪部分》</a></p>
 
             </div>
             <hr>
