@@ -14,9 +14,9 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="前端、後端、UI 設計筆記">
+  <meta name="description" content="前端工程師與她的筆記們">
   <meta name="author" content="Blueberry">
-  <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
+  <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI, 爬蟲, Discord Bot">
   <title>一顆藍莓</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
@@ -138,6 +138,67 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/ForeignKey/" target="_self">
+          <img src="/images/mysql_banner.png" srcset="/img/loading.gif" alt="以 MySQL 為例解釋外鍵（Foreign Key）" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/ForeignKey/">
+        <p class="h4 index-header">以 MySQL 為例解釋外鍵（Foreign Key）</p>
+      </a>
+
+      <a href="/post/ForeignKey/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">介紹
+外鍵（Foreign Key）是指向其他表的主鍵（Primary Key）的欄位，用於確定兩張表的關聯性及資料完整性，以避免部分資料匹配不上的問題。
+
+如果想要使用外鍵，儲存引擎必須是 InnoDB
+外鍵只能指向被設定為主鍵的欄位
+外鍵與指向的主鍵資料型別必須相同
+
+接下來會以 MySQL 示範 Foreign Key 的常見使用情境，以及操作時會碰到的問題。
+實作
+我們會有兩張資料表：users 及 orders。
+users 負責管理會員資料，orders 則管理訂單資料。
+這邊 users 與 orders 的關係為：先有 users（會員），才有 orders（訂單）。一個會員有</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-09&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/MySQL/">MySQL</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
+          
+            <a href="/tags/MySQL/">MySQL</a>&nbsp;
+          
+            <a href="/tags/Foreign-Key/">Foreign Key</a>&nbsp;
+          
+            <a href="/tags/FK/">FK</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -689,65 +750,6 @@ $ git reset --hard origin/maste</div>
     </div>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/post/ComparisonOperators/" target="_self">
-          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="比較運算子" class="index-img img-fluid rounded index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/post/ComparisonOperators/">
-        <p class="h4 index-header">比較運算子</p>
-      </a>
-
-      <a href="/post/ComparisonOperators/">
-        
-        
-          
-        
-        <div class="index-excerpt">
-          <div class="index-text mb-1">請先參閱：運算子優先序
-先來看一段程式碼：
-console.log(3 &lt; 2 &lt; 1);   // 結果是 true
-
-以人類的邏輯來說，這絕對是錯的，但為什麼 JavaScript 會判定為 true 呢？
-小於運算子的相依性是由左至右，程式會優先進行 3 &lt; 2 這部分的判定。
-於是會變成：
-console.log(false &lt; 1);
-
-但是 false 和 1 並不是同一個型別，所以 JavaScript 會進行強制型轉。
-如果你輸入下面這行程式碼，可以知道 false 轉成數字後的值：
-Number(false);   // 結果是 0
-
-如此一來就變成了</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-29&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Javascript/">Javascript</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Javascript/">Javascript</a>&nbsp;
-          
-            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
@@ -886,7 +888,7 @@ Number(false);   // 結果是 0
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "前端、後端、UI 設計筆記&nbsp;",
+        "前端工程師與她的筆記們&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

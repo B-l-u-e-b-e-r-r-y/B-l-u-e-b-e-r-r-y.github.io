@@ -14,9 +14,9 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="前端、後端、UI 設計筆記">
+  <meta name="description" content="前端工程師與她的筆記們">
   <meta name="author" content="Blueberry">
-  <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI">
+  <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI, 爬蟲, Discord Bot">
   <title>一顆藍莓</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
@@ -138,6 +138,65 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/post/ComparisonOperators/" target="_self">
+          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="比較運算子" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/post/ComparisonOperators/">
+        <p class="h4 index-header">比較運算子</p>
+      </a>
+
+      <a href="/post/ComparisonOperators/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">請先參閱：運算子優先序
+先來看一段程式碼：
+console.log(3 &lt; 2 &lt; 1);   // 結果是 true
+
+以人類的邏輯來說，這絕對是錯的，但為什麼 JavaScript 會判定為 true 呢？
+小於運算子的相依性是由左至右，程式會優先進行 3 &lt; 2 這部分的判定。
+於是會變成：
+console.log(false &lt; 1);
+
+但是 false 和 1 並不是同一個型別，所以 JavaScript 會進行強制型轉。
+如果你輸入下面這行程式碼，可以知道 false 轉成數字後的值：
+Number(false);   // 結果是 0
+
+如此一來就變成了</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-29&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Javascript/">Javascript</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Javascript/">Javascript</a>&nbsp;
+          
+            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -705,7 +764,7 @@ X
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "前端、後端、UI 設計筆記&nbsp;",
+        "前端工程師與她的筆記們&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
