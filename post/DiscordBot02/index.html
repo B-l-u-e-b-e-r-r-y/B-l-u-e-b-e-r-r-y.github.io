@@ -17,7 +17,7 @@
   <meta name="description" content="前端工程師與她的筆記們">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI, 爬蟲, Discord Bot">
-  <title>以 MySQL 為例解釋外鍵（Foreign Key） - 一顆藍莓</title>
+  <title>【用 JS 寫一個 Discord Bot！】02 音樂機器人 - 一顆藍莓</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -105,7 +105,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/images/mysql_banner.png') no-repeat center center;
+         style="background: url('/images/dc_banner.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -118,7 +118,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期六, 五月 9日 2020, 1:50 下午
+                  星期日, 五月 17日 2020, 11:00 晚上
                 </p>
               
 
@@ -135,7 +135,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      4 分鐘
+                      5 分鐘
                   </span>
                 
 
@@ -163,135 +163,285 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <h1>介紹</h1>
-<p>外鍵（Foreign Key）是指向其他表的主鍵（Primary Key）的欄位，用於確定兩張表的關聯性及資料完整性，以避免部分資料匹配不上的問題。</p>
+              <h1>前言</h1>
+<p>今天我們來寫一個具有以下功能的音樂機器人：</p>
 <ul>
-<li>如果想要使用外鍵，儲存引擎必須是 InnoDB</li>
-<li>外鍵只能指向被設定為主鍵的欄位</li>
-<li>外鍵與指向的主鍵資料型別必須相同</li>
+<li>播放 YouTube 歌曲</li>
+<li>暫停/恢復播放</li>
+<li>跳過歌曲</li>
+<li>歌曲隊列</li>
 </ul>
-<p>接下來會以 MySQL 示範 Foreign Key 的常見使用情境，以及操作時會碰到的問題。</p>
+<p>如果還不知道怎麼建立機器人，可以參考我之前寫的這篇文章：<a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/">【用 JS 寫一個 Discord Bot！】01 建立機器人</a>。</p>
 <h1>實作</h1>
-<p>我們會有兩張資料表：users 及 orders。<br>
-users 負責管理會員資料，orders 則管理訂單資料。</p>
-<p>這邊 users 與 orders 的關係為：先有 users（會員），才有 orders（訂單）。一個會員有多個訂單（反之則不可能），所以 users 為父表，orders 為子表，外鍵建立在 orders。</p>
-<h2 id="建立資料表">建立資料表</h2>
-<h3 id="users">users</h3>
-<pre><code class="language-sql">CREATE TABLE users(
-    userID INT(50) PRIMARY KEY,
-    userName VARCHAR(30)
-);
-</code></pre>
-<h3 id="orders">orders</h3>
-<pre><code class="language-sql">CREATE TABLE orders(
-    orderID INT(50) PRIMARY KEY,
-    userID INT(50),
-    product VARCHAR(100),
-    price INT(11),
-    FOREIGN KEY(userID) REFERENCES users(userID)
-);
-</code></pre>
-<h2 id="新增資料">新增資料</h2>
-<p>接下來我們各別在 users 及 orders 插入資料。</p>
-<p>通常會員與訂單的關係都是先有會員、才有訂單，不會有反過來的情境。綁定外鍵的使用方式也是相同，因為外鍵放在 orders，所以 users 的資料必須先被建立才行。換句話來說，不能先有訂單才有會員。</p>
-<p>為了實驗，我們先在 orders 插入一筆資料看看：</p>
-<pre><code class="language-sql">INSERT INTO orders VALUES(1, 1, 'phone', 20000);
-</code></pre>
-<p>執行時報錯：</p>
-<pre><code>Error Code: 1216. Cannot add or update a child row: a foreign key constraint fails
-</code></pre>
-<p>第二個 1 是 userID，因為另一張表 users 找不到 userID 為 1 的資料，所以此筆插入會失敗。</p>
-<p>綁定外鍵的效果就在於此，MySQL 會先確認父表的主鍵欄位有符合的資料，才可以插入資料。</p>
-<p>按照標準流程先插入 users 資料，再插入 orders，就能正常執行了。</p>
-<pre><code class="language-sql">INSERT INTO users VALUES(1, 'Blueberry');
-INSERT INTO orders VALUES(1, 1, 'phone', 20000);
-</code></pre>
-<p><strong>users</strong></p>
-<table>
-<thead>
-<tr>
-<th>userID（主鍵 PK）</th>
-<th>userName</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Blueberry</td>
-</tr>
-</tbody>
-</table>
-<p><strong>orders</strong></p>
-<table>
-<thead>
-<tr>
-<th>orderID</th>
-<th>userID（外鍵 FK）</th>
-<th>product</th>
-<th>price</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>phone</td>
-<td>20000</td>
-</tr>
-</tbody>
-</table>
-<h2 id="刪除資料">刪除資料</h2>
-<p>如果想刪除 orders 資料，是沒有問題的，一個會員要取消訂單是很正常的操作。</p>
-<p>但如果今天我們要刪除 users 的資料，並把這個 users 所屬的 orders 都一起刪除呢？</p>
-<p>直接刪除 users？</p>
-<pre><code class="language-sql">DELETE FROM users WHERE userID = 1;
-</code></pre>
-<p>這樣操作會報錯：</p>
-<pre><code>Error Code: 1217. Cannot delete or update a parent row: a foreign key constraint fails
-</code></pre>
-<p>前面說過，只要綁定了外鍵，MySQL 就會拿父表（users）和子表（orders）進行比對。</p>
-<p>所以如果要這樣操作，必須先把 users 所屬的 orders 都先刪除才行：</p>
-<pre><code class="language-sql">DELETE FROM orders WHERE userID = 1;
-DELETE FROM users WHERE userID = 1;
-</code></pre>
-<p>但是不用這麼麻煩，我們只要在資料表建立時設定 <code>ON DELETE</code> 的模式就可以了。</p>
-<h3 id="ON-DELECT-的四種模式">ON DELECT 的四種模式</h3>
+<h2 id="安裝套件">安裝套件</h2>
+<p>要完成這些功能，必須安裝下面這三個套件。</p>
 <ul>
-<li>RESTRICT（約束）：預設模式。當在父表刪除資料時，會比對子表是否有對應的資料，如果有則不允許刪除。</li>
-<li>CASCADE（級聯）：當在父表刪除資料時，會對比子表是否有對應的資料，如果有則會一起刪除。</li>
-<li>SET NULL：當在父表刪除資料時，會對比子表是否有對應的資料，如果有則設置子表的外鍵欄位為 <code>NULL</code>，子表資料不會被刪除。（欄位需允許 NULL）</li>
-<li>NO ACTION：與 RESTRICT 相同。</li>
+<li>
+<h3 id="ffmpeg-static"><a href="https://github.com/eugeneware/ffmpeg-static" target="_blank" rel="noopener">ffmpeg-static</a></h3>
+</li>
 </ul>
-<p>因此要達到前面的目的，可以在設定外鍵時使用 <code>ON DELETE CASCADE</code>。</p>
-<pre><code class="language-sql">CREATE TABLE orders(
-    orderID INT(50) PRIMARY KEY,
-    userID INT(50),
-    product VARCHAR(100),
-    price INT(11),
-    FOREIGN KEY(userID) REFERENCES users(userID) ON DELETE CASCADE
-);
+<p>執行音樂的轉檔、串流功能</p>
+<pre><code>$ npm install ffmpeg-static
 </code></pre>
-<p>設定為 CASCADE（級聯）就可以直接刪除 users 的資料，連同 orders 的資料也會一起不見。</p>
-<h2 id="編輯資料">編輯資料</h2>
-<p>編輯和刪除一樣，在預設的情況下無法直接改變綁定外鍵的欄位。根據不同需求，我們同樣可以在資料表建立時更改 <code>ON UPDATE</code> 的模式。</p>
-<h3 id="ON-UPDATE-的四種模式">ON UPDATE 的四種模式</h3>
 <ul>
-<li>RESTRICT（約束）：預設模式。父表修改主鍵欄位時，會比對子表是否有對應的資料，如果有則不允許修改。</li>
-<li>CASCADE（級聯）：當在父表修改主鍵欄位時，會對比子表是否有對應的資料，如果有則會一起修改。</li>
-<li>SET NULL：當在父表修改主鍵欄位時，會對比子表是否有對應的資料，如果有則設置子表的外鍵欄位為 <code>NULL</code>。（欄位需允許 NULL）</li>
-<li>NO ACTION：與 RESTRICT 相同。</li>
+<li>
+<h3 id="discordjs-opus"><a href="https://github.com/discordjs/opus" target="_blank" rel="noopener">discordjs/opus</a></h3>
+</li>
 </ul>
-<pre><code class="language-sql">CREATE TABLE orders(
-    orderID INT(50) PRIMARY KEY,
-    userID INT(50),
-    product VARCHAR(100),
-    price INT(11),
-    FOREIGN KEY(userID) REFERENCES users(userID) ON DELETE CASCADE ON UPDATE CASCADE
-);
+<p>Opus 編碼器</p>
+<pre><code>$ npm install @discordjs/opus
 </code></pre>
-<blockquote>
-<p>ON UPDATE 可以和 ON DELETE 一起設定。</p>
-</blockquote>
+<ul>
+<li>
+<h3 id="node-ytdl-core"><a href="https://github.com/fent/node-ytdl-core" target="_blank" rel="noopener">node-ytdl-core</a></h3>
+</li>
+</ul>
+<p>執行下載 YouTube 影片的功能</p>
+<pre><code>$ npm install ytdl-core
+</code></pre>
+<h2 id="開始編寫">開始編寫</h2>
+<h3 id="建立-config-json">建立 config.json</h3>
+<p>在開始之前，我們先在專案中建立 config.json，放一些常用配置。</p>
+<p><code>prefix</code> 設定指令的前綴字。</p>
+<pre><code class="language-json">{
+    &quot;prefix&quot;: &quot;!!&quot;
+}
+</code></pre>
+<h3 id="編寫-discord-js">編寫 discord.js</h3>
+<pre><code class="language-js">const { Client } = require('discord.js');
+const ytdl = require('ytdl-core');
+const { token } = require('./token.json');
+const { prefix } = require('./config.json');
+const client = new Client();
+
+// 建立一個類別來管理 Property 及 Method
+class Music {
+
+    constructor() {
+        this.isPlaying = false;
+        this.queue = {};
+        this.connection = {};
+        this.dispatcher = {};
+    }
+
+    async join(msg) {
+
+        // Bot 加入語音頻道
+        this.connection[msg.guild.id] = await msg.member.voice.channel.join();
+
+    }
+
+    play(msg) {
+
+        // 語音群的 ID
+        const guildID = msg.guild.id;
+
+        // 如果 Bot 還沒加入該語音群的語音頻道
+        if (!this.connection[guildID]) {
+            msg.channel.send('請先加入頻道');
+            return;
+        }
+
+        // 處理字串，將 !!play 字串拿掉，只留下 YouTube 網址
+        const musicURL = msg.content.replace(`${prefix}play`, '');
+
+        // 取得 YouTube 影片名稱
+        const self = this;
+        ytdl.getInfo(musicURL, (err, info) =&gt; {
+
+            if (err) return;
+
+            // 將歌曲資訊加入隊列
+            if (!self.queue[guildID]) {
+                self.queue[guildID] = [];
+            }
+
+            self.queue[guildID].push({
+                name: info.title,
+                url: musicURL
+            });
+
+            // 如果目前正在播放歌曲就加入隊列，反之則播放歌曲
+            if (self.isPlaying) {
+                msg.channel.send(`歌曲加入隊列：${info.title}`);
+            } else {
+                self.isPlaying = true;
+                self.playMusic(msg, guildID, self.queue[guildID][0]);
+            }
+            
+        });
+
+    }
+
+    playMusic(msg, guildID, musicInfo) {
+
+        // 提示播放音樂
+        msg.channel.send(`播放音樂：${musicInfo.name}`);
+
+        // 播放音樂
+        this.dispatcher[guildID] = this.connection[guildID].play(ytdl(musicInfo.url, { filter: 'audioonly' }));
+
+        // 把音量降 50%，不然第一次容易被機器人的音量嚇到 QQ
+        this.dispatcher[guildID].setVolume(0.5);
+
+        // 移除 queue 中目前播放的歌曲
+        this.queue[guildID].shift();
+
+        // 歌曲播放結束時的事件
+        const self = this;
+        this.dispatcher[guildID].on('finish', () =&gt; {
+
+            // 如果隊列中有歌曲
+            if (self.queue[guildID].length &gt; 0) {
+                self.playMusic(msg, guildID, self.queue[guildID].shift());
+            } else {
+                self.isPlaying = false;
+                msg.channel.send('目前沒有音樂了，請加入音樂 :D');
+            }
+
+        });
+
+    }
+
+    resume(msg) {
+
+        if (this.dispatcher[msg.guild.id]) {
+            msg.channel.send('恢復播放');
+
+            // 恢復播放
+            this.dispatcher[msg.guild.id].resume();
+        }
+
+    }
+
+    pause(msg) {
+
+        if (this.dispatcher[msg.guild.id]) {
+            msg.channel.send('暫停播放');
+
+            // 暫停播放
+            this.dispatcher[msg.guild.id].pause();
+        }
+
+    }
+
+    skip(msg) {
+
+        if (this.dispatcher[msg.guild.id]) {
+            msg.channel.send('跳過目前歌曲');
+
+            // 跳過歌曲
+            this.dispatcher[msg.guild.id].end();
+        }
+
+    }
+
+    nowQueue(msg) {
+
+        // 如果隊列中有歌曲就顯示
+        if (this.queue[msg.guild.id] &amp;&amp; this.queue[msg.guild.id].length &gt; 0) {
+            // 字串處理，將 Object 組成字串
+            const queueString = this.queue[msg.guild.id].map((item, index) =&gt; `[${index+1}] ${item.name}`).join();
+            msg.channel.send(queueString);
+        } else {
+            msg.channel.send('目前隊列中沒有歌曲');
+        }
+
+    }
+
+    leave(msg) {
+
+        // 離開頻道
+        this.connection[msg.guild.id].disconnect();
+
+    }
+}
+
+const music = new Music();
+
+// 當 Bot 接收到訊息時的事件
+client.on('message', async (msg) =&gt; {
+
+    // 如果發送訊息的地方不是語音群（可能是私人），就 return
+    if (!msg.guild) return;
+
+    // !!join
+    if (msg.content === `${prefix}join`) {
+
+        // 機器人加入語音頻道
+        music.join(msg);
+    }
+
+    // 如果使用者輸入的內容中包含 !!play
+    if (msg.content.indexOf(`${prefix}play`) &gt; -1) {
+
+        // 如果使用者在語音頻道中
+        if (msg.member.voice.channel) {
+
+            // 播放音樂
+            music.play(msg);
+        } else {
+
+            // 如果使用者不在任何一個語音頻道
+            msg.reply('你必須先加入語音頻道');
+        }
+    }
+
+    // !!resume
+    if (msg.content === `${prefix}resume`) {
+
+        // 恢復音樂
+        music.resume(msg);
+    }
+
+    // !!pause
+    if (msg.content === `${prefix}pause`) {
+
+        // 暫停音樂
+        music.pause(msg);
+    }
+
+    // !!skip
+    if (msg.content === `${prefix}skip`) {
+
+        // 跳過音樂
+        music.skip(msg);
+    }
+
+    // !!queue
+    if (msg.content === `${prefix}queue`) {
+
+        // 查看隊列
+        music.nowQueue(msg);
+    }
+
+    // !!leave
+    if (msg.content === `${prefix}leave`) {
+
+        // 機器人離開頻道
+        music.leave(msg);
+    }
+});
+
+// 連上線時的事件
+client.on('ready', () =&gt; {
+    console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.login(token);
+</code></pre>
+<p>寫完後就可以運行看看。</p>
+<p>操作流程是先 <code>!!join</code> 讓機器人加入語音頻道→ <code>!!play 音樂網址</code> 播放音樂或加入隊列（如果音樂正在播放）。</p>
+<p>其他的功能如【暫停播放】<code>!!pause</code>、【恢復播放】<code>!!resume</code>、【跳過這首歌曲】<code>!!skip</code>、【查看歌曲隊列】<code>!!queue</code>、【讓機器人離開語音頻道】<code>!!leave</code>，可以自行玩玩看。</p>
+<pre><code>$ node discord.js
+</code></pre>
+<p><img src="/images/dc-bot/02/01.jpg" srcset="/img/loading.gif" alt></p>
+<p>本來想把程式碼切開在文中講解，但是發現這樣寫起來會篇幅太長而且雜亂，所以就乾脆把註解寫在 code 裡面。</p>
+<p>本次音樂機器人的 <a href="https://github.com/B-l-u-e-b-e-r-r-y/Discord-Bot-02" target="_blank" rel="noopener">Github Repo</a>，可以自行 clone 下來研究或修改。</p>
+<hr>
+<p><strong>【用 JS 寫一個 Discord Bot！】系列文章</strong></p>
+<p><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/">【用 JS 寫一個 Discord Bot！】01 建立機器人</a><br>
+<a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot02/">【用 JS 寫一個 Discord Bot！】02 音樂機器人</a></p>
 
             </div>
             <hr>
@@ -301,7 +451,10 @@ DELETE FROM users WHERE userID = 1;
                   <span>
                 <i class="iconfont icon-inbox"></i>
                     
-                      <a class="hover-with-bg" href="/categories/MySQL/">MySQL</a>
+                      <a class="hover-with-bg" href="/categories/node-js/">node.js</a>
+                      &nbsp;
+                    
+                      <a class="hover-with-bg" href="/categories/node-js/Discord-Bot/">Discord Bot</a>
                       &nbsp;
                     
                   </span>&nbsp;&nbsp;
@@ -310,13 +463,15 @@ DELETE FROM users WHERE userID = 1;
                   <span>
                 <i class="iconfont icon-tag"></i>
                     
+                      <a class="hover-with-bg" href="/tags/Javascript/">Javascript</a>
+                    
                       <a class="hover-with-bg" href="/tags/w3HexSchool/">w3HexSchool</a>
                     
-                      <a class="hover-with-bg" href="/tags/MySQL/">MySQL</a>
+                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
                     
-                      <a class="hover-with-bg" href="/tags/Foreign-Key/">Foreign Key</a>
+                      <a class="hover-with-bg" href="/tags/Discord-js/">Discord.js</a>
                     
-                      <a class="hover-with-bg" href="/tags/FK/">FK</a>
+                      <a class="hover-with-bg" href="/tags/DC機器人/">DC機器人</a>
                     
                   </span>
                 
@@ -326,16 +481,16 @@ DELETE FROM users WHERE userID = 1;
                 <div class="post-prevnext row">
                   <div class="post-prev col-12 col-md-6">
                     
-                      <a href="/post/DiscordBot02/">
+                      <a href="/post/PTTCrawler02/">
                         <i class="fa fa-chevron-left"></i>
-                        <span>【用 JS 寫一個 Discord Bot！】02 音樂機器人</span>
+                        <span>使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]</span>
                       </a>
                     
                   </div>
                   <div class="post-next col-12 col-md-6">
                     
-                      <a href="/post/FunctionalProgramming01/">
-                        <span>Functional Programming 初級入門</span>
+                      <a href="/post/ForeignKey/">
+                        <span>以 MySQL 為例解釋外鍵（Foreign Key）</span>
                         <i class="fa fa-chevron-right"></i>
                       </a>
                     
@@ -544,7 +699,7 @@ DELETE FROM users WHERE userID = 1;
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "以 MySQL 為例解釋外鍵（Foreign Key）&nbsp;",
+        "【用 JS 寫一個 Discord Bot！】02 音樂機器人&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

@@ -127,7 +127,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    553 字
+                    589 字
                   </span>
                 
 
@@ -213,7 +213,7 @@
 <h3 id="3-新增-discord-js">3. 新增 discord.js</h3>
 <p>於專案中新增 discord.js，這邊我們使用 <a href="https://github.com/discordjs/discord.js/" target="_blank" rel="noopener">Discord.js</a> 的官方範例。</p>
 <pre><code class="language-js">const Discord = require('discord.js');
-const config = require('./token.json');
+const { token } = require('./token.json');
 const client = new Discord.Client();
 
 // 連上線時的事件
@@ -230,7 +230,7 @@ client.on('message', msg =&gt; {
     }
 });
 
-client.login(config.token);
+client.login(token);
 </code></pre>
 <h3 id="4-運行程式">4. 運行程式</h3>
 <p>讓機器人上線吧！</p>
@@ -239,6 +239,10 @@ client.login(config.token);
 <p><img src="/images/dc-bot/01/11.jpg" srcset="/img/loading.gif" alt></p>
 <p>測試一下效果：<br>
 <img src="/images/dc-bot/01/10.jpg" srcset="/img/loading.gif" alt></p>
+<hr>
+<p><strong>【用 JS 寫一個 Discord Bot！】系列文章</strong></p>
+<p><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/">【用 JS 寫一個 Discord Bot！】01 建立機器人</a><br>
+<a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot02/">【用 JS 寫一個 Discord Bot！】02 音樂機器人</a></p>
 
             </div>
             <hr>

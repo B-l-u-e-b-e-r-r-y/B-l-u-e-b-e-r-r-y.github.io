@@ -17,7 +17,7 @@
   <meta name="description" content="前端工程師與她的筆記們">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI, 爬蟲, Discord Bot">
-  <title>以 MySQL 為例解釋外鍵（Foreign Key） - 一顆藍莓</title>
+  <title>使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制] - 一顆藍莓</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -105,7 +105,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/images/mysql_banner.png') no-repeat center center;
+         style="background: url('/images/node_banner.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -118,7 +118,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期六, 五月 9日 2020, 1:50 下午
+                  星期六, 五月 30日 2020, 3:00 下午
                 </p>
               
 
@@ -127,7 +127,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    1.2k 字
+                    575 字
                   </span>
                 
 
@@ -135,7 +135,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      4 分鐘
+                      2 分鐘
                   </span>
                 
 
@@ -163,135 +163,83 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <h1>介紹</h1>
-<p>外鍵（Foreign Key）是指向其他表的主鍵（Primary Key）的欄位，用於確定兩張表的關聯性及資料完整性，以避免部分資料匹配不上的問題。</p>
-<ul>
-<li>如果想要使用外鍵，儲存引擎必須是 InnoDB</li>
-<li>外鍵只能指向被設定為主鍵的欄位</li>
-<li>外鍵與指向的主鍵資料型別必須相同</li>
-</ul>
-<p>接下來會以 MySQL 示範 Foreign Key 的常見使用情境，以及操作時會碰到的問題。</p>
+              <h1>前言</h1>
+<p>如果使用前一篇<a href="https://b-l-u-e-b-e-r-r-y.github.io/post/PTTCrawler/">使用 Node.js 來爬蟲吧！[PTT 股票板]</a>程式碼，試著將網址改成八卦板運行，會發現爬蟲抓不到資料的問題。</p>
+<p>這是因為第一次訪問八卦板時，PTT 會先跳出年齡驗證，使用者如果按下已滿 18 歲的按鈕，PTT 就會將紀錄存在 Cookies。</p>
+<p><img src="/images/ptt-crawler/ptt3.jpg" srcset="/img/loading.gif" alt></p>
+<p>當然也可以在 requset 時帶 cookie，不過本篇文章會講解使用自動化測試工具 <a href="https://github.com/puppeteer/puppeteer" target="_blank" rel="noopener">Puppeteer</a> 來實作這個功能。</p>
 <h1>實作</h1>
-<p>我們會有兩張資料表：users 及 orders。<br>
-users 負責管理會員資料，orders 則管理訂單資料。</p>
-<p>這邊 users 與 orders 的關係為：先有 users（會員），才有 orders（訂單）。一個會員有多個訂單（反之則不可能），所以 users 為父表，orders 為子表，外鍵建立在 orders。</p>
-<h2 id="建立資料表">建立資料表</h2>
-<h3 id="users">users</h3>
-<pre><code class="language-sql">CREATE TABLE users(
-    userID INT(50) PRIMARY KEY,
-    userName VARCHAR(30)
-);
+<h2 id="安裝-Puppeteer">安裝 Puppeteer</h2>
+<pre><code>npm i puppeteer
 </code></pre>
-<h3 id="orders">orders</h3>
-<pre><code class="language-sql">CREATE TABLE orders(
-    orderID INT(50) PRIMARY KEY,
-    userID INT(50),
-    product VARCHAR(100),
-    price INT(11),
-    FOREIGN KEY(userID) REFERENCES users(userID)
-);
+<h2 id="引入-Puppeteer">引入 Puppeteer</h2>
+<pre><code class="language-js">const puppeteer = require('puppeteer');
 </code></pre>
-<h2 id="新增資料">新增資料</h2>
-<p>接下來我們各別在 users 及 orders 插入資料。</p>
-<p>通常會員與訂單的關係都是先有會員、才有訂單，不會有反過來的情境。綁定外鍵的使用方式也是相同，因為外鍵放在 orders，所以 users 的資料必須先被建立才行。換句話來說，不能先有訂單才有會員。</p>
-<p>為了實驗，我們先在 orders 插入一筆資料看看：</p>
-<pre><code class="language-sql">INSERT INTO orders VALUES(1, 1, 'phone', 20000);
+<h2 id="程式碼">程式碼</h2>
+<p>下面程式碼主要功能是先 request 八卦板，待跳出年齡驗證的頁面後，使用 Puppeteer 去模擬使用者點擊已滿18歲按鈕，並取得跳轉後的新頁面 content。</p>
+<pre><code class="language-js">const pttUrl = 'https://www.ptt.cc/bbs/Gossiping/index.html';
+request({
+    url: pttUrl,
+    method: &quot;GET&quot;
+}, async (error, res, body) =&gt; {
+    if (error || !body) {
+        return;
+    }
+
+    let $ = cheerio.load(body); // 載入 body
+    const browser = await puppeteer.launch({ headless: false });  // 啟動瀏覽器，headless 設定為 false 可以看到瀏覽器運作的情況，true 為無頭瀏覽器
+    const page = await browser.newPage();
+    await page.goto(pttUrl);
+    const buttonSelector = 'body &gt; div.bbs-screen.bbs-content.center.clear &gt; form &gt; div:nth-child(2) &gt; button';  // 已滿18歲按鈕 selector
+    await page.click(buttonSelector);  // 按下按鈕
+    const content = await page.content();  // 取得新頁面的內容
+    await browser.close();  // 關閉瀏覽器
+});
 </code></pre>
-<p>執行時報錯：</p>
-<pre><code>Error Code: 1216. Cannot add or update a child row: a foreign key constraint fails
+<h2 id="完整程式碼">完整程式碼</h2>
+<pre><code class="language-js">const request = require(&quot;request&quot;);
+const cheerio = require(&quot;cheerio&quot;);
+const puppeteer = require('puppeteer');
+
+const pttCrawler = () =&gt; {
+    const pttUrl = 'https://www.ptt.cc/bbs/Gossiping/index.html';
+    request({
+        url: pttUrl,
+        method: &quot;GET&quot;
+    }, async (error, res, body) =&gt; {
+        if (error || !body) {
+            return;
+        }
+
+        let $ = cheerio.load(body); // 載入 body
+        const browser = await puppeteer.launch({ headless: false });  // 啟動瀏覽器，headless 設定為 false 可以看到瀏覽器運作的情況，true 為無頭瀏覽器
+        const page = await browser.newPage();
+        await page.goto(pttUrl);
+        const buttonSelector = 'body &gt; div.bbs-screen.bbs-content.center.clear &gt; form &gt; div:nth-child(2) &gt; button';  // 已滿18歲按鈕 selector
+        await page.click(buttonSelector);  // 按下按鈕
+
+        const content = await page.content();  // 取得新頁面的內容
+        $ = cheerio.load(content);
+
+        const result = []; // 建立一個儲存結果的容器
+        const list = $(&quot;.r-list-container .r-ent&quot;);
+
+        for (let i = 0; i &lt; list.length; i++) {
+            const title = list.eq(i).find('.title a').text();
+            const author = list.eq(i).find('.meta .author').text();
+            const date = list.eq(i).find('.meta .date').text();
+            const link = list.eq(i).find('.title a').attr('href');
+
+            result.push({ title, author, date, link });
+        }
+
+        console.log(result);
+        await browser.close();  // 關閉瀏覽器
+    });
+};
+
+pttCrawler();
 </code></pre>
-<p>第二個 1 是 userID，因為另一張表 users 找不到 userID 為 1 的資料，所以此筆插入會失敗。</p>
-<p>綁定外鍵的效果就在於此，MySQL 會先確認父表的主鍵欄位有符合的資料，才可以插入資料。</p>
-<p>按照標準流程先插入 users 資料，再插入 orders，就能正常執行了。</p>
-<pre><code class="language-sql">INSERT INTO users VALUES(1, 'Blueberry');
-INSERT INTO orders VALUES(1, 1, 'phone', 20000);
-</code></pre>
-<p><strong>users</strong></p>
-<table>
-<thead>
-<tr>
-<th>userID（主鍵 PK）</th>
-<th>userName</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Blueberry</td>
-</tr>
-</tbody>
-</table>
-<p><strong>orders</strong></p>
-<table>
-<thead>
-<tr>
-<th>orderID</th>
-<th>userID（外鍵 FK）</th>
-<th>product</th>
-<th>price</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>phone</td>
-<td>20000</td>
-</tr>
-</tbody>
-</table>
-<h2 id="刪除資料">刪除資料</h2>
-<p>如果想刪除 orders 資料，是沒有問題的，一個會員要取消訂單是很正常的操作。</p>
-<p>但如果今天我們要刪除 users 的資料，並把這個 users 所屬的 orders 都一起刪除呢？</p>
-<p>直接刪除 users？</p>
-<pre><code class="language-sql">DELETE FROM users WHERE userID = 1;
-</code></pre>
-<p>這樣操作會報錯：</p>
-<pre><code>Error Code: 1217. Cannot delete or update a parent row: a foreign key constraint fails
-</code></pre>
-<p>前面說過，只要綁定了外鍵，MySQL 就會拿父表（users）和子表（orders）進行比對。</p>
-<p>所以如果要這樣操作，必須先把 users 所屬的 orders 都先刪除才行：</p>
-<pre><code class="language-sql">DELETE FROM orders WHERE userID = 1;
-DELETE FROM users WHERE userID = 1;
-</code></pre>
-<p>但是不用這麼麻煩，我們只要在資料表建立時設定 <code>ON DELETE</code> 的模式就可以了。</p>
-<h3 id="ON-DELECT-的四種模式">ON DELECT 的四種模式</h3>
-<ul>
-<li>RESTRICT（約束）：預設模式。當在父表刪除資料時，會比對子表是否有對應的資料，如果有則不允許刪除。</li>
-<li>CASCADE（級聯）：當在父表刪除資料時，會對比子表是否有對應的資料，如果有則會一起刪除。</li>
-<li>SET NULL：當在父表刪除資料時，會對比子表是否有對應的資料，如果有則設置子表的外鍵欄位為 <code>NULL</code>，子表資料不會被刪除。（欄位需允許 NULL）</li>
-<li>NO ACTION：與 RESTRICT 相同。</li>
-</ul>
-<p>因此要達到前面的目的，可以在設定外鍵時使用 <code>ON DELETE CASCADE</code>。</p>
-<pre><code class="language-sql">CREATE TABLE orders(
-    orderID INT(50) PRIMARY KEY,
-    userID INT(50),
-    product VARCHAR(100),
-    price INT(11),
-    FOREIGN KEY(userID) REFERENCES users(userID) ON DELETE CASCADE
-);
-</code></pre>
-<p>設定為 CASCADE（級聯）就可以直接刪除 users 的資料，連同 orders 的資料也會一起不見。</p>
-<h2 id="編輯資料">編輯資料</h2>
-<p>編輯和刪除一樣，在預設的情況下無法直接改變綁定外鍵的欄位。根據不同需求，我們同樣可以在資料表建立時更改 <code>ON UPDATE</code> 的模式。</p>
-<h3 id="ON-UPDATE-的四種模式">ON UPDATE 的四種模式</h3>
-<ul>
-<li>RESTRICT（約束）：預設模式。父表修改主鍵欄位時，會比對子表是否有對應的資料，如果有則不允許修改。</li>
-<li>CASCADE（級聯）：當在父表修改主鍵欄位時，會對比子表是否有對應的資料，如果有則會一起修改。</li>
-<li>SET NULL：當在父表修改主鍵欄位時，會對比子表是否有對應的資料，如果有則設置子表的外鍵欄位為 <code>NULL</code>。（欄位需允許 NULL）</li>
-<li>NO ACTION：與 RESTRICT 相同。</li>
-</ul>
-<pre><code class="language-sql">CREATE TABLE orders(
-    orderID INT(50) PRIMARY KEY,
-    userID INT(50),
-    product VARCHAR(100),
-    price INT(11),
-    FOREIGN KEY(userID) REFERENCES users(userID) ON DELETE CASCADE ON UPDATE CASCADE
-);
-</code></pre>
-<blockquote>
-<p>ON UPDATE 可以和 ON DELETE 一起設定。</p>
-</blockquote>
 
             </div>
             <hr>
@@ -301,7 +249,7 @@ DELETE FROM users WHERE userID = 1;
                   <span>
                 <i class="iconfont icon-inbox"></i>
                     
-                      <a class="hover-with-bg" href="/categories/MySQL/">MySQL</a>
+                      <a class="hover-with-bg" href="/categories/node-js/">node.js</a>
                       &nbsp;
                     
                   </span>&nbsp;&nbsp;
@@ -310,13 +258,11 @@ DELETE FROM users WHERE userID = 1;
                   <span>
                 <i class="iconfont icon-tag"></i>
                     
+                      <a class="hover-with-bg" href="/tags/Javascript/">Javascript</a>
+                    
                       <a class="hover-with-bg" href="/tags/w3HexSchool/">w3HexSchool</a>
                     
-                      <a class="hover-with-bg" href="/tags/MySQL/">MySQL</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Foreign-Key/">Foreign Key</a>
-                    
-                      <a class="hover-with-bg" href="/tags/FK/">FK</a>
+                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
                     
                   </span>
                 
@@ -326,16 +272,11 @@ DELETE FROM users WHERE userID = 1;
                 <div class="post-prevnext row">
                   <div class="post-prev col-12 col-md-6">
                     
-                      <a href="/post/DiscordBot02/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>【用 JS 寫一個 Discord Bot！】02 音樂機器人</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-12 col-md-6">
                     
-                      <a href="/post/FunctionalProgramming01/">
-                        <span>Functional Programming 初級入門</span>
+                      <a href="/post/DiscordBot02/">
+                        <span>【用 JS 寫一個 Discord Bot！】02 音樂機器人</span>
                         <i class="fa fa-chevron-right"></i>
                       </a>
                     
@@ -544,7 +485,7 @@ DELETE FROM users WHERE userID = 1;
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "以 MySQL 為例解釋外鍵（Foreign Key）&nbsp;",
+        "使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
