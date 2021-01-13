@@ -231,7 +231,7 @@ class Music {
 
     }
 
-    play(msg) {
+    async play(msg) {
 
         // 語音群的 ID
         const guildID = msg.guild.id;
@@ -245,31 +245,33 @@ class Music {
         // 處理字串，將 !!play 字串拿掉，只留下 YouTube 網址
         const musicURL = msg.content.replace(`${prefix}play`, '');
 
-        // 取得 YouTube 影片名稱
-        const self = this;
-        ytdl.getInfo(musicURL, (err, info) =&gt; {
+        try {
 
-            if (err) return;
+            // 取得 YouTube 影片資訊
+            const res = await ytdl.getInfo(musicURL);
+            const info = res.videoDetails;
 
             // 將歌曲資訊加入隊列
-            if (!self.queue[guildID]) {
-                self.queue[guildID] = [];
+            if (!this.queue[guildID]) {
+                this.queue[guildID] = [];
             }
 
-            self.queue[guildID].push({
+            this.queue[guildID].push({
                 name: info.title,
                 url: musicURL
             });
 
             // 如果目前正在播放歌曲就加入隊列，反之則播放歌曲
-            if (self.isPlaying) {
+            if (this.isPlaying) {
                 msg.channel.send(`歌曲加入隊列：${info.title}`);
             } else {
-                self.isPlaying = true;
-                self.playMusic(msg, guildID, self.queue[guildID][0]);
+                this.isPlaying = true;
+                this.playMusic(msg, guildID, this.queue[guildID][0]);
             }
-            
-        });
+
+        } catch(e) {
+            console.log(e);
+        }
 
     }
 
@@ -379,7 +381,7 @@ client.on('message', async (msg) =&gt; {
         if (msg.member.voice.channel) {
 
             // 播放音樂
-            music.play(msg);
+            await music.play(msg);
         } else {
 
             // 如果使用者不在任何一個語音頻道
@@ -432,12 +434,24 @@ client.login(token);
 </code></pre>
 <p>寫完後就可以運行看看。</p>
 <p>操作流程是先 <code>!!join</code> 讓機器人加入語音頻道→ <code>!!play 音樂網址</code> 播放音樂或加入隊列（如果音樂正在播放）。</p>
-<p>其他的功能如【暫停播放】<code>!!pause</code>、【恢復播放】<code>!!resume</code>、【跳過這首歌曲】<code>!!skip</code>、【查看歌曲隊列】<code>!!queue</code>、【讓機器人離開語音頻道】<code>!!leave</code>，可以自行玩玩看。</p>
+<p>功能如下：</p>
+<ul>
+<li>【機器人加入語音】<code>!!join</code></li>
+<li>【播放音樂（加入隊列）】<code>!!play 音樂網址</code></li>
+<li>【暫停播放】<code>!!pause</code></li>
+<li>【恢復播放】<code>!!resume</code></li>
+<li>【跳過這首歌曲】<code>!!skip</code></li>
+<li>【查看歌曲隊列】<code>!!queue</code></li>
+<li>【讓機器人離開語音頻道】<code>!!leave</code></li>
+</ul>
+<p>可以自行玩玩看。</p>
 <pre><code>$ node discord.js
 </code></pre>
-<p><img src="/images/dc-bot/02/01.jpg" srcset="/img/loading.gif" alt></p>
+<p><img src="/images/dc-bot/02/02.jpg" srcset="/img/loading.gif" alt></p>
 <p>本來想把程式碼切開在文中講解，但是發現這樣寫起來會篇幅太長而且雜亂，所以就乾脆把註解寫在 code 裡面。</p>
 <p>本次音樂機器人的 <a href="https://github.com/B-l-u-e-b-e-r-r-y/Discord-Bot-02" target="_blank" rel="noopener">Github Repo</a>，可以自行 clone 下來研究或修改。</p>
+<h2 id="2021-01-13-更新">2021/01/13 更新</h2>
+<p>發現之前會有無法播放的問題，已更新 ytdl 套件解決問題，如果還有問題歡迎在下方留言</p>
 <hr>
 <p><strong>【用 JS 寫一個 Discord Bot！】系列文章</strong></p>
 <p><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/">【用 JS 寫一個 Discord Bot！】01 建立機器人</a><br>
