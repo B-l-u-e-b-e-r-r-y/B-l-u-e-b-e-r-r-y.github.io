@@ -1,52 +1,78 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
 
 
 
-
-
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta name="google-site-verification" content="nZS-GewkorxA_tNZscTNxAiN3WLftt_UNf5A6Txb-QA">
+<head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="前端工程師與她的筆記們">
+  <meta name="description" content="喜歡做奇怪東西的前端工程師">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI, 爬蟲, Discord Bot">
+  
   <title>使用 Node.js 來爬蟲吧！[PTT 股票板] - 一顆藍莓</title>
 
-  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css">
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
 
-  <link rel="stylesheet" href="/lib/prettify/tomorrow.min.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-<link rel="stylesheet" href="/css/main.css">
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
-  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css">
 
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"b-l-u-e-b-e-r-r-y.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
 
@@ -58,45 +84,72 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">首頁</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">歸檔</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">分類</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">標籤</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">關於</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -104,43 +157,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/images/node_banner.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="使用 Node.js 來爬蟲吧！[PTT 股票板]">
               
             </span>
 
             
-              
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期六, 三月 28日 2020, 6:00 晚上
-                </p>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-28 18:00" pubdate>
+        2020年3月28日 晚上
+      </time>
+    </span>
+  
+</div>
 
-              <p class="mt-1">
-                
-                  
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    687 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      740 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      3 分鐘
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11
+       分鐘
+    </span>
+  
 
-                
-              </p>
+  
+  
+</div>
+
             
           </div>
 
@@ -154,135 +217,67 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5 z-depth-3" id="board">
-          <div class="post-content mx-auto" id="post">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用 Node.js 來爬蟲吧！[PTT 股票板]</h1>
+            
+              <p class="note note-info">
+                
+                  本文最後更新於：2020年3月28日 下午
+                
+              </p>
             
             <div class="markdown-body">
               <h1>前言</h1>
 <p>一般大家爬蟲都是使用 python，其實 node.js 也是可以爬蟲的，作為前端，能用自己習慣的語言來寫當然很方便。但是 python 和 node.js 除了寫法不同，兩者特性也是不同的，例如 node.js 是異步的、單執行緒，python 則是多執行緒等等，關於這些差異本文就不多加討論。</p>
 <h1>模組</h1>
-<p>node.js 爬蟲需要用到兩個模組：<a href="https://github.com/request/request" target="_blank" rel="noopener">request</a> 和 <a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="noopener">cheerio</a>。</p>
+<p>node.js 爬蟲需要用到兩個模組：<a target="_blank" rel="noopener" href="https://github.com/request/request">request</a> 和 <a target="_blank" rel="noopener" href="https://github.com/cheeriojs/cheerio">cheerio</a>。</p>
 <h2 id="介紹">介紹</h2>
 <p><strong>request</strong> 是用來訪問網站用的，它能模擬 Client 訪問網站，設定訪問時帶的 Header。<br>
 <strong>cheerio</strong> 則算是 node.js 界的 jQuery，它是以 jQuery 為核心去設計的，<br>
 好比要抓取一個 html，class 名稱為 title 的文字 <code>&lt;div class='title'&gt;標題&lt;/div&gt;</code>，cheerio 的寫法是這樣：<code>$('.title').text()</code>。</p>
 <h2 id="安裝">安裝</h2>
-<pre><code>$ npm i --save request
-$ npm i --save cheerio
-</code></pre>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ada">$ npm i <span class="hljs-comment">--save request</span><br>$ npm i <span class="hljs-comment">--save cheerio</span><br></code></pre></td></tr></table></figure>
 <h2 id="載入">載入</h2>
 <p>安裝好後就可以看到專案的 package.json 已經出現這兩個模組，這時候就可以把模組引入程式中。</p>
-<pre><code class="language-js">const request = require(&quot;request&quot;);
-const cheerio = require(&quot;cheerio&quot;);
-</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;request&quot;</span>);<br><span class="hljs-keyword">const</span> cheerio = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;cheerio&quot;</span>);<br></code></pre></td></tr></table></figure>
 <h1>實作</h1>
 <h2 id="request-訪問">request 訪問</h2>
-<p>本文以 <a href="https://www.ptt.cc/bbs/Stock/index.html" target="_blank" rel="noopener">PTT 股票板</a> 為範例。<br>
+<p>本文以 <a target="_blank" rel="noopener" href="https://www.ptt.cc/bbs/Stock/index.html">PTT 股票板</a> 為範例。<br>
 先發送 request，訪問股票板。</p>
-<pre><code class="language-js">const pttCrawler = () =&gt; {
-    request({
-        url: &quot;https://www.ptt.cc/bbs/Stock/index.html&quot;,
-        method: &quot;GET&quot;
-    }, (error, res, body) =&gt; {
-        // 如果有錯誤訊息，或沒有 body(內容)，就 return
-        if (error || !body) {
-            return;
-        }
-    });
-};
-
-pttCrawler();
-</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> pttCrawler = <span class="hljs-function">() =&gt;</span> &#123;<br>    request(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;https://www.ptt.cc/bbs/Stock/index.html&quot;</span>,<br>        <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;GET&quot;</span><br>    &#125;, <span class="hljs-function">(<span class="hljs-params">error, res, body</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// 如果有錯誤訊息，或沒有 body(內容)，就 return</span><br>        <span class="hljs-keyword">if</span> (error || !body) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>    &#125;);<br>&#125;;<br><br>pttCrawler();<br></code></pre></td></tr></table></figure>
 <h2 id="cheerio-抓取-Element">cheerio 抓取 Element</h2>
 <p>request 之後就可以取得內容(body)，接著使用 cheerio 抓取 Element。<br>
 寫程式碼之前，可以先到股票板，按右鍵 &gt; 檢查，看看 Element 的名稱是什麼。<br>
 如下圖，紅框就是要抓的部分：<br>
-<img src="/images/ptt-crawler/ptt1.jpg" srcset="/img/loading.gif" alt></p>
+<img src="/images/ptt-crawler/ptt1.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>因為它是父元素(<code>.r-list-container</code>)裡包著許多子元素(<code>.r-ent</code>)的結構，所以這邊要使用到迴圈。</p>
-<pre><code class="language-js">const pttCrawler = () =&gt; {
-    request({
-        url: &quot;https://www.ptt.cc/bbs/Stock/index.html&quot;,
-        method: &quot;GET&quot;
-    }, (error, res, body) =&gt; {
-        // 如果有錯誤訊息，或沒有 body(內容)，就 return
-        if (error || !body) {
-            return;
-        }
-
-        const data = [];
-        const $ = cheerio.load(body); // 載入 body
-        const list = $(&quot;.r-list-container .r-ent&quot;);
-        for (let i = 0; i &lt; list.length; i++) {
-            const title = list.eq(i).find('.title a').text();
-            const author = list.eq(i).find('.meta .author').text();
-            const date = list.eq(i).find('.meta .date').text();
-            const link = list.eq(i).find('.title a').attr('href');
-
-            data.push({ title, author, date, link });
-        }
-
-        console.log(data);
-    });
-};
-
-pttCrawler();
-</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> pttCrawler = <span class="hljs-function">() =&gt;</span> &#123;<br>    request(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;https://www.ptt.cc/bbs/Stock/index.html&quot;</span>,<br>        <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;GET&quot;</span><br>    &#125;, <span class="hljs-function">(<span class="hljs-params">error, res, body</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// 如果有錯誤訊息，或沒有 body(內容)，就 return</span><br>        <span class="hljs-keyword">if</span> (error || !body) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">const</span> data = [];<br>        <span class="hljs-keyword">const</span> $ = cheerio.load(body); <span class="hljs-comment">// 載入 body</span><br>        <span class="hljs-keyword">const</span> list = $(<span class="hljs-string">&quot;.r-list-container .r-ent&quot;</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; list.length; i++) &#123;<br>            <span class="hljs-keyword">const</span> title = list.eq(i).find(<span class="hljs-string">&#x27;.title a&#x27;</span>).text();<br>            <span class="hljs-keyword">const</span> author = list.eq(i).find(<span class="hljs-string">&#x27;.meta .author&#x27;</span>).text();<br>            <span class="hljs-keyword">const</span> date = list.eq(i).find(<span class="hljs-string">&#x27;.meta .date&#x27;</span>).text();<br>            <span class="hljs-keyword">const</span> link = list.eq(i).find(<span class="hljs-string">&#x27;.title a&#x27;</span>).attr(<span class="hljs-string">&#x27;href&#x27;</span>);<br><br>            data.push(&#123; title, author, date, link &#125;);<br>        &#125;<br><br>        <span class="hljs-built_in">console</span>.log(data);<br>    &#125;);<br>&#125;;<br><br>pttCrawler();<br></code></pre></td></tr></table></figure>
 <p>執行程式後就可以看到結果囉！<br>
-<img src="/images/ptt-crawler/ptt2.jpg" srcset="/img/loading.gif" alt></p>
+<img src="/images/ptt-crawler/ptt2.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h2 id="完整程式碼">完整程式碼</h2>
-<pre><code class="language-js">const request = require(&quot;request&quot;);
-const cheerio = require(&quot;cheerio&quot;);
-
-const pttCrawler = () =&gt; {
-    request({
-        url: &quot;https://www.ptt.cc/bbs/Stock/index.html&quot;,
-        method: &quot;GET&quot;
-    }, (error, res, body) =&gt; {
-        // 如果有錯誤訊息，或沒有 body(內容)，就 return
-        if (error || !body) {
-            return;
-        }
-
-        const data = [];
-        const $ = cheerio.load(body); // 載入 body
-        const list = $(&quot;.r-list-container .r-ent&quot;);
-        for (let i = 0; i &lt; list.length; i++) {
-            const title = list.eq(i).find('.title a').text();
-            const author = list.eq(i).find('.meta .author').text();
-            const date = list.eq(i).find('.meta .date').text();
-            const link = list.eq(i).find('.title a').attr('href');
-
-            data.push({ title, author, date, link });
-        }
-
-        console.log(data);
-    });
-};
-
-pttCrawler();
-</code></pre>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;request&quot;</span>);<br><span class="hljs-keyword">const</span> cheerio = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;cheerio&quot;</span>);<br><br><span class="hljs-keyword">const</span> pttCrawler = <span class="hljs-function">() =&gt;</span> &#123;<br>    request(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;https://www.ptt.cc/bbs/Stock/index.html&quot;</span>,<br>        <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;GET&quot;</span><br>    &#125;, <span class="hljs-function">(<span class="hljs-params">error, res, body</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// 如果有錯誤訊息，或沒有 body(內容)，就 return</span><br>        <span class="hljs-keyword">if</span> (error || !body) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">const</span> data = [];<br>        <span class="hljs-keyword">const</span> $ = cheerio.load(body); <span class="hljs-comment">// 載入 body</span><br>        <span class="hljs-keyword">const</span> list = $(<span class="hljs-string">&quot;.r-list-container .r-ent&quot;</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; list.length; i++) &#123;<br>            <span class="hljs-keyword">const</span> title = list.eq(i).find(<span class="hljs-string">&#x27;.title a&#x27;</span>).text();<br>            <span class="hljs-keyword">const</span> author = list.eq(i).find(<span class="hljs-string">&#x27;.meta .author&#x27;</span>).text();<br>            <span class="hljs-keyword">const</span> date = list.eq(i).find(<span class="hljs-string">&#x27;.meta .date&#x27;</span>).text();<br>            <span class="hljs-keyword">const</span> link = list.eq(i).find(<span class="hljs-string">&#x27;.title a&#x27;</span>).attr(<span class="hljs-string">&#x27;href&#x27;</span>);<br><br>            data.push(&#123; title, author, date, link &#125;);<br>        &#125;<br><br>        <span class="hljs-built_in">console</span>.log(data);<br>    &#125;);<br>&#125;;<br><br>pttCrawler();<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
-              <p>
+              <div class="post-metas mb-3">
                 
-                  <span>
-                <i class="iconfont icon-inbox"></i>
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
                       <a class="hover-with-bg" href="/categories/node-js/">node.js</a>
-                      &nbsp;
                     
-                  </span>&nbsp;&nbsp;
+                  </div>
                 
                 
-                  <span>
-                <i class="iconfont icon-tag"></i>
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/Javascript/">Javascript</a>
                     
@@ -290,52 +285,55 @@ pttCrawler();
                     
                       <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
                     
-                  </span>
+                  </div>
                 
-              </p>
+              </div>
               
               
-                <div class="post-prevnext row">
-                  <div class="post-prev col-12 col-md-6">
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
                     
                       <a href="/post/DiscordBot01/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>【用 JS 寫一個 Discord Bot！】01 建立機器人</span>
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【用 JS 寫一個 Discord Bot！】01 建立機器人</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-12 col-md-6">
+                  </article>
+                  <article class="post-next col-6">
+                    
                     
                       <a href="/post/ShallowCopyAndDeepCopy/">
-                        <span>Javascript 的淺拷貝與深拷貝</span>
-                        <i class="fa fa-chevron-right"></i>
+                        <span class="hidden-mobile">Javascript 的淺拷貝與深拷貝</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
-              
-                <!-- Comments -->
-                <!-- <div class="comments" id="comments">
-                  
-                  
-
-                </div> -->
-                <script src="https://utteranc.es/client.js" repo="B-l-u-e-b-e-r-r-y/blog-utterances" issue-term="title" theme="github-light" crossorigin="anonymous" async>
-                </script>
             
-          </div>
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
         </div>
       </div>
     </div>
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc-start"></div>
-<div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目錄</p>
-  <div id="tocbot"></div>
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -347,16 +345,16 @@ pttCrawler();
 
 
     
-  </main>
 
-  
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
@@ -368,208 +366,95 @@ pttCrawler();
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">關鍵詞</label>
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
-    </div>
     
 
     
+  </main>
 
-    
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
+  
+
+  
+
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js"></script>
-<script src="/js/main.js"></script>
 
-
-  <script src="/js/lazyload.js"></script>
-
-
-
+  <!-- SCRIPTS -->
   
-  <script src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js"></script>
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
   <script>
-    $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-      var tocLimMax = 2 * boardTop + boardCtn.height();
-
-      $(window).scroll(function () {
-        var tocLimMin = $('#toc-start').offset().top - navHeight;
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': navHeight,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '.post-content',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
-      }
-      var offset = boardCtn.css('margin-right')
-      $('#toc-ctn').css({
-        'right': offset
-      })
-    });
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
   </script>
 
 
-
-
-
-
-
-
-
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-161468752-1', 'auto');
-      ga('send', 'pageview');
-    </script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
-  
 
-  
 
   
 
 
 
-  <script src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js"></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
-
-
-
-  <script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "使用 Node.js 來爬蟲吧！[PTT 股票板]&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
-
-
-
-  <script src="/js/local-search.js"></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      getSearchFile(path);
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-  <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
-      function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      }
-    );
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
@@ -581,6 +466,13 @@ pttCrawler();
 
 
 
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

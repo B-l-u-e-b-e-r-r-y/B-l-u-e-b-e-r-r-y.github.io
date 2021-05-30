@@ -1,52 +1,78 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
 
 
 
-
-
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta name="google-site-verification" content="nZS-GewkorxA_tNZscTNxAiN3WLftt_UNf5A6Txb-QA">
+<head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="前端工程師與她的筆記們">
+  <meta name="description" content="喜歡做奇怪東西的前端工程師">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI, 爬蟲, Discord Bot">
+  
   <title>CSS 排版神器 Flexbox - 一顆藍莓</title>
 
-  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css">
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
 
-  <link rel="stylesheet" href="/lib/prettify/tomorrow.min.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-<link rel="stylesheet" href="/css/main.css">
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
-  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css">
 
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"b-l-u-e-b-e-r-r-y.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
 
@@ -58,45 +84,72 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">首頁</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">歸檔</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">分類</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">標籤</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">關於</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -104,43 +157,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/images/code_banner.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="CSS 排版神器 Flexbox">
               
             </span>
 
             
-              
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期六, 二月 15日 2020, 11:10 晚上
-                </p>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-15 23:10" pubdate>
+        2020年2月15日 晚上
+      </time>
+    </span>
+  
+</div>
 
-              <p class="mt-1">
-                
-                  
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    1.1k 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      4 分鐘
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分鐘
+    </span>
+  
 
-                
-              </p>
+  
+  
+</div>
+
             
           </div>
 
@@ -154,17 +217,25 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5 z-depth-3" id="board">
-          <div class="post-content mx-auto" id="post">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CSS 排版神器 Flexbox</h1>
+            
+              <p class="note note-info">
+                
+                  本文最後更新於：2020年3月20日 晚上
+                
+              </p>
             
             <div class="markdown-body">
               <p>在 Flexbox 中，部分屬性只能用於父元素，部分只能用於子元素。<br>
-<img src="/images/flexbox/fathernchildren.jpg" srcset="/img/loading.gif" alt></p>
+<img src="/images/flexbox/fathernchildren.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>
 <h4 id="父元素屬性">父元素屬性</h4>
@@ -194,8 +265,7 @@
 </ul>
 <h1>父元素屬性</h1>
 <h2 id="display">display</h2>
-<pre><code class="language-css">display: flex | inline-flex;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">display</span>: flex | inline-flex;<br></code></pre></td></tr></table></figure>
 <p>要使用 Flexbox 必須先定義一個父元素容器，並於父元素定義 <code>display</code> 屬性為 <code>flex</code> 或 <code>inline-flex</code>。</p>
 <ul>
 <li><code>flex</code>：Flexbox 的常用屬性，後方的元素會換行</li>
@@ -203,15 +273,14 @@
 </ul>
 <p>範例程式碼：</p>
 <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="LYVpaLd" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex vs inline-flex">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/LYVpaLd" target="_blank" rel="noopener">
-  flex vs inline-flex</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin/pen/LYVpaLd">
+  flex vs inline-flex</a> by Priscilla Lin (<a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin">@Priscilla_Lin</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 <hr>
 <h2 id="flex-direction">flex-direction</h2>
-<pre><code class="language-css">flex-direction: row&lt;default&gt; | row-reverse | column | column-reverese;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">flex-direction</span>: row&lt;default&gt; | row-reverse | column | column-reverese;<br></code></pre></td></tr></table></figure>
 <p><code>flex-direction</code> 可以指定元素的排列方式。</p>
 <ul>
 <li><code>row</code>：預設值，橫向排列</li>
@@ -221,15 +290,14 @@
 </ul>
 <p>範例程式碼：</p>
 <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="JjdYgWx" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-direction">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/JjdYgWx" target="_blank" rel="noopener">
-  flex-direction</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin/pen/JjdYgWx">
+  flex-direction</a> by Priscilla Lin (<a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin">@Priscilla_Lin</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 <hr>
 <h2 id="flex-wrap">flex-wrap</h2>
-<pre><code class="language-css">flex-wrap: nowrap&lt;default&gt; | wrap | wrap-reverse;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">flex-wrap</span>: nowrap&lt;default&gt; | wrap | wrap-reverse;<br></code></pre></td></tr></table></figure>
 <p>當多個子元素超過父元素的寬度時，<code>flex-wrap</code> 可以決定是否將子元素換行。</p>
 <ul>
 <li><code>nowrap</code>：預設值，不換行，子元素會縮短以符合父元素的寬度</li>
@@ -238,15 +306,14 @@
 </ul>
 <p>範例程式碼：</p>
 <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="zYGvgEm" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-wrap">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/zYGvgEm" target="_blank" rel="noopener">
-  flex-wrap</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin/pen/zYGvgEm">
+  flex-wrap</a> by Priscilla Lin (<a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin">@Priscilla_Lin</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 <hr>
 <h2 id="justify-content">justify-content</h2>
-<pre><code class="language-css">justify-content: flex-start&lt;default&gt; | flex-end | center | space-between | space-around;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">justify-content</span>: flex-start&lt;default&gt; | flex-end | center | space-between | space-around;<br></code></pre></td></tr></table></figure>
 <p><code>justify-content</code> 決定水平對齊的位置。</p>
 <ul>
 <li><code>flex-start</code>：預設值，靠左對齊</li>
@@ -254,21 +321,20 @@
 <li><code>center</code>：置中對齊</li>
 <li><code>space-between</code>：平均分配，左右貼齊父元素</li>
 <li><code>space-around</code>：平均分配，類似 margin 的概念<br>
-<img src="/images/flexbox/jc-space-around.jpg" srcset="/img/loading.gif" alt></li>
+<img src="/images/flexbox/jc-space-around.jpg" srcset="/img/loading.gif" lazyload alt=""></li>
 <li><code>space-evenly</code>：平均分配，每個間距都是相同寬度<br>
-<img src="/images/flexbox/jc-space-evenly.jpg" srcset="/img/loading.gif" alt></li>
+<img src="/images/flexbox/jc-space-evenly.jpg" srcset="/img/loading.gif" lazyload alt=""></li>
 </ul>
 <p>範例程式碼：</p>
 <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="dyoGPwP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="justify-content">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/dyoGPwP" target="_blank" rel="noopener">
-  justify-content</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin/pen/dyoGPwP">
+  justify-content</a> by Priscilla Lin (<a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin">@Priscilla_Lin</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 <hr>
 <h2 id="align-items">align-items</h2>
-<pre><code class="language-css">align-items: flex-start | flex-end | center | stretch&lt;default&gt; | baseline;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">align-items</span>: flex-start | flex-end | center | stretch&lt;default&gt; | baseline;<br></code></pre></td></tr></table></figure>
 <p><code>align-items</code> 決定垂直對齊的位置。</p>
 <ul>
 <li><code>flex-start</code>：靠上方對齊</li>
@@ -276,19 +342,18 @@
 <li><code>center</code>：置中對齊</li>
 <li><code>stretch</code>：預設值，所有元素撐開與父元素同高</li>
 <li><code>baseline</code>：依元素的基準線對齊<br>
-<img src="/images/flexbox/ac-baseline.jpg" srcset="/img/loading.gif" alt></li>
+<img src="/images/flexbox/ac-baseline.jpg" srcset="/img/loading.gif" lazyload alt=""></li>
 </ul>
 <p>範例程式碼：</p>
 <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="abOdKwb" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="align-items">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/abOdKwb" target="_blank" rel="noopener">
-  align-items</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin/pen/abOdKwb">
+  align-items</a> by Priscilla Lin (<a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin">@Priscilla_Lin</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 <hr>
 <h2 id="align-content">align-content</h2>
-<pre><code class="language-css">align-content: flex-start | flex-end | center | stretch&lt;default&gt; | space-between | space-around;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">align-content</span>: flex-start | flex-end | center | stretch&lt;default&gt; | space-between | space-around;<br></code></pre></td></tr></table></figure>
 <p><code>align-content</code> 針對多行的元素進行排序。</p>
 <ul>
 <li><code>flex-start</code>：靠上方對齊</li>
@@ -300,16 +365,15 @@
 </ul>
 <p>範例程式碼：</p>
 <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="MWwKXvx" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="align-content">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/MWwKXvx" target="_blank" rel="noopener">
-  align-content</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin/pen/MWwKXvx">
+  align-content</a> by Priscilla Lin (<a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin">@Priscilla_Lin</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 <hr>
 <h1>子元素屬性</h1>
 <h2 id="align-self">align-self</h2>
-<pre><code class="language-css">align-self: flex-start | flex-end | center | stretch | baseline;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">align-self</span>: flex-start | flex-end | center | stretch | baseline;<br></code></pre></td></tr></table></figure>
 <p><code>align-self</code> 針對各別子元素進行排序，不受其他影響。</p>
 <ul>
 <li><code>flex-start</code>：靠上方對齊</li>
@@ -322,84 +386,78 @@
 可以看到 2 號橘色方塊被我設定為 <code>align-center: center</code>，所以不管怎麼排序，橘色方塊都會垂直置中。<br>
 範例程式碼：</p>
 <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="Priscilla_Lin" data-slug-hash="ExjPjYB" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="align-self">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/ExjPjYB" target="_blank" rel="noopener">
-  align-self</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin/pen/ExjPjYB">
+  align-self</a> by Priscilla Lin (<a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin">@Priscilla_Lin</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 <hr>
 <h2 id="order">order</h2>
-<pre><code class="language-css">order: &lt;number&gt;;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">order</span>: &lt;number&gt;;<br></code></pre></td></tr></table></figure>
 <p><code>order</code> 可以決定子元素的排序順序，只能給定數字。</p>
 <p>範例程式碼：</p>
 <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="NWqxOby" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="order">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/NWqxOby" target="_blank" rel="noopener">
-  order</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin/pen/NWqxOby">
+  order</a> by Priscilla Lin (<a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin">@Priscilla_Lin</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 <hr>
 <h2 id="flex">flex</h2>
-<pre><code class="language-css">flex: &lt;flex-grow&gt; &lt;flex-shrink&gt; &lt;flex-basis&gt;;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">flex</span>: &lt;flex-grow&gt; &lt;flex-shrink&gt; &lt;flex-basis&gt;;<br></code></pre></td></tr></table></figure>
 <p><code>flex</code> 是由三個值組成，如果只給定一個值，則是給定 <code>flex-grow</code>。</p>
 <h3 id="flex-grow">flex-grow</h3>
-<pre><code class="language-css">flex-grow: &lt;number&gt;;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">flex-grow</span>: &lt;number&gt;;<br></code></pre></td></tr></table></figure>
 <p>當子元素的總寬度<strong>不超過</strong>父元素時，<code>flex-grow</code> 會分配剩餘的空間給特定子元素。<br>
 <code>flex-grow</code> 的預設值為 0，設定 1 以上的值會進行彈性變化。<br>
 範例程式碼：</p>
 <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="poJgMoN" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-grow">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/poJgMoN" target="_blank" rel="noopener">
-  flex-grow</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin/pen/poJgMoN">
+  flex-grow</a> by Priscilla Lin (<a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin">@Priscilla_Lin</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 <hr>
 <h3 id="flex-shrink">flex-shrink</h3>
-<pre><code class="language-css">flex-shrink: &lt;number&gt;;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">flex-shrink</span>: &lt;number&gt;;<br></code></pre></td></tr></table></figure>
 <p>當子元素的總寬度<strong>超過</strong>父元素時，<code>flex-shrink</code> 會將特定子元素的寬度依比例縮減。<br>
 <code>flex-shrink</code> 的預設值為 1，設為 0 的話不會進行彈性變化。<br>
 範例程式碼：</p>
 <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="zYGqOvb" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-shrink">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/zYGqOvb" target="_blank" rel="noopener">
-  flex-shrink</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin/pen/zYGqOvb">
+  flex-shrink</a> by Priscilla Lin (<a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin">@Priscilla_Lin</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 <hr>
 <h3 id="flex-basis">flex-basis</h3>
-<pre><code class="language-css">flex-basis: &lt;number&gt;;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">flex-basis</span>: &lt;number&gt;;<br></code></pre></td></tr></table></figure>
 <p><code>flex-basis</code> 會指定子元素在 main axis (主軸)上的初始大小。<br>
 如果 <code>flex-direction: row</code> 則更改子元素寬度，反之，<br>
 如果 <code>flex-direction: column</code> 則更改子元素高度。<br>
 <code>flex-basis</code> 的預設值為 0，也可以設定為 auto，表示以子元素自己的大小為基準。<br>
 範例程式碼：</p>
 <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="Priscilla_Lin" data-slug-hash="BaNKBjZ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-basis">
-  <span>See the Pen <a href="https://codepen.io/Priscilla_Lin/pen/BaNKBjZ" target="_blank" rel="noopener">
-  flex-basis</a> by Priscilla Lin (<a href="https://codepen.io/Priscilla_Lin" target="_blank" rel="noopener">@Priscilla_Lin</a>)
-  on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin/pen/BaNKBjZ">
+  flex-basis</a> by Priscilla Lin (<a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin">@Priscilla_Lin</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
             </div>
             <hr>
             <div>
-              <p>
+              <div class="post-metas mb-3">
                 
-                  <span>
-                <i class="iconfont icon-inbox"></i>
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
                       <a class="hover-with-bg" href="/categories/CSS/">CSS</a>
-                      &nbsp;
                     
-                  </span>&nbsp;&nbsp;
+                  </div>
                 
                 
-                  <span>
-                <i class="iconfont icon-tag"></i>
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/w3HexSchool/">w3HexSchool</a>
                     
@@ -409,52 +467,55 @@
                     
                       <a class="hover-with-bg" href="/tags/RWD/">RWD</a>
                     
-                  </span>
+                  </div>
                 
-              </p>
+              </div>
               
               
-                <div class="post-prevnext row">
-                  <div class="post-prev col-12 col-md-6">
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
                     
                       <a href="/post/Destructuring/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>Destructuring 解構賦值</span>
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Destructuring 解構賦值</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-12 col-md-6">
+                  </article>
+                  <article class="post-next col-6">
+                    
                     
                       <a href="/post/ReactChildren/">
-                        <span>React Children 屬性</span>
-                        <i class="fa fa-chevron-right"></i>
+                        <span class="hidden-mobile">React Children 屬性</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
-              
-                <!-- Comments -->
-                <!-- <div class="comments" id="comments">
-                  
-                  
-
-                </div> -->
-                <script src="https://utteranc.es/client.js" repo="B-l-u-e-b-e-r-r-y/blog-utterances" issue-term="title" theme="github-light" crossorigin="anonymous" async>
-                </script>
             
-          </div>
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
         </div>
       </div>
     </div>
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc-start"></div>
-<div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目錄</p>
-  <div id="tocbot"></div>
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -466,16 +527,16 @@
 
 
     
-  </main>
 
-  
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
@@ -487,208 +548,95 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">關鍵詞</label>
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
-    </div>
     
 
     
+  </main>
 
-    
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
+  
+
+  
+
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js"></script>
-<script src="/js/main.js"></script>
 
-
-  <script src="/js/lazyload.js"></script>
-
-
-
+  <!-- SCRIPTS -->
   
-  <script src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js"></script>
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
   <script>
-    $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-      var tocLimMax = 2 * boardTop + boardCtn.height();
-
-      $(window).scroll(function () {
-        var tocLimMin = $('#toc-start').offset().top - navHeight;
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': navHeight,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '.post-content',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
-      }
-      var offset = boardCtn.css('margin-right')
-      $('#toc-ctn').css({
-        'right': offset
-      })
-    });
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
   </script>
 
 
-
-
-
-
-
-
-
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-161468752-1', 'auto');
-      ga('send', 'pageview');
-    </script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
-  
 
-  
 
   
 
 
 
-  <script src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js"></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
-
-
-
-  <script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "CSS 排版神器 Flexbox&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
-
-
-
-  <script src="/js/local-search.js"></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      getSearchFile(path);
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-  <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
-      function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      }
-    );
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
@@ -700,6 +648,13 @@
 
 
 
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

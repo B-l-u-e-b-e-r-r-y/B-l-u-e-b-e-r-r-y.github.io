@@ -1,52 +1,62 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
 
 
 
-
-
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta name="google-site-verification" content="nZS-GewkorxA_tNZscTNxAiN3WLftt_UNf5A6Txb-QA">
+<head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="前端工程師與她的筆記們">
+  <meta name="description" content="喜歡做奇怪東西的前端工程師">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI, 爬蟲, Discord Bot">
+  
   <title>一顆藍莓</title>
 
-  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css">
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
 
-  <link rel="stylesheet" href="/lib/prettify/tomorrow.min.css">
 
-<link rel="stylesheet" href="/css/main.css">
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
-  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css">
 
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"b-l-u-e-b-e-r-r-y.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
   <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
 
@@ -58,45 +68,72 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">首頁</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">歸檔</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">分類</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">標籤</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">關於</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -104,13 +141,13 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/images/index.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="喜歡做奇怪東西的前端工程師">
               
             </span>
 
@@ -119,7 +156,7 @@
 
           
             <div class="scroll-down-bar">
-              <i class="fas fa-angle-down scroll-down-arrow"></i>
+              <i class="iconfont icon-arrowdown"></i>
             </div>
           
         </div>
@@ -129,8 +166,8 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board"
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
           style=margin-top:0>
           
           <div class="container">
@@ -142,85 +179,93 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/post/PTTCrawler02/" target="_self">
-          <img src="/images/node_banner.png" srcset="/img/loading.gif" alt="使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/images/node_banner.png" srcset="/img/loading.gif" lazyload alt="使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]">
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/post/PTTCrawler02/">
-        <p class="h4 index-header">使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]</p>
-      </a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/post/PTTCrawler02/" target="_self">
+          使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]
+        </a>
+      </h1>
 
-      <a href="/post/PTTCrawler02/">
-        
-        
+      <p class="index-excerpt">
+        <a href="/post/PTTCrawler02/" target="_self">
           
-        
-        <div class="index-excerpt">
-          <div class="index-text mb-1">前言
+          
+            
+          
+          前言
 如果使用前一篇使用 Node.js 來爬蟲吧！[PTT 股票板]程式碼，試著將網址改成八卦板運行，會發現爬蟲抓不到資料的問題。
 這是因為第一次訪問八卦板時，PTT 會先跳出年齡驗證，使用者如果按下已滿 18 歲的按鈕，PTT 就會將紀錄存在 Cookies。
 
 當然也可以在 requset 時帶 cookie，不過本篇文章會講解使用自動化測試工具 Puppeteer 來實作這個功能。
 實作
-安裝 Puppeteer
-npm i puppeteer
 
-引入 Puppeteer
-const puppeteer = require('puppeteer');
+        </a>
+      </p>
 
-程式碼
-下面程式碼主要功能是先 </div>
-        </div>
-      </a>
-
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-30&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/node-js/">node.js</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-30 15:00" pubdate>
+              2020-05-30
+            </time>
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Javascript/">Javascript</a>&nbsp;
-          
-            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
-          
-            <a href="/tags/node-js/">node.js</a>&nbsp;
-          
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/node-js/">node.js</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Javascript/">Javascript</a>
+            
+              <a href="/tags/w3HexSchool/">w3HexSchool</a>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+          </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/post/DiscordBot02/" target="_self">
-          <img src="/images/dc_banner.jpg" srcset="/img/loading.gif" alt="【用 JS 寫一個 Discord Bot！】02 音樂機器人" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/images/dc_banner.jpg" srcset="/img/loading.gif" lazyload alt="【用 JS 寫一個 Discord Bot！】02 音樂機器人">
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/post/DiscordBot02/">
-        <p class="h4 index-header">【用 JS 寫一個 Discord Bot！】02 音樂機器人</p>
-      </a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/post/DiscordBot02/" target="_self">
+          【用 JS 寫一個 Discord Bot！】02 音樂機器人
+        </a>
+      </h1>
 
-      <a href="/post/DiscordBot02/">
-        
-        
+      <p class="index-excerpt">
+        <a href="/post/DiscordBot02/" target="_self">
           
-        
-        <div class="index-excerpt">
-          <div class="index-text mb-1">前言
+          
+            
+          
+          前言
 今天我們來寫一個具有以下功能的音樂機器人：
 
 播放 YouTube 歌曲
@@ -238,76 +283,73 @@ ffmpeg-static
 
 
 執行音樂的轉檔、串流功能
-$ npm install ffmpeg-static
+1$ npm install ffmpe
+        </a>
+      </p>
 
-
-
-discordjs/opus
-
-
-Opus 編碼器
-$ npm install @discordjs/opus
-
-
-
-node-ytdl-core
-
-
-執行下載 YouTube </div>
-        </div>
-      </a>
-
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-17&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-17 23:00" pubdate>
+              2020-05-17
+            </time>
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/node-js/">node.js</a>&nbsp;
-          
-            <a href="/categories/node-js/Discord-Bot/">Discord Bot</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/node-js/">node.js</a>
+            
+              <a href="/categories/node-js/Discord-Bot/">Discord Bot</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Javascript/">Javascript</a>&nbsp;
-          
-            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
-          
-            <a href="/tags/node-js/">node.js</a>&nbsp;
-          
-            <a href="/tags/Discord-js/">Discord.js</a>&nbsp;
-          
-            <a href="/tags/DC機器人/">DC機器人</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Javascript/">Javascript</a>
+            
+              <a href="/tags/w3HexSchool/">w3HexSchool</a>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/Discord-js/">Discord.js</a>
+            
+              <a href="/tags/DC%E6%A9%9F%E5%99%A8%E4%BA%BA/">DC機器人</a>
+            
+          </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/post/ForeignKey/" target="_self">
-          <img src="/images/mysql_banner.png" srcset="/img/loading.gif" alt="以 MySQL 為例解釋外鍵（Foreign Key）" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/images/mysql_banner.png" srcset="/img/loading.gif" lazyload alt="以 MySQL 為例解釋外鍵（Foreign Key）">
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/post/ForeignKey/">
-        <p class="h4 index-header">以 MySQL 為例解釋外鍵（Foreign Key）</p>
-      </a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/post/ForeignKey/" target="_self">
+          以 MySQL 為例解釋外鍵（Foreign Key）
+        </a>
+      </h1>
 
-      <a href="/post/ForeignKey/">
-        
-        
+      <p class="index-excerpt">
+        <a href="/post/ForeignKey/" target="_self">
           
-        
-        <div class="index-excerpt">
-          <div class="index-text mb-1">介紹
+          
+            
+          
+          介紹
 外鍵（Foreign Key）是指向其他表的主鍵（Primary Key）的欄位，用於確定兩張表的關聯性及資料完整性，以避免部分資料匹配不上的問題。
 
 如果想要使用外鍵，儲存引擎必須是 InnoDB
@@ -316,277 +358,323 @@ node-ytdl-core
 
 接下來會以 MySQL 示範 Foreign Key 的常見使用情境，以及操作時會碰到的問題。
 實作
-我們會有兩張資料表：users 及 orders。
-users 負責管理會員資料，orders 則管理訂單資料。
-這邊 users 與 orders 的關係為：先有 users（會員），才有 orders（訂單）。一個會員有</div>
-        </div>
-      </a>
+我們會有兩張資料表：us
+        </a>
+      </p>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-09&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-09 13:50" pubdate>
+              2020-05-09
+            </time>
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/MySQL/">MySQL</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/MySQL/">MySQL</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
-          
-            <a href="/tags/MySQL/">MySQL</a>&nbsp;
-          
-            <a href="/tags/Foreign-Key/">Foreign Key</a>&nbsp;
-          
-            <a href="/tags/FK/">FK</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/w3HexSchool/">w3HexSchool</a>
+            
+              <a href="/tags/MySQL/">MySQL</a>
+            
+              <a href="/tags/Foreign-Key/">Foreign Key</a>
+            
+              <a href="/tags/FK/">FK</a>
+            
+          </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/post/FunctionalProgramming01/" target="_self">
-          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="Functional Programming 初級入門" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" lazyload alt="Functional Programming 初級入門">
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/post/FunctionalProgramming01/">
-        <p class="h4 index-header">Functional Programming 初級入門</p>
-      </a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/post/FunctionalProgramming01/" target="_self">
+          Functional Programming 初級入門
+        </a>
+      </h1>
 
-      <a href="/post/FunctionalProgramming01/">
-        
-        
+      <p class="index-excerpt">
+        <a href="/post/FunctionalProgramming01/" target="_self">
           
-        
-        <div class="index-excerpt">
-          <div class="index-text mb-1">前言
+          
+            
+          
+          前言
 最近打算把 Udemy 的這堂《JavaScript 全攻略：克服 JS 的奇怪部分》補完，才發現裡面有提到 Functional Programming 的觀念，之前就一直想學這塊，今天剛好有這個機會可以入門。
-在堅持鐵人賽的這幾週，漸漸也養成了在週六學習新知的習慣，但也發現一天的時間要包含學習和寫文章有點不太夠，之後希望能把時間管理慢慢做好，多騰出一些平日的時間來學習，邁向一週寫兩篇文的目標前進。
-什麼是 Functional Programming
-Functional Programming（以下簡稱 FP）是一種編程範例（Programming paradigm），可以理解為是</div>
-        </div>
-      </a>
+在堅持鐵人賽的這幾週，漸漸也養成了在週六學習新知的習慣，但也發現一天的時間要包含學習和寫文章有點不太夠，之後希望能把時間管理慢慢做好，多騰出一些平日的時間來學習，邁向一週寫兩篇文的
+        </a>
+      </p>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-02&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-02 00:00" pubdate>
+              2020-05-02
+            </time>
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Javascript/">Javascript</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Javascript/">Javascript</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Javascript/">Javascript</a>&nbsp;
-          
-            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
-          
-            <a href="/tags/Functional-Programming/">Functional Programming</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Javascript/">Javascript</a>
+            
+              <a href="/tags/w3HexSchool/">w3HexSchool</a>
+            
+              <a href="/tags/Functional-Programming/">Functional Programming</a>
+            
+          </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/post/Prototype/" target="_self">
-          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="Javascript 原型鍊（Prototype Chain）" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" lazyload alt="Javascript 原型鍊（Prototype Chain）">
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/post/Prototype/">
-        <p class="h4 index-header">Javascript 原型鍊（Prototype Chain）</p>
-      </a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/post/Prototype/" target="_self">
+          Javascript 原型鍊（Prototype Chain）
+        </a>
+      </h1>
 
-      <a href="/post/Prototype/">
-        
-        
+      <p class="index-excerpt">
+        <a href="/post/Prototype/" target="_self">
           
-        
-        <div class="index-excerpt">
-          <div class="index-text mb-1">原型繼承
+          
+            
+          
+          原型繼承
 不同於 Java 或 C++ 這些基於類別的語言，Javascript 是基於原型（prototype-based）的，ES6 雖然有 class 可以使用，但那只是語法糖而已。
 廣義來說，繼承就是一個物件取用另一個物件的屬性或方法。而 Javascript 的繼承是原型繼承，繼承的物件並不會一併將所有屬性及方法複製過來，而是透過原型鍊來連結其物件繼承的屬性及方法。
-假設有兩個物件：animal 和 elephant，讓 elephant 繼承 animal，那麼 elephant 就可以使用 animal 的屬性及方法，而 animal 就是 elephant 的原型物件。
-當我們</div>
-        </div>
-      </a>
+假設有兩個物件：an
+        </a>
+      </p>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-25&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-25 23:08" pubdate>
+              2020-04-25
+            </time>
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Javascript/">Javascript</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Javascript/">Javascript</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Javascript/">Javascript</a>&nbsp;
-          
-            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
-          
-            <a href="/tags/Prototype/">Prototype</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Javascript/">Javascript</a>
+            
+              <a href="/tags/w3HexSchool/">w3HexSchool</a>
+            
+              <a href="/tags/Prototype/">Prototype</a>
+            
+          </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/post/JSDesignPattern01/" target="_self">
-          <img src="/images/design-pattern/01.png" srcset="/img/loading.gif" alt="Javascript 設計模式 - 單例模式" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/images/design-pattern/01.png" srcset="/img/loading.gif" lazyload alt="Javascript 設計模式 - 單例模式">
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/post/JSDesignPattern01/">
-        <p class="h4 index-header">Javascript 設計模式 - 單例模式</p>
-      </a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/post/JSDesignPattern01/" target="_self">
+          Javascript 設計模式 - 單例模式
+        </a>
+      </h1>
 
-      <a href="/post/JSDesignPattern01/">
-        
-        
+      <p class="index-excerpt">
+        <a href="/post/JSDesignPattern01/" target="_self">
           
-        
-        <div class="index-excerpt">
-          <div class="index-text mb-1">前言
+          
+            
+          
+          前言
 本篇內容是我閱讀《JavaScript設計模式與開發實踐》的筆記，這些程式碼會牽涉到一些觀念，如閉包、物件導向、原型鍊等，如果有不懂的地方可以詢問 Google 大神，這邊會比較著重在講解與實作設計模式的部分。
 單例模式
-單例模式是確保物件只建立一次的設計模式，好處是能減少不必要的內存，它的原則是保證一個類別僅有一個實例，並提供一個存取它的全域存取點，透過一個變數來記錄類別有沒有建立過物件，如果沒有被建立過，則建立物件並且返回；如果已建立過，則返回已建立的物件。
-以前端開發者的角度來看，它適合用來實作按鈕點擊後的彈出式視窗，不論點擊多少次按鈕，這個彈出式視窗永遠只會被建立一次。
-不透明的</div>
-        </div>
-      </a>
+單例模式是確保物件只建立一次的設計模式，好處是能減少不必要的內存，它的原則是保證一個類別僅有一個實例，並提供一個存取它的全域存取點，透過一個變數來記錄類別有沒有建立過物件，
+        </a>
+      </p>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-18&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Javascript/">Javascript</a>&nbsp;
-          
-            <a href="/categories/Javascript/Design-Pattern/">Design Pattern</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 20:53" pubdate>
+              2020-04-18
+            </time>
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Javascript/">Javascript</a>&nbsp;
-          
-            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
-          
-            <a href="/tags/Design-Pattern/">Design Pattern</a>&nbsp;
-          
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Javascript/">Javascript</a>
+            
+              <a href="/categories/Javascript/Design-Pattern/">Design Pattern</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Javascript/">Javascript</a>
+            
+              <a href="/tags/w3HexSchool/">w3HexSchool</a>
+            
+              <a href="/tags/Design-Pattern/">Design Pattern</a>
+            
+          </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/post/Book01/" target="_self">
-          <img src="/images/books/book1-cover.jpg" srcset="/img/loading.gif" alt="《被討厭的勇氣》重點摘錄" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/images/books/book1-cover.jpg" srcset="/img/loading.gif" lazyload alt="《被討厭的勇氣》重點摘錄">
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/post/Book01/">
-        <p class="h4 index-header">《被討厭的勇氣》重點摘錄</p>
-      </a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/post/Book01/" target="_self">
+          《被討厭的勇氣》重點摘錄
+        </a>
+      </h1>
 
-      <a href="/post/Book01/">
-        
-        
+      <p class="index-excerpt">
+        <a href="/post/Book01/" target="_self">
           
-        
-        <div class="index-excerpt">
-          <div class="index-text mb-1">
+          
+            
+          
+          
 《被討厭的勇氣：自我啟發之父「阿德勒」的教導》
 《被討厭的勇氣》一書藉由年輕人與哲學家的對話，將阿德勒心理學的主張由淺入深地解釋清楚。
 讀完這本書之後，覺得自己的三觀都被刷新了ＸＤ，影響我最深的是「課題分離」和「權力鬥爭」這兩個觀點。
-書中的年輕人生活型態（價值觀）和我很像，自卑、害怕在人際關係中受傷、甚至有點厭世，他提出的疑問也是我的疑問，經由對話的形式與哲學家大量的舉例讓阿德勒心理學變得很好理解，這本書推薦給所有害怕在人際關係受傷的各位。
-下面是我做的重點摘錄，可能有些難以理解的地方，因為不想讓篇幅太長所以沒有多加舉證，想知道更多細節就去閱讀這本書吧！
+書中的年輕人生活型態（價值觀）和我很像，自卑、害怕在人際關係中受傷、甚至有點厭世，他提出的疑問也是我的疑問，經由對話的形式與哲學家大量的舉例讓阿德勒心理學變得很好
+        </a>
+      </p>
 
-
-第一章：否定心理創傷
-
-
-改變</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-11&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-11 16:00" pubdate>
+              2020-04-11
+            </time>
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/讀書筆記/">讀書筆記</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%80%E6%9B%B8%E7%AD%86%E8%A8%98/">讀書筆記</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
-          
-            <a href="/tags/阿德勒/">阿德勒</a>&nbsp;
-          
-            <a href="/tags/被討厭的勇氣/">被討厭的勇氣</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/w3HexSchool/">w3HexSchool</a>
+            
+              <a href="/tags/%E9%98%BF%E5%BE%B7%E5%8B%92/">阿德勒</a>
+            
+              <a href="/tags/%E8%A2%AB%E8%A8%8E%E5%8E%AD%E7%9A%84%E5%8B%87%E6%B0%A3/">被討厭的勇氣</a>
+            
+          </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/post/DiscordBot01/" target="_self">
-          <img src="/images/dc_banner.jpg" srcset="/img/loading.gif" alt="【用 JS 寫一個 Discord Bot！】01 建立機器人" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/images/dc_banner.jpg" srcset="/img/loading.gif" lazyload alt="【用 JS 寫一個 Discord Bot！】01 建立機器人">
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/post/DiscordBot01/">
-        <p class="h4 index-header">【用 JS 寫一個 Discord Bot！】01 建立機器人</p>
-      </a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/post/DiscordBot01/" target="_self">
+          【用 JS 寫一個 Discord Bot！】01 建立機器人
+        </a>
+      </h1>
 
-      <a href="/post/DiscordBot01/">
-        
-        
+      <p class="index-excerpt">
+        <a href="/post/DiscordBot01/" target="_self">
           
-        
-        <div class="index-excerpt">
-          <div class="index-text mb-1">創建機器人
+          
+            
+          
+          創建機器人
 首先到 Discord Developer 建立機器人。（需登入）
 1. 新增 APP
 進入網頁後，點擊按鈕 New Application。
@@ -602,175 +690,183 @@ Functional Programming（以下簡稱 FP）是一種編程範例（Programming p
 
 Bot 新增後可以更改它的 USERNAME、ICON（頭貼），修改完畢後記得儲存。
 
-這裡的 Token 指的是機器人的秘鑰，編寫程式時需要加入這串 token。
-切忌不要將 token 洩漏出去，因為擁有 token 的人可以操控這隻 bot。
-我曾經不小心把 token 上傳到 Github 上</div>
-        </div>
-      </a>
+這裡的 Tok
+        </a>
+      </p>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-04&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/node-js/">node.js</a>&nbsp;
-          
-            <a href="/categories/node-js/Discord-Bot/">Discord Bot</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-04 18:00" pubdate>
+              2020-04-04
+            </time>
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Javascript/">Javascript</a>&nbsp;
-          
-            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
-          
-            <a href="/tags/node-js/">node.js</a>&nbsp;
-          
-            <a href="/tags/Discord-js/">Discord.js</a>&nbsp;
-          
-            <a href="/tags/DC機器人/">DC機器人</a>&nbsp;
-          
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/node-js/">node.js</a>
+            
+              <a href="/categories/node-js/Discord-Bot/">Discord Bot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Javascript/">Javascript</a>
+            
+              <a href="/tags/w3HexSchool/">w3HexSchool</a>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/Discord-js/">Discord.js</a>
+            
+              <a href="/tags/DC%E6%A9%9F%E5%99%A8%E4%BA%BA/">DC機器人</a>
+            
+          </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/post/PTTCrawler/" target="_self">
-          <img src="/images/node_banner.png" srcset="/img/loading.gif" alt="使用 Node.js 來爬蟲吧！[PTT 股票板]" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/images/node_banner.png" srcset="/img/loading.gif" lazyload alt="使用 Node.js 來爬蟲吧！[PTT 股票板]">
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/post/PTTCrawler/">
-        <p class="h4 index-header">使用 Node.js 來爬蟲吧！[PTT 股票板]</p>
-      </a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/post/PTTCrawler/" target="_self">
+          使用 Node.js 來爬蟲吧！[PTT 股票板]
+        </a>
+      </h1>
 
-      <a href="/post/PTTCrawler/">
-        
-        
+      <p class="index-excerpt">
+        <a href="/post/PTTCrawler/" target="_self">
           
-        
-        <div class="index-excerpt">
-          <div class="index-text mb-1">前言
+          
+            
+          
+          前言
 一般大家爬蟲都是使用 python，其實 node.js 也是可以爬蟲的，作為前端，能用自己習慣的語言來寫當然很方便。但是 python 和 node.js 除了寫法不同，兩者特性也是不同的，例如 node.js 是異步的、單執行緒，python 則是多執行緒等等，關於這些差異本文就不多加討論。
 模組
 node.js 爬蟲需要用到兩個模組：request 和 cheerio。
 介紹
-request 是用來訪問網站用的，它能模擬 Client 訪問網站，設定訪問時帶的 Header。
-cheerio 則算是 node.js 界的 jQuery，它是以 jQuery 為核心去設計的，
-好比要</div>
-        </div>
-      </a>
+requ
+        </a>
+      </p>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-28&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-28 18:00" pubdate>
+              2020-03-28
+            </time>
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/node-js/">node.js</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/node-js/">node.js</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Javascript/">Javascript</a>&nbsp;
-          
-            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
-          
-            <a href="/tags/node-js/">node.js</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Javascript/">Javascript</a>
+            
+              <a href="/tags/w3HexSchool/">w3HexSchool</a>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+          </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/post/ShallowCopyAndDeepCopy/" target="_self">
-          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" alt="Javascript 的淺拷貝與深拷貝" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" lazyload alt="Javascript 的淺拷貝與深拷貝">
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/post/ShallowCopyAndDeepCopy/">
-        <p class="h4 index-header">Javascript 的淺拷貝與深拷貝</p>
-      </a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/post/ShallowCopyAndDeepCopy/" target="_self">
+          Javascript 的淺拷貝與深拷貝
+        </a>
+      </h1>
 
-      <a href="/post/ShallowCopyAndDeepCopy/">
-        
-        
+      <p class="index-excerpt">
+        <a href="/post/ShallowCopyAndDeepCopy/" target="_self">
           
-        
-        <div class="index-excerpt">
-          <div class="index-text mb-1">前言
+          
+            
+          
+          前言
 在寫 JS 的過程中，常常會遇到需要拷貝物件或陣列的情況。
 然而之後修改拷貝的內容時，發現原本的物件或陣列的屬性也跟著一起改變。
 好比下面的例子：
-const person = {
-    name: 'Blueberry',
-    age: '24',
-    interest: '閱讀'
-};
+12345678910111213141516171819202122232425const person = &#123;    name: &#x27;Blueberry&#x27;,    age: &#x27;24&#x27;,    i
+        </a>
+      </p>
 
-const copy = person;
-copy.interest = '泡咖啡';
-console.log('copy: ', copy);
-console.log('person: ', person);
-
-/**
- * [Output]
- *
- * copy: Object {
- </div>
-        </div>
-      </a>
-
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-21&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-21 18:00" pubdate>
+              2020-03-21
+            </time>
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Javascript/">Javascript</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Javascript/">Javascript</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Javascript/">Javascript</a>&nbsp;
-          
-            <a href="/tags/w3HexSchool/">w3HexSchool</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Javascript/">Javascript</a>
+            
+              <a href="/tags/w3HexSchool/">w3HexSchool</a>
+            
+          </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
 
 
-  <nav aria-label="index posts navigation">
-    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -780,16 +876,16 @@ console.log('person: ', person);
         </div>
       </div>
     
-  </main>
 
-  
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
@@ -801,155 +897,89 @@ console.log('person: ', person);
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">關鍵詞</label>
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
-    </div>
     
 
     
+  </main>
 
-    
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
+  
+
+  
+
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js"></script>
-<script src="/js/main.js"></script>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
-  <script src="/js/lazyload.js"></script>
-
-
-
-
-
-
-
-
-
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-161468752-1', 'auto');
-      ga('send', 'pageview');
-    </script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
-  
 
-  
 
   
 
 
 
-  <script src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js"></script>
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
-
-
-
-  <script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "前端工程師與她的筆記們&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
-
-
-
-  <script src="/js/local-search.js"></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      getSearchFile(path);
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-  <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
-      function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      }
-    );
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
@@ -961,6 +991,13 @@ console.log('person: ', person);
 
 
 
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

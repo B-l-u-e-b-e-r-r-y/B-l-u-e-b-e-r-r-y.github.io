@@ -1,52 +1,78 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
 
 
 
-
-
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta name="google-site-verification" content="nZS-GewkorxA_tNZscTNxAiN3WLftt_UNf5A6Txb-QA">
+<head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="前端工程師與她的筆記們">
+  <meta name="description" content="喜歡做奇怪東西的前端工程師">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI, 爬蟲, Discord Bot">
+  
   <title>Javascript 的淺拷貝與深拷貝 - 一顆藍莓</title>
 
-  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css">
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
 
-  <link rel="stylesheet" href="/lib/prettify/tomorrow.min.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-<link rel="stylesheet" href="/css/main.css">
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
-  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css">
 
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"b-l-u-e-b-e-r-r-y.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
 
@@ -58,45 +84,72 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">首頁</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">歸檔</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">分類</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">標籤</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">關於</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -104,43 +157,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/images/js_banner.jpeg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Javascript 的淺拷貝與深拷貝">
               
             </span>
 
             
-              
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期六, 三月 21日 2020, 6:00 晚上
-                </p>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-21 18:00" pubdate>
+        2020年3月21日 晚上
+      </time>
+    </span>
+  
+</div>
 
-              <p class="mt-1">
-                
-                  
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    1k 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      4 分鐘
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分鐘
+    </span>
+  
 
-                
-              </p>
+  
+  
+</div>
+
             
           </div>
 
@@ -154,79 +217,40 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5 z-depth-3" id="board">
-          <div class="post-content mx-auto" id="post">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Javascript 的淺拷貝與深拷貝</h1>
+            
+              <p class="note note-info">
+                
+                  本文最後更新於：2020年3月23日 中午
+                
+              </p>
             
             <div class="markdown-body">
               <h1>前言</h1>
 <p>在寫 JS 的過程中，常常會遇到需要拷貝物件或陣列的情況。<br>
 然而之後修改拷貝的內容時，發現原本的物件或陣列的屬性也跟著一起改變。<br>
 好比下面的例子：</p>
-<pre><code class="language-js">const person = {
-    name: 'Blueberry',
-    age: '24',
-    interest: '閱讀'
-};
-
-const copy = person;
-copy.interest = '泡咖啡';
-console.log('copy: ', copy);
-console.log('person: ', person);
-
-/**
- * [Output]
- *
- * copy: Object {
- *     name: 'Blueberry',
- *     age: '24',
- *     interest: '泡咖啡'
- * }
- * person: Object {
- *     name: 'Blueberry',
- *     age: '24',
- *     interest: '泡咖啡'  // 疑等等？怎麼不是'閱讀'了？
- * }
- */
-</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> person = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Blueberry&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-string">&#x27;24&#x27;</span>,<br>    <span class="hljs-attr">interest</span>: <span class="hljs-string">&#x27;閱讀&#x27;</span><br>&#125;;<br><br><span class="hljs-keyword">const</span> copy = person;<br>copy.interest = <span class="hljs-string">&#x27;泡咖啡&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;copy: &#x27;</span>, copy);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;person: &#x27;</span>, person);<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * [Output]</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * copy: Object &#123;</span><br><span class="hljs-comment"> *     name: &#x27;Blueberry&#x27;,</span><br><span class="hljs-comment"> *     age: &#x27;24&#x27;,</span><br><span class="hljs-comment"> *     interest: &#x27;泡咖啡&#x27;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> * person: Object &#123;</span><br><span class="hljs-comment"> *     name: &#x27;Blueberry&#x27;,</span><br><span class="hljs-comment"> *     age: &#x27;24&#x27;,</span><br><span class="hljs-comment"> *     interest: &#x27;泡咖啡&#x27;  // 疑等等？怎麼不是&#x27;閱讀&#x27;了？</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
 <p>為什麼我修改的是 <code>copy</code> 的 interest，卻連 <code>person</code> 的值也一起改了？<br>
 這就跟 <strong>by value</strong> 與 <strong>by reference</strong> 有關了。</p>
 <h1>by value VS by reference</h1>
 <p>兩者的不同在於<strong>記憶體的位置</strong>，如果是 by value，複製時記憶體位置會是<strong>不同</strong>的，<br>
 但如果是 by reference，複製時記憶體位置會是<strong>相同</strong>的，下面就來詳細介紹與舉例。</p>
 <h2 id="by-value">by value</h2>
-<pre><code class="language-js">const a = 1;
-const b = a;
-
-a = 2;
-console.log(a, b);  // 1, 2
-</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">const</span> b = a;<br><br>a = <span class="hljs-number">2</span>;<br><span class="hljs-built_in">console</span>.log(a, b);  <span class="hljs-comment">// 1, 2</span><br></code></pre></td></tr></table></figure>
 <p>根據上面的範例，<code>a</code> 在記憶體中位於 <code>0x001</code> 位置，複製 a 的 <code>b</code> 在記憶體中位於 <code>0x002</code> 位置。<br>
 <strong>兩者位於不同的記憶體位置，所以在後續修改時，不會影響到對方。</strong><br>
 只要是<strong>純值（數字、布林或字串）</strong>，就是 by value。</p>
 <h2 id="by-reference">by reference</h2>
-<pre><code class="language-js">const a = { name: 'Blueberry' };
-const b = a;
-
-a.name = 'Strawberry';
-console.log('a: ', a);
-console.log('b: ', b);
-
-/**
- * [Output]
- *
- * a: Object {
- *     name: &quot;Strawberry&quot;
- * }
- * b: Object {
- *     name: &quot;Strawberry&quot;
- * }
- */ 
-</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> a = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Blueberry&#x27;</span> &#125;;<br><span class="hljs-keyword">const</span> b = a;<br><br>a.name = <span class="hljs-string">&#x27;Strawberry&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;a: &#x27;</span>, a);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;b: &#x27;</span>, b);<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * [Output]</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * a: Object &#123;</span><br><span class="hljs-comment"> *     name: &quot;Strawberry&quot;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> * b: Object &#123;</span><br><span class="hljs-comment"> *     name: &quot;Strawberry&quot;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span> <br></code></pre></td></tr></table></figure>
 <p>根據上面的範例，a 在記憶體中位於 <code>0x001</code> 位置，複製 a 的 b 在記憶體中也位於 <code>0x001</code> 位置。沒有新的物件產生，也沒有物件的拷貝被創造。<br>
 <strong>兩者位於相同的記憶體位置，可以說 a 其實就是 b，只是換個名字而已，所以在後續修改時，會影響到對方。</strong><br>
 只要是<strong>物件（陣列、物件或函式）</strong>，就是 by reference。<br>
@@ -237,162 +261,88 @@ console.log('b: ', b);
 <p>下面就來介紹淺拷貝與深拷貝的用法。</p>
 <h2 id="淺拷貝">淺拷貝</h2>
 <h3 id="Object-assign">Object.assign()</h3>
-<pre><code class="language-js">const person = {
-    name: 'Blueberry',
-    interest: ['閱讀', '玩遊戲']
-};
-
-const copy = Object.assign({}, person);
-
-copy.name = 'Strawberry';
-copy.interest[0] = '泡咖啡';
-console.log('copy: ', copy);
-console.log('person: ', person);
-
-/**
- * [Output]
- *
- * copy: Object {
- *     name: 'Strawberry',
- *     interest: ['泡咖啡', '玩遊戲']
- * }
- * person: Object {
- *     name: 'Blueberry',
- *     interest: ['泡咖啡', '玩遊戲']
- * }
- */
-</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> person = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Blueberry&#x27;</span>,<br>    <span class="hljs-attr">interest</span>: [<span class="hljs-string">&#x27;閱讀&#x27;</span>, <span class="hljs-string">&#x27;玩遊戲&#x27;</span>]<br>&#125;;<br><br><span class="hljs-keyword">const</span> copy = <span class="hljs-built_in">Object</span>.assign(&#123;&#125;, person);<br><br>copy.name = <span class="hljs-string">&#x27;Strawberry&#x27;</span>;<br>copy.interest[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;泡咖啡&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;copy: &#x27;</span>, copy);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;person: &#x27;</span>, person);<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * [Output]</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * copy: Object &#123;</span><br><span class="hljs-comment"> *     name: &#x27;Strawberry&#x27;,</span><br><span class="hljs-comment"> *     interest: [&#x27;泡咖啡&#x27;, &#x27;玩遊戲&#x27;]</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> * person: Object &#123;</span><br><span class="hljs-comment"> *     name: &#x27;Blueberry&#x27;,</span><br><span class="hljs-comment"> *     interest: [&#x27;泡咖啡&#x27;, &#x27;玩遊戲&#x27;]</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
 <p>這裡可以看到 <code>copy</code> 的第二層（<code>interest: ['閱讀', '玩遊戲']</code>）被修改了，結果連原本的 <code>person</code> 也一起變成 <code>泡咖啡</code>，因為 <code>copy</code> 的第二層仍是指向與原物件相同的記憶體位置。<br>
 但是 <code>name</code> 這個值就不同了，<code>copy</code> 的第一層是有被淺層拷貝成功的。</p>
 <h3 id="for-迴圈">for 迴圈</h3>
 <p>for 迴圈是最土法煉鋼的方法，它也能達到淺拷貝的效果。</p>
-<pre><code class="language-js">const a = [1, 2, 3];
-const b = [];
-for (let i = 0; i &lt; a.length; i++) {
-  b.push(a[i]);
-}
-b.push(4);
-console.log(a);
-console.log(b);
-
-/**
- * [Output]
- *
- * [1, 2, 3]
- * [1, 2, 3, 4]
- */
-</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">const</span> b = [];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; a.length; i++) &#123;<br>  b.push(a[i]);<br>&#125;<br>b.push(<span class="hljs-number">4</span>);<br><span class="hljs-built_in">console</span>.log(a);<br><span class="hljs-built_in">console</span>.log(b);<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * [Output]</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * [1, 2, 3]</span><br><span class="hljs-comment"> * [1, 2, 3, 4]</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
 <h3 id="展開運算子">展開運算子</h3>
 <p><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/SpreadAndRestOperator/">展開運算子</a>是 ES6 新出的方法，應該是最方便的寫法了。</p>
-<pre><code class="language-js">const a = [1, 2, 3];
-const b = [ ...a ];
-b.push(4);
-console.log(a);
-console.log(b);
-
-/**
- * [Output]
- *
- * [1, 2, 3]
- * [1, 2, 3, 4]
- */
-</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">const</span> b = [ ...a ];<br>b.push(<span class="hljs-number">4</span>);<br><span class="hljs-built_in">console</span>.log(a);<br><span class="hljs-built_in">console</span>.log(b);<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * [Output]</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * [1, 2, 3]</span><br><span class="hljs-comment"> * [1, 2, 3, 4]</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
 <h2 id="深拷貝">深拷貝</h2>
 <p>在不使用其他套件的情況下，目前 Javascript 的深拷貝只有 <code>JSON.parse()</code> + <code>JSON.stringify()</code> 的寫法。</p>
 <h3 id="JSON-parse-JSON-stringify">JSON.parse(JSON.stringify())</h3>
-<pre><code class="language-js">const person = {
-    name: 'Blueberry',
-    interest: ['閱讀', '玩遊戲']
-};
-
-const copy = JSON.parse(JSON.stringify(person)));
-
-copy.name = 'Strawberry';
-copy.interest[0] = '泡咖啡';
-console.log('copy: ', copy);
-console.log('person: ', person);
-
-/**
- * [Output]
- *
- * copy: Object {
- *     name: 'Strawberry',
- *     interest: ['泡咖啡', '玩遊戲']
- * }
- * person: Object {
- *     name: 'Blueberry',
- *     interest: ['閱讀', '玩遊戲']
- * }
- */
-</code></pre>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> person = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Blueberry&#x27;</span>,<br>    <span class="hljs-attr">interest</span>: [<span class="hljs-string">&#x27;閱讀&#x27;</span>, <span class="hljs-string">&#x27;玩遊戲&#x27;</span>]<br>&#125;;<br><br><span class="hljs-keyword">const</span> copy = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(person)));<br><br>copy.name = <span class="hljs-string">&#x27;Strawberry&#x27;</span>;<br>copy.interest[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;泡咖啡&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;copy: &#x27;</span>, copy);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;person: &#x27;</span>, person);<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * [Output]</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * copy: Object &#123;</span><br><span class="hljs-comment"> *     name: &#x27;Strawberry&#x27;,</span><br><span class="hljs-comment"> *     interest: [&#x27;泡咖啡&#x27;, &#x27;玩遊戲&#x27;]</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> * person: Object &#123;</span><br><span class="hljs-comment"> *     name: &#x27;Blueberry&#x27;,</span><br><span class="hljs-comment"> *     interest: [&#x27;閱讀&#x27;, &#x27;玩遊戲&#x27;]</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
-              <p>
+              <div class="post-metas mb-3">
                 
-                  <span>
-                <i class="iconfont icon-inbox"></i>
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
                       <a class="hover-with-bg" href="/categories/Javascript/">Javascript</a>
-                      &nbsp;
                     
-                  </span>&nbsp;&nbsp;
+                  </div>
                 
                 
-                  <span>
-                <i class="iconfont icon-tag"></i>
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/Javascript/">Javascript</a>
                     
                       <a class="hover-with-bg" href="/tags/w3HexSchool/">w3HexSchool</a>
                     
-                  </span>
+                  </div>
                 
-              </p>
+              </div>
               
               
-                <div class="post-prevnext row">
-                  <div class="post-prev col-12 col-md-6">
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
                     
                       <a href="/post/PTTCrawler/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>使用 Node.js 來爬蟲吧！[PTT 股票板]</span>
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用 Node.js 來爬蟲吧！[PTT 股票板]</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-12 col-md-6">
+                  </article>
+                  <article class="post-next col-6">
+                    
                     
                       <a href="/post/Promise/">
-                        <span>Javascript ES6 Promise</span>
-                        <i class="fa fa-chevron-right"></i>
+                        <span class="hidden-mobile">Javascript ES6 Promise</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
-              
-                <!-- Comments -->
-                <!-- <div class="comments" id="comments">
-                  
-                  
-
-                </div> -->
-                <script src="https://utteranc.es/client.js" repo="B-l-u-e-b-e-r-r-y/blog-utterances" issue-term="title" theme="github-light" crossorigin="anonymous" async>
-                </script>
             
-          </div>
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
         </div>
       </div>
     </div>
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc-start"></div>
-<div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目錄</p>
-  <div id="tocbot"></div>
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -404,16 +354,16 @@ console.log('person: ', person);
 
 
     
-  </main>
 
-  
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
@@ -425,208 +375,95 @@ console.log('person: ', person);
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">關鍵詞</label>
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
-    </div>
     
 
     
+  </main>
 
-    
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
+  
+
+  
+
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js"></script>
-<script src="/js/main.js"></script>
 
-
-  <script src="/js/lazyload.js"></script>
-
-
-
+  <!-- SCRIPTS -->
   
-  <script src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js"></script>
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
   <script>
-    $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-      var tocLimMax = 2 * boardTop + boardCtn.height();
-
-      $(window).scroll(function () {
-        var tocLimMin = $('#toc-start').offset().top - navHeight;
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': navHeight,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '.post-content',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
-      }
-      var offset = boardCtn.css('margin-right')
-      $('#toc-ctn').css({
-        'right': offset
-      })
-    });
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
   </script>
 
 
-
-
-
-
-
-
-
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-161468752-1', 'auto');
-      ga('send', 'pageview');
-    </script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
-  
 
-  
 
   
 
 
 
-  <script src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js"></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
-
-
-
-  <script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "Javascript 的淺拷貝與深拷貝&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
-
-
-
-  <script src="/js/local-search.js"></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      getSearchFile(path);
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-  <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
-      function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      }
-    );
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
@@ -638,6 +475,13 @@ console.log('person: ', person);
 
 
 
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

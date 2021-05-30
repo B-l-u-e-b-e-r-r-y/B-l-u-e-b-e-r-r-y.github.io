@@ -1,52 +1,78 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
 
 
 
-
-
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta name="google-site-verification" content="nZS-GewkorxA_tNZscTNxAiN3WLftt_UNf5A6Txb-QA">
+<head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="前端工程師與她的筆記們">
+  <meta name="description" content="喜歡做奇怪東西的前端工程師">
   <meta name="author" content="Blueberry">
   <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI, 爬蟲, Discord Bot">
+  
   <title>【用 JS 寫一個 Discord Bot！】01 建立機器人 - 一顆藍莓</title>
 
-  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css">
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
 
-  <link rel="stylesheet" href="/lib/prettify/tomorrow.min.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-<link rel="stylesheet" href="/css/main.css">
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
-  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css">
 
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"b-l-u-e-b-e-r-r-y.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
 
@@ -58,45 +84,72 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">首頁</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">歸檔</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">分類</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">標籤</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">關於</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -104,43 +157,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/images/dc_banner.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="【用 JS 寫一個 Discord Bot！】01 建立機器人">
               
             </span>
 
             
-              
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期六, 四月 4日 2020, 6:00 晚上
-                </p>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-04 18:00" pubdate>
+        2020年4月4日 晚上
+      </time>
+    </span>
+  
+</div>
 
-              <p class="mt-1">
-                
-                  
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    589 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      620 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      2 分鐘
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分鐘
+    </span>
+  
 
-                
-              </p>
+  
+  
+</div>
+
             
           </div>
 
@@ -154,91 +217,75 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5 z-depth-3" id="board">
-          <div class="post-content mx-auto" id="post">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">【用 JS 寫一個 Discord Bot！】01 建立機器人</h1>
+            
+              <p class="note note-info">
+                
+                  本文最後更新於：2020年5月30日 晚上
+                
+              </p>
             
             <div class="markdown-body">
               <h2 id="創建機器人">創建機器人</h2>
-<p>首先到 <a href="https://discordapp.com/developers/applications/" target="_blank" rel="noopener">Discord Developer</a> 建立機器人。（需登入）</p>
+<p>首先到 <a target="_blank" rel="noopener" href="https://discordapp.com/developers/applications/">Discord Developer</a> 建立機器人。（需登入）</p>
 <h3 id="1-新增-APP">1. 新增 APP</h3>
 <p>進入網頁後，點擊按鈕 New Application。<br>
-<img src="/images/dc-bot/01/01.jpg" srcset="/img/loading.gif" alt></p>
+<img src="/images/dc-bot/01/01.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="2-設定-APP-名稱">2. 設定 APP 名稱</h3>
-<p><img src="/images/dc-bot/01/02.jpg" srcset="/img/loading.gif" alt></p>
+<p><img src="/images/dc-bot/01/02.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>提醒一下，APP名稱會出現在這邊：<br>
-<img src="/images/dc-bot/01/02-1.jpg" srcset="/img/loading.gif" alt></p>
+<img src="/images/dc-bot/01/02-1.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="3-點選左邊的-Bot">3. 點選左邊的 Bot</h3>
-<p><img src="/images/dc-bot/01/03.jpg" srcset="/img/loading.gif" alt></p>
+<p><img src="/images/dc-bot/01/03.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="4-新增-Bot">4. 新增 Bot</h3>
 <p>點擊 Add Bot。<br>
-<img src="/images/dc-bot/01/04.jpg" srcset="/img/loading.gif" alt></p>
+<img src="/images/dc-bot/01/04.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>Bot 新增後可以更改它的 USERNAME、ICON（頭貼），修改完畢後記得儲存。<br>
-<img src="/images/dc-bot/01/05.jpg" srcset="/img/loading.gif" alt></p>
+<img src="/images/dc-bot/01/05.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>這裡的 Token 指的是機器人的秘鑰，編寫程式時需要加入這串 token。<br>
 <strong>切忌不要將 token 洩漏出去</strong>，因為擁有 token 的人可以操控這隻 bot。<br>
 <code>我曾經不小心把 token 上傳到 Github 上面過（當時還沒有開放私有庫），結果不到短短的一小時就被盜用，那時候整個 DC 群組的人都收到了廣告訊息 ... XD</code><br>
 如果 token 不小心洩漏，可以點擊 <strong>Regenerate</strong> 重新產生 token。<br>
-<img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" alt></p>
+<img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="5-設定機器人權限">5. 設定機器人權限</h3>
 <p>拉到最下面可以看到 <strong>Bot Permissions</strong>，這裡可以設定機器人的權限。<br>
 勾選完後記得將 PERMISSIONS INTEGER 記錄下來。<br>
-<img src="/images/dc-bot/01/09.jpg" srcset="/img/loading.gif" alt></p>
+<img src="/images/dc-bot/01/09.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="6-邀請機器人至伺服器">6. 邀請機器人至伺服器</h3>
 <p>回到 General Information，複製 APP 的 CLIENT ID。<br>
-<img src="/images/dc-bot/01/07.jpg" srcset="/img/loading.gif" alt></p>
+<img src="/images/dc-bot/01/07.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>邀請 url 的格式如下，將剛才複製的 CLIENT ID 與 PERMISSIONS INTEGER 替換即可：<br>
 <code>https://discordapp.com/oauth2/authorize?&amp;client_id=CLIENT_ID&amp;scope=bot&amp;permissions=PERMISSIONS_INTEGER</code><br>
 範例如下：<br>
-<a href="https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8" target="_blank" rel="noopener">https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8</a><br>
-<img src="/images/dc-bot/01/08.jpg" srcset="/img/loading.gif" alt></p>
+<a target="_blank" rel="noopener" href="https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8">https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8</a><br>
+<img src="/images/dc-bot/01/08.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>機器人進入伺服器後會是離線狀態，這完全是正常的，接下來我們就要用 Node.js 編寫機器人的功能。</p>
 <h2 id="建立基礎環境">建立基礎環境</h2>
 <p>必備：Node.js、編譯器</p>
-<h3 id="1-安裝-Discord-js">1. 安裝 <a href="https://github.com/discordjs/discord.js/" target="_blank" rel="noopener">Discord.js</a></h3>
-<pre><code>$ npm install discord.js
-</code></pre>
+<h3 id="1-安裝-Discord-js">1. 安裝 <a target="_blank" rel="noopener" href="https://github.com/discordjs/discord.js/">Discord.js</a></h3>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">$ npm <span class="hljs-keyword">install</span> discord.js<br></code></pre></td></tr></table></figure>
 <h3 id="2-新增-token-json">2. 新增 token.json</h3>
-<pre><code class="language-json">{
-    &quot;token&quot;: &quot;Token&quot;
-}
-</code></pre>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>    <span class="hljs-attr">&quot;token&quot;</span>: <span class="hljs-string">&quot;Token&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <p>Token 在 Bot 頁面複製：<br>
-<img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" alt></p>
+<img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><code>※ 如果專案要上傳至 Github，切記將 token.json 加入 .gitignore。</code></p>
 <h3 id="3-新增-discord-js">3. 新增 discord.js</h3>
-<p>於專案中新增 discord.js，這邊我們使用 <a href="https://github.com/discordjs/discord.js/" target="_blank" rel="noopener">Discord.js</a> 的官方範例。</p>
-<pre><code class="language-js">const Discord = require('discord.js');
-const { token } = require('./token.json');
-const client = new Discord.Client();
-
-// 連上線時的事件
-client.on('ready', () =&gt; {
-    console.log(`Logged in as ${client.user.tag}!`);
-});
-
-// 當 Bot 接收到訊息時的事件
-client.on('message', msg =&gt; {
-    // 如果訊息的內容是 'ping'
-    if (msg.content === 'ping') {
-        // 則 Bot 回應 'Pong'
-        msg.reply('pong');
-    }
-});
-
-client.login(token);
-</code></pre>
+<p>於專案中新增 discord.js，這邊我們使用 <a target="_blank" rel="noopener" href="https://github.com/discordjs/discord.js/">Discord.js</a> 的官方範例。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> Discord = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;discord.js&#x27;</span>);<br><span class="hljs-keyword">const</span> &#123; token &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./token.json&#x27;</span>);<br><span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> Discord.Client();<br><br><span class="hljs-comment">// 連上線時的事件</span><br>client.on(<span class="hljs-string">&#x27;ready&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Logged in as <span class="hljs-subst">$&#123;client.user.tag&#125;</span>!`</span>);<br>&#125;);<br><br><span class="hljs-comment">// 當 Bot 接收到訊息時的事件</span><br>client.on(<span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-function"><span class="hljs-params">msg</span> =&gt;</span> &#123;<br>    <span class="hljs-comment">// 如果訊息的內容是 &#x27;ping&#x27;</span><br>    <span class="hljs-keyword">if</span> (msg.content === <span class="hljs-string">&#x27;ping&#x27;</span>) &#123;<br>        <span class="hljs-comment">// 則 Bot 回應 &#x27;Pong&#x27;</span><br>        msg.reply(<span class="hljs-string">&#x27;pong&#x27;</span>);<br>    &#125;<br>&#125;);<br><br>client.login(token);<br></code></pre></td></tr></table></figure>
 <h3 id="4-運行程式">4. 運行程式</h3>
 <p>讓機器人上線吧！</p>
-<pre><code>$ node discord.js
-</code></pre>
-<p><img src="/images/dc-bot/01/11.jpg" srcset="/img/loading.gif" alt></p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">$ <span class="hljs-keyword">node</span> <span class="hljs-title">discord</span>.js<br></code></pre></td></tr></table></figure>
+<p><img src="/images/dc-bot/01/11.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>測試一下效果：<br>
-<img src="/images/dc-bot/01/10.jpg" srcset="/img/loading.gif" alt></p>
+<img src="/images/dc-bot/01/10.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <hr>
 <p><strong>【用 JS 寫一個 Discord Bot！】系列文章</strong></p>
 <p><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/">【用 JS 寫一個 Discord Bot！】01 建立機器人</a><br>
@@ -247,22 +294,20 @@ client.login(token);
             </div>
             <hr>
             <div>
-              <p>
+              <div class="post-metas mb-3">
                 
-                  <span>
-                <i class="iconfont icon-inbox"></i>
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
                       <a class="hover-with-bg" href="/categories/node-js/">node.js</a>
-                      &nbsp;
                     
                       <a class="hover-with-bg" href="/categories/node-js/Discord-Bot/">Discord Bot</a>
-                      &nbsp;
                     
-                  </span>&nbsp;&nbsp;
+                  </div>
                 
                 
-                  <span>
-                <i class="iconfont icon-tag"></i>
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/Javascript/">Javascript</a>
                     
@@ -272,54 +317,57 @@ client.login(token);
                     
                       <a class="hover-with-bg" href="/tags/Discord-js/">Discord.js</a>
                     
-                      <a class="hover-with-bg" href="/tags/DC機器人/">DC機器人</a>
+                      <a class="hover-with-bg" href="/tags/DC%E6%A9%9F%E5%99%A8%E4%BA%BA/">DC機器人</a>
                     
-                  </span>
+                  </div>
                 
-              </p>
+              </div>
               
               
-                <div class="post-prevnext row">
-                  <div class="post-prev col-12 col-md-6">
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
                     
                       <a href="/post/Book01/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>《被討厭的勇氣》重點摘錄</span>
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">《被討厭的勇氣》重點摘錄</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-12 col-md-6">
+                  </article>
+                  <article class="post-next col-6">
+                    
                     
                       <a href="/post/PTTCrawler/">
-                        <span>使用 Node.js 來爬蟲吧！[PTT 股票板]</span>
-                        <i class="fa fa-chevron-right"></i>
+                        <span class="hidden-mobile">使用 Node.js 來爬蟲吧！[PTT 股票板]</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
-              
-                <!-- Comments -->
-                <!-- <div class="comments" id="comments">
-                  
-                  
-
-                </div> -->
-                <script src="https://utteranc.es/client.js" repo="B-l-u-e-b-e-r-r-y/blog-utterances" issue-term="title" theme="github-light" crossorigin="anonymous" async>
-                </script>
             
-          </div>
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
         </div>
       </div>
     </div>
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc-start"></div>
-<div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目錄</p>
-  <div id="tocbot"></div>
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -331,16 +379,16 @@ client.login(token);
 
 
     
-  </main>
 
-  
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
@@ -352,208 +400,95 @@ client.login(token);
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">關鍵詞</label>
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
-    </div>
     
 
     
+  </main>
 
-    
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
+  
+
+  
+
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js"></script>
-<script src="/js/main.js"></script>
 
-
-  <script src="/js/lazyload.js"></script>
-
-
-
+  <!-- SCRIPTS -->
   
-  <script src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js"></script>
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
   <script>
-    $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-      var tocLimMax = 2 * boardTop + boardCtn.height();
-
-      $(window).scroll(function () {
-        var tocLimMin = $('#toc-start').offset().top - navHeight;
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': navHeight,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '.post-content',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
-      }
-      var offset = boardCtn.css('margin-right')
-      $('#toc-ctn').css({
-        'right': offset
-      })
-    });
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
   </script>
 
 
-
-
-
-
-
-
-
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-161468752-1', 'auto');
-      ga('send', 'pageview');
-    </script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
-  
 
-  
 
   
 
 
 
-  <script src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js"></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
-
-
-
-  <script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "【用 JS 寫一個 Discord Bot！】01 建立機器人&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
-
-
-
-  <script src="/js/local-search.js"></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      getSearchFile(path);
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-  <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
-      function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      }
-    );
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
@@ -565,6 +500,13 @@ client.login(token);
 
 
 
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>
