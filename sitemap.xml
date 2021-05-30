@@ -172,13 +172,6 @@
   </url>
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/ES6/</loc>
-    <lastmod>2021-05-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/w3HexSchool/</loc>
     <lastmod>2021-05-30</lastmod>
     <changefreq>daily</changefreq>
@@ -201,6 +194,13 @@
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/DC%E6%A9%9F%E5%99%A8%E4%BA%BA/</loc>
+    <lastmod>2021-05-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/ES6/</loc>
     <lastmod>2021-05-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -249,6 +249,13 @@
   </url>
   
   <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Git/</loc>
+    <lastmod>2021-05-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Functional-Programming/</loc>
     <lastmod>2021-05-30</lastmod>
     <changefreq>daily</changefreq>
@@ -257,13 +264,6 @@
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Design-Pattern/</loc>
-    <lastmod>2021-05-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Git/</loc>
     <lastmod>2021-05-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -328,13 +328,6 @@
   </url>
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/Javascript/Design-Pattern/</loc>
-    <lastmod>2021-05-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/node-js/Discord-Bot/</loc>
     <lastmod>2021-05-30</lastmod>
     <changefreq>daily</changefreq>
@@ -343,6 +336,13 @@
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/Git/</loc>
+    <lastmod>2021-05-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/Javascript/Design-Pattern/</loc>
     <lastmod>2021-05-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

@@ -291,6 +291,7 @@
 <p><img src="/images/dc-bot/02/02.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>本來想把程式碼切開在文中講解，但是發現這樣寫起來會篇幅太長而且雜亂，所以就乾脆把註解寫在 code 裡面。</p>
 <p>本次音樂機器人的 <a target="_blank" rel="noopener" href="https://github.com/B-l-u-e-b-e-r-r-y/Discord-Bot-02">Github Repo</a>，可以自行 clone 下來研究或修改。</p>
+<h1>更新</h1>
 <h2 id="2021-01-13-更新">2021/01/13 更新</h2>
 <p>發現之前會有無法播放的問題，已更新 ytdl 套件解決問題</p>
 <h2 id="2021-02-03-更新">2021/02/03 更新</h2>
@@ -373,6 +374,32 @@
                   
                 
                 
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'B-l-u-e-b-e-r-r-y/blog-utterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
 
               </article>
             
