@@ -229,22 +229,22 @@
             
               <p class="note note-info">
                 
-                  本文最後更新於：2020年3月20日 晚上
+                  本文最後更新於：2021年6月27日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <p>這兩種運算子的寫法都是 …，對，你沒看錯，就是三個點！<br>
-接下來來實際說明使用情境：</p>
+              <p>這兩種運算子的寫法都是 <code>...</code>，對，你沒看錯，就是三個點！</p>
+<p>接下來來實際說明使用情境：</p>
 <h1>1. 展開運算子 (Spread Operator)</h1>
-<p>用來將舊的陣列或物件複製到新的陣列或物件中，算是淺拷貝(Shallow Copy)的一種</p>
+<p>用來將舊的陣列或物件複製到新的陣列或物件中，算是淺拷貝 (Shallow Copy) 的一種。</p>
 <p>陣列範例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">const</span> newNumbers = [...number, <span class="hljs-number">4</span>];<br><br><span class="hljs-built_in">console</span>.log(newNumbers);<br><br><span class="hljs-comment">/* Output:</span><br><span class="hljs-comment">   [1, 2, 3, 4] */</span><br></code></pre></td></tr></table></figure>
 <p>物件範例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> person = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Blueberry&#x27;</span><br>&#125;;<br><br><span class="hljs-keyword">const</span> newPerson = &#123;<br>    ...person,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">24</span><br>&#125;;<br><br><span class="hljs-built_in">console</span>.log(newPerson);<br><br><span class="hljs-comment">/* Output:</span><br><span class="hljs-comment">   &#123;</span><br><span class="hljs-comment">       age: 24,</span><br><span class="hljs-comment">       name: &#x27;Blueberry&#x27;</span><br><span class="hljs-comment">   &#125; */</span><br></code></pre></td></tr></table></figure>
 <h1>2. 其餘運算子 (Rest Operator)</h1>
-<p>將不確定數量的參數，視為一個陣列<br>
-範例示範將多個數字傳入函式，並用 filter 找出 args 陣列中等於 1 的數字</p>
+<p>將不確定數量的參數視為一個陣列。</p>
+<p>範例示範將多個數字傳入函式，並用 filter 找出 args 陣列中等於 1 的數字：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> equalOne = <span class="hljs-function">(<span class="hljs-params">...args</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> args.filter(<span class="hljs-function"><span class="hljs-params">el</span> =&gt;</span> el === <span class="hljs-number">1</span>);<br>&#125;<br><br><span class="hljs-built_in">console</span>.log(equalOne(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>));<br><br><span class="hljs-comment">/* Output:</span><br><span class="hljs-comment">   [1] */</span><br></code></pre></td></tr></table></figure>
             </div>
             <hr>

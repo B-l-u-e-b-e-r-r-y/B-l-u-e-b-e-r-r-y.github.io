@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      982 字
+      984 字
     </span>
   
 
@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最後更新於：2020年5月2日 晚上
+                  本文最後更新於：2021年6月27日 下午
                 
               </p>
             
@@ -241,17 +241,14 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callName</span>(<span class="hljs-params"></span>) </span>&#123;<br>   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello &#x27;</span> + <span class="hljs-built_in">this</span>.userName);<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>呼叫 callName：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">callName();<br><br><span class="hljs-comment">/* Output:</span><br><span class="hljs-comment">   Hello undefined */</span><br></code></pre></td></tr></table></figure>
-<p>因為 callName() 函式中的 this 指向的是 global object（也就是 Window 物件），<br>
-所以這時候我們希望把 callName() 的 this 指向 person 這個對象，可以使用以下方法：</p>
+<p>因為 callName() 函式中的 this 指向的是 global object（也就是 Window 物件），所以這時候我們希望把 callName() 的 this 指向 person 這個對象，可以使用以下方法：</p>
 <h2 id="bind">bind</h2>
 <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">MDN</a><br>
 <em>function.bind(thisArg[, arg1[, arg2[, …]]])</em></p>
 <p>bind 和其他兩個方法（call、apply）的不同有兩點：</p>
 <ol>
-<li>bind 是創造一個函式物件的拷貝，不會執行函式，因此 bind 之後還要再另外寫執行函式的動作；<br>
-call、apply 是直接執行函式。</li>
-<li>bind 後面傳入的參數值<strong>會設定為拷貝函式的永久參數值</strong>，之後執行拷貝函式時，無論怎麼給予參數都沒有用；<br>
-call、apply 則是單純給予參數，像一般呼叫函式那樣。</li>
+<li>bind 是創造一個函式物件的拷貝，不會執行函式，因此 bind 之後還要再另外寫執行函式的動作；而 call、apply 是直接執行函式。</li>
+<li>bind 後面傳入的參數值<strong>會設定為拷貝函式的永久參數值</strong>，之後執行拷貝函式時，無論怎麼給予參數都沒有用；而 call、apply 則是單純給予參數，像一般呼叫函式那樣。</li>
 </ol>
 <p>我們先單純就第一點來說明，示範最基本的 bind 怎麼寫。</p>
 <p>第一種寫法：</p>
@@ -276,8 +273,7 @@ call、apply 則是單純給予參數，像一般呼叫函式那樣。</li>
 <h2 id="apply">apply</h2>
 <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">MDN</a><br>
 <em>function.apply(this, [arg1, arg2…, argn])</em></p>
-<p>apply 的寫法跟 call 很相近，與 call 不同的是，<br>
-後面的參數需要使用陣列傳遞，適合搭配 arguments 運用在算數的函式。</p>
+<p>apply 的寫法跟 call 很相近，與 call 不同的是，後面的參數需要使用陣列傳遞，適合搭配 arguments 運用在算數的函式。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">callName.apply(person, [<span class="hljs-number">24</span>, <span class="hljs-string">&#x27;Reading books&#x27;</span>]);<br><br><span class="hljs-comment">/* Output:</span><br><span class="hljs-comment">   Hello Blueberry</span><br><span class="hljs-comment">   Your age is 24</span><br><span class="hljs-comment">   Your interest is Reading books */</span><br></code></pre></td></tr></table></figure>
 <h1>使用情境</h1>
 <h2 id="function-borrowing">function borrowing</h2>

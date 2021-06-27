@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      740 字
+      739 字
     </span>
   
 
@@ -229,19 +229,19 @@
             
               <p class="note note-info">
                 
-                  本文最後更新於：2020年3月28日 下午
+                  本文最後更新於：2021年6月27日 下午
                 
               </p>
             
             <div class="markdown-body">
               <h1>前言</h1>
-<p>一般大家爬蟲都是使用 python，其實 node.js 也是可以爬蟲的，作為前端，能用自己習慣的語言來寫當然很方便。但是 python 和 node.js 除了寫法不同，兩者特性也是不同的，例如 node.js 是異步的、單執行緒，python 則是多執行緒等等，關於這些差異本文就不多加討論。</p>
+<p>一般大家爬蟲都是使用 python，其實 node.js 也是可以爬蟲的，作為前端，能用自己習慣的語言來寫當然很方便。</p>
+<p>但是 python 和 node.js 除了寫法不同，兩者特性也是不同的，例如 node.js 是異步的、單執行緒，python 則是多執行緒等等，關於這些差異本文就不多加討論。</p>
 <h1>模組</h1>
 <p>node.js 爬蟲需要用到兩個模組：<a target="_blank" rel="noopener" href="https://github.com/request/request">request</a> 和 <a target="_blank" rel="noopener" href="https://github.com/cheeriojs/cheerio">cheerio</a>。</p>
 <h2 id="介紹">介紹</h2>
-<p><strong>request</strong> 是用來訪問網站用的，它能模擬 Client 訪問網站，設定訪問時帶的 Header。<br>
-<strong>cheerio</strong> 則算是 node.js 界的 jQuery，它是以 jQuery 為核心去設計的，<br>
-好比要抓取一個 html，class 名稱為 title 的文字 <code>&lt;div class='title'&gt;標題&lt;/div&gt;</code>，cheerio 的寫法是這樣：<code>$('.title').text()</code>。</p>
+<p><strong>request</strong> 是用來訪問網站用的，它能模擬 Client 訪問網站，設定訪問時帶的 Header。</p>
+<p><strong>cheerio</strong> 算是 node.js 界的 jQuery，它是以 jQuery 為核心去設計的，好比要抓取一個 html，class 名稱為 title 的文字 <code>&lt;div class='title'&gt;標題&lt;/div&gt;</code>，cheerio 的寫法是這樣：<code>$('.title').text()</code>。</p>
 <h2 id="安裝">安裝</h2>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ada">$ npm i <span class="hljs-comment">--save request</span><br>$ npm i <span class="hljs-comment">--save cheerio</span><br></code></pre></td></tr></table></figure>
 <h2 id="載入">載入</h2>
@@ -249,18 +249,18 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;request&quot;</span>);<br><span class="hljs-keyword">const</span> cheerio = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;cheerio&quot;</span>);<br></code></pre></td></tr></table></figure>
 <h1>實作</h1>
 <h2 id="request-訪問">request 訪問</h2>
-<p>本文以 <a target="_blank" rel="noopener" href="https://www.ptt.cc/bbs/Stock/index.html">PTT 股票板</a> 為範例。<br>
-先發送 request，訪問股票板。</p>
+<p>本文以 <a target="_blank" rel="noopener" href="https://www.ptt.cc/bbs/Stock/index.html">PTT 股票板</a> 為範例。</p>
+<p>先發送 request，訪問股票板。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> pttCrawler = <span class="hljs-function">() =&gt;</span> &#123;<br>    request(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;https://www.ptt.cc/bbs/Stock/index.html&quot;</span>,<br>        <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;GET&quot;</span><br>    &#125;, <span class="hljs-function">(<span class="hljs-params">error, res, body</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// 如果有錯誤訊息，或沒有 body(內容)，就 return</span><br>        <span class="hljs-keyword">if</span> (error || !body) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>    &#125;);<br>&#125;;<br><br>pttCrawler();<br></code></pre></td></tr></table></figure>
 <h2 id="cheerio-抓取-Element">cheerio 抓取 Element</h2>
-<p>request 之後就可以取得內容(body)，接著使用 cheerio 抓取 Element。<br>
-寫程式碼之前，可以先到股票板，按右鍵 &gt; 檢查，看看 Element 的名稱是什麼。<br>
-如下圖，紅框就是要抓的部分：<br>
-<img src="/images/ptt-crawler/ptt1.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>request 之後就可以取得內容(body)，接著使用 cheerio 抓取 Element。</p>
+<p>寫程式碼之前，可以先到股票板，按右鍵 &gt; 檢查，看看 Element 的名稱是什麼。</p>
+<p>如下圖，紅框就是要抓的部分：</p>
+<p><img src="/images/ptt-crawler/ptt1.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>因為它是父元素(<code>.r-list-container</code>)裡包著許多子元素(<code>.r-ent</code>)的結構，所以這邊要使用到迴圈。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> pttCrawler = <span class="hljs-function">() =&gt;</span> &#123;<br>    request(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;https://www.ptt.cc/bbs/Stock/index.html&quot;</span>,<br>        <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;GET&quot;</span><br>    &#125;, <span class="hljs-function">(<span class="hljs-params">error, res, body</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// 如果有錯誤訊息，或沒有 body(內容)，就 return</span><br>        <span class="hljs-keyword">if</span> (error || !body) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">const</span> data = [];<br>        <span class="hljs-keyword">const</span> $ = cheerio.load(body); <span class="hljs-comment">// 載入 body</span><br>        <span class="hljs-keyword">const</span> list = $(<span class="hljs-string">&quot;.r-list-container .r-ent&quot;</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; list.length; i++) &#123;<br>            <span class="hljs-keyword">const</span> title = list.eq(i).find(<span class="hljs-string">&#x27;.title a&#x27;</span>).text();<br>            <span class="hljs-keyword">const</span> author = list.eq(i).find(<span class="hljs-string">&#x27;.meta .author&#x27;</span>).text();<br>            <span class="hljs-keyword">const</span> date = list.eq(i).find(<span class="hljs-string">&#x27;.meta .date&#x27;</span>).text();<br>            <span class="hljs-keyword">const</span> link = list.eq(i).find(<span class="hljs-string">&#x27;.title a&#x27;</span>).attr(<span class="hljs-string">&#x27;href&#x27;</span>);<br><br>            data.push(&#123; title, author, date, link &#125;);<br>        &#125;<br><br>        <span class="hljs-built_in">console</span>.log(data);<br>    &#125;);<br>&#125;;<br><br>pttCrawler();<br></code></pre></td></tr></table></figure>
-<p>執行程式後就可以看到結果囉！<br>
-<img src="/images/ptt-crawler/ptt2.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>執行程式後就可以看到結果囉！</p>
+<p><img src="/images/ptt-crawler/ptt2.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h2 id="完整程式碼">完整程式碼</h2>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;request&quot;</span>);<br><span class="hljs-keyword">const</span> cheerio = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;cheerio&quot;</span>);<br><br><span class="hljs-keyword">const</span> pttCrawler = <span class="hljs-function">() =&gt;</span> &#123;<br>    request(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;https://www.ptt.cc/bbs/Stock/index.html&quot;</span>,<br>        <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;GET&quot;</span><br>    &#125;, <span class="hljs-function">(<span class="hljs-params">error, res, body</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// 如果有錯誤訊息，或沒有 body(內容)，就 return</span><br>        <span class="hljs-keyword">if</span> (error || !body) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">const</span> data = [];<br>        <span class="hljs-keyword">const</span> $ = cheerio.load(body); <span class="hljs-comment">// 載入 body</span><br>        <span class="hljs-keyword">const</span> list = $(<span class="hljs-string">&quot;.r-list-container .r-ent&quot;</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; list.length; i++) &#123;<br>            <span class="hljs-keyword">const</span> title = list.eq(i).find(<span class="hljs-string">&#x27;.title a&#x27;</span>).text();<br>            <span class="hljs-keyword">const</span> author = list.eq(i).find(<span class="hljs-string">&#x27;.meta .author&#x27;</span>).text();<br>            <span class="hljs-keyword">const</span> date = list.eq(i).find(<span class="hljs-string">&#x27;.meta .date&#x27;</span>).text();<br>            <span class="hljs-keyword">const</span> link = list.eq(i).find(<span class="hljs-string">&#x27;.title a&#x27;</span>).attr(<span class="hljs-string">&#x27;href&#x27;</span>);<br><br>            data.push(&#123; title, author, date, link &#125;);<br>        &#125;<br><br>        <span class="hljs-built_in">console</span>.log(data);<br>    &#125;);<br>&#125;;<br><br>pttCrawler();<br></code></pre></td></tr></table></figure>
             </div>

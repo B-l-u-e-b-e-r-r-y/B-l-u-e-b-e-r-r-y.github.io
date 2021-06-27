@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      620 字
+      661 字
     </span>
   
 
@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最後更新於：2020年5月30日 晚上
+                  本文最後更新於：2021年6月27日 下午
                 
               </p>
             
@@ -237,35 +237,36 @@
               <h2 id="創建機器人">創建機器人</h2>
 <p>首先到 <a target="_blank" rel="noopener" href="https://discordapp.com/developers/applications/">Discord Developer</a> 建立機器人。（需登入）</p>
 <h3 id="1-新增-APP">1. 新增 APP</h3>
-<p>進入網頁後，點擊按鈕 New Application。<br>
-<img src="/images/dc-bot/01/01.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>進入網頁後，點擊按鈕 New Application。</p>
+<p><img src="/images/dc-bot/01/01.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="2-設定-APP-名稱">2. 設定 APP 名稱</h3>
 <p><img src="/images/dc-bot/01/02.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>提醒一下，APP名稱會出現在這邊：<br>
-<img src="/images/dc-bot/01/02-1.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>提醒一下，APP名稱會出現在這邊：</p>
+<p><img src="/images/dc-bot/01/02-1.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="3-點選左邊的-Bot">3. 點選左邊的 Bot</h3>
 <p><img src="/images/dc-bot/01/03.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="4-新增-Bot">4. 新增 Bot</h3>
-<p>點擊 Add Bot。<br>
-<img src="/images/dc-bot/01/04.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>Bot 新增後可以更改它的 USERNAME、ICON（頭貼），修改完畢後記得儲存。<br>
-<img src="/images/dc-bot/01/05.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>這裡的 Token 指的是機器人的秘鑰，編寫程式時需要加入這串 token。<br>
-<strong>切忌不要將 token 洩漏出去</strong>，因為擁有 token 的人可以操控這隻 bot。<br>
-<code>我曾經不小心把 token 上傳到 Github 上面過（當時還沒有開放私有庫），結果不到短短的一小時就被盜用，那時候整個 DC 群組的人都收到了廣告訊息 ... XD</code><br>
-如果 token 不小心洩漏，可以點擊 <strong>Regenerate</strong> 重新產生 token。<br>
-<img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>點擊 Add Bot。</p>
+<p><img src="/images/dc-bot/01/04.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>Bot 新增後可以更改它的 USERNAME、ICON（頭貼），修改完畢後記得儲存。</p>
+<p><img src="/images/dc-bot/01/05.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>這裡的 Token 指的是機器人的秘鑰，編寫程式時需要加入這串 token。</p>
+<p><strong>切忌不要將 token 洩漏出去</strong>，因為擁有 token 的人可以操控這隻 bot。</p>
+<p>題外話：我曾經不小心把 token 上傳到 Github 上面過（當時還沒有開放私有庫），結果不到短短的一小時就被盜用，那時候整個 DC 群組的人都收到了廣告訊息…XD</p>
+<p><strong>※ 2021/06/27 補充：現在如果不小心把 token 上傳到 Github，Discord 官方會用 Discord 通知 token 擁有人並強制重新產生 token。</strong></p>
+<p>如果 token 不小心洩漏，可以點擊 <strong>Regenerate</strong> 重新產生 token。</p>
+<p><img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="5-設定機器人權限">5. 設定機器人權限</h3>
-<p>拉到最下面可以看到 <strong>Bot Permissions</strong>，這裡可以設定機器人的權限。<br>
-勾選完後記得將 PERMISSIONS INTEGER 記錄下來。<br>
-<img src="/images/dc-bot/01/09.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>拉到最下面可以看到 <strong>Bot Permissions</strong>，這裡可以設定機器人的權限。</p>
+<p>勾選完後記得將 PERMISSIONS INTEGER 記錄下來。</p>
+<p><img src="/images/dc-bot/01/09.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="6-邀請機器人至伺服器">6. 邀請機器人至伺服器</h3>
-<p>回到 General Information，複製 APP 的 CLIENT ID。<br>
-<img src="/images/dc-bot/01/07.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>邀請 url 的格式如下，將剛才複製的 CLIENT ID 與 PERMISSIONS INTEGER 替換即可：<br>
-<code>https://discordapp.com/oauth2/authorize?&amp;client_id=CLIENT_ID&amp;scope=bot&amp;permissions=PERMISSIONS_INTEGER</code><br>
-範例如下：<br>
-<a target="_blank" rel="noopener" href="https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8">https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8</a><br>
+<p>回到 General Information，複製 APP 的 CLIENT ID。</p>
+<p><img src="/images/dc-bot/01/07.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>邀請 url 的格式如下，將剛才複製的 CLIENT ID 與 PERMISSIONS INTEGER 替換即可：</p>
+<p><code>https://discordapp.com/oauth2/authorize?&amp;client_id=CLIENT_ID&amp;scope=bot&amp;permissions=PERMISSIONS_INTEGER</code></p>
+<p>範例如下：</p>
+<p><a target="_blank" rel="noopener" href="https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8">https://discordapp.com/oauth2/authorize?&amp;client_id=695898879895404584&amp;scope=bot&amp;permissions=8</a><br>
 <img src="/images/dc-bot/01/08.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>機器人進入伺服器後會是離線狀態，這完全是正常的，接下來我們就要用 Node.js 編寫機器人的功能。</p>
 <h2 id="建立基礎環境">建立基礎環境</h2>
@@ -274,8 +275,8 @@
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">$ npm <span class="hljs-keyword">install</span> discord.js<br></code></pre></td></tr></table></figure>
 <h3 id="2-新增-token-json">2. 新增 token.json</h3>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>    <span class="hljs-attr">&quot;token&quot;</span>: <span class="hljs-string">&quot;Token&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<p>Token 在 Bot 頁面複製：<br>
-<img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>Token 在 Bot 頁面複製：</p>
+<p><img src="/images/dc-bot/01/06.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><code>※ 如果專案要上傳至 Github，切記將 token.json 加入 .gitignore。</code></p>
 <h3 id="3-新增-discord-js">3. 新增 discord.js</h3>
 <p>於專案中新增 discord.js，這邊我們使用 <a target="_blank" rel="noopener" href="https://github.com/discordjs/discord.js/">Discord.js</a> 的官方範例。</p>
@@ -284,8 +285,8 @@
 <p>讓機器人上線吧！</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">$ <span class="hljs-keyword">node</span> <span class="hljs-title">discord</span>.js<br></code></pre></td></tr></table></figure>
 <p><img src="/images/dc-bot/01/11.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>測試一下效果：<br>
-<img src="/images/dc-bot/01/10.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>測試一下效果：</p>
+<p><img src="/images/dc-bot/01/10.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <hr>
 <p><strong>【用 JS 寫一個 Discord Bot！】系列文章</strong></p>
 <p><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/">【用 JS 寫一個 Discord Bot！】01 建立機器人</a><br>

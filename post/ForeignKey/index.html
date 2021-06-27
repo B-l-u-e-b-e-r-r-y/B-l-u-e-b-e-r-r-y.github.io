@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最後更新於：2020年5月9日 下午
+                  本文最後更新於：2021年6月27日 下午
                 
               </p>
             
@@ -243,8 +243,8 @@
 </ul>
 <p>接下來會以 MySQL 示範 Foreign Key 的常見使用情境，以及操作時會碰到的問題。</p>
 <h1>實作</h1>
-<p>我們會有兩張資料表：users 及 orders。<br>
-users 負責管理會員資料，orders 則管理訂單資料。</p>
+<p>我們會有兩張資料表：users 及 orders。</p>
+<p>users 負責管理會員資料，orders 則管理訂單資料。</p>
 <p>這邊 users 與 orders 的關係為：先有 users（會員），才有 orders（訂單）。一個會員有多個訂單（反之則不可能），所以 users 為父表，orders 為子表，外鍵建立在 orders。</p>
 <h2 id="建立資料表">建立資料表</h2>
 <h3 id="users">users</h3>
@@ -253,7 +253,8 @@ users 負責管理會員資料，orders 則管理訂單資料。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> orders(<br>    orderID <span class="hljs-type">INT</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">PRIMARY</span> KEY,<br>    userID <span class="hljs-type">INT</span>(<span class="hljs-number">50</span>),<br>    product <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>),<br>    price <span class="hljs-type">INT</span>(<span class="hljs-number">11</span>),<br>    <span class="hljs-keyword">FOREIGN</span> KEY(userID) <span class="hljs-keyword">REFERENCES</span> users(userID)<br>);<br></code></pre></td></tr></table></figure>
 <h2 id="新增資料">新增資料</h2>
 <p>接下來我們各別在 users 及 orders 插入資料。</p>
-<p>通常會員與訂單的關係都是先有會員、才有訂單，不會有反過來的情境。綁定外鍵的使用方式也是相同，因為外鍵放在 orders，所以 users 的資料必須先被建立才行。換句話來說，不能先有訂單才有會員。</p>
+<p>通常會員與訂單的關係都是先有會員、才有訂單，不會有反過來的情境。綁定外鍵的使用方式也是相同，因為外鍵放在 orders，所以 users 的資料必須先被建立才行。</p>
+<p>換句話來說，不能先有訂單才有會員。</p>
 <p>為了實驗，我們先在 orders 插入一筆資料看看：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> orders <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;phone&#x27;</span>, <span class="hljs-number">20000</span>);<br></code></pre></td></tr></table></figure>
 <p>執行時報錯：</p>

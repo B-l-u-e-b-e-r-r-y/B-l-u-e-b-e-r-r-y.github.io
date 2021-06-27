@@ -262,22 +262,29 @@
           
             
           
-          新增檔案( . 是全部新增的意思，也可以只新增部分檔案)
-1$ git add .
+          新增檔案(.是全部新增的意思，也可以只新增部分檔案)
+1git add .
+
 提交檔案
-1$ git commit -m &quot;內容&quot;
+1git commit -m &quot;內容&quot;
+
 推送檔案
-1$ git push
+1git push
+
 拉取檔案
-1$ git pull
-克隆遠端數據庫
-1$ git clone git位置
+1git pull
+
+Clone 遠端數據庫
+1git clone git位置
+
 查看目前分支
-1$ git branch
+1git branch
+
 新增分支
-1$ git branch 分支名稱
+1git branch 分支名稱
+
 切換到該分支
-1$ git c
+1git checkout
         </a>
       </p>
 
@@ -339,10 +346,9 @@
 先來看一段程式碼：
 1console.log(3 &lt; 2 &lt; 1);   // 結果是 true
 以人類的邏輯來說，這絕對是錯的，但為什麼 JavaScript 會判定為 true 呢？
-小於運算子的相依性是由左至右，程式會優先進行 3 &lt; 2 這部分的判定。
-於是會變成：
+小於運算子的相依性是由左至右，程式會優先進行 3 &lt; 2 這部分的判定。於是會變成：
 1console.log(false &lt; 1);
-但是 false 和 1 
+但是 false 和 1 並
         </a>
       </p>
 
@@ -561,8 +567,7 @@ dis
 1&lt;Component /&gt;
 但我們其實可以在組件中寫入其他內容：
 123&lt;Component&gt;    &lt;p&gt;Hello World!&lt;/p&gt;&lt;/Component&gt;
-除了在組件中寫入內容以外，組件本身也要加入 props.children 的屬性才會出現內容，
-如果沒有寫入任何內容，則 props.
+除了在組件中寫入內容以外，組件本身也要加入 props.children 的屬性才會出現內容，如果沒有寫入任何內容，則 props.c
         </a>
       </p>
 
@@ -622,12 +627,12 @@ dis
           
             
           
-          這兩種運算子的寫法都是 …，對，你沒看錯，就是三個點！
+          這兩種運算子的寫法都是 ...，對，你沒看錯，就是三個點！
 接下來來實際說明使用情境：
 1. 展開運算子 (Spread Operator)
-用來將舊的陣列或物件複製到新的陣列或物件中，算是淺拷貝(Shallow Copy)的一種
+用來將舊的陣列或物件複製到新的陣列或物件中，算是淺拷貝 (Shallow Copy) 的一種。
 陣列範例：
-1234567const numbers = [1, 2, 3];const newNumbers = [...number, 4];console.log(n
+1234567const numbers = [1, 2, 3];const newNumbers = [...number, 4];console.
         </a>
       </p>
 

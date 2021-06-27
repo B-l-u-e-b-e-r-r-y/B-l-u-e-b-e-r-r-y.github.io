@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      352 字
+      350 字
     </span>
   
 
@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最後更新於：2020年3月20日 晚上
+                  本文最後更新於：2021年6月27日 下午
                 
               </p>
             
@@ -237,26 +237,25 @@
               <h2 id="請先參閱：運算子優先序">請先參閱：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">運算子優先序</a></h2>
 <p>先來看一段程式碼：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span> &lt; <span class="hljs-number">2</span> &lt; <span class="hljs-number">1</span>);   <span class="hljs-comment">// 結果是 true</span><br></code></pre></td></tr></table></figure>
-<p>以人類的邏輯來說，這絕對是錯的，但為什麼 JavaScript 會判定為 true 呢？<br>
-小於運算子的相依性是<strong>由左至右</strong>，程式會優先進行 <code>3 &lt; 2</code> 這部分的判定。<br>
-於是會變成：</p>
+<p>以人類的邏輯來說，這絕對是錯的，但為什麼 JavaScript 會判定為 true 呢？</p>
+<p>小於運算子的相依性是<strong>由左至右</strong>，程式會優先進行 <code>3 &lt; 2</code> 這部分的判定。於是會變成：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">false</span> &lt; <span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
-<p>但是 false 和 1 並不是同一個型別，所以 JavaScript 會進行<strong>強制型轉</strong>。<br>
-如果你輸入下面這行程式碼，可以知道 false 轉成數字後的值：</p>
+<p>但是 false 和 1 並不是同一個型別，所以 JavaScript 會進行<strong>強制型轉</strong>。</p>
+<p>如果你輸入下面這行程式碼，可以知道 false 轉成數字後的值：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">Number</span>(<span class="hljs-literal">false</span>);   <span class="hljs-comment">// 結果是 0</span><br></code></pre></td></tr></table></figure>
 <p>如此一來就變成了：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span> &lt; <span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
 <p>0 &lt; 1，無庸置疑的是 <code>true</code>。</p>
 <p>其他例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">Number</span>(<span class="hljs-literal">undefined</span>);  <span class="hljs-comment">// 結果是 NaN（Not a Number），無法型轉成數字</span><br><span class="hljs-built_in">Number</span>(<span class="hljs-literal">null</span>);  <span class="hljs-comment">// 結果是 0</span><br><span class="hljs-built_in">Number</span>(!<span class="hljs-literal">null</span>);  <span class="hljs-comment">// 結果是 1</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">Number</span>(<span class="hljs-literal">undefined</span>);  <span class="hljs-comment">// 結果是 NaN（Not a Number），無法型轉成數字</span><br><span class="hljs-built_in">Number</span>(<span class="hljs-literal">null</span>);       <span class="hljs-comment">// 結果是 0</span><br><span class="hljs-built_in">Number</span>(!<span class="hljs-literal">null</span>);      <span class="hljs-comment">// 結果是 1</span><br></code></pre></td></tr></table></figure>
 <hr>
 <h2 id="請先參閱：等號的比較">請先參閱：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness">等號的比較</a></h2>
-<p>再來是 <code>==</code> 和 <code>===</code> 的區別。<br>
-為減少錯誤，建議大家從現在開始大部分時間都使用 <code>===</code>，除非故意要進行強制型轉。<br>
-以下例子使用 <code>==</code>。</p>
+<p>再來是 <code>==</code> 和 <code>===</code> 的區別。</p>
+<p>為減少錯誤，建議從現在開始大部分時間都使用 <code>===</code>，除非故意要進行強制型轉。</p>
+<p>以下例子使用 <code>==</code>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span> == <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(Equal.);<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(Not equal.);<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>結果會是 Equal，因為 JavaScript 強制把 false 型轉成數字，故 <code>0 == 0</code> 結果是 true。<br>
-以下例子使用 <code>===</code>。</p>
+<p>結果會是 Equal，因為 JavaScript 強制把 false 型轉成數字，故 <code>0 == 0</code> 結果是 true。</p>
+<p>以下例子使用 <code>===</code>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(Equal.);<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(Not equal.);<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>結果會是 Not equal，<strong>使用 === JavaScript 就不會進行強制型轉</strong>，在兩個值是不同型態的情況下，結果會是 false。</p>
 

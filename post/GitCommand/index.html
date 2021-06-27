@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      267 字
+      251 字
     </span>
   
 
@@ -229,43 +229,56 @@
             
               <p class="note note-info">
                 
-                  本文最後更新於：2020年3月20日 晚上
+                  本文最後更新於：2021年6月27日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <h3 id="新增檔案-是全部新增的意思，也可以只新增部分檔案">新增檔案( . 是全部新增的意思，也可以只新增部分檔案)</h3>
-<h2 id="code￼0"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git add .<br></code></pre></td></tr></table></figure></h2>
+              <h3 id="新增檔案-是全部新增的意思，也可以只新增部分檔案">新增檔案(.是全部新增的意思，也可以只新增部分檔案)</h3>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">git <span class="hljs-builtin-name">add</span> .<br></code></pre></td></tr></table></figure>
+<hr>
 <h3 id="提交檔案">提交檔案</h3>
-<h2 id="code￼1"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git commit -m &quot;內容&quot;<br></code></pre></td></tr></table></figure></h2>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> commit -m <span class="hljs-string">&quot;內容&quot;</span><br></code></pre></td></tr></table></figure>
+<hr>
 <h3 id="推送檔案">推送檔案</h3>
-<h2 id="code￼2"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git push<br></code></pre></td></tr></table></figure></h2>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">git <span class="hljs-keyword">push</span><br></code></pre></td></tr></table></figure>
+<hr>
 <h3 id="拉取檔案">拉取檔案</h3>
-<h2 id="code￼3"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git pull<br></code></pre></td></tr></table></figure></h2>
-<h3 id="克隆遠端數據庫">克隆遠端數據庫</h3>
-<h2 id="code￼4"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git clone git位置<br></code></pre></td></tr></table></figure></h2>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git pull</span><br></code></pre></td></tr></table></figure>
+<hr>
+<h3 id="Clone-遠端數據庫">Clone 遠端數據庫</h3>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">git</span>位置<br></code></pre></td></tr></table></figure>
+<hr>
 <h3 id="查看目前分支">查看目前分支</h3>
-<h2 id="code￼5"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git branch<br></code></pre></td></tr></table></figure></h2>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git branch</span><br></code></pre></td></tr></table></figure>
+<hr>
 <h3 id="新增分支">新增分支</h3>
-<h2 id="code￼6"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git branch 分支名稱<br></code></pre></td></tr></table></figure></h2>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">git <span class="hljs-keyword">branch </span>分支名稱<br></code></pre></td></tr></table></figure>
+<hr>
 <h3 id="切換到該分支">切換到該分支</h3>
-<h2 id="code￼7"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git checkout 分支名稱<br></code></pre></td></tr></table></figure></h2>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> checkout 分支名稱<br></code></pre></td></tr></table></figure>
+<hr>
 <h3 id="強制回到和保存端一模一樣的檔案（慎用，檔案有異常時再使用）">強制回到和保存端一模一樣的檔案（慎用，檔案有異常時再使用）</h3>
-<h2 id="code￼8"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git fetch --all<br>$ git reset --hard origin/master<br></code></pre></td></tr></table></figure></h2>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">git <span class="hljs-keyword">fetch</span> <span class="hljs-comment">--all</span><br>git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--hard origin/master</span><br></code></pre></td></tr></table></figure>
+<hr>
 <h3 id="查詢所有做過的-git-動作，可查詢到每一個動作的編號">查詢所有做過的 git 動作，可查詢到每一個動作的編號</h3>
-<h2 id="code￼9"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git reflog<br></code></pre></td></tr></table></figure></h2>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">git <span class="hljs-built_in">ref</span>log<br></code></pre></td></tr></table></figure>
+<hr>
 <h3 id="回覆之前的某一個操作">回覆之前的某一個操作</h3>
-<h2 id="code￼10"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git reset 編號 --hard<br></code></pre></td></tr></table></figure></h2>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">git <span class="hljs-keyword">reset</span> 編號 <span class="hljs-comment">--hard</span><br></code></pre></td></tr></table></figure>
+<hr>
 <h3 id="使用-rebase-進行合併">使用 rebase 進行合併</h3>
-<h2 id="code￼11"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git rebase 分支名稱<br></code></pre></td></tr></table></figure></h2>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> rebase 分支名稱<br></code></pre></td></tr></table></figure>
+<hr>
 <h3 id="rebase-後回復">rebase 後回復</h3>
-<p>有兩種方式，第一種方式必須先用 $ git reflog 查詢，dd1f0f8 是 rebase 前的一個動作編號：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git reset dd1f0f8 --hard<br></code></pre></td></tr></table></figure>
+<p>有兩種方式，第一種方式必須先用 <code>git reflog</code> 查詢，dd1f0f8 是 rebase 前的一個動作編號：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">git</span> reset dd<span class="hljs-number">1</span>f<span class="hljs-number">0</span>f<span class="hljs-number">8</span> --hard<br></code></pre></td></tr></table></figure>
 <p>第二種方式是使用 ORIG_HEAD：</p>
-<h2 id="code￼13"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs s">$ git reset ORIG_HEAD --hard <br></code></pre></td></tr></table></figure></h2>
-<p>參考資料：<br>
-<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=HeF7dwVyzow&amp;feature=emb_err_watch_on_yt">另一種合併方式（使用 rebase）｜高見龍</a><br>
-<a target="_blank" rel="noopener" href="https://w3c.hexschool.com/git/cfdbd310?fbclid=IwAR0cO3-A9voMoOPIA-qnZWbm2o7TNICwsJc4J0rnbZxCcNy8sBVs7NU9OmQ">Git &amp; GitHub 教學手冊｜六角學院</a></p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">git <span class="hljs-keyword">reset</span> ORIG_HEAD <span class="hljs-comment">--hard </span><br></code></pre></td></tr></table></figure>
+<hr>
+<p>參考資料：</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=HeF7dwVyzow&amp;feature=emb_err_watch_on_yt">另一種合併方式（使用 rebase）｜高見龍</a></p>
+<p><a target="_blank" rel="noopener" href="https://w3c.hexschool.com/git/cfdbd310?fbclid=IwAR0cO3-A9voMoOPIA-qnZWbm2o7TNICwsJc4J0rnbZxCcNy8sBVs7NU9OmQ">Git &amp; GitHub 教學手冊｜六角學院</a></p>
 
             </div>
             <hr>
