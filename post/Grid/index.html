@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"b-l-u-e-b-e-r-r-y.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":"UA-161468752-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"b-l-u-e-b-e-r-r-y.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":"UA-161468752-1","gtag":"G-RRZL3JTQB8","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最後更新於：2021年7月4日 晚上
+                  本文最後更新於：2021年7月5日 中午
                 
               </p>
             
@@ -289,7 +289,7 @@
 <p><code>minmax(最小值, 最大值)</code></p>
 <p><code>minmax</code> 可以指定最小值和最大值，在設計響應式頁面很方便：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.wrapper</span> &#123;<br>    <span class="hljs-attribute">display</span>: grid;<br>    grid-template-rows: <span class="hljs-built_in">minmax</span>(<span class="hljs-number">50px</span>, <span class="hljs-number">100px</span>);<br>    grid-template-<span class="hljs-attribute">columns</span>: <span class="hljs-built_in">minmax</span>(<span class="hljs-number">50px</span>, <span class="hljs-number">100px</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>以上面的例子來看，一般 PC 的情況下 columns 會呈現 100px，隨著頁面寬度變化慢慢縮小，如果擠到不能再擠了，就會維持最小高度 50px。rows 也是一樣的原理。</p>
+<p>以上面的例子來看，一般 PC 的情況下 columns 會呈現 100px，隨著頁面寬度變化慢慢縮小，如果擠到不能再擠了，就會維持最小寬度 50px。rows 也是一樣的原理。</p>
 <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="zYwOjeL" data-user="Priscilla_Lin" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin/pen/zYwOjeL">
   Grid minmax</a> by Priscilla Lin (<a target="_blank" rel="noopener" href="https://codepen.io/Priscilla_Lin">@Priscilla_Lin</a>)
@@ -609,6 +609,15 @@
     <script async src='https://www.google-analytics.com/analytics.js'></script>
   
 
+  
+    <!-- Google gtag.js -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RRZL3JTQB8"></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RRZL3JTQB8');
+    </script>
   
 
   
