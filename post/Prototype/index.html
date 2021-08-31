@@ -1,248 +1,200 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
-
-
+<html lang="zh-TW">
 
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="喜歡做奇怪東西的前端工程師">
-  <meta name="author" content="Blueberry">
-  <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI, 爬蟲, Discord Bot">
-  
-  <title>Javascript 原型鍊（Prototype Chain） - 一顆藍莓</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
     
+      <link rel="icon" href="/favicon.svg" />
     
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+
+    <title>
+        
+          原型鍊 (Prototype Chain) - 一顆藍莓
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-icons.min.css">
+
+    <!-- theme css & js -->
     
-  
+<link rel="stylesheet" href="/css/book.css">
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
-
+    
+<script src="/js/book.js"></script>
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+    
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+ga('create', 'UA-161468752-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
 
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"b-l-u-e-b-e-r-r-y.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":"UA-161468752-1","gtag":"G-RRZL3JTQB8","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
-
 <body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.svg">
+    <span>一顆藍莓</span>
+  </a>
+</div>
+    <div id="menu" class="book-menu hide">
+  <ul>
+<li><a href="/">首頁</a></li>
+<li><a href="/about/index/">關於我</a></li>
+</ul>
+<h1 id="程式筆記">程式筆記</h1>
+<h2 id="CSS">CSS</h2>
+<ul>
+<li><a href="/post/Flexbox">排版神器 Flexbox</a></li>
+<li><a href="/post/Grid">Grid 格線佈局</a></li>
+</ul>
+<h2 id="Javascript">Javascript</h2>
+<ul>
+<li><a href="/post/BindCallApply">使用 bind、call、apply 改變 this 指向的對象</a></li>
+<li><a href="/post/ComparisonOperators">比較運算子</a></li>
+<li><a href="/post/Destructuring">解構賦值 (Destructuring)</a></li>
+<li><a href="/post/ES6variable">var、let、const 的區別</a></li>
+<li><a href="/post/FunctionalProgramming01">Functional Programming 幼幼班入門</a></li>
+<li><a href="/post/Promise">Javascript ES6 Promise</a></li>
+<li><a href="/post/Prototype">原型鍊 (Prototype Chain)</a></li>
+<li><a href="/post/ShallowCopyAndDeepCopy">Javascript 的淺拷貝與深拷貝</a></li>
+<li><a href="/post/SpreadAndRestOperator">展開運算子 (Spread Operator) 與其餘運算子 (Rest Operator)</a></li>
+<li><a href="/post/EventLoop">Event Loop (事件循環)</a></li>
+<li><a href="/post/FirstClassFunction">First-Class Function (一級函式)</a></li>
+<li><a href="/post/OptionalChaining">Optional Chaining (可選串連)</a></li>
+<li><strong>設計模式 (Design Pattern)</strong>
+<ul>
+<li><a href="/post/JSDesignPattern01">單例模式</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="React">React</h2>
+<ul>
+<li><a href="/post/ReactChildren">React Children 屬性</a></li>
+<li><strong>React Hooks</strong>
+<ul>
+<li><a href="/post/useStateHook">useState - 最基本的狀態管理 Hook</a></li>
+<li><a href="/post/"></a></li>
+<li><a href="/post/"></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Node-js">Node.js</h2>
+<ul>
+<li><a href="/post/PTTCrawler">使用 Node.js 來爬蟲吧！[PTT 股票板]</a></li>
+<li><a href="/post/PTTCrawler02">使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]</a></li>
+<li><a href="/post/DiscordBot01">【用 JS 寫一個 Discord Bot！】01 建立機器人</a></li>
+<li><a href="/post/DiscordBot02">【用 JS 寫一個 Discord Bot！】02 音樂機器人</a></li>
+<li><a href="/post/"></a></li>
+<li><a href="/post/"></a></li>
+</ul>
+<h2 id="MySQL">MySQL</h2>
+<ul>
+<li><a href="/post/ForeignKey">以 MySQL 為例解釋外鍵（Foreign Key）</a></li>
+</ul>
+<h2 id="Git">Git</h2>
+<ul>
+<li><a href="/post/GitCommand">簡單整理 Git 常用指令</a></li>
+</ul>
 
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首頁
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                封存
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分類
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                標籤
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                關於
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
   </div>
-</nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/images/js_banner.jpeg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Javascript 原型鍊（Prototype Chain）">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-04-25 23:08" pubdate>
-        2020年4月25日 晚上
-      </time>
-    </span>
-  
+  <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
 </div>
 
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      735 字
-    </span>
-  
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
 
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      8
-       分鐘
-    </span>
-  
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
 
-  
-  
-</div>
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
 
-            
-          </div>
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
 
-          
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
         </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">Javascript 原型鍊（Prototype Chain）</h1>
-            
-              <p class="note note-info">
-                
-                  本文最後更新於：2021年6月27日 下午
-                
-              </p>
-            
-            <div class="markdown-body">
-              <h1>原型繼承</h1>
+        <div class="book-content">
+          <div class="book-post">
+  <h1 id="原型鍊-Prototype-Chain">原型鍊 (Prototype Chain)</h1>
+<h2 id="原型繼承">原型繼承</h2>
 <p>不同於 Java 或 C++ 這些基於類別的語言，Javascript 是基於原型（prototype-based）的，ES6 雖然有 <code>class</code> 可以使用，但那只是語法糖而已。</p>
 <p>廣義來說，繼承就是一個物件取用另一個物件的屬性或方法。而 Javascript 的繼承是<strong>原型繼承</strong>，繼承的物件並不會一併將所有屬性及方法複製過來，而是透過<strong>原型鍊</strong>來連結其物件繼承的屬性及方法。</p>
 <p>假設有兩個物件：animal 和 elephant，讓 elephant 繼承 animal，那麼 elephant 就可以使用 animal 的屬性及方法，而 animal 就是 elephant 的原型物件。</p>
 <p>當我們將物件打印出來並且展開，就可以看到 <code>__proto__</code>，它就是原型物件。<br>
-<img src="/images/prototype/04.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<h1>原型鍊</h1>
+<img src="/images/prototype/04.jpg" alt=""></p>
+<h2 id="原型鍊">原型鍊</h2>
 <p>在原型繼承中有提到<strong>原型鍊</strong>，那它是什麼呢？</p>
-<img src="/images/prototype/01.jpg" srcset="/img/loading.gif" lazyload width="60%" height="60%">
+<img src="/images/prototype/01.jpg" width="60%" height="60%">
 <p>有一個物件名字叫 obj，它的原型是 proto，而 proto 有一個屬性是 Prop2，那我們如果想取用 Prop2，該怎麼寫？</p>
 <p><code>obj.proto.Prop2</code> 嗎？不，不用這麼麻煩。</p>
 <p>直接寫 <code>obj.Prop2</code> 就好。</p>
@@ -253,25 +205,25 @@
 </blockquote>
 <hr>
 <p>那如果多了一個 obj2 繼承 proto 呢？<br>
-<img src="/images/prototype/02.jpg" srcset="/img/loading.gif" lazyload width="60%" height="60%"></p>
+<img src="/images/prototype/02.jpg" width="60%" height="60%"></p>
 <p>obj 和 obj2 兩個主物件本身並不衝突，但它們繼承的 proto 卻是同一個，在記憶體中的位置也是相同的，因此如果想要取 Prop3 這個屬性，也一樣可以取得到。</p>
-<h1>實作原型鍊（不建議）</h1>
+<h2 id="實作原型鍊（不建議）">實作原型鍊（不建議）</h2>
 <p>這裡會寫不建議，是因為 <code>obj.__proto__ = prototype</code> 這個寫法會造成效能問題，這邊會使用到只是為了 Demo，實際 Coding 的時候千萬不要這樣寫。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> person = &#123;<br>    <span class="hljs-attr">firstname</span>: <span class="hljs-string">&#x27;Default&#x27;</span>,<br>    <span class="hljs-attr">lastname</span>: <span class="hljs-string">&#x27;Default&#x27;</span>,<br>    <span class="hljs-attr">getFullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.firstname + <span class="hljs-string">&#x27; &#x27;</span> + <span class="hljs-built_in">this</span>.lastname;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> blueberry = &#123;<br>    <span class="hljs-attr">firstname</span>: <span class="hljs-string">&#x27;Blueberry&#x27;</span>,<br>    <span class="hljs-attr">lastname</span>: <span class="hljs-string">&#x27;Lin&#x27;</span><br>&#125;<br><br><span class="hljs-comment">// 不要這樣寫！只是為了 DEMO</span><br>blueberry.__proto__ = person;<br><span class="hljs-built_in">console</span>.log(blueberry.getFullName());  <span class="hljs-comment">// Blueberry Lin</span><br><span class="hljs-built_in">console</span>.log(blueberry.firstname);      <span class="hljs-comment">// Blueberry</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    <span class="attr">firstname</span>: <span class="string">&#x27;Default&#x27;</span>,</span><br><span class="line">    <span class="attr">lastname</span>: <span class="string">&#x27;Default&#x27;</span>,</span><br><span class="line">    <span class="attr">getFullName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.firstname + <span class="string">&#x27; &#x27;</span> + <span class="built_in">this</span>.lastname;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> blueberry = &#123;</span><br><span class="line">    <span class="attr">firstname</span>: <span class="string">&#x27;Blueberry&#x27;</span>,</span><br><span class="line">    <span class="attr">lastname</span>: <span class="string">&#x27;Lin&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不要這樣寫！只是為了 DEMO</span></span><br><span class="line">blueberry.__proto__ = person;</span><br><span class="line"><span class="built_in">console</span>.log(blueberry.getFullName());  <span class="comment">// Blueberry Lin</span></span><br><span class="line"><span class="built_in">console</span>.log(blueberry.firstname);      <span class="comment">// Blueberry</span></span><br></pre></td></tr></table></figure>
 <p>假設我有兩個物件，blueberry 繼承了 person，所以當我想呼叫 <code>blueberry.getFullName()</code> 時，也理所當然可以使用這個方法，因為繼承就是讓一個物件可以使用原型物件的所有屬性和方法。</p>
 <p>但是為什麼 <code>blueberry.firstname</code> 的結果會是 ‘Blueberry’ 而不是原型物件的 ‘Default’？這是因為 Javascript 引擎先在 blueberry 這個主物件中找到了 firstname 屬性，所以就不會繼續往原型鍊尋找。</p>
-<hr>
-<p>參考資料：</p>
-<p><a target="_blank" rel="noopener" href="https://www.udemy.com/course/javascriptjs/">《JavaScript 全攻略：克服 JS 的奇怪部分》</a></p>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/javascriptjs/">《JavaScript 全攻略：克服 JS 的奇怪部分》</a></li>
+</ul>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                <div class="post-meta" style="width: 100%">
-                  <h5 style="font-weight: bold;">文章結束囉~</h5>
-                  <p>如果我的文章對你有幫助，可以幫我按個讚 ^^ 謝謝。</p>
-                  <div>
+
+  
+    <blockquote>
+      <strong style="font-weight: bold; margin-top: 1.5rem;">文章結束囉～</strong>
+      <p style="margin-top: .5rem;">如果我的文章對你有幫助，可以幫我拍個手，感謝支持！</p>
+    </blockquote>
+    <div>
   <script type="text/javascript">
     document.write(
       "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/blueberrylin/button?referrer=" +
@@ -282,271 +234,101 @@
   <div></div>
 </div>
 
-                </div>
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Javascript/">Javascript</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Javascript/">Javascript</a>
-                    
-                      <a class="hover-with-bg" href="/tags/w3HexSchool/">w3HexSchool</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Prototype/">Prototype</a>
-                    
-                  </div>
-                
-              </div>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/post/FunctionalProgramming01/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Functional Programming 初級入門</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/post/JSDesignPattern01/">
-                        <span class="hidden-mobile">Javascript 設計模式 - 單例模式</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#comments', function() {
-      var light = 'github-light';
-      var dark = 'github-dark';
-      var schema = document.documentElement.getAttribute('data-user-color-scheme');
-      if (schema === 'dark') {
-        schema = dark;
-      } else {
-        schema = light;
-      }
-      window.UtterancesThemeLight = light;
-      window.UtterancesThemeDark = dark;
-      var s = document.createElement('script');
-      s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.setAttribute('repo', 'B-l-u-e-b-e-r-r-y/blog-utterances');
-      s.setAttribute('issue-term', 'title');
-      
-      s.setAttribute('label', 'utterances');
-      
-      s.setAttribute('theme', schema);
-      s.setAttribute('crossorigin', 'anonymous');
-      document.getElementById('comments').appendChild(s);
-    })
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
+  
+</div>
 
 
-              </article>
-            
-          </article>
+  <div class="book-comments">
+    
+    <script src="https://giscus.app/client.js"
+            data-repo="B-l-u-e-b-e-r-r-y/blog-utterances"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyNDg3Njc1NTM="
+            data-category="General"
+            data-category-id="DIC_kwDODtPkQc4B-1Vd"
+            data-mapping="title"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-theme="https://raw.githack.com/B-l-u-e-b-e-r-r-y/blog/master/source/giscus.css"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+
+
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
         </div>
       </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/author.jpg" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>Blueberry</div>
+      <div>2020-04-25</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+
+      <a class="category-link" href="/categories/Javascript/">[Javascript]</a>
+
+      <br>
+
+      <a class="tag-none-link" href="/tags/Javascript/" rel="tag">#Javascript</a> <a class="tag-none-link" href="/tags/Prototype/" rel="tag">#Prototype</a> <a class="tag-none-link" href="/tags/w3HexSchool/" rel="tag">#w3HexSchool</a>
     </div>
     
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
-  <div class="toc-body" id="toc-body"></div>
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
 </div>
 
-      </div>
-    
-  </div>
+
+<script src="/js/book-toc.js"></script>
+
 </div>
-
-<!-- Custom -->
-
-
-    
-
-    
-      <a id="scroll-top-button" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">關鍵字</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
 </div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
-  
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
-      ga.l = +new Date;
-      ga('create', 'UA-161468752-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-  
-
-  
-    <!-- Google gtag.js -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RRZL3JTQB8"></script>
-    <script defer>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-RRZL3JTQB8');
-    </script>
-  
-
-  
-
-  
-
-  
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
 
 </body>
 </html>
+
+
+<script src="/js/book.js"></script>

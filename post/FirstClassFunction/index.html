@@ -11,7 +11,7 @@
 
     <title>
         
-          一顆藍莓
+          First-Class Function (一級函式) - 一顆藍莓
         
     </title>
 
@@ -184,35 +184,70 @@ function sidebar_toggle() {
 
         </div>
         <div class="book-content">
-          <div class='book-archive'>
-  <!-- Title -->
-  
-    <h1>Tag - Grid</h1>
-  
+          <div class="book-post">
+  <h1 id="First-Class-Function-一級函式">First-Class Function (一級函式)</h1>
+<p>如果在一個程式語言中，一個函式能被當作參數使用，就能說<strong>該程式語言擁有一級函式</strong>。</p>
+<p>由於 JavaScript 擁有 First-Class Function (一級函式) 的關係，我們可以：</p>
+<h2 id="1-指定參數為函式">1. 指定參數為函式</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;bar&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar();</span><br></pre></td></tr></table></figure>
+<h2 id="2-指定參數為函式並傳入函式">2. 指定參數為函式並傳入函式</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">enGreet</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`Hello <span class="subst">$&#123;name&#125;</span>!`</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greeting</span> (<span class="params">greetFn, name</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(greetFn(name));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greeting(enGreet, <span class="string">&#x27;Blueberry&#x27;</span>);  <span class="comment">// Hello Blueberry!</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-返回函數">3. 返回函數</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greeting</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>!`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greeting(<span class="string">&#x27;Blueberry&#x27;</span>)();  <span class="comment">// Hello Blueberry!</span></span><br></pre></td></tr></table></figure>
+<p>當一個函式可以回傳另一個函式時，我們稱之為高階函式 (Higher-Order Function)。</p>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/First-class_Function">MDN - 一級函式（First-class Function）</a></li>
+</ul>
+
 
   
-    <!-- Split post by year -->
-    
-  
-
-  
-      <div class="years">
-          <h2>2021</h2>
-          <ul class="archive-list-item">
-          
-              <li>
-                <span>2021-07-04</span>
-                <a href="/post/Grid/">
-                  CSS Grid 格線佈局
-                </a>
-              </li>
-          
-          </ul>
-      </div>
-  
+    <blockquote>
+      <strong style="font-weight: bold; margin-top: 1.5rem;">文章結束囉～</strong>
+      <p style="margin-top: .5rem;">如果我的文章對你有幫助，可以幫我拍個手，感謝支持！</p>
+    </blockquote>
+    <div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/blueberrylin/button?referrer=" +
+        encodeURIComponent(location.href.split("?")[0].split("#")[0]) +
+        "'></iframe>"
+    );
+  </script>
+  <div></div>
+</div>
 
   
 </div>
+
+
+  <div class="book-comments">
+    
+    <script src="https://giscus.app/client.js"
+            data-repo="B-l-u-e-b-e-r-r-y/blog-utterances"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyNDg3Njc1NTM="
+            data-category="General"
+            data-category-id="DIC_kwDODtPkQc4B-1Vd"
+            data-mapping="title"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-theme="https://raw.githack.com/B-l-u-e-b-e-r-r-y/blog/master/source/giscus.css"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+
+
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
         </div>
       </div>
       <div class="column col-2 hide-lg">
@@ -234,10 +269,22 @@ function sidebar_toggle() {
     <!-- Author title -->
     <div class="author-title">
       <div>Blueberry</div>
-      <div></div>
+      <div>2021-08-26</div>
     </div>
   </div>
 
+  
+    <div class="divider"></div>
+
+    <div class="link">
+
+      <a class="category-link" href="/categories/Javascript/">[Javascript]</a>
+
+      <br>
+
+      
+    </div>
+    
   
 
   <div class="divider"></div>

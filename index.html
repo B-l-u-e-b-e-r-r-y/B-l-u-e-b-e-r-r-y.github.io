@@ -1,1035 +1,423 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
-
-
+<html lang="zh-TW">
 
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="喜歡做奇怪東西的前端工程師">
-  <meta name="author" content="Blueberry">
-  <meta name="keywords" content="Javascript, Angular, React, Node.js, MySQL, Figma, UI, 爬蟲, Discord Bot">
-  
-  <title>一顆藍莓</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+    
+      <link rel="icon" href="/favicon.svg" />
+    
 
+    <title>
+        
+          首頁 - 一顆藍莓
+        
+    </title>
 
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-icons.min.css">
 
-<!-- 主题依赖的图标库，不要自行修改 -->
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
+    
+<script src="/js/book.js"></script>
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"b-l-u-e-b-e-r-r-y.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":"UA-161468752-1","gtag":"G-RRZL3JTQB8","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-161468752-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
 <meta name="generator" content="Hexo 5.4.0"></head>
 
-
 <body>
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>一顆藍莓</strong>&nbsp;</a>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首頁
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                封存
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分類
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                標籤
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                關於
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/images/index.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="喜歡做奇怪東西的前端工程師">
-              
-            </span>
-
-            
-          </div>
-
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/post/Grid/" target="_self">
-          <img src="/images/grid_banner.png" srcset="/img/loading.gif" lazyload alt="CSS Grid 格線佈局">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/post/Grid/" target="_self">
-          CSS Grid 格線佈局
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/post/Grid/" target="_self">
-          
-          
-            
-          
-          前言
-Flexbox 的出現讓很多人捨棄了舊有的排版方式，大多數的時候我也還是使用 Flexbox，但最近遇到的需求版型比較複雜，於是開始學習 Grid。
-我認為 Grid 很適合用在 Dashboard 的排版，比如：
-
-不是說 Flexbox 無法做到這個版型，而是用 Grid 來排真的比較快又簡單很多。
-Google Chrome 的格線預覽
-開始前先來介紹實用的 Google Chrome
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-04 18:01" pubdate>
-              2021-07-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/CSS/">CSS</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CSS/">CSS</a>
-            
-              <a href="/tags/Grid/">Grid</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/post/PTTCrawler02/" target="_self">
-          <img src="/images/node_banner.png" srcset="/img/loading.gif" lazyload alt="使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/post/PTTCrawler02/" target="_self">
-          使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/post/PTTCrawler02/" target="_self">
-          
-          
-            
-          
-          前言
-如果使用前一篇使用 Node.js 來爬蟲吧！[PTT 股票板]程式碼，試著將網址改成八卦板運行，會發現爬蟲抓不到資料的問題。
-這是因為第一次訪問八卦板時，PTT 會先跳出年齡驗證，使用者如果按下已滿 18 歲的按鈕，PTT 就會將紀錄存在 Cookies。
-
-當然也可以在 requset 時帶 cookie，不過本篇文章會講解使用自動化測試工具 Puppeteer 來實作這個功能。
-實作
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-30 15:00" pubdate>
-              2020-05-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/node-js/">node.js</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Javascript/">Javascript</a>
-            
-              <a href="/tags/w3HexSchool/">w3HexSchool</a>
-            
-              <a href="/tags/node-js/">node.js</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/post/DiscordBot02/" target="_self">
-          <img src="/images/dc_banner.jpg" srcset="/img/loading.gif" lazyload alt="【用 JS 寫一個 Discord Bot！】02 音樂機器人">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/post/DiscordBot02/" target="_self">
-          【用 JS 寫一個 Discord Bot！】02 音樂機器人
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/post/DiscordBot02/" target="_self">
-          
-          
-            
-          
-          前言
-今天我們來寫一個具有以下功能的音樂機器人：
-
-播放 YouTube 歌曲
-暫停/恢復播放
-跳過歌曲
-歌曲隊列
-
-如果還不知道怎麼建立機器人，可以參考我之前寫的這篇文章：【用 JS 寫一個 Discord Bot！】01 建立機器人。
-實作
-安裝套件
-要完成這些功能，除了需要 Discord.js 套件以外，還必須安裝下面這三個套件。
-
-
-ffmpeg-static
-
-
-執行音樂的轉檔、串流功
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-17 23:00" pubdate>
-              2020-05-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/node-js/">node.js</a>
-            
-              <a href="/categories/node-js/Discord-Bot/">Discord Bot</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Javascript/">Javascript</a>
-            
-              <a href="/tags/w3HexSchool/">w3HexSchool</a>
-            
-              <a href="/tags/node-js/">node.js</a>
-            
-              <a href="/tags/Discord-js/">Discord.js</a>
-            
-              <a href="/tags/DC%E6%A9%9F%E5%99%A8%E4%BA%BA/">DC機器人</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/post/ForeignKey/" target="_self">
-          <img src="/images/mysql_banner.png" srcset="/img/loading.gif" lazyload alt="以 MySQL 為例解釋外鍵（Foreign Key）">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/post/ForeignKey/" target="_self">
-          以 MySQL 為例解釋外鍵（Foreign Key）
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/post/ForeignKey/" target="_self">
-          
-          
-            
-          
-          介紹
-外鍵（Foreign Key）是指向其他表的主鍵（Primary Key）的欄位，用於確定兩張表的關聯性及資料完整性，以避免部分資料匹配不上的問題。
-
-如果想要使用外鍵，儲存引擎必須是 InnoDB
-外鍵只能指向被設定為主鍵的欄位
-外鍵與指向的主鍵資料型別必須相同
-
-接下來會以 MySQL 示範 Foreign Key 的常見使用情境，以及操作時會碰到的問題。
-實作
-我們會有兩張資料表：us
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-09 13:50" pubdate>
-              2020-05-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/MySQL/">MySQL</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/w3HexSchool/">w3HexSchool</a>
-            
-              <a href="/tags/MySQL/">MySQL</a>
-            
-              <a href="/tags/Foreign-Key/">Foreign Key</a>
-            
-              <a href="/tags/FK/">FK</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/post/FunctionalProgramming01/" target="_self">
-          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" lazyload alt="Functional Programming 初級入門">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/post/FunctionalProgramming01/" target="_self">
-          Functional Programming 初級入門
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/post/FunctionalProgramming01/" target="_self">
-          
-          
-            
-          
-          前言
-最近打算把 Udemy 的這堂《JavaScript 全攻略：克服 JS 的奇怪部分》補完，才發現裡面有提到 Functional Programming 的觀念，之前就一直想學這塊，今天剛好有這個機會可以入門。
-在堅持鐵人賽的這幾週，漸漸也養成了在週六學習新知的習慣，但也發現一天的時間要包含學習和寫文章有點不太夠，之後希望能把時間管理慢慢做好，多騰出一些平日的時間來學習，邁向一週寫兩篇文的
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-02 00:00" pubdate>
-              2020-05-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Javascript/">Javascript</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Javascript/">Javascript</a>
-            
-              <a href="/tags/w3HexSchool/">w3HexSchool</a>
-            
-              <a href="/tags/Functional-Programming/">Functional Programming</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/post/Prototype/" target="_self">
-          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" lazyload alt="Javascript 原型鍊（Prototype Chain）">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/post/Prototype/" target="_self">
-          Javascript 原型鍊（Prototype Chain）
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/post/Prototype/" target="_self">
-          
-          
-            
-          
-          原型繼承
-不同於 Java 或 C++ 這些基於類別的語言，Javascript 是基於原型（prototype-based）的，ES6 雖然有 class 可以使用，但那只是語法糖而已。
-廣義來說，繼承就是一個物件取用另一個物件的屬性或方法。而 Javascript 的繼承是原型繼承，繼承的物件並不會一併將所有屬性及方法複製過來，而是透過原型鍊來連結其物件繼承的屬性及方法。
-假設有兩個物件：an
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-25 23:08" pubdate>
-              2020-04-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Javascript/">Javascript</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Javascript/">Javascript</a>
-            
-              <a href="/tags/w3HexSchool/">w3HexSchool</a>
-            
-              <a href="/tags/Prototype/">Prototype</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/post/JSDesignPattern01/" target="_self">
-          <img src="/images/design-pattern/01.png" srcset="/img/loading.gif" lazyload alt="Javascript 設計模式 - 單例模式">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/post/JSDesignPattern01/" target="_self">
-          Javascript 設計模式 - 單例模式
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/post/JSDesignPattern01/" target="_self">
-          
-          
-            
-          
-          前言
-本篇內容是我閱讀《JavaScript設計模式與開發實踐》的筆記，這些程式碼會牽涉到一些觀念，如閉包、物件導向、原型鍊等，如果有不懂的地方可以詢問 Google 大神，這邊會比較著重在講解與實作設計模式的部分。
-單例模式
-單例模式是確保物件只建立一次的設計模式，好處是能減少不必要的內存，它的原則是保證一個類別僅有一個實例，並提供一個存取它的全域存取點，透過一個變數來記錄類別有沒有建立過物件，
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 20:53" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Javascript/">Javascript</a>
-            
-              <a href="/categories/Javascript/Design-Pattern/">Design Pattern</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Javascript/">Javascript</a>
-            
-              <a href="/tags/w3HexSchool/">w3HexSchool</a>
-            
-              <a href="/tags/Design-Pattern/">Design Pattern</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/post/DiscordBot01/" target="_self">
-          <img src="/images/dc_banner.jpg" srcset="/img/loading.gif" lazyload alt="【用 JS 寫一個 Discord Bot！】01 建立機器人">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/post/DiscordBot01/" target="_self">
-          【用 JS 寫一個 Discord Bot！】01 建立機器人
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/post/DiscordBot01/" target="_self">
-          
-          
-            
-          
-          創建機器人
-首先到 Discord Developer 建立機器人。（需登入）
-1. 新增 APP
-進入網頁後，點擊按鈕 New Application。
-
-2. 設定 APP 名稱
-
-提醒一下，APP名稱會出現在這邊：
-
-3. 點選左邊的 Bot
-
-4. 新增 Bot
-點擊 Add Bot。
-
-Bot 新增後可以更改它的 USERNAME、ICON（頭貼），修改完畢後記得儲存。
-
-這裡的 Tok
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-04 18:00" pubdate>
-              2020-04-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/node-js/">node.js</a>
-            
-              <a href="/categories/node-js/Discord-Bot/">Discord Bot</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Javascript/">Javascript</a>
-            
-              <a href="/tags/w3HexSchool/">w3HexSchool</a>
-            
-              <a href="/tags/node-js/">node.js</a>
-            
-              <a href="/tags/Discord-js/">Discord.js</a>
-            
-              <a href="/tags/DC%E6%A9%9F%E5%99%A8%E4%BA%BA/">DC機器人</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/post/PTTCrawler/" target="_self">
-          <img src="/images/node_banner.png" srcset="/img/loading.gif" lazyload alt="使用 Node.js 來爬蟲吧！[PTT 股票板]">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/post/PTTCrawler/" target="_self">
-          使用 Node.js 來爬蟲吧！[PTT 股票板]
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/post/PTTCrawler/" target="_self">
-          
-          
-            
-          
-          前言
-一般大家爬蟲都是使用 python，其實 node.js 也是可以爬蟲的，作為前端，能用自己習慣的語言來寫當然很方便。
-但是 python 和 node.js 除了寫法不同，兩者特性也是不同的，例如 node.js 是異步的、單執行緒，python 則是多執行緒等等，關於這些差異本文就不多加討論。
-模組
-node.js 爬蟲需要用到兩個模組：request 和 cheerio。
-介紹
-req
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-28 18:00" pubdate>
-              2020-03-28
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/node-js/">node.js</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Javascript/">Javascript</a>
-            
-              <a href="/tags/w3HexSchool/">w3HexSchool</a>
-            
-              <a href="/tags/node-js/">node.js</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/post/ShallowCopyAndDeepCopy/" target="_self">
-          <img src="/images/js_banner.jpeg" srcset="/img/loading.gif" lazyload alt="Javascript 的淺拷貝與深拷貝">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/post/ShallowCopyAndDeepCopy/" target="_self">
-          Javascript 的淺拷貝與深拷貝
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/post/ShallowCopyAndDeepCopy/" target="_self">
-          
-          
-            
-          
-          前言
-在寫 JS 的過程中，常常會遇到需要拷貝物件或陣列的情況。
-然而之後修改拷貝的內容時，發現原本的物件或陣列的屬性也跟著一起改變。
-好比下面的例子：
-12345678910111213141516171819202122232425const person = &#123;    name: &#x27;Blueberry&#x27;,    age: &#x27;24&#x27;,    i
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-21 18:00" pubdate>
-              2020-03-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Javascript/">Javascript</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Javascript/">Javascript</a>
-            
-              <a href="/tags/w3HexSchool/">w3HexSchool</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-
-    
-      <a id="scroll-top-button" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">關鍵字</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.svg">
+    <span>一顆藍莓</span>
+  </a>
 </div>
-    
+    <div id="menu" class="book-menu hide">
+  <ul>
+<li><a href="/">首頁</a></li>
+<li><a href="/about/index/">關於我</a></li>
+</ul>
+<h1 id="程式筆記">程式筆記</h1>
+<h2 id="CSS">CSS</h2>
+<ul>
+<li><a href="/post/Flexbox">排版神器 Flexbox</a></li>
+<li><a href="/post/Grid">Grid 格線佈局</a></li>
+</ul>
+<h2 id="Javascript">Javascript</h2>
+<ul>
+<li><a href="/post/BindCallApply">使用 bind、call、apply 改變 this 指向的對象</a></li>
+<li><a href="/post/ComparisonOperators">比較運算子</a></li>
+<li><a href="/post/Destructuring">解構賦值 (Destructuring)</a></li>
+<li><a href="/post/ES6variable">var、let、const 的區別</a></li>
+<li><a href="/post/FunctionalProgramming01">Functional Programming 幼幼班入門</a></li>
+<li><a href="/post/Promise">Javascript ES6 Promise</a></li>
+<li><a href="/post/Prototype">原型鍊 (Prototype Chain)</a></li>
+<li><a href="/post/ShallowCopyAndDeepCopy">Javascript 的淺拷貝與深拷貝</a></li>
+<li><a href="/post/SpreadAndRestOperator">展開運算子 (Spread Operator) 與其餘運算子 (Rest Operator)</a></li>
+<li><a href="/post/EventLoop">Event Loop (事件循環)</a></li>
+<li><a href="/post/FirstClassFunction">First-Class Function (一級函式)</a></li>
+<li><a href="/post/OptionalChaining">Optional Chaining (可選串連)</a></li>
+<li><strong>設計模式 (Design Pattern)</strong>
+<ul>
+<li><a href="/post/JSDesignPattern01">單例模式</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="React">React</h2>
+<ul>
+<li><a href="/post/ReactChildren">React Children 屬性</a></li>
+<li><strong>React Hooks</strong>
+<ul>
+<li><a href="/post/useStateHook">useState - 最基本的狀態管理 Hook</a></li>
+<li><a href="/post/"></a></li>
+<li><a href="/post/"></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Node-js">Node.js</h2>
+<ul>
+<li><a href="/post/PTTCrawler">使用 Node.js 來爬蟲吧！[PTT 股票板]</a></li>
+<li><a href="/post/PTTCrawler02">使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]</a></li>
+<li><a href="/post/DiscordBot01">【用 JS 寫一個 Discord Bot！】01 建立機器人</a></li>
+<li><a href="/post/DiscordBot02">【用 JS 寫一個 Discord Bot！】02 音樂機器人</a></li>
+<li><a href="/post/"></a></li>
+<li><a href="/post/"></a></li>
+</ul>
+<h2 id="MySQL">MySQL</h2>
+<ul>
+<li><a href="/post/ForeignKey">以 MySQL 為例解釋外鍵（Foreign Key）</a></li>
+</ul>
+<h2 id="Git">Git</h2>
+<ul>
+<li><a href="/post/GitCommand">簡單整理 Git 常用指令</a></li>
+</ul>
 
-    
-  </main>
+</div>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <h1 id="Hello">Hello</h1>
+<p>這邊目前是一個純技術分享的 Blog ～</p>
+<p>Blog 主題為 <a target="_blank" rel="noopener" href="https://github.com/kaiiiz/hexo-theme-book">hexo-theme-book</a> 😃</p>
+<h2 id="文章列表">文章列表</h2>
+
+
+  
+</div>
+
+
+
+
+<script src="/js/book-post.js"></script>
+
+
+
+    <ul>
+        
+            <li>
+                <a href="post/OptionalChaining/">
+                    <span>Optional Chaining (可選串連)</span>
+                    <span style='color: #999'>[2021-08-30]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/FirstClassFunction/">
+                    <span>First-Class Function (一級函式)</span>
+                    <span style='color: #999'>[2021-08-26]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/EventLoop/">
+                    <span>Event Loop (事件循環)</span>
+                    <span style='color: #999'>[2021-08-25]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/Grid/">
+                    <span>CSS Grid 格線佈局</span>
+                    <span style='color: #999'>[2021-07-04]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="about/index/">
+                    <span>關於我</span>
+                    <span style='color: #999'>[2021-04-21]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/PTTCrawler02/">
+                    <span>使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]</span>
+                    <span style='color: #999'>[2020-05-30]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/DiscordBot02/">
+                    <span>【用 JS 寫一個 Discord Bot！】02 音樂機器人</span>
+                    <span style='color: #999'>[2020-05-17]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/ForeignKey/">
+                    <span>以 MySQL 為例解釋外鍵（Foreign Key）</span>
+                    <span style='color: #999'>[2020-05-09]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/FunctionalProgramming01/">
+                    <span>Functional Programming 幼幼班入門</span>
+                    <span style='color: #999'>[2020-05-01]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/Prototype/">
+                    <span>原型鍊 (Prototype Chain)</span>
+                    <span style='color: #999'>[2020-04-25]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/JSDesignPattern01/">
+                    <span>Javascript 設計模式 - 單例模式</span>
+                    <span style='color: #999'>[2020-04-18]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/DiscordBot01/">
+                    <span>【用 JS 寫一個 Discord Bot！】01 建立機器人</span>
+                    <span style='color: #999'>[2020-04-04]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/PTTCrawler/">
+                    <span>使用 Node.js 來爬蟲吧！[PTT 股票板]</span>
+                    <span style='color: #999'>[2020-03-28]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/ShallowCopyAndDeepCopy/">
+                    <span>Javascript 的淺拷貝與深拷貝</span>
+                    <span style='color: #999'>[2020-03-21]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/Promise/">
+                    <span>Javascript ES6 Promise</span>
+                    <span style='color: #999'>[2020-03-13]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/GitCommand/">
+                    <span>簡單整理 Git 常用指令</span>
+                    <span style='color: #999'>[2020-03-07]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/ComparisonOperators/">
+                    <span>比較運算子</span>
+                    <span style='color: #999'>[2020-02-29]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/Destructuring/">
+                    <span>Destructuring 解構賦值</span>
+                    <span style='color: #999'>[2020-02-22]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/Flexbox/">
+                    <span>CSS 排版神器 Flexbox</span>
+                    <span style='color: #999'>[2020-02-15]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/ReactChildren/">
+                    <span>React Children 屬性</span>
+                    <span style='color: #999'>[2020-02-05]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/SpreadAndRestOperator/">
+                    <span>展開運算子 (Spread Operator) 與其餘運算子 (Rest Operator)</span>
+                    <span style='color: #999'>[2020-01-11]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/BindCallApply/">
+                    <span>使用 bind、call、apply 改變 this 指向的對象</span>
+                    <span style='color: #999'>[2019-12-29]</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="post/ES6variable/">
+                    <span>var、let、const 的區別</span>
+                    <span style='color: #999'>[2019-11-27]</span>
+                </a>
+            </li>
+        
+    </ul>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/author.jpg" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>Blueberry</div>
+      <div>2021-08-31</div>
+    </div>
+  </div>
+
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
   </div>
   
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
-      ga.l = +new Date;
-      ga('create', 'UA-161468752-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-  
-
-  
-    <!-- Google gtag.js -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RRZL3JTQB8"></script>
-    <script defer>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-RRZL3JTQB8');
-    </script>
-  
-
-  
-
-  
-
-  
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
 
 </body>
 </html>
+
+
+<script src="/js/book.js"></script>

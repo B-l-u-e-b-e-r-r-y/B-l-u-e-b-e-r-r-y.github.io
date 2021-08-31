@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.svg" />
+    
+
+    <title>
+        
+          Optional Chaining (可選串連) - 一顆藍莓
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-161468752-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.svg">
+    <span>一顆藍莓</span>
+  </a>
+</div>
+    <div id="menu" class="book-menu hide">
+  <ul>
+<li><a href="/">首頁</a></li>
+<li><a href="/about/index/">關於我</a></li>
+</ul>
+<h1 id="程式筆記">程式筆記</h1>
+<h2 id="CSS">CSS</h2>
+<ul>
+<li><a href="/post/Flexbox">排版神器 Flexbox</a></li>
+<li><a href="/post/Grid">Grid 格線佈局</a></li>
+</ul>
+<h2 id="Javascript">Javascript</h2>
+<ul>
+<li><a href="/post/BindCallApply">使用 bind、call、apply 改變 this 指向的對象</a></li>
+<li><a href="/post/ComparisonOperators">比較運算子</a></li>
+<li><a href="/post/Destructuring">解構賦值 (Destructuring)</a></li>
+<li><a href="/post/ES6variable">var、let、const 的區別</a></li>
+<li><a href="/post/FunctionalProgramming01">Functional Programming 幼幼班入門</a></li>
+<li><a href="/post/Promise">Javascript ES6 Promise</a></li>
+<li><a href="/post/Prototype">原型鍊 (Prototype Chain)</a></li>
+<li><a href="/post/ShallowCopyAndDeepCopy">Javascript 的淺拷貝與深拷貝</a></li>
+<li><a href="/post/SpreadAndRestOperator">展開運算子 (Spread Operator) 與其餘運算子 (Rest Operator)</a></li>
+<li><a href="/post/EventLoop">Event Loop (事件循環)</a></li>
+<li><a href="/post/FirstClassFunction">First-Class Function (一級函式)</a></li>
+<li><a href="/post/OptionalChaining">Optional Chaining (可選串連)</a></li>
+<li><strong>設計模式 (Design Pattern)</strong>
+<ul>
+<li><a href="/post/JSDesignPattern01">單例模式</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="React">React</h2>
+<ul>
+<li><a href="/post/ReactChildren">React Children 屬性</a></li>
+<li><strong>React Hooks</strong>
+<ul>
+<li><a href="/post/useStateHook">useState - 最基本的狀態管理 Hook</a></li>
+<li><a href="/post/"></a></li>
+<li><a href="/post/"></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Node-js">Node.js</h2>
+<ul>
+<li><a href="/post/PTTCrawler">使用 Node.js 來爬蟲吧！[PTT 股票板]</a></li>
+<li><a href="/post/PTTCrawler02">使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]</a></li>
+<li><a href="/post/DiscordBot01">【用 JS 寫一個 Discord Bot！】01 建立機器人</a></li>
+<li><a href="/post/DiscordBot02">【用 JS 寫一個 Discord Bot！】02 音樂機器人</a></li>
+<li><a href="/post/"></a></li>
+<li><a href="/post/"></a></li>
+</ul>
+<h2 id="MySQL">MySQL</h2>
+<ul>
+<li><a href="/post/ForeignKey">以 MySQL 為例解釋外鍵（Foreign Key）</a></li>
+</ul>
+<h2 id="Git">Git</h2>
+<ul>
+<li><a href="/post/GitCommand">簡單整理 Git 常用指令</a></li>
+</ul>
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <h1 id="Optional-Chaining-可選串連">Optional Chaining (可選串連)</h1>
+<h2 id="使用情境">使用情境</h2>
+<p>假設今天有一些資料長這樣：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> users = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Blueberry&#x27;</span>,</span><br><span class="line">        <span class="attr">github</span>: &#123;</span><br><span class="line">            <span class="attr">account</span>: <span class="string">&#x27;B-l-u-e-b-e-r-r-y&#x27;</span>,</span><br><span class="line">            <span class="attr">url</span>: <span class="string">&#x27;https://github.com/B-l-u-e-b-e-r-r-y&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Foo&#x27;</span>,</span><br><span class="line">        <span class="attr">github</span>: <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>然後我想要用 map 取得 User 的 Github 帳號——</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">users.map(<span class="function"><span class="params">user</span> =&gt;</span> user.github.account);</span><br></pre></td></tr></table></figure>
+<p>因為 Foo 的 github 為 <code>null</code>，所以會報錯：</p>
+<blockquote>
+<p>Cannot read property ‘account’ of null</p>
+</blockquote>
+<p>當然，也可以改成這樣：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">users.map(<span class="function"><span class="params">user</span> =&gt;</span> user.github &amp;&amp; user.github.account);</span><br></pre></td></tr></table></figure>
+<p>但如果今天的資料格式變成了……</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> users = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Blueberry&#x27;</span>,</span><br><span class="line">        <span class="attr">github</span>: &#123;</span><br><span class="line">            <span class="attr">account</span>: <span class="string">&#x27;B-l-u-e-b-e-r-r-y&#x27;</span>,</span><br><span class="line">            <span class="attr">url</span>: <span class="string">&#x27;https://github.com/B-l-u-e-b-e-r-r-y&#x27;</span>,</span><br><span class="line">            <span class="attr">repositories</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">name</span>: <span class="string">&#x27;Discord-Bot-01&#x27;</span>,</span><br><span class="line">                    <span class="attr">url</span>: <span class="string">&#x27;https://github.com/B-l-u-e-b-e-r-r-y/Discord-Bot-01&#x27;</span>,</span><br><span class="line">                    <span class="attr">files</span>: [<span class="string">&#x27;discord.js&#x27;</span>, <span class="string">&#x27;README.md&#x27;</span>],</span><br><span class="line">                    <span class="attr">releases</span>: [</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="attr">version</span>: <span class="string">&#x27;1.0&#x27;</span>,</span><br><span class="line">                            <span class="attr">releaseDate</span>: <span class="string">&#x27;2021-08-20&#x27;</span>,</span><br><span class="line">                            <span class="attr">description</span>: <span class="string">&#x27;...&#x27;</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    ]</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Foo&#x27;</span>,</span><br><span class="line">        <span class="attr">github</span>: <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取 releases 的 releaseDate</span></span><br><span class="line">users.map(<span class="function"><span class="params">user</span> =&gt;</span> </span><br><span class="line">    user.github</span><br><span class="line">    &amp;&amp; user.github.repositories</span><br><span class="line">    &amp;&amp; user.github.repositories.length &gt; <span class="number">0</span></span><br><span class="line">    &amp;&amp; user.github.repositories[<span class="number">0</span>].releases</span><br><span class="line">    &amp;&amp; user.github.repositories[<span class="number">0</span>].releases.length &gt; <span class="number">0</span></span><br><span class="line">    &amp;&amp; user.github.repositories[<span class="number">0</span>].releases[<span class="number">0</span>].releaseDate);</span><br></pre></td></tr></table></figure>
+<p>這樣就會很辛苦 QQ</p>
+<h2 id="使用方法">使用方法</h2>
+<p>所幸現在 Chrome 支援 Optional Chaining，能夠讓上面落落長的程式碼只用一行搞定。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">users.map(<span class="function"><span class="params">user</span> =&gt;</span> user.github?.repositories?.[<span class="number">0</span>]?.releases?.[<span class="number">0</span>]?.releaseDate);</span><br></pre></td></tr></table></figure>
+<p>運作流程如下：</p>
+<ul>
+<li>user 如果存在 github 就繼續往下查找
+<ul>
+<li>user 如果不存在 github 就回傳 <code>undefined</code></li>
+</ul>
+</li>
+<li>github 如果存在 repositories 就繼續往下查找</li>
+<li>repositories 如果存在 repositories[0] 就繼續往下查找</li>
+</ul>
+<p>…以此類推。</p>
+<p>目前 Optional chaining 除了 IE 以外的瀏覽器都支援，也支援 Node.js v14.0.0 版本以上，詳細可以看<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E7%80%8F%E8%A6%BD%E5%99%A8%E7%9B%B8%E5%AE%B9%E6%80%A7">瀏覽器相容性</a>。</p>
+<hr>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">可選串連 - MDN</a></li>
+</ul>
+
+
+  
+    <blockquote>
+      <strong style="font-weight: bold; margin-top: 1.5rem;">文章結束囉～</strong>
+      <p style="margin-top: .5rem;">如果我的文章對你有幫助，可以幫我拍個手，感謝支持！</p>
+    </blockquote>
+    <div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/blueberrylin/button?referrer=" +
+        encodeURIComponent(location.href.split("?")[0].split("#")[0]) +
+        "'></iframe>"
+    );
+  </script>
+  <div></div>
+</div>
+
+  
+</div>
+
+
+  <div class="book-comments">
+    
+    <script src="https://giscus.app/client.js"
+            data-repo="B-l-u-e-b-e-r-r-y/blog-utterances"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyNDg3Njc1NTM="
+            data-category="General"
+            data-category-id="DIC_kwDODtPkQc4B-1Vd"
+            data-mapping="title"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-theme="https://raw.githack.com/B-l-u-e-b-e-r-r-y/blog/master/source/giscus.css"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+
+
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/author.jpg" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>Blueberry</div>
+      <div>2021-08-30</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+
+      <a class="category-link" href="/categories/Javascript/">[Javascript]</a>
+
+      <br>
+
+      
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

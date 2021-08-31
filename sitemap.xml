@@ -2,30 +2,177 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/</loc>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/home.html</loc>
     
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/OptionalChaining/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/ReactChildren/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/SpreadAndRestOperator/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/ShallowCopyAndDeepCopy/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/Prototype/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/Promise/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/PTTCrawler02/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/PTTCrawler/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/JSDesignPattern01/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
     
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/Grid/</loc>
     
-    <lastmod>2021-07-05</lastmod>
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/GitCommand/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/FunctionalProgramming01/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/ForeignKey/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
     
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/Flexbox/</loc>
     
-    <lastmod>2021-07-04</lastmod>
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/FirstClassFunction/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/EventLoop/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/ES6variable/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
     
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot02/</loc>
     
-    <lastmod>2021-07-04</lastmod>
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/Destructuring/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/ComparisonOperators/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/BindCallApply/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/menu.html</loc>
+    
+    <lastmod>2021-08-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/about/index/</loc>
+    
+    <lastmod>2021-08-28</lastmod>
     
   </url>
   
@@ -36,136 +183,10 @@
     
   </url>
   
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/ForeignKey/</loc>
-    
-    <lastmod>2021-06-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/FunctionalProgramming01/</loc>
-    
-    <lastmod>2021-06-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/Prototype/</loc>
-    
-    <lastmod>2021-06-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/JSDesignPattern01/</loc>
-    
-    <lastmod>2021-06-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/PTTCrawler/</loc>
-    
-    <lastmod>2021-06-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/ShallowCopyAndDeepCopy/</loc>
-    
-    <lastmod>2021-06-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/Promise/</loc>
-    
-    <lastmod>2021-06-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/GitCommand/</loc>
-    
-    <lastmod>2021-06-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/ComparisonOperators/</loc>
-    
-    <lastmod>2021-06-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/ReactChildren/</loc>
-    
-    <lastmod>2021-06-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/SpreadAndRestOperator/</loc>
-    
-    <lastmod>2021-06-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/BindCallApply/</loc>
-    
-    <lastmod>2021-06-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/PTTCrawler02/</loc>
-    
-    <lastmod>2020-05-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/ES6variable/</loc>
-    
-    <lastmod>2020-05-02</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/about/index.html</loc>
-    
-    <lastmod>2020-03-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/Destructuring/</loc>
-    
-    <lastmod>2020-03-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tag/index.html</loc>
-    
-    <lastmod>2020-02-05</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/category/index.html</loc>
-    
-    <lastmod>2020-02-05</lastmod>
-    
-  </url>
-  
 
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -173,126 +194,77 @@
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Javascript/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/w3HexSchool/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/ES6/</loc>
-    <lastmod>2021-08-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/node-js/</loc>
-    <lastmod>2021-08-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Discord-js/</loc>
-    <lastmod>2021-08-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/DC%E6%A9%9F%E5%99%A8%E4%BA%BA/</loc>
-    <lastmod>2021-08-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/CSS/</loc>
-    <lastmod>2021-08-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Flexbox/</loc>
-    <lastmod>2021-08-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/RWD/</loc>
-    <lastmod>2021-08-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/MySQL/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Foreign-Key/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/FK/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Flexbox/</loc>
+    <lastmod>2021-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/RWD/</loc>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Functional-Programming/</loc>
-    <lastmod>2021-08-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Git/</loc>
-    <lastmod>2021-08-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Grid/</loc>
-    <lastmod>2021-08-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Design-Pattern/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Prototype/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/React/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Grid/</loc>
+    <lastmod>2021-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/%E7%88%AC%E8%9F%B2/</loc>
+    <lastmod>2021-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Discord-Bot/</loc>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -301,56 +273,49 @@
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/Javascript/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/node-js/</loc>
-    <lastmod>2021-08-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/CSS/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/MySQL/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/CSS/</loc>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/Git/</loc>
-    <lastmod>2021-08-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/node-js/Discord-Bot/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/Javascript/Design-Pattern/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/React/</loc>
-    <lastmod>2021-08-13</lastmod>
+    <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
