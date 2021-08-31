@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/menu.html</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/home.html</loc>
     
     <lastmod>2021-08-31</lastmod>
@@ -135,13 +149,6 @@
   </url>
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/</loc>
-    
-    <lastmod>2021-08-31</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/Destructuring/</loc>
     
     <lastmod>2021-08-31</lastmod>
@@ -159,13 +166,6 @@
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/post/BindCallApply/</loc>
     
     <lastmod>2021-08-31</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/menu.html</loc>
-    
-    <lastmod>2021-08-30</lastmod>
     
   </url>
   
@@ -193,20 +193,6 @@
 
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Javascript/</loc>
-    <lastmod>2021-08-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/w3HexSchool/</loc>
-    <lastmod>2021-08-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/ES6/</loc>
     <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
@@ -214,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Foreign-Key/</loc>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Discord-Bot/</loc>
     <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -235,14 +221,14 @@
   </url>
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Functional-Programming/</loc>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Foreign-Key/</loc>
     <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Prototype/</loc>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Functional-Programming/</loc>
     <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -263,7 +249,21 @@
   </url>
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Discord-Bot/</loc>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Javascript/</loc>
+    <lastmod>2021-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/w3HexSchool/</loc>
+    <lastmod>2021-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/tags/Prototype/</loc>
     <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -286,14 +286,14 @@
   </url>
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/MySQL/</loc>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/CSS/</loc>
     <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/CSS/</loc>
+    <loc>https://b-l-u-e-b-e-r-r-y.github.io/categories/MySQL/</loc>
     <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
