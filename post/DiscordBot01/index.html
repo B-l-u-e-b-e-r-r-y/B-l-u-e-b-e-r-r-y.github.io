@@ -220,8 +220,8 @@ function sidebar_toggle() {
 <li>Node.js 版本 v14.0.0 以上</li>
 <li>編輯器 (推薦 Visual Studio Code)</li>
 </ul>
-<h3 id="1-安裝-Discord-js">1. 安裝 <a target="_blank" rel="noopener" href="https://github.com/discordjs/discord.js/">Discord.js</a></h3>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> discord.js</span><br></pre></td></tr></table></figure>
+<h3 id="1-安裝-Discord-js-v12-5-3">1. 安裝 <a target="_blank" rel="noopener" href="https://github.com/discordjs/discord.js/">Discord.js</a> v12.5.3</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install discord.js@12.5.3</span><br></pre></td></tr></table></figure>
 <h3 id="2-新增-token-json">2. 新增 token.json</h3>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;token&quot;</span>: <span class="string">&quot;Token&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Token 在 Bot 頁面複製：</p>
@@ -232,10 +232,14 @@ function sidebar_toggle() {
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Discord = <span class="built_in">require</span>(<span class="string">&#x27;discord.js&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; token &#125; = <span class="built_in">require</span>(<span class="string">&#x27;./token.json&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> Discord.Client();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 連上線時的事件</span></span><br><span class="line">client.on(<span class="string">&#x27;ready&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Logged in as <span class="subst">$&#123;client.user.tag&#125;</span>!`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 當 Bot 接收到訊息時的事件</span></span><br><span class="line">client.on(<span class="string">&#x27;message&#x27;</span>, <span class="function"><span class="params">msg</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 如果訊息的內容是 &#x27;ping&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> (msg.content === <span class="string">&#x27;ping&#x27;</span>) &#123;</span><br><span class="line">        <span class="comment">// 則 Bot 回應 &#x27;Pong&#x27;</span></span><br><span class="line">        msg.reply(<span class="string">&#x27;pong&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">client.login(token);</span><br></pre></td></tr></table></figure>
 <h3 id="4-運行程式">4. 運行程式</h3>
 <p>讓機器人上線吧！</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">node</span> <span class="title">discord</span>.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node discord.js</span><br></pre></td></tr></table></figure>
 <p><img src="/images/dc-bot/01/11.jpg" alt=""></p>
 <p>測試一下效果：</p>
 <p><img src="/images/dc-bot/01/10.jpg" alt=""></p>
+<h2 id="2021-09-22-更新">2021/09/22 更新</h2>
+<p>本篇文章之前預設安裝最新版 discord.js，而 discord.js 已於 2021/08/06 發布 v13 版本，寫法完全翻新，因此舊程式碼無法起作用。</p>
+<p>請使用舊的 v12.5.3 版本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install discord.js@12.5.3</span><br></pre></td></tr></table></figure>
 <hr>
 <p>這是本次實作的<a target="_blank" rel="noopener" href="https://github.com/B-l-u-e-b-e-r-r-y/Discord-Bot-01">範例程式碼</a>，可以參考檔案的配置，或是直接 Clone 到自己的電腦裡運行。</p>
 <blockquote>

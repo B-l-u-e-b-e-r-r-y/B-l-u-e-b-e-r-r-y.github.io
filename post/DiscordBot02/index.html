@@ -186,29 +186,40 @@ function sidebar_toggle() {
 </ul>
 <p>如果還不知道怎麼建立機器人，可以參考我之前寫的這篇文章：<a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/">【用 JS 寫一個 Discord Bot！】01 建立機器人</a>。</p>
 <h2 id="實作">實作</h2>
+<p>必備：</p>
+<ul>
+<li>Node.js 版本 v14.0.0 以上</li>
+<li>編輯器 (推薦 Visual Studio Code)</li>
+</ul>
 <h3 id="安裝套件">安裝套件</h3>
-<p>要完成這些功能，除了需要 <a target="_blank" rel="noopener" href="https://github.com/discordjs/discord.js/">Discord.js</a> 套件以外，還必須安裝下面這三個套件。</p>
+<ul>
+<li>
+<h4 id="Discord-js-v12-5-3"><a target="_blank" rel="noopener" href="https://github.com/discordjs/discord.js/">Discord.js</a> v12.5.3</h4>
+</li>
+</ul>
+<p>Discord 機器人的核心套件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install discord.js@12.5.3</span><br></pre></td></tr></table></figure>
 <ul>
 <li>
 <h4 id="ffmpeg-static"><a target="_blank" rel="noopener" href="https://github.com/eugeneware/ffmpeg-static">ffmpeg-static</a></h4>
 </li>
 </ul>
 <p>執行音樂的轉檔、串流功能</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">npm</span> install ffmpeg-<span class="keyword">static</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install ffmpeg-static</span><br></pre></td></tr></table></figure>
 <ul>
 <li>
 <h4 id="discordjs-opus"><a target="_blank" rel="noopener" href="https://github.com/discordjs/opus">discordjs/opus</a></h4>
 </li>
 </ul>
 <p>Opus 編碼器</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">npm</span> install @discordjs/opus</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install @discordjs/opus</span><br></pre></td></tr></table></figure>
 <ul>
 <li>
 <h4 id="node-ytdl-core"><a target="_blank" rel="noopener" href="https://github.com/fent/node-ytdl-core">node-ytdl-core</a></h4>
 </li>
 </ul>
 <p>執行下載 YouTube 影片的功能</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> ytdl-core</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install ytdl-core</span><br></pre></td></tr></table></figure>
 <h3 id="開始編寫">開始編寫</h3>
 <h4 id="建立-config-json">建立 config.json</h4>
 <p>在開始之前，我們先在專案中建立 config.json，放一些常用配置。</p>
@@ -229,12 +240,14 @@ function sidebar_toggle() {
 <li>【讓機器人離開語音頻道（會清空歌曲隊列）】<code>!!leave</code></li>
 </ul>
 <p>可以自行玩玩看。</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">node</span> <span class="title">discord</span>.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node discord.js</span><br></pre></td></tr></table></figure>
 <p><img src="/images/dc-bot/02/02.jpg" alt=""></p>
 <p>本來想把程式碼切開在文中講解，但是發現這樣寫起來會篇幅太長而且雜亂，所以就乾脆把註解寫在 code 裡面。</p>
-<p>本次音樂機器人的 <a target="_blank" rel="noopener" href="https://github.com/B-l-u-e-b-e-r-r-y/Discord-Bot-02">Github Repository</a>，可以自行 clone 下來研究或修改。</p>
+<p><strong>本次音樂機器人的 <a target="_blank" rel="noopener" href="https://github.com/B-l-u-e-b-e-r-r-y/Discord-Bot-02">Github Repository</a></strong>，可以自行 clone 下來研究或修改。</p>
 <h2 id="FAQ">FAQ</h2>
 <p>這邊蒐集了可能會遇到的問題。</p>
+<details>
+<summary>點我展開</summary>
 <ul>
 <li>Q：執行程式後出現 <code>Error: Cannot find module 'xxx'</code> 怎麼辦？</li>
 <li>A：通常那個 <code>xxx</code> 是缺少安裝的套件。跑一下安裝套件的指令 <code>npm i 套件名稱</code> 應該就正常了。</li>
@@ -250,6 +263,7 @@ function sidebar_toggle() {
 <li>A：與 discord.js 和 node.js 版本有關。目前只能等 discord.js 修復或自降 node.js 版本。<br>
 詳細請參考這個 issue：<a target="_blank" rel="noopener" href="https://github.com/discordjs/discord.js/issues/5300">The function dispatcher.pause() and dispatcher.resume() only works on a second switch #5300</a></li>
 </ul>
+</details>
 <h3 id="目前可正常運行的版本（參考用）">目前可正常運行的版本（參考用）</h3>
 <ul>
 <li>node.js: v14.16</li>
@@ -258,7 +272,9 @@ function sidebar_toggle() {
 <li>ffmpeg-static: “4.2.8”</li>
 <li>ytdl-core: “4.8.3”</li>
 </ul>
-<h2 id="更新">更新</h2>
+<h2 id="文章更新記錄">文章更新記錄</h2>
+<details>
+<summary>點我展開</summary>
 <h3 id="2021-01-13-更新">2021/01/13 更新</h3>
 <p>發現之前會有無法播放的問題，已更新 ytdl 套件解決問題。</p>
 <h3 id="2021-02-03-更新">2021/02/03 更新</h3>
@@ -274,7 +290,15 @@ function sidebar_toggle() {
 <h3 id="2021-06-27-更新">2021/06/27 更新</h3>
 <p>加入一些防呆機制以及更新套件版本。</p>
 <p>舊朋友如果有遇到問題，請試著更新 <a target="_blank" rel="noopener" href="https://github.com/fent/node-ytdl-core">node-ytdl-core</a> 為最新版本（4.8.3）：</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> install ytdl-core@latest</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install ytdl-core@latest</span><br></pre></td></tr></table></figure>
+<h3 id="2021-09-22-更新">2021/09/22 更新</h3>
+<p>改為統一使用 v12.5.3 的 discord.js。</p>
+</details>
+<h2 id="碎碎念">碎碎念</h2>
+<p>在寫 Discord 機器人系列文章前，完全沒想過會有這麼多人看。</p>
+<p>能夠幫助到這麼多人我覺得很開心，有部分讀者遇到問題會在下面發問，我也樂意解答，多數得不到回應，我當成是自己的回答有幫助讀者解決問題。</p>
+<p>但是隨著讀者越來越多、問題越來越多，我決定<strong>不再回答重複的問題</strong>，請各位在發問前先看看 FAQ 及下面的留言區，查找有沒有人問過自己遇到的問題。</p>
+<p>另外就是…發問時請具備基本禮貌，請尊重願意幫你解答問題的人，感謝配合。</p>
 <hr>
 <p><strong>【用 JS 寫一個 Discord Bot！】系列文章</strong></p>
 <ul>
