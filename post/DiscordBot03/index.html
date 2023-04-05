@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.svg" />
+    
+
+    <title>
+        
+          【用 JS 寫一個 Discord Bot！】03 Discord.js v14 音樂機器人 (新版) - 一顆藍莓
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-161468752-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.svg">
+    <span>一顆藍莓</span>
+  </a>
+</div>
+    <div id="menu" class="book-menu hide">
+  <ul>
+<li><a href="/">首頁</a></li>
+<li><a href="/about/index/">關於我</a></li>
+</ul>
+<h1 id="程式筆記">程式筆記</h1>
+<h2 id="CSS">CSS</h2>
+<ul>
+<li><a href="/post/Flexbox">排版神器 Flexbox</a></li>
+<li><a href="/post/Grid">Grid 格線佈局</a></li>
+</ul>
+<h2 id="Javascript">Javascript</h2>
+<ul>
+<li><a href="/post/BindCallApply">使用 bind、call、apply 改變 this 指向的對象</a></li>
+<li><a href="/post/ComparisonOperators">比較運算子</a></li>
+<li><a href="/post/Destructuring">解構賦值 (Destructuring)</a></li>
+<li><a href="/post/ES6variable">var、let、const 的區別</a></li>
+<li><a href="/post/FunctionalProgramming01">Functional Programming 幼幼班入門</a></li>
+<li><a href="/post/Promise">Javascript ES6 Promise</a></li>
+<li><a href="/post/Prototype">原型鍊 (Prototype Chain)</a></li>
+<li><a href="/post/ShallowCopyAndDeepCopy">Javascript 的淺拷貝與深拷貝</a></li>
+<li><a href="/post/SpreadAndRestOperator">展開運算子 (Spread Operator) 與其餘運算子 (Rest Operator)</a></li>
+<li><a href="/post/EventLoop">Event Loop (事件循環)</a></li>
+<li><a href="/post/FirstClassFunction">First-Class Function (一級函式)</a></li>
+<li><a href="/post/OptionalChaining">Optional Chaining (可選串連)</a></li>
+<li><strong>設計模式 (Design Pattern)</strong>
+<ul>
+<li><a href="/post/JSDesignPattern01">單例模式</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="React">React</h2>
+<ul>
+<li><a href="/post/ReactChildren">React Children 屬性</a></li>
+</ul>
+<h2 id="Node-js">Node.js</h2>
+<ul>
+<li><a href="/post/PTTCrawler">使用 Node.js 來爬蟲吧！[PTT 股票板]</a></li>
+<li><a href="/post/PTTCrawler02">使用 Node.js + Puppeteer 來爬蟲吧！[通過 PTT 八卦板年齡限制]</a></li>
+</ul>
+<h2 id="Discord-Bot">Discord Bot</h2>
+<ul>
+<li><a href="/post/DiscordBot01">【用 JS 寫一個 Discord Bot！】01 建立機器人</a></li>
+<li><a href="/post/DiscordBot02">【用 JS 寫一個 Discord Bot！】02 音樂機器人</a></li>
+<li><a href="/post/DiscordBot03">【用 JS 寫一個 Discord Bot！】03 Discord.js v14 音樂機器人 (新版)</a></li>
+</ul>
+<h2 id="MySQL">MySQL</h2>
+<ul>
+<li><a href="/post/ForeignKey">以 MySQL 為例解釋外鍵（Foreign Key）</a></li>
+</ul>
+<h2 id="Git">Git</h2>
+<ul>
+<li><a href="/post/GitCommand">簡單整理 Git 常用指令</a></li>
+</ul>
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <h1 id="【用-JS-寫一個-Discord-Bot！】03-Discord-js-v14-音樂機器人-新版">【用 JS 寫一個 Discord Bot！】03 Discord.js v14 音樂機器人 (新版)</h1>
+<p>相較於舊版，這次發布的機器人有一些新的改變：</p>
+<ul>
+<li>播放音樂更穩定，斷線後會自動重連</li>
+<li>可將指令新增至 DC 群中</li>
+<li>可以播放 Youtube 播放清單</li>
+<li>摒棄 <code>join</code> 指令，播放音樂後機器人自動加入語音</li>
+</ul>
+<blockquote>
+<p><strong>[注意]</strong></p>
+<p>雖然相較於之前的版本，播放音樂相對穩定，但仍會有短暫沒有音樂、過一段時間才恢復的問題。<br>
+目前實測播放一小時的音樂，中間斷過一次，持續 30 秒左右，1 分鐘內自動恢復。但這仍取決於伺服器狀態及機器網路狀態。</p>
+</blockquote>
+<h2 id="前言">前言</h2>
+<p>今天我們來寫一個具有以下功能的音樂機器人：</p>
+<ul>
+<li>播放 YouTube 歌曲/播放清單</li>
+<li>暫停/恢復播放</li>
+<li>跳過歌曲</li>
+<li>歌曲隊列</li>
+</ul>
+<p>如果還不知道怎麼建立機器人，可以參考我之前寫的這篇文章：<a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/">【用 JS 寫一個 Discord Bot！】01 建立機器人</a>。</p>
+<h2 id="安裝套件">安裝套件</h2>
+<p>必備：</p>
+<ul>
+<li>
+<p>Node.js 版本 v16.9.0 以上</p>
+</li>
+<li>
+<p>編輯器 (推薦 Visual Studio Code)</p>
+</li>
+<li>
+<h3 id="Discord-js-v14-9-0"><a target="_blank" rel="noopener" href="https://github.com/discordjs/discord.js/">Discord.js</a> v14.9.0</h3>
+</li>
+</ul>
+<p>Discord 機器人的核心套件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install discord.js@14.9.0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<h3 id="discordjs-voice-v0-16-0"><a target="_blank" rel="noopener" href="https://github.com/discordjs/voice">discordjs/voice</a> v0.16.0</h3>
+</li>
+</ul>
+<p>Discord 播放音樂的核心套件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @discordjs/voice@0.16.0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<h3 id="discordjs-opus-v0-9-0"><a target="_blank" rel="noopener" href="https://github.com/discordjs/opus">discordjs/opus</a> v0.9.0</h3>
+</li>
+</ul>
+<p>Opus 編碼器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @discordjs/opus@0.9.0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<h3 id="ffmpeg-static-v5-1-0"><a target="_blank" rel="noopener" href="https://github.com/eugeneware/ffmpeg-static">ffmpeg-static</a> v5.1.0</h3>
+</li>
+</ul>
+<p>執行音樂的轉檔、串流功能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install ffmpeg-static@5.1.0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<h3 id="libsodium-wrappers-v0-7-11"><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/libsodium-wrappers">libsodium-wrappers</a> v0.7.11</h3>
+</li>
+</ul>
+<p>Encryption packages</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install libsodium-wrappers@0.7.11</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<h3 id="play-dl-v1-9-6"><a target="_blank" rel="noopener" href="https://github.com/play-dl/play-dl">play-dl</a> v1.9.6</h3>
+</li>
+</ul>
+<p>Streaming library</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install play-dl@1.9.6</span><br></pre></td></tr></table></figure>
+<h2 id="編寫程式碼">編寫程式碼</h2>
+<p>這次我們會需要將主程式、音樂模組、指令、部屬指令的程式碼分成多個檔案，最終專案會呈現這個結構：</p>
+<p>[project]<br>
+├── /commands<br>
+│　　├ command.js<br>
+│　　├ delete_playlist.js<br>
+│　　├ leave.js<br>
+│　　├ pause.js<br>
+│　　├ play.js<br>
+│　　├ queue.js<br>
+│　　├ resume.js<br>
+│　　├ skip.js<br>
+├── /utils<br>
+│　　├ music.js<br>
+├ config.json<br>
+├ deployment.js<br>
+├ discord.js<br>
+├ package-lock.json<br>
+├ package.json</p>
+<h3 id="建立-config-json">建立 config.json</h3>
+<p>在開始之前，我們先在專案中建立 config.json，放一些常用配置。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;token&quot;</span>: <span class="string">&quot;your token&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;clientId&quot;</span>: <span class="string">&quot;your bot client id&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>token</code> 設定機器人的 token，不知道 token 要到哪裡取得可以參考這篇：<a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/">【用 JS 寫一個 Discord Bot！】01 建立機器人</a>。</li>
+<li><code>clientId</code> 機器人的 client id，用於部屬指令。<br>
+(<a target="_blank" rel="noopener" href="https://discord.com/developers/applications">Discord Developer Portal</a> &gt; 點選要運作的機器人 &gt; “General Information” &gt; “APPLICATION ID”)</li>
+</ul>
+<h3 id="編寫-utils-music-js">編寫 /utils/music.js</h3>
+<p>這個檔案會放在 utils 目錄底下，用於處理音樂播放等功能，也是本文的重點。</p>
+<details>
+<summary><font color='#8370DB'><b>點我展開程式碼</b></font></summary>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> play = <span class="built_in">require</span>(<span class="string">&#x27;play-dl&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; createAudioPlayer, createAudioResource, joinVoiceChannel, NoSubscriberBehavior, AudioPlayerStatus &#125; = <span class="built_in">require</span>(<span class="string">&#x27;@discordjs/voice&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Music</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 下面的物件都是以 Discord guild id 當 key，例如：</span></span><br><span class="line"><span class="comment">         * this.isPlaying = &#123;</span></span><br><span class="line"><span class="comment">         *     724145832802385970: false</span></span><br><span class="line"><span class="comment">         * &#125;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 機器人是否正在播放音樂</span></span><br><span class="line"><span class="comment">         * this.isPlaying = &#123;</span></span><br><span class="line"><span class="comment">         *     724145832802385970: false</span></span><br><span class="line"><span class="comment">         * &#125;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="built_in">this</span>.isPlaying = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 等待播放的音樂隊列，例如：</span></span><br><span class="line"><span class="comment">         * this.queue = &#123;</span></span><br><span class="line"><span class="comment">         *     724145832802385970: [&#123;</span></span><br><span class="line"><span class="comment">         *         name: &#x27;G.E.M.鄧紫棋【好想好想你 Missing You】Official Music Video&#x27;,</span></span><br><span class="line"><span class="comment">         *         url: &#x27;https://www.youtube.com/watch?v=P6QXo88IG2c&amp;ab_channel=GEM%E9%84%A7%E7%B4%AB%E6%A3%8B&#x27;</span></span><br><span class="line"><span class="comment">         *     &#125;]</span></span><br><span class="line"><span class="comment">         * &#125;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="built_in">this</span>.queue = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// https://discord.js.org/#/docs/voice/main/class/VoiceConnection</span></span><br><span class="line">        <span class="built_in">this</span>.connection = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// https://discord.js.org/#/docs/voice/main/class/AudioPlayer</span></span><br><span class="line">        <span class="built_in">this</span>.dispatcher = &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得指令列表</span></span><br><span class="line">    <span class="function"><span class="title">command</span>(<span class="params">interaction</span>)</span> &#123;</span><br><span class="line">        interaction.reply(&#123; <span class="attr">content</span>: <span class="string">`【播放音樂】/play url:音樂網址\n【暫停播放】/pause\n【恢復播放】/resume\n【跳過這首歌曲】/skip\n【查看歌曲隊列】/queue\n【刪除播放清單中的所有歌曲】/deleteplaylist id:id\n【查看機器人指令】/command\n【讓機器人離開語音頻道（會清空歌曲隊列）】/leave`</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判斷網址是否為播放清單</span></span><br><span class="line">    <span class="function"><span class="title">isPlayList</span>(<span class="params">url</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (url.indexOf(<span class="string">&#x27;&amp;list&#x27;</span>) &gt; -<span class="number">1</span> &amp;&amp; url.indexOf(<span class="string">&#x27;music.youtube&#x27;</span>) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 將機器人加入語音、處理歌曲資訊</span></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">play</span>(<span class="params">interaction</span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 語音群的 ID</span></span><br><span class="line">        <span class="keyword">const</span> guildID = interaction.guildId;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果使用者不在語音頻道中則發出警告並返回</span></span><br><span class="line">        <span class="keyword">if</span> (interaction.member.voice.channel === <span class="literal">null</span>) &#123;</span><br><span class="line">            interaction.reply(&#123; <span class="attr">content</span>: <span class="string">&#x27;請先進入語音頻道&#x27;</span>, <span class="attr">ephemeral</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 機器人加入語音</span></span><br><span class="line">        <span class="built_in">this</span>.connection[guildID] = joinVoiceChannel(&#123;</span><br><span class="line">            <span class="attr">channelId</span>: interaction.member.voice.channel.id,</span><br><span class="line">            <span class="attr">guildId</span>: guildID,</span><br><span class="line">            <span class="attr">adapterCreator</span>: interaction.guild.voiceAdapterCreator</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> musicURL = interaction.options.getString(<span class="string">&#x27;url&#x27;</span>).trim();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 將歌曲資訊加入隊列</span></span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">this</span>.queue[guildID]) &#123;</span><br><span class="line">                <span class="built_in">this</span>.queue[guildID] = [];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> musicName = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 檢查是否為播放清單</span></span><br><span class="line">            <span class="keyword">const</span> isPlayList = <span class="built_in">this</span>.isPlayList(musicURL);</span><br><span class="line">            <span class="keyword">if</span> (isPlayList) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 取得播放清單的資訊</span></span><br><span class="line">                <span class="keyword">const</span> res = <span class="keyword">await</span> play.playlist_info(musicURL);</span><br><span class="line">                musicName = res.title;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 取得前 10 筆播放清單的列表歌曲</span></span><br><span class="line">                <span class="keyword">const</span> videoTitles = res.videos.map(<span class="function">(<span class="params">v, i</span>) =&gt;</span> <span class="string">`[<span class="subst">$&#123;i+<span class="number">1</span>&#125;</span>] <span class="subst">$&#123;v.title&#125;</span>`</span>).slice(<span class="number">0</span>, <span class="number">10</span>).join(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">                interaction.channel.send(<span class="string">`**加入播放清單：<span class="subst">$&#123;musicName&#125;</span>**\nID 識別碼：[<span class="subst">$&#123;res.id&#125;</span>]\n==========================\n<span class="subst">$&#123;videoTitles&#125;</span>\n……以及其他 <span class="subst">$&#123;res.videos.length - <span class="number">10</span>&#125;</span> 首歌 `</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 依序將播放清單歌曲寫入隊列資料中</span></span><br><span class="line">                res.videos.forEach(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">                    <span class="built_in">this</span>.queue[guildID].push(&#123;</span><br><span class="line">                        <span class="attr">id</span>: res.id,</span><br><span class="line">                        <span class="attr">name</span>: v.title,</span><br><span class="line">                        <span class="attr">url</span>: v.url</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;);</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 取得影片資訊</span></span><br><span class="line">                <span class="keyword">const</span> res = <span class="keyword">await</span> play.video_basic_info(musicURL);</span><br><span class="line">                musicName = res.video_details.title;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 寫入隊列資料</span></span><br><span class="line">                <span class="built_in">this</span>.queue[guildID].push(&#123;</span><br><span class="line">                    <span class="attr">id</span>: res.video_details.id,</span><br><span class="line">                    <span class="attr">name</span>: musicName,</span><br><span class="line">                    <span class="attr">url</span>: musicURL</span><br><span class="line">                &#125;);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果目前正在播放歌曲就加入隊列，反之則播放歌曲</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">this</span>.isPlaying[guildID]) &#123;</span><br><span class="line">                interaction.reply(&#123; <span class="attr">content</span>: <span class="string">`歌曲加入隊列：<span class="subst">$&#123;musicName&#125;</span>`</span> &#125;);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">this</span>.isPlaying[guildID] = <span class="literal">true</span>;</span><br><span class="line">                interaction.reply(&#123; <span class="attr">content</span>: <span class="string">`🎵　播放音樂：<span class="subst">$&#123;<span class="built_in">this</span>.queue[guildID][<span class="number">0</span>].name&#125;</span>`</span> &#125;);</span><br><span class="line">                <span class="built_in">this</span>.playMusic(interaction, <span class="built_in">this</span>.queue[guildID][<span class="number">0</span>], <span class="literal">true</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(e);</span><br><span class="line">            interaction.reply(&#123; <span class="attr">content</span>: <span class="string">&#x27;發生錯誤 :(&#x27;</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 播放下一首歌</span></span><br><span class="line">    <span class="function"><span class="title">playNextMusic</span>(<span class="params">interaction</span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> guildID = interaction.guildId;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果隊列中有歌曲則播放音樂</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.queue[guildID].length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">this</span>.playMusic(interaction, <span class="built_in">this</span>.queue[guildID][<span class="number">0</span>], <span class="literal">false</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.isPlaying[guildID] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">playMusic</span>(<span class="params">interaction, musicInfo, isReplied</span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 伺服器 ID</span></span><br><span class="line">        <span class="keyword">const</span> guildID = interaction.guildId;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 提示播放音樂</span></span><br><span class="line">            <span class="keyword">if</span> (!isReplied) &#123;</span><br><span class="line">                <span class="keyword">const</span> content = <span class="string">`🎵　播放音樂：<span class="subst">$&#123;musicInfo.name&#125;</span>`</span>;</span><br><span class="line">                interaction.channel.send(content);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 播放音樂</span></span><br><span class="line">            <span class="keyword">const</span> stream = <span class="keyword">await</span> play.stream(musicInfo.url);</span><br><span class="line">            <span class="keyword">const</span> resource = createAudioResource(stream.stream, &#123;</span><br><span class="line">                <span class="attr">inputType</span>: stream.type</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> player = createAudioPlayer(&#123;</span><br><span class="line">                <span class="attr">behaviors</span>: &#123;</span><br><span class="line">                    <span class="attr">noSubscriber</span>: NoSubscriberBehavior.Play</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            player.play(resource);</span><br><span class="line"></span><br><span class="line">            <span class="built_in">this</span>.connection[guildID].subscribe(player);</span><br><span class="line">            <span class="built_in">this</span>.dispatcher[guildID] = player;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 移除 queue 中目前播放的歌曲</span></span><br><span class="line">            <span class="built_in">this</span>.queue[guildID].shift();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 歌曲播放結束時的事件</span></span><br><span class="line">            player.on(<span class="string">&#x27;stateChange&#x27;</span>, <span class="function">(<span class="params">oldState, newState</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (newState.status === AudioPlayerStatus.Idle &amp;&amp; oldState.status !== AudioPlayerStatus.Idle) &#123;</span><br><span class="line">                    <span class="built_in">this</span>.playNextMusic(interaction);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(e);</span><br><span class="line">            interaction.channel.send(<span class="string">&#x27;歌曲發生錯誤...&#x27;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 移除 queue 中目前播放的歌曲</span></span><br><span class="line">            <span class="built_in">this</span>.queue[guildID].shift();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 播放下一首歌</span></span><br><span class="line">            <span class="built_in">this</span>.playNextMusic(interaction);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 恢復播放</span></span><br><span class="line">    <span class="function"><span class="title">resume</span>(<span class="params">interaction</span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> guildID = interaction.guildId;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.dispatcher[guildID]) &#123;</span><br><span class="line">            <span class="built_in">this</span>.dispatcher[guildID].unpause();</span><br><span class="line">            interaction.reply(&#123; <span class="attr">content</span>: <span class="string">&#x27;恢復播放&#x27;</span> &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            interaction.reply(&#123; <span class="attr">content</span>: <span class="string">&#x27;機器人目前未加入頻道&#x27;</span> &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 暫停播放</span></span><br><span class="line">    <span class="function"><span class="title">pause</span>(<span class="params">interaction</span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> guildID = interaction.guildId;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.dispatcher[guildID]) &#123;</span><br><span class="line">            <span class="built_in">this</span>.dispatcher[guildID].pause();</span><br><span class="line">            interaction.reply(&#123; <span class="attr">content</span>: <span class="string">&#x27;暫停播放&#x27;</span> &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            interaction.reply(&#123; <span class="attr">content</span>: <span class="string">&#x27;機器人目前未加入頻道&#x27;</span> &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 跳過目前歌曲</span></span><br><span class="line">    <span class="function"><span class="title">skip</span>(<span class="params">interaction</span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> guildID = interaction.guildId;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.dispatcher[guildID]) &#123;</span><br><span class="line">            <span class="built_in">this</span>.dispatcher[guildID].stop();</span><br><span class="line">            interaction.reply(&#123; <span class="attr">content</span>: <span class="string">&#x27;跳過目前歌曲&#x27;</span> &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            interaction.reply(&#123; <span class="attr">content</span>: <span class="string">&#x27;機器人目前未加入頻道&#x27;</span> &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得目前隊列中的歌曲</span></span><br><span class="line">    <span class="function"><span class="title">nowQueue</span>(<span class="params">interaction</span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> guildID = interaction.guildId;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果隊列中有歌曲就顯示</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.queue[guildID] &amp;&amp; <span class="built_in">this</span>.queue[guildID].length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> queueString = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 字串處理，將 Object 組成字串</span></span><br><span class="line">            <span class="keyword">let</span> queue = <span class="built_in">this</span>.queue[guildID].map(<span class="function">(<span class="params">item, index</span>) =&gt;</span> <span class="string">`[<span class="subst">$&#123;index+<span class="number">1</span>&#125;</span>] <span class="subst">$&#123;item.name&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">if</span> (queue.length &gt; <span class="number">10</span>) &#123;</span><br><span class="line">                queue = queue.slice(<span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">                queueString = <span class="string">`目前歌單：\n<span class="subst">$&#123;queue.join(<span class="string">&#x27;\n&#x27;</span>)&#125;</span>\n……與其他 <span class="subst">$&#123;<span class="built_in">this</span>.queue[guildID].length - <span class="number">10</span>&#125;</span> 首歌`</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                queueString = <span class="string">`目前歌單：\n<span class="subst">$&#123;queue.join(<span class="string">&#x27;\n&#x27;</span>)&#125;</span>`</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            interaction.reply(&#123; <span class="attr">content</span>: queueString &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            interaction.reply(&#123; <span class="attr">content</span>: <span class="string">&#x27;目前隊列中沒有歌曲&#x27;</span> &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 刪除隊列中播放清單的所有歌曲</span></span><br><span class="line">    <span class="function"><span class="title">deletePlayList</span>(<span class="params">interaction</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> guildID = interaction.guildId;</span><br><span class="line">        <span class="keyword">const</span> id = interaction.options.getString(<span class="string">&#x27;id&#x27;</span>).trim();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 刪除特定播放清單的所有歌曲</span></span><br><span class="line">        <span class="built_in">this</span>.queue[guildID] = <span class="built_in">this</span>.queue[guildID].filter(<span class="function"><span class="params">q</span> =&gt;</span> q.id !== id);</span><br><span class="line">        interaction.reply(&#123; <span class="attr">content</span>: <span class="string">`刪除ID為 <span class="subst">$&#123;id&#125;</span> 的播放清單歌曲`</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 將機器人退出語音頻道</span></span><br><span class="line">    <span class="function"><span class="title">leave</span>(<span class="params">interaction</span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> guildID = interaction.guildId;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果機器人在頻道中</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.connection[guildID]) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果機器人有播放過歌曲</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">this</span>.queue.hasOwnProperty(guildID)) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 清空播放列表</span></span><br><span class="line">                <span class="keyword">delete</span> <span class="built_in">this</span>.queue[guildID];</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 改變 isPlaying 狀態為 false</span></span><br><span class="line">                <span class="built_in">this</span>.isPlaying[guildID] = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 離開頻道</span></span><br><span class="line">            <span class="built_in">this</span>.connection[guildID].disconnect();</span><br><span class="line"></span><br><span class="line">            interaction.reply(&#123; <span class="attr">content</span>: <span class="string">&#x27;離開頻道&#x27;</span> &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            interaction.reply(&#123; <span class="attr">content</span>: <span class="string">&#x27;機器人未加入任何頻道&#x27;</span> &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="keyword">new</span> Music();</span><br></pre></td></tr></table></figure>
+</details>
+<h3 id="指令編寫">指令編寫</h3>
+<p>建立一個 <code>/commands</code> 資料夾來放置指令程式碼，這次我們將一個指令分成一個檔案來管理。</p>
+<p>由於檔案眾多，這邊僅放上其中一個指令的程式碼，其他指令程式碼請到 Github Repository 查看：<a target="_blank" rel="noopener" href="https://github.com/B-l-u-e-b-e-r-r-y/Discord-Bot-03/tree/main/commands">B-l-u-e-b-e-r-r-y/Discord-Bot-03/commands</a>。</p>
+<h4 id="commands-play-js">/commands/play.js</h4>
+<details>
+<summary><font color='#8370DB'><b>點我展開程式碼</b></font></summary>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; SlashCommandBuilder &#125; = <span class="built_in">require</span>(<span class="string">&#x27;discord.js&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> music = <span class="built_in">require</span>(<span class="string">&#x27;../utils/music&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="attr">data</span>: <span class="keyword">new</span> SlashCommandBuilder() <span class="comment">// 建立指令的 function</span></span><br><span class="line">        .setName(<span class="string">&#x27;play&#x27;</span>)            <span class="comment">// 指令名稱</span></span><br><span class="line">        .setDescription(<span class="string">&#x27;播放音樂&#x27;</span>)  <span class="comment">// 指令描述</span></span><br><span class="line">        .addStringOption(<span class="function"><span class="params">option</span> =&gt;</span>  <span class="comment">// 增加 option</span></span><br><span class="line">            option</span><br><span class="line">                .setName(<span class="string">&#x27;url&#x27;</span>)                          <span class="comment">// option name</span></span><br><span class="line">                .setDescription(<span class="string">&#x27;提供 Youtube url 網址&#x27;</span>)  <span class="comment">// option 描述</span></span><br><span class="line">                .setRequired(<span class="literal">true</span>)                       <span class="comment">// option 是否為必要 (如果為必要，輸入指令時會自動帶入)</span></span><br><span class="line">        ),</span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">execute</span>(<span class="params">interaction</span>)</span> &#123;</span><br><span class="line">        <span class="comment">// 使用者輸入指令後程式要做的事</span></span><br><span class="line">        <span class="keyword">await</span> music.play(interaction);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</details>
+<h3 id="編寫-discord-js">編寫 discord.js</h3>
+<p>discord.js 在這邊用於處理、回應指令等工作。</p>
+<details>
+<summary><font color='#8370DB'><b>點我展開程式碼</b></font></summary>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入需要的模組</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;node:fs&quot;</span>); <span class="comment">// 用於讀寫檔案</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;node:path&quot;</span>); <span class="comment">// 用於處理路徑</span></span><br><span class="line"><span class="keyword">const</span> &#123; Client, Collection, Events, GatewayIntentBits &#125; = <span class="built_in">require</span>(<span class="string">&quot;discord.js&quot;</span>); <span class="comment">// 引入 Discord.js 模組</span></span><br><span class="line"><span class="keyword">const</span> &#123; token &#125; = <span class="built_in">require</span>(<span class="string">&quot;./config.json&quot;</span>); <span class="comment">// 從 config.json 讀取 token</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 創建一個 Discord.js client</span></span><br><span class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> Client(&#123;</span><br><span class="line">    <span class="attr">intents</span>: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 創建一個 Collection 來存放指令</span></span><br><span class="line">client.commands = <span class="keyword">new</span> Collection();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 讀取 commands 資料夾下的 js 檔案</span></span><br><span class="line"><span class="keyword">const</span> commandsPath = path.join(__dirname, <span class="string">&quot;commands&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> commandFiles = fs</span><br><span class="line">    .readdirSync(commandsPath)</span><br><span class="line">    .filter(<span class="function">(<span class="params">file</span>) =&gt;</span> file.endsWith(<span class="string">&quot;.js&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將指令加入 Collection</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> file <span class="keyword">of</span> commandFiles) &#123;</span><br><span class="line">    <span class="keyword">const</span> filePath = path.join(commandsPath, file);</span><br><span class="line">    <span class="keyword">const</span> command = <span class="built_in">require</span>(filePath);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在 Collection 中以指令名稱作為 key，指令模組作為 value 加入</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;data&quot;</span> <span class="keyword">in</span> command &amp;&amp; <span class="string">&quot;execute&quot;</span> <span class="keyword">in</span> command) &#123;</span><br><span class="line">        client.commands.set(command.data.name, command);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`[警告] <span class="subst">$&#123;filePath&#125;</span> 中的指令缺少必要的 &quot;data&quot; 或 &quot;execute&quot; 屬性。`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 當收到互動事件時，檢查是否為指令，若是則執行該指令</span></span><br><span class="line">client.on(Events.InteractionCreate, <span class="keyword">async</span> (interaction) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (!interaction.isChatInputCommand()) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> command = interaction.client.commands.get(interaction.commandName);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!command) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(<span class="string">`找不到指令 <span class="subst">$&#123;interaction.commandName&#125;</span>。`</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> command.execute(interaction);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(error);</span><br><span class="line">        <span class="keyword">if</span> (interaction.replied || interaction.deferred) &#123;</span><br><span class="line">            <span class="keyword">await</span> interaction.followUp(&#123;</span><br><span class="line">                <span class="attr">content</span>: <span class="string">&quot;執行指令時發生錯誤！&quot;</span>,</span><br><span class="line">                <span class="attr">ephemeral</span>: <span class="literal">true</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">await</span> interaction.reply(&#123;</span><br><span class="line">                <span class="attr">content</span>: <span class="string">&quot;執行指令時發生錯誤！&quot;</span>,</span><br><span class="line">                <span class="attr">ephemeral</span>: <span class="literal">true</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 當 client 就緒時顯示訊息</span></span><br><span class="line">client.once(Events.ClientReady, <span class="function">(<span class="params">c</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">`已就緒！已登入帳號：<span class="subst">$&#123;c.user.tag&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 token 進行登入</span></span><br><span class="line">client.login(token);</span><br></pre></td></tr></table></figure>
+</details>
+<h3 id="編寫-deployment-js">編寫 deployment.js</h3>
+<p>deployment.js 用於註冊指令的工作，等一下會需要單獨執行這個程式以完成指令註冊。</p>
+<details>
+<summary><font color='#8370DB'><b>點我展開程式碼</b></font></summary>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; REST, Routes &#125; = <span class="built_in">require</span>(<span class="string">&#x27;discord.js&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; clientId, token &#125; = <span class="built_in">require</span>(<span class="string">&#x27;./config.json&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;node:fs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;node:path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> commands = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 從之前創建的 commands 目錄中取出所有命令文件</span></span><br><span class="line"><span class="keyword">const</span> commandsPath = path.join(__dirname, <span class="string">&#x27;commands&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> commandFiles = fs.readdirSync(commandsPath).filter(<span class="function"><span class="params">file</span> =&gt;</span> file.endsWith(<span class="string">&#x27;.js&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 從每個命令的資料中取出 SlashCommandBuilder#toJSON() 的輸出以進行 deploy</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> file <span class="keyword">of</span> commandFiles) &#123;</span><br><span class="line">    <span class="keyword">const</span> command = <span class="built_in">require</span>(<span class="string">`./commands/<span class="subst">$&#123;file&#125;</span>`</span>);</span><br><span class="line">    commands.push(command.data.toJSON());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 創建並準備 REST 模組的一個實例</span></span><br><span class="line"><span class="keyword">const</span> rest = <span class="keyword">new</span> REST(&#123; <span class="attr">version</span>: <span class="string">&#x27;10&#x27;</span> &#125;).setToken(token);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 部署 commands</span></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`Started refreshing <span class="subst">$&#123;commands.length&#125;</span> application (/) commands.`</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用 put 方法更新 DC 群中所有 commands</span></span><br><span class="line">        <span class="keyword">const</span> data = <span class="keyword">await</span> rest.put(</span><br><span class="line">            Routes.applicationCommands(clientId),</span><br><span class="line">            &#123; <span class="attr">body</span>: commands &#125;,</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`Successfully reloaded <span class="subst">$&#123;data.length&#125;</span> application (/) commands.`</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+</details>
+<h2 id="部屬指令">部屬指令</h2>
+<p>完成程式碼後，就可以執行 deployment.js 部屬指令到伺服器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node deployment.js</span><br></pre></td></tr></table></figure>
+<p><img src="/images/dc-bot/03/01.jpg" alt=""></p>
+<p>完成之後就可以看到指令出現在指令區了。</p>
+<p><img src="/images/dc-bot/03/03.jpg" alt=""></p>
+<h2 id="運行機器人">運行機器人</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node discord.js</span><br></pre></td></tr></table></figure>
+<p>機器人功能如下：</p>
+<ul>
+<li>【播放音樂】<code>/play url:音樂網址</code></li>
+<li>【暫停播放】<code>/pause</code></li>
+<li>【恢復播放】<code>/resume</code></li>
+<li>【跳過這首歌曲】<code>/skip</code></li>
+<li>【查看歌曲隊列】<code>/queue</code></li>
+<li>【刪除播放清單中的所有歌曲】<code>/deleteplaylist id:id</code></li>
+<li>【查看機器人指令】<code>/command</code></li>
+<li>【讓機器人離開語音頻道（會清空歌曲隊列）】<code>/leave</code></li>
+</ul>
+<p><img src="/images/dc-bot/03/02.jpg" alt=""></p>
+<p>本來想把程式碼切開在文中講解，但是發現這樣寫起來會篇幅太長而且雜亂，所以就乾脆把註解寫在 code 裡面。</p>
+<p><strong>本次音樂機器人的 <a target="_blank" rel="noopener" href="https://github.com/B-l-u-e-b-e-r-r-y/Discord-Bot-03">Github Repository</a></strong>，可以自行 clone 下來研究或修改。</p>
+<h2 id="特別感謝">特別感謝</h2>
+<p>本文由 ChatGPT 協助產出，感恩 ❤️</p>
+<hr>
+<p><strong>【用 JS 寫一個 Discord Bot！】系列文章</strong></p>
+<ul>
+<li><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot01/">【用 JS 寫一個 Discord Bot！】01 建立機器人</a></li>
+<li><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot02/">【用 JS 寫一個 Discord Bot！】02 音樂機器人 (舊版)</a></li>
+<li><a href="https://b-l-u-e-b-e-r-r-y.github.io/post/DiscordBot03/">【用 JS 寫一個 Discord Bot！】03 Discord.js v14 音樂機器人 (新版)</a></li>
+</ul>
+
+
+  
+    <blockquote>
+      <strong style="font-weight: bold; margin-top: 1.5rem;">文章結束囉～</strong>
+      <p style="margin-top: .5rem;">如果我的文章對你有幫助，可以幫我拍個手，感謝支持！</p>
+    </blockquote>
+    <div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/blueberrylin/button?referrer=" +
+        encodeURIComponent(location.href.split("?")[0].split("#")[0]) +
+        "'></iframe>"
+    );
+  </script>
+  <div></div>
+</div>
+
+  
+</div>
+
+
+  <div class="book-comments">
+    
+    <script src="https://giscus.app/client.js"
+            data-repo="B-l-u-e-b-e-r-r-y/blog-utterances"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyNDg3Njc1NTM="
+            data-category="General"
+            data-category-id="DIC_kwDODtPkQc4B-1Vd"
+            data-mapping="title"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-theme="https://raw.githack.com/B-l-u-e-b-e-r-r-y/blog/master/source/giscus.css"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+
+
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/author.gif" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>Blueberry</div>
+      <div>2023-04-05</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+
+      <a class="category-link" href="/categories/node-js/">[node.js]</a>
+
+      <br>
+
+      <a class="tag-none-link" href="/tags/Discord-Bot/" rel="tag">#Discord Bot</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>
